@@ -1,8 +1,16 @@
-import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Detail from './Detail/Detail';
+import './App.css';
 
 function App() {
   return (
-    <>Router will be here</>
+	<div className="App">
+	  <BrowserRouter>
+	  	<Routes>
+			<Route path='/detail' element={<Detail/>}/>
+		</Routes>
+	  </BrowserRouter>
+	</div>
   );
 }
 
