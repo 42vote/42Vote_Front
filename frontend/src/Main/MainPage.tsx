@@ -91,14 +91,16 @@ const MainPage: React.FC = () => {
         ))}
       </div>
       {selectedTag.map((tag) => (
-        <div className="cards-container">
-          <h1>#{tag}</h1>
-          {cards
-            .filter((card) => card.tag.includes(tag))
-            .map((card) => (
-              <Card key={card.id} {...card} />
-            ))}
-        </div>
+        <>
+          <h1 className="tagHeader">#{tag}</h1>
+          <div className="cards-container">
+            {cards
+              .filter((card) => card.tag.includes(tag))
+              .map((card) => (
+                <Card key={card.id} {...card} />
+              ))}
+          </div>
+        </>
       ))}
     </div>
   );
