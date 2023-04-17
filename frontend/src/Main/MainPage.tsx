@@ -17,7 +17,7 @@ interface CardProps {
   tag: string;
 }
 
-const tags = ["A", "B", "C"];
+const tags = ["tag A", "tag B", "tag C"];
 
 const cards: CardProps[] = [
   {
@@ -25,42 +25,82 @@ const cards: CardProps[] = [
     title: "1",
     description: "Description for card 1",
     imageUrl: "https://via.placeholder.com/200x200",
-    tag: "A",
+    tag: "tag A",
   },
   {
     id: 2,
     title: "2",
     description: "Description for card 2",
     imageUrl: "https://via.placeholder.com/200x200",
-    tag: "A",
+    tag: "tag A",
+  },
+  {
+    id: 11,
+    title: "1",
+    description: "Description for card 1",
+    imageUrl: "https://via.placeholder.com/200x200",
+    tag: "tag A",
+  },
+  {
+    id: 22,
+    title: "2",
+    description: "Description for card 2",
+    imageUrl: "https://via.placeholder.com/200x200",
+    tag: "tag A",
+  },  {
+    id: 111,
+    title: "1",
+    description: "Description for card 1",
+    imageUrl: "https://via.placeholder.com/200x200",
+    tag: "tag A",
+  },
+  {
+    id: 223,
+    title: "2",
+    description: "Description for card 2",
+    imageUrl: "https://via.placeholder.com/200x200",
+    tag: "tag B",
+  },
+  {
+    id: 2232,
+    title: "2",
+    description: "Description for card 2",
+    imageUrl: "https://via.placeholder.com/200x200",
+    tag: "tag B",
+  },  {
+    id: 2234,
+    title: "2",
+    description: "Description for card 2",
+    imageUrl: "https://via.placeholder.com/200x200",
+    tag: "tag B",
   },
   {
     id: 3,
     title: "3",
     description: "Description for card 3",
     imageUrl: "https://via.placeholder.com/200x200",
-    tag: "A",
+    tag: "tag C",
   },
   {
     id: 4,
     title: "4",
     description: "Description for card 4",
     imageUrl: "https://via.placeholder.com/200x200",
-    tag: "B",
+    tag: "tag B",
   },
   {
     id: 5,
     title: "5",
     description: "Description for card 5",
     imageUrl: "https://via.placeholder.com/200x200",
-    tag: "B",
+    tag: "tag B",
   },
   {
     id: 6,
     title: "6",
     description: "Description for card 6",
     imageUrl: "https://via.placeholder.com/200x200",
-    tag: "C",
+    tag: "tag C",
   },
 ];
 
