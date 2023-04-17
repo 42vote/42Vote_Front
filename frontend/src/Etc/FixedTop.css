@@ -4,14 +4,14 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    position: fixed;
     box-sizing: border-box;
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
+    padding: 10px;
 }
 
 #fixed-top #logo {
     font-family: 'Lora-Bold';
-    font-size: max(3vw, 25px);
+    font-size: max(2vw, 20px);
 }
 
 #fixed-top #button-wrap {
@@ -32,7 +32,7 @@
 /* Mobile */
 
 #mobile #fixed-top {
-    padding: 10px 20px 10px 20px;
+    padding: 5px 10px 5px 10px;
 }
 
 #mobile #fixed-top #button-wrap {
@@ -48,10 +48,10 @@
 }
 
 #mobile #fixed-top #button-wrap > button {
-    width: clamp(27px, 10%, 32px);
+    width: clamp(20px, 7%, 25px);
     height: 0;
     padding: 0;
-    padding-bottom: clamp(27px, 10%, 32px);
+    padding-bottom: clamp(20px, 7%, 25px);
     margin-left: 10px;
     box-sizing: border-box;
     background-position: center;
@@ -64,7 +64,7 @@
 /* Desktop */
 
 #desktop #fixed-top {
-    padding: 10px 25px 10px 25px;
+    padding: 5px 15px 5px 15px;
 }
 
 #desktop #fixed-top #button-wrap {
@@ -75,7 +75,7 @@
     width: 40%;
     height: 0;
     padding: 0;
-    padding-bottom: clamp(30px, 15%, 43px);
+    padding-bottom: clamp(25px, 10%, 35px);
     background-color: #383838;
     color: white;
     border: 0;
@@ -90,14 +90,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Lora-Regular';
-    font-size: 1.7vw;
+    font-size: 1.5vw;
 }
 
 #desktop #fixed-top #button-wrap .img-button {
-    width: clamp(30px, 15%, 43px);
+    width: clamp(25px, 10%, 35px);
     height: 0;
     padding: 0;
-    padding-bottom: clamp(30px, 15%, 43px);
+    padding-bottom: clamp(25px, 10%, 35px);
     margin-left: 10px;
     box-sizing: border-box;
     background-position: center;
