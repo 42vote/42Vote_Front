@@ -3,7 +3,7 @@
 
 .cards_area {
   display: grid;
-  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-columns: 1fr 1110px 1fr;
 }
 
 .cards-container {
@@ -131,13 +131,40 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-left: 30px;
 
   }
 
-  
-  .preButtonContainer {
+  .prevButtonContainer {
     grid-column: 1;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    margin-right: 30px;
+  }
+
+  .prevButton {
+    width:37px;
+    height: 83px;
+    background-color: #fff;
+    background-image: url(../../public/img/prevButton.svg);
+    border: none;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .prevButton:hover {
+    transform: scale(1.05);
+  }
+
+  .nextButton {
+    width:37px;
+    height: 83px;
+    background-color: #fff;
+    background-image: url(../../public/img/nextButton.svg);
+    border: none;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .nextButton:hover {
+    transform: scale(1.05);
   }

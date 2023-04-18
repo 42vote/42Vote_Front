@@ -151,9 +151,11 @@ const MainPage: React.FC = () => {
         <>
           <h1 className="tagHeader">#{tag}</h1>
           <div className="cards_area" key={tag}>
-            <div className="preButtonContainer">
-              <div>prev</div>
-            </div>
+            {cards.filter((card) => card.tag.includes(tag)).length > 4 ? (
+              <div className="prevButtonContainer">
+                <button className="prevButton"/>
+              </div>
+            ) : null}
             <div className="cards-container">
               {cards
                 .filter((card) => card.tag.includes(tag))
@@ -161,9 +163,11 @@ const MainPage: React.FC = () => {
                   <Card key={card.id} {...card} />
                 ))}
             </div>
-            <div className="nextButtonContainer">
-              <div>next</div>
-            </div>
+            {cards.filter((card) => card.tag.includes(tag)).length > 4 ? (
+              <div className="nextButtonContainer">
+                <button className="nextButton"/>
+              </div>
+            ) : null}
           </div>
         </>
       ))}
