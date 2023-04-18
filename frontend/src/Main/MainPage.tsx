@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Styles.css";
 import Tag from "./Tag";
 import Card from "./Card";
 import FixedTop from "../Etc/FixedTop";
+import { useScroll } from "./useScroll";
 
-type MainPageProps = {
-  tags: string[];
-  cards: CardProps[];
-};
+// For API
+// type MainPageProps = {
+//   tags: string[];
+//   cards: CardProps[];
+// };
 
 interface CardProps {
   id: number;
@@ -17,7 +19,7 @@ interface CardProps {
   tag: string;
 }
 
-const tags = ["tag A", "tag B", "tag C"];
+const tags = ["tag A", "tag B", "tag C", "tag D"];
 
 const cards: CardProps[] = [
   {
@@ -25,10 +27,24 @@ const cards: CardProps[] = [
     title: "1",
     description: "Description for card 1",
     imageUrl: "https://via.placeholder.com/200x200",
-    tag: "tag A",
+    tag: "tag D",
   },
   {
     id: 2,
+    title: "2",
+    description: "Description for card 2",
+    imageUrl: "https://via.placeholder.com/200x200",
+    tag: "tag A",
+  },
+  {
+    id: 1234,
+    title: "1",
+    description: "Description for card 1",
+    imageUrl: "https://via.placeholder.com/200x200",
+    tag: "tag A",
+  },
+  {
+    id: 243,
     title: "2",
     description: "Description for card 2",
     imageUrl: "https://via.placeholder.com/200x200",
@@ -47,7 +63,8 @@ const cards: CardProps[] = [
     description: "Description for card 2",
     imageUrl: "https://via.placeholder.com/200x200",
     tag: "tag A",
-  },  {
+  },
+  {
     id: 111,
     title: "1",
     description: "Description for card 1",
@@ -67,7 +84,8 @@ const cards: CardProps[] = [
     description: "Description for card 2",
     imageUrl: "https://via.placeholder.com/200x200",
     tag: "tag B",
-  },  {
+  },
+  {
     id: 2234,
     title: "2",
     description: "Description for card 2",
@@ -108,7 +126,6 @@ const MainPage: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string[]>(tags);
 
   const handleTagSelect = (label: string) => {
-    //setUsers(users.filter(user => user.id !== id))
     if (selectedTag.includes(label))
       setSelectedTag(selectedTag.filter((tag) => tag !== label));
     else
@@ -133,12 +150,14 @@ const MainPage: React.FC = () => {
       {selectedTag.map((tag) => (
         <>
           <h1 className="tagHeader">#{tag}</h1>
-          <div className="cards-container">
-            {cards
-              .filter((card) => card.tag.includes(tag))
-              .map((card) => (
-                <Card key={card.id} {...card} />
-              ))}
+          <div className="cards_area" key={tag}>
+            <div className="cards-container">
+              {cards
+                .filter((card) => card.tag.includes(tag))
+                .map((card) => (
+                  <Card key={card.id} {...card} />
+                ))}
+            </div>
           </div>
         </>
       ))}

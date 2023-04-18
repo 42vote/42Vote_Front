@@ -1,20 +1,26 @@
 .main-page {
 }
 
+.cards_area {
+  display: grid;
+  grid-template-columns: 1fr 1110px 1fr;
+}
+
 .cards-container {
+    grid-column: 2;
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
     align-items: center;
     -ms-overflow-style: none; /* IE, Edge */
-    scrollbar-width: none; /* Firefox */
-    height:280px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    height:285px;
     -webkit-overflow-scrolling: touch; /* Optional: Enable momentum scrolling in iOS */
     scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
   }
 
   .cards-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
   
 /* Tag */
