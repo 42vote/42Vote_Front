@@ -3,7 +3,7 @@
 
 .cards_area {
   display: grid;
-  grid-template-columns: 1fr 1110px 1fr;
+  grid-template-columns: 1fr 6fr 1fr;
 }
 
 .cards-container {
@@ -69,7 +69,7 @@
   }
 
   .product-card {
-    margin: 20px;
+    margin: 10px;
     padding: 20px;
     border-radius: 10px;
     height: 220px; 
@@ -95,13 +95,14 @@
   }
   
   .product-card__title {
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 1.2rem;
     font-weight: bold;
     color: #333333;
     transition: color 0.5s ease-in-out;
     white-space:nowrap;
     max-width: 150px;
+    margin-bottom: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -116,11 +117,27 @@
     background-color: #fff;
     border: 1px solid #332F2E;
     border-radius: 10px;
-    margin-top: 8px;
+    margin-top: 3px;
   }
   
   .product-progress-bar {
     height: 100%;
     
     background-color: #332F2E;
+  }
+
+  .nextButtonContainer {
+    grid-column: 3;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+  }
+
+  
+  .preButtonContainer {
+    grid-column: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
   }

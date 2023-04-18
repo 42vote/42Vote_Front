@@ -151,12 +151,18 @@ const MainPage: React.FC = () => {
         <>
           <h1 className="tagHeader">#{tag}</h1>
           <div className="cards_area" key={tag}>
+            <div className="preButtonContainer">
+              <div>prev</div>
+            </div>
             <div className="cards-container">
               {cards
                 .filter((card) => card.tag.includes(tag))
                 .map((card) => (
                   <Card key={card.id} {...card} />
                 ))}
+            </div>
+            <div className="nextButtonContainer">
+              <div>next</div>
             </div>
           </div>
         </>
