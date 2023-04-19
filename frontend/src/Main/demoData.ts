@@ -1,10 +1,4 @@
-interface CardProps {
-    id: number;
-    title: string;
-    description: string;
-    imageUrl: string;
-    tag: string;
-  }
+import { CardProps } from "./types";
 
 export const tags = ["tag A", "tag B", "tag C", "tag D"];
 
