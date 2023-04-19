@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
-import Tag from "./compoents/Tag";
-import Card from "./compoents/Card";
+import Tag from "./components/Tag";
+import Card from "./components/Card";
 import FixedTop from "../Etc/FixedTop";
 import { tags, cards } from "./demoData";
 import { useTags } from "./customHooks/useTags";
