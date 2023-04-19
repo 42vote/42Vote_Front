@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Detail from "./Detail/Detail";
 import "./App.css";
-import MainPage from "./Main/MainPage";
+import MainPage from "./Main/page";
 import NotFound from "./Etc/NotFound";
 import Login from "./Login/login";
 

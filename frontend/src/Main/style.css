@@ -1,5 +1,3 @@
-.main-page {
-}
 
 .cards_area {
   display: grid;
@@ -146,6 +144,7 @@
   .prevButton {
     width:37px;
     height: 83px;
+    cursor: pointer;
     background-color: #fff;
     background-image: url(../../public/img/prevButton.svg);
     border: none;
@@ -159,6 +158,7 @@
   .nextButton {
     width:37px;
     height: 83px;
+    cursor: pointer;
     background-color: #fff;
     background-image: url(../../public/img/nextButton.svg);
     border: none;

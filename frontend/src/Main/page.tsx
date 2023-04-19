@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import "./Styles.css";
-import Tag from "./Tag";
-import Card from "./Card";
+import React, { useState } from "react";
+import "./style.css";
+import Tag from "./compoents/Tag";
+import Card from "./compoents/Card";
 import FixedTop from "../Etc/FixedTop";
-import { useScroll } from "./useScroll";
 
 // For API
 // type MainPageProps = {
@@ -134,6 +133,14 @@ const MainPage: React.FC = () => {
       });
   };
 
+  const handleNext = () => {
+
+  }
+
+  const handlePrev = () => {
+
+  }
+
   return (
     <div className="main-page">
       <FixedTop />
@@ -153,7 +160,7 @@ const MainPage: React.FC = () => {
           <div className="cards_area" key={tag}>
             {cards.filter((card) => card.tag.includes(tag)).length > 4 ? (
               <div className="prevButtonContainer">
-                <button className="prevButton"/>
+                <button onClick={handlePrev} className="prevButton"/>
               </div>
             ) : null}
             <div className="cards-container">
@@ -165,7 +172,7 @@ const MainPage: React.FC = () => {
             </div>
             {cards.filter((card) => card.tag.includes(tag)).length > 4 ? (
               <div className="nextButtonContainer">
-                <button className="nextButton"/>
+                <button onClick={handleNext} className="nextButton"/>
               </div>
             ) : null}
           </div>

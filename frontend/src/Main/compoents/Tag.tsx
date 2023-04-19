@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Styles.css';
+import React from 'react';
+import '../style.css';
 
 type TagProps = {
   label: string;
