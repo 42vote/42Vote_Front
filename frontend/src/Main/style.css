@@ -1,8 +1,14 @@
 /* TagButtons */
 
+.tag-container {
+  display: grid;
+  grid-template-columns: 67px 1110px 67px;
+}
+
 .tags-container {
+  grid-column: 2;
   margin-top: 30px;
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .tag {
@@ -27,15 +33,15 @@
 /* Cards */
 
 .tagHeader {
+  grid-row: 1;
+  grid-column: 2;
   margin-left: 20px;
-}
-
-.cards_area {
-  display: grid;
-  grid-template-columns: 1fr 1110px 1fr;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .cards-container {
+  grid-row: 2;
   grid-column: 2;
   display: flex;
   flex-wrap: nowrap;
@@ -121,17 +127,19 @@
 }
 
 .nextButtonContainer {
+  grid-row: 2;
   grid-column: 3;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   margin-left: 30px;
 }
 
 .prevButtonContainer {
+  grid-row: 2;
   grid-column: 1;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   margin-right: 30px;
 }

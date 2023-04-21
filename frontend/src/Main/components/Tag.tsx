@@ -8,6 +8,7 @@ type TagProps = {
 }
 
 const Tag: React.FC<TagProps> = ({ label, onSelect, isSelected }) => {
+
   const handleClick = () => {
     onSelect(label);
   };

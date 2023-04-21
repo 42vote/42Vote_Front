@@ -1,6 +1,7 @@
-import React, { useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import { useCards } from "../customHooks/useCards";
 import Card from "./Card";
+import { useMediaQuery } from "react-responsive";
 
 interface cardsProps {
   tag: string;
@@ -12,12 +13,19 @@ const Cards = (props: cardsProps) => {
   const { data } = useCards(tag, page);
   const cards = data ? data : [];
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isFiveCards: boolean = useMediaQuery({ query: "(min-width: 1244px)" });
+  const isFourCards: boolean = useMediaQuery({
+    query: "(min-width: 1022px) and (max-width: 1243px)",
+  });
 
   const handleNext = () => {
     //2 is example code.
     //Should change like (page) => page++
-    setPage (2);
-    scrollRef.current!.scrollLeft += 1130;
+    //check remain cards. if under 5N page++
+    setPage(2);
+    if (isFiveCards) scrollRef.current!.scrollLeft += 1130;
+    else if (isFourCards) scrollRef.current!.scrollLeft += 908;
+    else scrollRef.current!.scrollLeft += 686;
   };
 
   const handlePrev = () => {
