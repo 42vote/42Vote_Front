@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Detail from "./Detail/Detail";
-import "./App.css";
 import MainPage from "./Main/MainPage";
-import FixedTop from "./Etc/FixedTop";
+import "./App.css";
 
 function App() {
   return (
