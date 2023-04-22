@@ -26,7 +26,7 @@ const TagButtons = (props: selectTagProps) => {
   const handleTagSelect = (label: string) => {
     if (selectedTag.includes(label))
       setSelectedTag(selectedTag.filter((tag) => tag !== label));
-    if (responsiveVar.isDesktop)
+    else if (responsiveVar.isDesktop)
       setSelectedTag((selctedTag) => {
         return [...selctedTag, label].sort();
       });
