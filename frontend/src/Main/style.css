@@ -144,6 +144,12 @@
   margin-right: 30px;
 }
 
+.nullLeft {
+  width: 37px;
+  height: 82px;
+  border: none;
+}
+
 .prevButton {
   width: 37px;
   height: 82px;

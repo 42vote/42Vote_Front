@@ -13,13 +13,14 @@ const CardsContainer = styled.div<{ responsiveVar: responsiveVariable }>`
   grid-row: 2;
   grid-column: 2;
   display: flex;
-  flex-direction: ${(prop) => prop.responsiveVar.isDesktop ? "row" : "column"};
+  flex-direction: ${(prop) =>
+    prop.responsiveVar.isDesktop ? "row" : "column"};
   flex-wrap: nowrap;
   align-items: center;
   -ms-overflow-style: none; /* IE, Edge */
   overflow-x: auto;
   scrollbar-width: none;
-  height: ${(prop) => prop.responsiveVar.isDesktop ? "285px" : "auto"};
+  height: ${(prop) => (prop.responsiveVar.isDesktop ? "285px" : "auto")};
   -webkit-overflow-scrolling: touch; /* Optional: Enable momentum scrolling in iOS */
   scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
 `;
@@ -48,11 +49,16 @@ const Cards = (props: cardsProps) => {
 
   return (
     <>
-      {cards.filter((card) => card.tag.includes(tag)).length > 4 && responsiveVar.isDesktop ? (
+      {cards.filter((card) => card.tag.includes(tag)).length > 4 &&
+      responsiveVar.isDesktop ? (
         <div className="prevButtonContainer">
           <button onClick={handlePrev} className="prevButton" />
         </div>
-      ) : null}
+      ) : (
+        <div className="prevButtonContainer">
+          <div className="nullLeft"></div>
+        </div>
+      )}
       <CardsContainer responsiveVar={responsiveVar} ref={scrollRef}>
         {cards
           .filter((card) => card.tag.includes(tag))
@@ -60,7 +66,8 @@ const Cards = (props: cardsProps) => {
             <Card key={card.id} {...card} />
           ))}
       </CardsContainer>
-      {cards.filter((card) => card.tag.includes(tag)).length > 4 && responsiveVar.isDesktop ? (
+      {cards.filter((card) => card.tag.includes(tag)).length > 4 &&
+      responsiveVar.isDesktop ? (
         <div className="nextButtonContainer">
           <button onClick={handleNext} className="nextButton" />
         </div>
