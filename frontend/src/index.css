@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'Lora-Bold';
+    src: url('../public/Fonts/Lora-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Lora-BoldItalic';
+    src: url('../public/Fonts/Lora-BoldItalic.ttf');
+}
+
+@font-face {
+    font-family: 'Lora-Italic';
+    src: url('../public/Fonts/Lora-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Lora-Medium';
+    src: url('../public/Fonts/Lora-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Lora-MediumItalic';
+    src: url('../public/Fonts/Lora-MediumItalic.ttf');
+}
+
+@font-face {
+    font-family: 'Lora-Regular';
+    src: url('../public/Fonts/Lora-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Lora-SemiBold';
+    src: url('../public/Fonts/Lora-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Lora-SemiBoldItalic';
+    src: url('../public/Fonts/Lora-SemiBoldItalic.ttf');
+}
+
+@font-face {
+    font-family: 'kbiz-Light';
+    src: url('../public/Fonts/KBIZ한마음명조\ L.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+    font-family: 'kbiz-Regular';
+    src: url('../public/Fonts/KBIZ한마음명조\ R.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+    font-family: 'kbiz-Medium';
+    src: url('../public/Fonts/KBIZ한마음명조\ M.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+    font-family: 'kbiz-Bold';
+    src: url('../public/Fonts/KBIZ한마음명조\ B.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+html, body {
+    margin: 0;
+}

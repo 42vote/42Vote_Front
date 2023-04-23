@@ -1,0 +1,179 @@
+/* TagButtons */
+
+.tag-container {
+  display: grid;
+  grid-template-columns: 67px 1110px 67px;
+}
+
+.tags-container {
+  grid-column: 2;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  border-radius: 10px;
+  background-color: #ddd;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tag.selected {
+  background-color: #000;
+  border: none;
+  color: #fff;
+}
+
+/* Cards */
+
+.tagHeader {
+  grid-row: 1;
+  grid-column: 2;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.cards-container {
+  grid-row: 2;
+  grid-column: 2;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  -ms-overflow-style: none; /* IE, Edge */
+  overflow-x: auto;
+  scrollbar-width: none;
+  height: 285px;
+  -webkit-overflow-scrolling: touch; /* Optional: Enable momentum scrolling in iOS */
+  scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
+}
+
+.cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 190px;
+  margin: 16px;
+  padding: 16px;
+
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.product-card {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  height: 220px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.product-card:hover .product-card__image {
+  opacity: 0.7;
+}
+
+.product-card__image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.product-card__title {
+  margin-top: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333333;
+  transition: color 0.5s ease-in-out;
+  white-space: nowrap;
+  max-width: 150px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-progress {
+  height: 9px;
+  background-color: #fff;
+  border: 1px solid #332f2e;
+  border-radius: 10px;
+  margin-top: 3px;
+}
+
+.product-progress-bar {
+  height: 100%;
+
+  background-color: #332f2e;
+}
+
+.nextButtonContainer {
+  grid-row: 2;
+  grid-column: 3;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.prevButtonContainer {
+  grid-row: 2;
+  grid-column: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.nullLeft {
+  width: 37px;
+  height: 82px;
+  border: none;
+}
+
+.prevButton {
+  width: 37px;
+  height: 82px;
+  cursor: pointer;
+  background-color: #fff;
+  background-image: url(../../public/img/prevButton.svg);
+  border: none;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.prevButton:hover {
+  transform: scale(1.05);
+}
+
+.nextButton {
+  width: 37px;
+  height: 82px;
+  cursor: pointer;
+  background-color: #fff;
+  background-image: url(../../public/img/nextButton.svg);
+  border: none;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.nextButton:hover {
+  transform: scale(1.05);
+}
