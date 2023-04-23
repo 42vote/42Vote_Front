@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Styles.css';
+import React from 'react';
+import '../style.css';
 
 type TagProps = {
   label: string;
@@ -8,6 +8,7 @@ type TagProps = {
 }
 
 const Tag: React.FC<TagProps> = ({ label, onSelect, isSelected }) => {
+
   const handleClick = () => {
     onSelect(label);
   };
