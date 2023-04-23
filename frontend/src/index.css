@@ -38,6 +38,30 @@
     src: url('../public/Fonts/Lora-SemiBoldItalic.ttf');
 }
 
+@font-face {
+    font-family: 'kbiz-Light';
+    src: url('../public/Fonts/KBIZ한마음명조\ L.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+    font-family: 'kbiz-Regular';
+    src: url('../public/Fonts/KBIZ한마음명조\ R.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+    font-family: 'kbiz-Medium';
+    src: url('../public/Fonts/KBIZ한마음명조\ M.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+    font-family: 'kbiz-Bold';
+    src: url('../public/Fonts/KBIZ한마음명조\ B.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
 html, body {
     margin: 0;
 }
