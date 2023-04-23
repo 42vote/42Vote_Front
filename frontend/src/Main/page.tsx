@@ -3,7 +3,7 @@ import FixedTop from "../Etc/FixedTop";
 import TagButtons from "./components/TagButtons";
 import TagCardContainers from "./components/TagCardContainers";
 import { tags } from "./demoData";
-import "./style.css";
+import "./styles/style.css";
 
 const MainPage: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string[]>(tags);

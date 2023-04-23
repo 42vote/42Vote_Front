@@ -2,7 +2,7 @@ import React from "react";
 import Cards from "./Cards";
 import { selectTagProps } from "../types";
 import { useResponsive } from "../customHooks/useResponsive";
-import { CardsArea, TagHeader } from "../styleComponents";
+import { CardsArea, TagHeader } from "../styles/styleComponents";
 
 const TagCardContainers = (props: selectTagProps) => {
   const selectedTag = props.selectedTag;

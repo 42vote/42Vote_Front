@@ -1,29 +1,12 @@
 import React, { useState, useRef } from "react";
 import { useCards } from "../customHooks/useCards";
-import Card from "./Card";
 import { useResponsive } from "../customHooks/useResponsive";
-import styled from "styled-components";
-import { responsiveVariable } from "../types";
+import { CardsContainer } from "../styles/styleComponents";
+import Card from "./Card";
 
 interface cardsProps {
   tag: string;
 }
-
-const CardsContainer = styled.div<{ responsiveVar: responsiveVariable }>`
-  grid-row: 2;
-  grid-column: 2;
-  display: flex;
-  flex-direction: ${(prop) =>
-    prop.responsiveVar.isDesktop ? "row" : "column"};
-  flex-wrap: nowrap;
-  align-items: center;
-  -ms-overflow-style: none; /* IE, Edge */
-  overflow-x: auto;
-  scrollbar-width: none;
-  height: ${(prop) => (prop.responsiveVar.isDesktop ? "285px" : "auto")};
-  -webkit-overflow-scrolling: touch; /* Optional: Enable momentum scrolling in iOS */
-  scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
-`;
 
 const Cards = (props: cardsProps) => {
   const tag = props.tag;

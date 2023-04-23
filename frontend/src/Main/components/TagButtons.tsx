@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useTags } from "../customHooks/useTags";
 import { selectTagProps } from "../types";
 import { useResponsive } from "../customHooks/useResponsive";
-import { TagConatiner } from "../styleComponents";
+import { TagConatiner } from "../styles/styleComponents";
 import Tag from "./Tag";
 
 const TagButtons = (props: selectTagProps) => {
