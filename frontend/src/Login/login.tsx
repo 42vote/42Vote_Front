@@ -1,18 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./login.css";
 
 const Login = () => {
-  const navi = useNavigate();
   const handleLogin = () => {
-    navi("/main");
-    // Implement your OAuth login logic here
+    window.location.href = (process.env.REACT_APP_LOGIN_URL || "");
   };
 
   return (
     <div className="login-container">
       <div className="logo">
-        <h2>Login Page</h2>
+        <h2>42Vote</h2>
       </div>
       <div className="oauth-container">
         <button className="oauth-btn" onClick={handleLogin}>

@@ -20,14 +20,27 @@ const Cards = (props: cardsProps) => {
     //2 is example code.
     //Should change like (page) => page++
     //check remain cards. if under 5N page++
+    const fontSize: string = window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue("font-size")
+      .split("px")[0];
+    const fontSizeNum: number = Number(fontSize);
     setPage(2);
-    if (responsiveVar.isFiveCards) scrollRef.current!.scrollLeft += 1130;
-    else if (responsiveVar.isFourCards) scrollRef.current!.scrollLeft += 908;
-    else scrollRef.current!.scrollLeft += 686;
+    if (responsiveVar.isFiveCards) scrollRef.current!.scrollLeft += 70.47 * fontSizeNum;
+    else if (responsiveVar.isFourCards) scrollRef.current!.scrollLeft += 56.5 * fontSizeNum;
+    else scrollRef.current!.scrollLeft += 41.78 * fontSizeNum;
   };
 
   const handlePrev = () => {
-    scrollRef.current!.scrollLeft -= 1130;
+    const fontSize: string = window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue("font-size")
+      .split("px")[0];
+    const fontSizeNum: number = Number(fontSize);
+    setPage(2);
+    if (responsiveVar.isFiveCards) scrollRef.current!.scrollLeft -= 70.47 * fontSizeNum;
+    else if (responsiveVar.isFourCards) scrollRef.current!.scrollLeft -= 56.5 * fontSizeNum;
+    else scrollRef.current!.scrollLeft -= 41.78 * fontSizeNum;
   };
 
   return (
