@@ -1,8 +1,15 @@
 import React from "react";
+import { useState } from "react";
 import "./login.css";
 
-const Login = () => {
+interface loginProps {
+  LoginText: string,
+}
+
+const Login = (prop:loginProps) => {
+  const [LoginText, setLoginText] = useState(prop.LoginText);
   const handleLogin = () => {
+    setLoginText("Wait a second...");
     window.location.href = (process.env.REACT_APP_LOGIN_URL || "");
   };
 
@@ -12,8 +19,8 @@ const Login = () => {
         <h2>42Vote</h2>
       </div>
       <div className="oauth-container">
-        <button className="oauth-btn" onClick={handleLogin}>
-          Login with OAuth
+        <button disabled={LoginText === "Wait a second..."} className="oauth-btn" onClick={handleLogin}>
+          {LoginText}
         </button>
       </div>
     </div>

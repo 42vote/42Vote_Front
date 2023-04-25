@@ -4,14 +4,14 @@ import "./App.css";
 import MainIndex from "./Main/index";
 import NotFound from "./Etc/NotFound";
 import Login from "./Login/login";
-import Auth from "./Auth";
+import Auth from "./Login/Auth";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login/>} />
+          <Route path="/" element={<Login LoginText="Login with 42OAuth"/>} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/main" element={<MainIndex />} />
           <Route path="/auth/42/redirect" element={<Auth/>} />

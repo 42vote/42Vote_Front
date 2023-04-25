@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import FixedTop from "../Etc/FixedTop";
 import { genToken } from "./util/genToken";
 import { useEffect } from "react";
+import Login from "../login";
 
 const Auth = () => {
   const location = useLocation();
@@ -17,9 +17,7 @@ const Auth = () => {
   }, []);
 
   return (
-    <div id="desktop">
-      <FixedTop />
-    </div>
+    <Login LoginText="Wait a second..."/>
   );
 };
 
