@@ -26,3 +26,9 @@ export interface documentListQuery {
   myPost: string,
   myVote: string,
 }
+
+export interface categoryRes {
+  id: number,
+  title: string,
+  expired: boolean,
+}

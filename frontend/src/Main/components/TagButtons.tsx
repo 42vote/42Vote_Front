@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useTags } from "../customHooks/useTags";
 import { selectTagProps } from "../types";
 import { useResponsive } from "../customHooks/useResponsive";
-import { TagConatiner } from "../styles/styleComponents";
+import { SkeletonTag, TagConatiner } from "../styles/styleComponents";
 import Tag from "./Tag";
 
 const TagButtons = (props: selectTagProps) => {
-  const { data } = useTags();
+  const { data, isLoading } = useTags();
   const selectedTag = props.selectedTag;
   const setSelectedTag = props.setSelectedTag;
   const responsiveVar = useResponsive();
@@ -28,14 +28,18 @@ const TagButtons = (props: selectTagProps) => {
   return (
     <TagConatiner responsiveVar={responsiveVar}>
       <div className="tags-container">
-        {data?.map((tag) => (
+        {!isLoading ? (data?.map((tag) => (
           <Tag
-            key={tag}
-            label={tag}
+            key={tag.id}
+            label={tag.title}
             onSelect={handleTagSelect}
-            isSelected={selectedTag.includes(tag)}
+            isSelected={selectedTag.includes(tag.title)}
           />
-        ))}
+        ))) : (
+          Array.from({ length: 4 }).map((_, index) => (
+            <SkeletonTag key={index} />
+          ))
+        )}
       </div>
     </TagConatiner>
   );
