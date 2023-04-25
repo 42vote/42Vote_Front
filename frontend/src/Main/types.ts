@@ -18,3 +18,11 @@ export interface responsiveVariable {
   isDesktop: boolean;
   isMobile: boolean;
 }
+
+export interface documentListQuery {
+  categoryId: string,
+  listSize: string,
+  listIndex: string,
+  myPost: string,
+  myVote: string,
+}
