@@ -43,6 +43,7 @@ const Cards = (props: cardsProps) => {
     else scrollRef.current!.scrollLeft -= 41.78 * fontSizeNum;
   };
 
+  //need to delete filter cuz cards has one tag items.
   return (
     <>
       {cards.filter((card) => card.tag.includes(tag)).length > 4 &&

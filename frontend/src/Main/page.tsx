@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import FixedTop from "../Etc/FixedTop";
 import TagButtons from "./components/TagButtons";
 import TagCardContainers from "./components/TagCardContainers";
-import { tags } from "./demoData";
 import "./styles/style.css";
+import { tags } from "./demoData";
 
 const MainPage: React.FC = () => {
+  //need to fix. tags to [].
   const [selectedTag, setSelectedTag] = useState<string[]>(tags);
 
   return (

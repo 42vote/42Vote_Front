@@ -7,18 +7,18 @@ import Tag from "./Tag";
 
 const TagButtons = (props: selectTagProps) => {
   const { data, isLoading } = useTags();
+  const responsiveVar = useResponsive();
   const selectedTag = props.selectedTag;
   const setSelectedTag = props.setSelectedTag;
-  const responsiveVar = useResponsive();
 
-  const handleTagSelect = (label: string) => {
-    if (selectedTag.includes(label))
-      setSelectedTag(selectedTag.filter((tag) => tag !== label));
+  const handleTagSelect = (tagId: string) => {
+    if (selectedTag.includes(tagId))
+      setSelectedTag(selectedTag.filter((tag) => tag !== tagId));
     else if (responsiveVar.isDesktop)
       setSelectedTag((selctedTag) => {
-        return [...selctedTag, label].sort();
+        return [...selctedTag, tagId].sort();
       });
-    else setSelectedTag([label]);
+    else setSelectedTag([tagId]);
   };
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const TagButtons = (props: selectTagProps) => {
         {!isLoading ? (data?.map((tag) => (
           <Tag
             key={tag.id}
+            tagId={tag.id}
             label={tag.title}
             onSelect={handleTagSelect}
             isSelected={selectedTag.includes(tag.title)}

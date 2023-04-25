@@ -2,14 +2,15 @@ import React from 'react';
 
 type TagProps = {
   label: string;
+  tagId: string;
   onSelect: (label: string) => void;
   isSelected: boolean;
 }
 
-const Tag: React.FC<TagProps> = ({ label, onSelect, isSelected }) => {
+const Tag: React.FC<TagProps> = ({ label, tagId, onSelect, isSelected }) => {
 
   const handleClick = () => {
-    onSelect(label);
+    onSelect(tagId);
   };
 
   return (
