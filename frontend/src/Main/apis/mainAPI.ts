@@ -1,4 +1,4 @@
-import { customAxios } from "../../Lib/customAxios";
+import { customAxios } from "../../lib/customAxios";
 import { documentListQuery } from "../types";
 
 export const mainAPI = {

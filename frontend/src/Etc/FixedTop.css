@@ -34,23 +34,23 @@
 
 /* Mobile */
 
-#mobile #fixed-top {
+#mobile-top #fixed-top {
     padding: 5px 10px 5px 10px;
 }
 
-#mobile #fixed-top #button-wrap {
+#mobile-top #fixed-top #button-wrap {
     width: 50%;
 }
 
-#mobile #fixed-top #button-wrap #new-post-button span {
+#mobile-top #fixed-top #button-wrap #new-post-button span {
     display: none;
 }
 
-#mobile #fixed-top #button-wrap #new-post-button {
+#mobile-top #fixed-top #button-wrap #new-post-button {
     background-image: url(../../public/img/new-post-button.svg);
 }
 
-#mobile #fixed-top #button-wrap > button {
+#mobile-top #fixed-top #button-wrap > button {
     width: clamp(20px, 7%, 25px);
     height: 0;
     padding: 0;
@@ -66,15 +66,15 @@
 
 /* Desktop */
 
-#desktop #fixed-top {
+#desktop-top #fixed-top {
     padding: 7.5px 15px 7.5px 15px;
 }
 
-#desktop #fixed-top #button-wrap {
+#desktop-top #fixed-top #button-wrap {
     width: 30%;
 }
 
-#desktop #fixed-top #button-wrap #new-post-button {
+#desktop-top #fixed-top #button-wrap #new-post-button {
     width: 40%;
     height: 0;
     padding: 0;
@@ -86,7 +86,7 @@
     position: relative;
 }
 
-#desktop #fixed-top #button-wrap #new-post-button span {
+#desktop-top #fixed-top #button-wrap #new-post-button span {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -96,7 +96,7 @@
     font-size: 1.5vw;
 }
 
-#desktop #fixed-top #button-wrap .img-button {
+#desktop-top #fixed-top #button-wrap .img-button {
     width: clamp(25px, 10%, 35px);
     height: 0;
     padding: 0;

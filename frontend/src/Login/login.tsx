@@ -1,6 +1,6 @@
-import React from "react";
 import { useState } from "react";
 import "./login.css";
+import { useNavigate } from "react-router-dom";
 
 interface loginProps {
   LoginText: string,
@@ -8,9 +8,14 @@ interface loginProps {
 
 const Login = (prop:loginProps) => {
   const [LoginText, setLoginText] = useState(prop.LoginText);
+  const nav = useNavigate();
   const handleLogin = () => {
     setLoginText("Wait a second...");
-    window.location.href = (process.env.REACT_APP_LOGIN_URL || "");
+    if (localStorage.getItem("token")) {
+      //token 유효성 확인 되었다면,
+      nav('/main');
+    } else
+      window.location.href = (process.env.REACT_APP_LOGIN_URL || "");
   };
 
   return (

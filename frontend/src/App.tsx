@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Detail from "./Detail/Detail";
 import "./App.css";
+import Detail from "./Detail/Detail";
 import MainIndex from "./Main/index";
 import NotFound from "./Etc/NotFound";
 import Login from "./Login/login";
 import Auth from "./Login/Auth";
+import Posting from "./Posting/Posting";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/detail" element={<Detail />} />
           <Route path="/main" element={<MainIndex />} />
           <Route path="/auth/42/redirect" element={<Auth/>} />
+          <Route path="/posting" element={<Posting/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>
