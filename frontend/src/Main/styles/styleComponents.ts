@@ -11,7 +11,7 @@ export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
         ? "55.5rem"
         : prop.responsiveVar.isThreeCards
         ? "41.625rem"
-        : "22.25rem"} 1fr;
+        : "65%"} 1fr;
 `;
 
 export const CardsContainer = styled.div<{ responsiveVar: responsiveVariable }>`
@@ -53,7 +53,7 @@ export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
         ? "55.5rem"
         : prop.responsiveVar.isThreeCards
         ? "41.625rem"
-        : "22.25rem"} 1fr;
+        : "80%"} 1fr;
 `;
 
 export const SkeletonTag = styled.div`

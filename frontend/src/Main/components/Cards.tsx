@@ -1,8 +1,10 @@
 import React, { useState, useRef } from "react";
 import { useCards } from "../customHooks/useCards";
-import { useResponsive } from "../customHooks/useResponsive";
 import { CardsContainer } from "../styles/styleComponents";
+import { useResponsive } from "../customHooks/useResponsive";
+import { documentListQuery } from "../types";
 import Card from "./Card";
+import { cards } from "../demoData";
 
 interface cardsProps {
   tag: string;
@@ -11,8 +13,16 @@ interface cardsProps {
 const Cards = (props: cardsProps) => {
   const tag = props.tag;
   const [page, setPage] = useState(1);
-  const { data } = useCards(tag, page);
-  const cards = data ? data : [];
+  const documentApiQuery:documentListQuery = {
+    categoryId: tag,
+    listSize: "5",
+    listIndex: page,
+    myPost: "false",
+    myVote: "false"
+  }
+  const { data, isLoading } = useCards(documentApiQuery);
+  if (!isLoading)
+    console.log(data);
   const scrollRef = useRef<HTMLDivElement>(null);
   const responsiveVar = useResponsive();
 

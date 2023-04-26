@@ -18,7 +18,7 @@ const Card: React.FC<CardProps> = ({ title, description, imageUrl }) => {
   return (
     <div onClick={handleCardClick} className="card">
       <div className="product-card">
-        <img className="product-card__image" src={imageUrl} alt={title} />
+        <img className="product-card__image" src={"https://via.placeholder.com/200x200"} alt={title} />
         <h2 className="product-card__title">{title}</h2>
         <div className="product-progress">
           <div className="product-progress-bar" style={{ width: "50%" }} />

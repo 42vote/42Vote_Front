@@ -11,7 +11,9 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
-      <FixedTop />
+      <div id="mobile">
+        <FixedTop />
+      </div>
       <TagButtons selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
       <TagCardContainers
         selectedTag={selectedTag}
