@@ -1,21 +1,9 @@
 import React, { useEffect } from "react";
 import { useTags } from "../customHooks/useTags";
-import Tag from "./Tag";
-import { responsiveVariable, selectTagProps } from "../types";
-import styled from "styled-components";
+import { selectTagProps } from "../types";
 import { useResponsive } from "../customHooks/useResponsive";
-
-const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
-  display: grid;
-  grid-template-columns: 1fr ${(prop) =>
-      prop.responsiveVar.isFiveCards
-        ? "1110px"
-        : prop.responsiveVar.isFourCards
-        ? "888px"
-        : prop.responsiveVar.isThreeCards
-        ? "666px"
-        : "356px"} 1fr;
-`;
+import { TagConatiner } from "../styles/styleComponents";
+import Tag from "./Tag";
 
 const TagButtons = (props: selectTagProps) => {
   const { data } = useTags();

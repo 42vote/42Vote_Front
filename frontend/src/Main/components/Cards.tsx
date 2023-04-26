@@ -1,29 +1,12 @@
 import React, { useState, useRef } from "react";
 import { useCards } from "../customHooks/useCards";
-import Card from "./Card";
 import { useResponsive } from "../customHooks/useResponsive";
-import styled from "styled-components";
-import { responsiveVariable } from "../types";
+import { CardsContainer } from "../styles/styleComponents";
+import Card from "./Card";
 
 interface cardsProps {
   tag: string;
 }
-
-const CardsContainer = styled.div<{ responsiveVar: responsiveVariable }>`
-  grid-row: 2;
-  grid-column: 2;
-  display: flex;
-  flex-direction: ${(prop) =>
-    prop.responsiveVar.isDesktop ? "row" : "column"};
-  flex-wrap: nowrap;
-  align-items: center;
-  -ms-overflow-style: none; /* IE, Edge */
-  overflow-x: auto;
-  scrollbar-width: none;
-  height: ${(prop) => (prop.responsiveVar.isDesktop ? "285px" : "auto")};
-  -webkit-overflow-scrolling: touch; /* Optional: Enable momentum scrolling in iOS */
-  scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
-`;
 
 const Cards = (props: cardsProps) => {
   const tag = props.tag;
@@ -37,14 +20,27 @@ const Cards = (props: cardsProps) => {
     //2 is example code.
     //Should change like (page) => page++
     //check remain cards. if under 5N page++
+    const fontSize: string = window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue("font-size")
+      .split("px")[0];
+    const fontSizeNum: number = Number(fontSize);
     setPage(2);
-    if (responsiveVar.isFiveCards) scrollRef.current!.scrollLeft += 1130;
-    else if (responsiveVar.isFourCards) scrollRef.current!.scrollLeft += 908;
-    else scrollRef.current!.scrollLeft += 686;
+    if (responsiveVar.isFiveCards) scrollRef.current!.scrollLeft += 70.47 * fontSizeNum;
+    else if (responsiveVar.isFourCards) scrollRef.current!.scrollLeft += 56.5 * fontSizeNum;
+    else scrollRef.current!.scrollLeft += 41.78 * fontSizeNum;
   };
 
   const handlePrev = () => {
-    scrollRef.current!.scrollLeft -= 1130;
+    const fontSize: string = window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue("font-size")
+      .split("px")[0];
+    const fontSizeNum: number = Number(fontSize);
+    setPage(2);
+    if (responsiveVar.isFiveCards) scrollRef.current!.scrollLeft -= 70.47 * fontSizeNum;
+    else if (responsiveVar.isFourCards) scrollRef.current!.scrollLeft -= 56.5 * fontSizeNum;
+    else scrollRef.current!.scrollLeft -= 41.78 * fontSizeNum;
   };
 
   return (

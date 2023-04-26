@@ -1,22 +1,26 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./login.css";
 
-const Login = () => {
-  const navi = useNavigate();
+interface loginProps {
+  LoginText: string,
+}
+
+const Login = (prop:loginProps) => {
+  const [LoginText, setLoginText] = useState(prop.LoginText);
   const handleLogin = () => {
-    navi("/main");
-    // Implement your OAuth login logic here
+    setLoginText("Wait a second...");
+    window.location.href = (process.env.REACT_APP_LOGIN_URL || "");
   };
 
   return (
     <div className="login-container">
       <div className="logo">
-        <h2>Login Page</h2>
+        <h2>42Vote</h2>
       </div>
       <div className="oauth-container">
-        <button className="oauth-btn" onClick={handleLogin}>
-          Login with OAuth
+        <button disabled={LoginText === "Wait a second..."} className="oauth-btn" onClick={handleLogin}>
+          {LoginText}
         </button>
       </div>
     </div>

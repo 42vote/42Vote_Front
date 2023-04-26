@@ -16,7 +16,7 @@ export const customAxios = () => {
 
     const errorHandler = async (error: any) => {
         error.config.retryCount = error.config.retryCount ?? 0;
-        const shoudRetry = error.config.retryCount < maxRetry;
+        const overRetry = error.config.retryCount < maxRetry;
         if (error.response && error.response.status === 401) {
 
             const res = await axios({
@@ -26,7 +26,7 @@ export const customAxios = () => {
                     'Authorization': `Bearer ${rtoken}`,
                 }
             });
-            if (res.status === 200 && shoudRetry) {
+            if (res.status === 200 && overRetry) {
                 sessionStorage.removeItem("token");
                 sessionStorage.setItem("token", res.data.accessToken);
                 error.config.retryCount += 1;
@@ -47,6 +47,7 @@ export const customAxios = () => {
             }};
         return Promise.reject(errorMsg);
     }
+
     baseAxios.interceptors.response.use(
         (response: any) => {
             return response;
