@@ -1,28 +1,27 @@
 import React, { useState, useRef } from "react";
 import { useCards } from "../customHooks/useCards";
-import { CardsContainer } from "../styles/styleComponents";
+import { CardsContainer, TagHeader } from "../styles/styleComponents";
 import { useResponsive } from "../customHooks/useResponsive";
-import { documentListQuery } from "../types";
+import { documentListQuery, documentListRes } from "../types";
 import Card from "./Card";
-import { cards } from "../demoData";
+import { useTags } from "../customHooks/useTags";
 
 interface cardsProps {
   tag: string;
 }
 
 const Cards = (props: cardsProps) => {
-  const tag = props.tag;
+  const selectedTag = props.tag;
+  const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
   const [page, setPage] = useState(1);
-  const documentApiQuery:documentListQuery = {
-    categoryId: tag,
+  const documentApiQuery: documentListQuery = {
+    categoryId: selectedTag,
     listSize: "5",
     listIndex: page,
     myPost: "false",
-    myVote: "false"
-  }
+    myVote: "false",
+  };
   const { data, isLoading } = useCards(documentApiQuery);
-  if (!isLoading)
-    console.log(data);
   const scrollRef = useRef<HTMLDivElement>(null);
   const responsiveVar = useResponsive();
 
@@ -36,8 +35,10 @@ const Cards = (props: cardsProps) => {
       .split("px")[0];
     const fontSizeNum: number = Number(fontSize);
     setPage(2);
-    if (responsiveVar.isFiveCards) scrollRef.current!.scrollLeft += 70.47 * fontSizeNum;
-    else if (responsiveVar.isFourCards) scrollRef.current!.scrollLeft += 56.5 * fontSizeNum;
+    if (responsiveVar.isFiveCards)
+      scrollRef.current!.scrollLeft += 70.47 * fontSizeNum;
+    else if (responsiveVar.isFourCards)
+      scrollRef.current!.scrollLeft += 56.5 * fontSizeNum;
     else scrollRef.current!.scrollLeft += 41.78 * fontSizeNum;
   };
 
@@ -48,37 +49,42 @@ const Cards = (props: cardsProps) => {
       .split("px")[0];
     const fontSizeNum: number = Number(fontSize);
     setPage(2);
-    if (responsiveVar.isFiveCards) scrollRef.current!.scrollLeft -= 70.47 * fontSizeNum;
-    else if (responsiveVar.isFourCards) scrollRef.current!.scrollLeft -= 56.5 * fontSizeNum;
+    if (responsiveVar.isFiveCards)
+      scrollRef.current!.scrollLeft -= 70.47 * fontSizeNum;
+    else if (responsiveVar.isFourCards)
+      scrollRef.current!.scrollLeft -= 56.5 * fontSizeNum;
     else scrollRef.current!.scrollLeft -= 41.78 * fontSizeNum;
   };
 
   //need to delete filter cuz cards has one tag items.
   return (
     <>
-      {cards.filter((card) => card.tag.includes(tag)).length > 4 &&
-      responsiveVar.isDesktop ? (
-        <div className="prevButtonContainer">
-          <button onClick={handlePrev} className="prevButton" />
-        </div>
-      ) : (
-        <div className="prevButtonContainer">
-          <div className="nullLeft"></div>
-        </div>
+      {!isLoading && data && (
+        <>
+          <TagHeader responsiveVar={responsiveVar}>
+            #{tagInfo ? tagInfo[0].title : "TagName"}
+          </TagHeader>
+          {data.length > 4 && responsiveVar.isDesktop ? (
+            <div className="prevButtonContainer">
+              <button onClick={handlePrev} className="prevButton" />
+            </div>
+          ) : (
+            <div className="prevButtonContainer">
+              <div className="nullLeft"></div>
+            </div>
+          )}
+          <CardsContainer responsiveVar={responsiveVar} ref={scrollRef}>
+            {data.map((card) => (
+              <Card key={card.id} {...card} />
+            ))}
+          </CardsContainer>
+          {data.length > 4 && responsiveVar.isDesktop ? (
+            <div className="nextButtonContainer">
+              <button onClick={handleNext} className="nextButton" />
+            </div>
+          ) : null}
+        </>
       )}
-      <CardsContainer responsiveVar={responsiveVar} ref={scrollRef}>
-        {cards
-          .filter((card) => card.tag.includes(tag))
-          .map((card) => (
-            <Card key={card.id} {...card} />
-          ))}
-      </CardsContainer>
-      {cards.filter((card) => card.tag.includes(tag)).length > 4 &&
-      responsiveVar.isDesktop ? (
-        <div className="nextButtonContainer">
-          <button onClick={handleNext} className="nextButton" />
-        </div>
-      ) : null}
     </>
   );
 };

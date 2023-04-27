@@ -2,15 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 interface CardProps {
-  id: number;
-  title: string;
-  description: string;
-  imageUrl: string;
+  id : string,
+  title :string,
+  goal : string,
+  voteCnt : string, 
+  isVoteExpired : string, // 필요한가요?? 04/23
 }
 
-const Card: React.FC<CardProps> = ({ title, description, imageUrl }) => {
+const Card: React.FC<CardProps> = ({ id, title, goal, voteCnt, isVoteExpired }) => {
+  const ret = Number(voteCnt) * (100 / Number(goal));
   const navi = useNavigate();
- 
   const handleCardClick = () => {
     navi("/detail");
   };
@@ -21,7 +22,7 @@ const Card: React.FC<CardProps> = ({ title, description, imageUrl }) => {
         <img className="product-card__image" src={"https://via.placeholder.com/200x200"} alt={title} />
         <h2 className="product-card__title">{title}</h2>
         <div className="product-progress">
-          <div className="product-progress-bar" style={{ width: "50%" }} />
+          <div className="product-progress-bar" style={{ width: ret + "%" }} />
         </div>
       </div>
     </div>

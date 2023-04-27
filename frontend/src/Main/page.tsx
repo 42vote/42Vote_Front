@@ -3,11 +3,10 @@ import FixedTop from "../Etc/FixedTop";
 import TagButtons from "./components/TagButtons";
 import TagCardContainers from "./components/TagCardContainers";
 import "./styles/style.css";
-import { tags } from "./demoData";
 
 const MainPage: React.FC = () => {
   //need to fix. tags to [].
-  const [selectedTag, setSelectedTag] = useState<string[]>(tags);
+  const [selectedTag, setSelectedTag] = useState<string[]>([]);
 
   return (
     <div>

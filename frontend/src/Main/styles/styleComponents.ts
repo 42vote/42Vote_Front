@@ -3,15 +3,17 @@ import { responsiveVariable } from "../types";
 
 export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
-  grid-template-rows: 0.5fr auto;
-  grid-template-columns: 1fr ${(prop) =>
-      prop.responsiveVar.isFiveCards
-        ? "69.375rem"
-        : prop.responsiveVar.isFourCards
-        ? "55.5rem"
-        : prop.responsiveVar.isThreeCards
-        ? "41.625rem"
-        : "65%"} 1fr;
+  grid-template-rows: 0.5fr ${(props) =>
+    props.responsiveVar.isDesktop ? "auto" : "43rem"};
+  grid-template-columns: 1fr ${(props) =>
+    props.responsiveVar.isFiveCards
+      ? "69.375rem"
+      : props.responsiveVar.isFourCards
+      ? "55.5rem"
+      : props.responsiveVar.isThreeCards
+      ? "41.625rem"
+      : "65%"} 1fr;
+  overflow-y: auto;
 `;
 
 export const CardsContainer = styled.div<{ responsiveVar: responsiveVariable }>`
@@ -21,7 +23,8 @@ export const CardsContainer = styled.div<{ responsiveVar: responsiveVariable }>`
   flex-direction: ${(prop) =>
     prop.responsiveVar.isDesktop ? "row" : "column"};
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: ${(prop) =>
+    prop.responsiveVar.isDesktop ? "start" : "center"};
   -ms-overflow-style: none; /* IE, Edge */
   overflow-x: auto;
   scrollbar-width: none;

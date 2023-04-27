@@ -1,16 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import "./login.css";
+import { useTokenExist } from "./customHook/useTokenCheck";
+import { useNavigate } from "react-router-dom";
 
 interface loginProps {
-  LoginText: string,
+  LoginText: string;
 }
 
-const Login = (prop:loginProps) => {
+const Login = (prop: loginProps) => {
   const [LoginText, setLoginText] = useState(prop.LoginText);
+  const tokenExist = useTokenExist();
+  const navi = useNavigate();
   const handleLogin = () => {
     setLoginText("Wait a second...");
-    window.location.href = (process.env.REACT_APP_LOGIN_URL || "");
+    if (tokenExist) navi("/main");
+    else window.location.href = process.env.REACT_APP_LOGIN_URL || "";
   };
 
   return (
@@ -19,7 +24,11 @@ const Login = (prop:loginProps) => {
         <h2>42Vote</h2>
       </div>
       <div className="oauth-container">
-        <button disabled={LoginText === "Wait a second..."} className="oauth-btn" onClick={handleLogin}>
+        <button
+          disabled={LoginText === "Wait a second..."}
+          className="oauth-btn"
+          onClick={handleLogin}
+        >
           {LoginText}
         </button>
       </div>
