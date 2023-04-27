@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FixedTop from "../Etc/FixedTop";
-import TagCardContainers from "../Main/components/TagCardContainers";
+import TagCardContainers from "../Main/components/Card/CardsContainers";
 import { MyPageHeader } from "./styles/styledComponents";
 
 

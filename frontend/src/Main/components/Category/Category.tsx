@@ -7,7 +7,7 @@ type TagProps = {
   isSelected: boolean;
 }
 
-const Tag: React.FC<TagProps> = ({ label, tagId, onSelect, isSelected }) => {
+const Category: React.FC<TagProps> = ({ label, tagId, onSelect, isSelected }) => {
 
   const handleClick = () => {
     onSelect(tagId);
@@ -20,4 +20,4 @@ const Tag: React.FC<TagProps> = ({ label, tagId, onSelect, isSelected }) => {
   );
 };
 
-export default Tag;
+export default Category;

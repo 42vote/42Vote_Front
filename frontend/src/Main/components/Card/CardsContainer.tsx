@@ -1,16 +1,18 @@
 import React, { useState, useRef } from "react";
-import { useCards } from "../customHooks/useCards";
-import { CardsContainer, TagHeader } from "../styles/styleComponents";
-import { useResponsive } from "../customHooks/useResponsive";
-import { documentListQuery, documentListRes } from "../types";
+import { useCards } from "../../customHooks/useCards";
+import { CardsList, TagHeader } from "../../styles/styleComponents";
+import { useResponsive } from "../../customHooks/useResponsive";
+import { documentListQuery } from "../../types";
+import { useTags } from "../../customHooks/useTags";
 import Card from "./Card";
-import { useTags } from "../customHooks/useTags";
+import NoCards from "./NoCards";
+import SkeletonCards from "./SkeletonCards";
 
 interface cardsProps {
   tag: string;
 }
 
-const Cards = (props: cardsProps) => {
+const CardsContainer = (props: cardsProps) => {
   const selectedTag = props.tag;
   const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
   const [page, setPage] = useState(1);
@@ -59,7 +61,7 @@ const Cards = (props: cardsProps) => {
   //need to delete filter cuz cards has one tag items.
   return (
     <>
-      {!isLoading && data && (
+      {!isLoading && data ? (
         <>
           <TagHeader responsiveVar={responsiveVar}>
             #{tagInfo ? tagInfo[0].title : "TagName"}
@@ -73,20 +75,22 @@ const Cards = (props: cardsProps) => {
               <div className="nullLeft"></div>
             </div>
           )}
-          <CardsContainer responsiveVar={responsiveVar} ref={scrollRef}>
-            {data.map((card) => (
-              <Card key={card.id} {...card} />
-            ))}
-          </CardsContainer>
+          <CardsList responsiveVar={responsiveVar} ref={scrollRef}>
+            {data.length > 0 ? (
+              data.map((card) => <Card key={card.id} {...card} />)
+            ) : (
+              <NoCards />
+            )}
+          </CardsList>
           {data.length > 4 && responsiveVar.isDesktop ? (
             <div className="nextButtonContainer">
               <button onClick={handleNext} className="nextButton" />
             </div>
           ) : null}
         </>
-      )}
+      ) : <SkeletonCards />}
     </>
   );
 };
 
-export default Cards;
+export default CardsContainer;

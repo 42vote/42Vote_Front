@@ -158,3 +158,16 @@
 .nextButton:hover {
   transform: scale(1.05);
 }
+
+.noCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 11.875rem;
+  margin: 1rem;
+  padding: 1rem;
+
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}

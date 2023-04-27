@@ -16,7 +16,7 @@ export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
   overflow-y: auto;
 `;
 
-export const CardsContainer = styled.div<{ responsiveVar: responsiveVariable }>`
+export const CardsList = styled.div<{ responsiveVar: responsiveVariable }>`
   grid-row: 2;
   grid-column: 2;
   display: flex;

@@ -1,20 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FixedTop from "../Etc/FixedTop";
-import TagButtons from "./components/TagButtons";
-import TagCardContainers from "./components/TagCardContainers";
+import CategoryContainer from "./components/Category/CategoryContainer";
+import CardsContainers from "./components/Card/CardsContainers";
 import "./styles/style.css";
+import { useTags } from "./customHooks/useTags";
 
 const MainPage: React.FC = () => {
   //need to fix. tags to [].
+  const { data, isLoading } = useTags();
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
+  useEffect(()=>{
+    let tagList:string[] = [];
+    if (!isLoading && data){
+      for (let i = 0; i < data.length; i++){
+        tagList.push(data[i].id);
+      }
+    }
+    setSelectedTag(tagList);
+  },[isLoading, data])
 
   return (
     <div>
       <div id="mobile">
         <FixedTop />
       </div>
-      <TagButtons selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
-      <TagCardContainers
+      <CategoryContainer selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
+      <CardsContainers
         selectedTag={selectedTag}
         setSelectedTag={setSelectedTag}
       />

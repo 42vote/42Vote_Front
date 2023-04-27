@@ -6,14 +6,14 @@ interface CardProps {
   title :string,
   goal : string,
   voteCnt : string, 
-  isVoteExpired : string, // 필요한가요?? 04/23
+  isVoteExpired : string,
 }
 
 const Card: React.FC<CardProps> = ({ id, title, goal, voteCnt, isVoteExpired }) => {
   const ret = Number(voteCnt) * (100 / Number(goal));
   const navi = useNavigate();
   const handleCardClick = () => {
-    navi("/detail");
+    navi("/detail/" + id);
   };
 
   return (
