@@ -21,7 +21,7 @@ export const customAxios = () => {
 
             const res = await axios({
                 method: 'get',
-                url: process.env.REACT_APP_API_URL + '/auth/refresh',
+                url: process.env.REACT_APP_API_URL + '/user/refresh',
                 headers: {
                     'Authorization': `Bearer ${rtoken}`,
                 }
