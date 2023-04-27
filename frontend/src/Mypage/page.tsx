@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FixedTop from "../Etc/FixedTop";
 import TagCardContainers from "../Main/components/Card/CardsContainers";
 import { MyPageHeader } from "./styles/styledComponents";

@@ -61,34 +61,36 @@ const CardsContainer = (props: cardsProps) => {
   //need to delete filter cuz cards has one tag items.
   return (
     <>
-      {!isLoading && data ? (
-        <>
-          <TagHeader responsiveVar={responsiveVar}>
-            #{tagInfo ? tagInfo[0].title : "TagName"}
-          </TagHeader>
-          {data.length > 4 && responsiveVar.isDesktop ? (
-            <div className="prevButtonContainer">
-              <button onClick={handlePrev} className="prevButton" />
-            </div>
+      <TagHeader responsiveVar={responsiveVar}>
+        #{tagInfo ? tagInfo[0].title : "TagName"}
+      </TagHeader>
+      {!isLoading && data && data.length > 4 && responsiveVar.isDesktop ? (
+        <div className="prevButtonContainer">
+          <button onClick={handlePrev} className="prevButton" />
+        </div>
+      ) : (
+        <div className="prevButtonContainer">
+          <div className="nullLeft"></div>
+        </div>
+      )}
+      <CardsList responsiveVar={responsiveVar} ref={scrollRef}>
+        {!isLoading && data ? (
+          data.length > 0 ? (
+            data.map((card) => <Card key={card.id} {...card} />)
           ) : (
-            <div className="prevButtonContainer">
-              <div className="nullLeft"></div>
-            </div>
-          )}
-          <CardsList responsiveVar={responsiveVar} ref={scrollRef}>
-            {data.length > 0 ? (
-              data.map((card) => <Card key={card.id} {...card} />)
-            ) : (
-              <NoCards />
-            )}
-          </CardsList>
-          {data.length > 4 && responsiveVar.isDesktop ? (
-            <div className="nextButtonContainer">
-              <button onClick={handleNext} className="nextButton" />
-            </div>
-          ) : null}
-        </>
-      ) : <SkeletonCards />}
+            <NoCards />
+          )
+        ) : (
+          Array.from({ length: 4 }).map((_, index) => (
+            <SkeletonCards key={index} />
+          ))
+        )}
+      </CardsList>
+      {!isLoading && data && data.length > 4 && responsiveVar.isDesktop ? (
+        <div className="nextButtonContainer">
+          <button onClick={handleNext} className="nextButton" />
+        </div>
+      ) : null}
     </>
   );
 };
