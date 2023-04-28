@@ -74,6 +74,7 @@ const CardsContainer = (props: cardsProps) => {
             data.map((card) => (
               <>
                 <Card key={card.id} {...card} />
+                <div>Load More</div>
               </>
             ))
           ) : (
