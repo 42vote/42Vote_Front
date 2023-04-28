@@ -14,7 +14,6 @@ interface cardsProps {
 
 const CardsContainer = (props: cardsProps) => {
   const selectedTag = props.tag;
-  const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
   const [page, setPage] = useState(1);
   const documentApiQuery: documentListQuery = {
     categoryId: selectedTag,
@@ -23,46 +22,42 @@ const CardsContainer = (props: cardsProps) => {
     myPost: "false",
     myVote: "false",
   };
+
   const { data, isLoading } = useCards(documentApiQuery);
+  const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
+  
   const scrollRef = useRef<HTMLDivElement>(null);
   const responsiveVar = useResponsive();
-
-  const handleNext = () => {
-    //2 is example code.
-    //Should change like (page) => page++
-    //check remain cards. if under 5N page++
-    const fontSize: string = window
+  const fontSizeNum: number = Number(
+    window
       .getComputedStyle(document.documentElement)
       .getPropertyValue("font-size")
-      .split("px")[0];
-    const fontSizeNum: number = Number(fontSize);
-    setPage(2);
+      .split("px")[0]
+  );
+
+  const scrollMove = (direction: number) => {
     if (responsiveVar.isFiveCards)
-      scrollRef.current!.scrollLeft += 70.47 * fontSizeNum;
+      scrollRef.current!.scrollLeft += 70.47 * fontSizeNum * direction;
     else if (responsiveVar.isFourCards)
-      scrollRef.current!.scrollLeft += 56.5 * fontSizeNum;
-    else scrollRef.current!.scrollLeft += 41.78 * fontSizeNum;
+      scrollRef.current!.scrollLeft += 56.5 * fontSizeNum * direction;
+    else scrollRef.current!.scrollLeft += 41.78 * fontSizeNum * direction;
+
+  }
+
+  const handleNext = () => {
+    setPage((page) => page++);
+    scrollMove(1);
   };
 
   const handlePrev = () => {
-    const fontSize: string = window
-      .getComputedStyle(document.documentElement)
-      .getPropertyValue("font-size")
-      .split("px")[0];
-    const fontSizeNum: number = Number(fontSize);
-    setPage(2);
-    if (responsiveVar.isFiveCards)
-      scrollRef.current!.scrollLeft -= 70.47 * fontSizeNum;
-    else if (responsiveVar.isFourCards)
-      scrollRef.current!.scrollLeft -= 56.5 * fontSizeNum;
-    else scrollRef.current!.scrollLeft -= 41.78 * fontSizeNum;
+    setPage((page) => page++);
+    scrollMove(-1);
   };
 
-  //need to delete filter cuz cards has one tag items.
   return (
     <>
       <TagHeader responsiveVar={responsiveVar}>
-        #{tagInfo ? tagInfo[0].title : "TagName"}
+        #{tagInfo ? tagInfo[0].title : ""}
       </TagHeader>
       {!isLoading && data && data.length > 4 && responsiveVar.isDesktop ? (
         <div className="prevButtonContainer">
@@ -76,7 +71,11 @@ const CardsContainer = (props: cardsProps) => {
       <CardsList responsiveVar={responsiveVar} ref={scrollRef}>
         {!isLoading && data ? (
           data.length > 0 ? (
-            data.map((card) => <Card key={card.id} {...card} />)
+            data.map((card) => (
+              <>
+                <Card key={card.id} {...card} />
+              </>
+            ))
           ) : (
             <NoCards />
           )
