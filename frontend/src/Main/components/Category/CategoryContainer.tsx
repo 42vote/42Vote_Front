@@ -16,7 +16,7 @@ const CategoryContainer = (props: selectTagProps) => {
       setSelectedTag(selectedTag.filter((tag) => tag !== tagId));
     else if (responsiveVar.isDesktop)
       setSelectedTag((selctedTag) => {
-        return [...selctedTag, tagId].sort();
+        return [...selctedTag, tagId];
       });
     else setSelectedTag([tagId]);
   };
