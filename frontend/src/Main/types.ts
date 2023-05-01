@@ -4,18 +4,11 @@ export interface selectTagProps {
 }
 
 export interface CardProps {
-  id: number,
-  title: string,
-  description: string,
-  imageUrl: string,
-  tag: string,
-
-  // id: number;
-  // title: string;
-  // goal: number;
-  // voteCnt: number;
-  // isVoteExpired: boolean;
-  // image: string;
+  id : string,
+  title :string,
+  goal : string,
+  voteCnt : string, 
+  isVoteExpired : string,
 }
 
 export interface responsiveVariable {
