@@ -4,11 +4,18 @@ export interface selectTagProps {
 }
 
 export interface CardProps {
-  id: number;
-  title: string;
-  description: string;
-  imageUrl: string;
-  tag: string;
+  id: number,
+  title: string,
+  description: string,
+  imageUrl: string,
+  tag: string,
+
+  // id: number;
+  // title: string;
+  // goal: number;
+  // voteCnt: number;
+  // isVoteExpired: boolean;
+  // image: string;
 }
 
 export interface responsiveVariable {
@@ -22,7 +29,21 @@ export interface responsiveVariable {
 export interface documentListQuery {
   categoryId: string,
   listSize: string,
-  listIndex: string,
+  listIndex: number,
   myPost: string,
   myVote: string,
+}
+
+export interface categoryRes {
+  id: string,
+  title: string,
+  expired: string,
+}
+
+export interface documentListRes {
+  id : string,
+  title :string,
+  goal : string,
+  voteCnt : string, 
+  isVoteExpired : string, // 필요한가요?? 04/23
 }
