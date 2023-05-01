@@ -39,8 +39,3 @@ export interface documentListRes {
   voteCnt : string, 
   isVoteExpired : string,
 }
-
-export interface documentListResAndPage {
-  documentListResArray: documentListRes[],
-  pageParam: number,
-}
