@@ -1,8 +1,6 @@
-import React from "react";
 import { useState } from "react";
 import "./login.css";
 import { useTokenExist } from "./customHook/useTokenCheck";
-import { useNavigate } from "react-router-dom";
 
 interface loginProps {
   LoginText: string;
