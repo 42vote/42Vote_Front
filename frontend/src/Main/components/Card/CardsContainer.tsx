@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { useCards } from "../../customHooks/useCards";
 import { CardsList, TagHeader } from "../../styles/styleComponents";
 import { useResponsive } from "../../customHooks/useResponsive";
@@ -7,6 +7,7 @@ import { useTags } from "../../customHooks/useTags";
 import Card from "./Card";
 import NoCards from "./NoCards";
 import SkeletonCards from "./SkeletonCards";
+import { useDocSize } from "../../customHooks/useDocSize";
 
 interface cardsProps {
   tag: string;
@@ -14,18 +15,22 @@ interface cardsProps {
 
 const CardsContainer = (props: cardsProps) => {
   const selectedTag = props.tag;
-  const [page, setPage] = useState(1);
   const documentApiQuery: documentListQuery = {
     categoryId: selectedTag,
     listSize: "5",
-    listIndex: page,
     myPost: "false",
     myVote: "false",
   };
+  // const res = useDocSize(props.tag);
 
-  const { data, isLoading } = useCards(documentApiQuery);
+  const { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage } =
+    useCards(documentApiQuery);
+  if (getCardsIsSuccess) {
+    console.log(getCards);
+    console.log("getNextPageIsPossible:" + getNextPageIsPossible);
+  }
   const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
-  
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const responsiveVar = useResponsive();
   const fontSizeNum: number = Number(
@@ -41,16 +46,15 @@ const CardsContainer = (props: cardsProps) => {
     else if (responsiveVar.isFourCards)
       scrollRef.current!.scrollLeft += 56.5 * fontSizeNum * direction;
     else scrollRef.current!.scrollLeft += 41.78 * fontSizeNum * direction;
-
-  }
+  };
 
   const handleNext = () => {
-    setPage((page) => page++);
+    // setPage((page) => page++);
     scrollMove(1);
   };
 
   const handlePrev = () => {
-    setPage((page) => page++);
+    // setPage((page) => page++);
     scrollMove(-1);
   };
 
@@ -59,7 +63,10 @@ const CardsContainer = (props: cardsProps) => {
       <TagHeader responsiveVar={responsiveVar}>
         #{tagInfo ? tagInfo[0].title : ""}
       </TagHeader>
-      {!isLoading && data && data.length > 4 && responsiveVar.isDesktop ? (
+      {getCardsIsSuccess &&
+      getCards &&
+      getCards.pages[0].cardArrary.length > 4 &&
+      responsiveVar.isDesktop ? (
         <div className="prevButtonContainer">
           <button onClick={handlePrev} className="prevButton" />
         </div>
@@ -69,14 +76,11 @@ const CardsContainer = (props: cardsProps) => {
         </div>
       )}
       <CardsList responsiveVar={responsiveVar} ref={scrollRef}>
-        {!isLoading && data ? (
-          data.length > 0 ? (
-            data.map((card) => (
-              <>
-                <Card key={card.id} {...card} />
-                <div>Load More</div>
-              </>
-            ))
+        {getCardsIsSuccess && getCards ? (
+          getCards.pages[0].cardArrary.length > 0 ? (
+            getCards.pages.map((pages) =>
+              pages.cardArrary.map((card) => <Card key={card.id} {...card} />)
+            )
           ) : (
             <NoCards />
           )
@@ -85,8 +89,14 @@ const CardsContainer = (props: cardsProps) => {
             <SkeletonCards key={index} />
           ))
         )}
+        {getNextPageIsPossible && (
+          <button onClick={() => getNextPage()}>LoadMore</button>
+        )}
       </CardsList>
-      {!isLoading && data && data.length > 4 && responsiveVar.isDesktop ? (
+      {getCardsIsSuccess &&
+      getCards &&
+      getCards.pages[0].cardArrary.length > 4 &&
+      responsiveVar.isDesktop ? (
         <div className="nextButtonContainer">
           <button onClick={handleNext} className="nextButton" />
         </div>

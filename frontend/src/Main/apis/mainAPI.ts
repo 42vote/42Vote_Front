@@ -1,23 +1,37 @@
+import { AxiosResponse } from "axios";
 import { customAxios } from "../../Lib/customAxios";
-import { documentListQuery } from "../types";
+import {
+  documentListQuery,
+  documentListRes,
+} from "../types";
 
 export const mainAPI = {
-  getTags: (expired: string) => {
-    const Query: string = "?expired=" + expired; 
-    return customAxios().get("/category" + Query);
+  getTags: async (expired: string) => {
+    const Query: string = "?expired=" + expired;
+    return await customAxios().get("/category" + Query);
   },
-  getDocList: (docListQuery: documentListQuery) => {
+  getDocList: async (
+    docListQuery: documentListQuery,
+    pageParam: number
+  ) => {
     const Query: string =
       "?categoryId=" +
       docListQuery.categoryId +
       "&listSize=" +
       docListQuery.listSize +
       "&listIndex=" +
-      docListQuery.listIndex +
+      pageParam +
       "&myPost=" +
       docListQuery.myPost +
       "&myVote=" +
       docListQuery.myVote;
-    return customAxios().get("/document" + Query);
+    const res: AxiosResponse<documentListRes[]> = await customAxios().get(
+      "/document" + Query
+    );
+    return { cardArrary: res.data, currentPage: pageParam };
+  },
+  getDocSize: async (categoryId: string) => {
+    const res = await customAxios().get("/category/size/" + categoryId);
+    return res.data;
   },
 };

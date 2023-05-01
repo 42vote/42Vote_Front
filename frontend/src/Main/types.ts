@@ -29,7 +29,6 @@ export interface responsiveVariable {
 export interface documentListQuery {
   categoryId: string,
   listSize: string,
-  listIndex: number,
   myPost: string,
   myVote: string,
 }
@@ -45,5 +44,10 @@ export interface documentListRes {
   title :string,
   goal : string,
   voteCnt : string, 
-  isVoteExpired : string, // 필요한가요?? 04/23
+  isVoteExpired : string,
+}
+
+export interface documentListResAndPage {
+  documentListResArray: documentListRes[],
+  pageParam: number,
 }
