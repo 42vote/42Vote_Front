@@ -1,9 +1,26 @@
-#detail #vote-button:disabled {
-    color: #383838;
-    cursor: not-allowed !important;
+@keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+  }
+
+.skeleton-item {
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
 }
 
-#desktop #detail {
+#detail-loading #content-wrapper #img-section #img-left {
+    background-image: url('../../public/img/left-button.svg');
+}
+
+#detail-loading #content-wrapper #img-section #img-right {
+    background-image: url('../../public/img/right-button.svg');
+}
+
+#desktop #detail-loading {
     padding-top: calc(clamp(30px, 3%, 50px) + 20px);
     box-sizing: border-box;
     display: flex;
@@ -13,32 +30,31 @@
     min-height: 100vh;
 }
 
-#desktop #detail #title {
-    font-family: 'Lora-Bold', 'kbiz-Bold';
-    font-size: max(30px, 3vw);
-    margin: 30px 0 30px 0;
+#desktop #detail-loading #title {
+    width: 30%;
+    height: 50px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
 }
 
-#desktop #detail #content-wrapper {
+#desktop #detail-loading #content-wrapper {
     width: 80%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
 }
 
-#desktop #detail #content-wrapper #img-section {
+#desktop #detail-loading #content-wrapper #img-section {
     width: 55%;
     display: flex;
     justify-content: center;
 }
 
-#detail #content-wrapper #img-section .expire {
-    filter: grayscale(100%);
-}
-
-#desktop #detail #content-wrapper #img-section button {
+#desktop #detail-loading #content-wrapper #img-section button {
     width: 10%;
     border: none;
+    border-radius: 10px;
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: contain;
@@ -47,163 +63,47 @@
     padding: 0;
 }
 
-#detail #content-wrapper #img-section #img-left {
-    background-image: url('../../public/img/left-button.svg');
-}
-
-#detail #content-wrapper #img-section #img-right {
-    background-image: url('../../public/img/right-button.svg');
-}
-
-#desktop #detail #content-wrapper #img-section #img-file {
+#desktop #detail-loading #content-wrapper #img-section #img-file {
     width: clamp(270px, 30vw, 400px);
     height: clamp(270px, 30vw, 400px);
-    position: relative;
-    background-size: cover;
+    border-radius: 10px;
+    background-color: #D9D9D9;
 }
 
-#desktop #detail #content-wrapper #img-section #img-file img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.5s;
-    -webkit-user-drag: none;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-}
-
-#desktop #detail #content-wrapper #img-section #img-file .active {
-    opacity: 1;
-}
-
-#desktop #detail #content-wrapper #img-section #img-nav {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    width: 100%;
-}
-
-#desktop #detail #content-wrapper #img-section #img-nav div {
-    width: min(12px, 1vw);
-    height: min(12px, 1vw);
-    background-color: rgba(255, 255, 255, 0.5);
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 50px;
-    margin: 0 3px 5px 3px;
-}
-
-#desktop #detail #content-wrapper #img-section #img-nav .active {
-    background-color: white;
-}
-
-#desktop #detail #content-wrapper #txt-section {
+#desktop #detail-loading #content-wrapper #txt-section {
     width: 43%;
     height: clamp(270px, 30vw, 400px);
-    overflow-y: auto;
-    /*overflow를 여기다 할까 descript에다 할까?*/
 }
 
-#desktop #detail #content-wrapper #txt-section #info-wrapper {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 20px;
-}
-
-#desktop #detail #content-wrapper #txt-section #info-wrapper #author {
-    font-family: 'Lora-Bold';
-    font-size: max(20px, 1.7vw);
-    margin-right: 15px;
-}
-
-#desktop #detail #content-wrapper #txt-section #info-wrapper #date {
-    font-family: 'Lora-Regular';
-    font-size: max(13px, 1vw);
-    margin-right: 15px;
-}
-
-#desktop #detail #content-wrapper #txt-section #descript {
+#desktop #detail-loading #content-wrapper #txt-section #info-wrapper {
     width: 80%;
-    font-family: 'Lora-Regular', 'kbiz-Light';
-    font-size: max(15px, 1.2vw);
-    white-space: pre-wrap;
+    height: 10%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
 }
 
-#desktop #detail #progress-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#desktop #detail-loading #content-wrapper #txt-section #descript {
+    width: 80%;
+    height: 85%;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+}
+
+#desktop #detail-loading #progress-bar {
     width: 60%;
-    height: 20px;
-    font-size: max(13px, 1vw);
+    height: 30px;
     margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
 }
 
-#desktop #detail #progress-bar #progress-bar-out {
-    width: 85%;
-    height: 100%;
-    border: 1px solid #383838;
-    border-radius: 20px;
-    margin-right: 2%;
-    overflow: hidden;
+#desktop #detail-loading #author-button {
+    width: 20%;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
 }
-
-#desktop #detail #progress-bar #progress-bar-out #progress-bar-in {
-    height: 100%;
-    background-color: #383838;
-    border-radius: 20px;
-}
-
-#desktop #detail #vote-button {
-    border-radius: 30px;
-    border: 1px solid #383838;
-    background-color: white;
-    font-family: 'Lora-Medium';
-    font-size: max(15px, 1.2vw);
-    width: max(110px, 10%);
-    height: max(30px, 2.5vw);
-    padding: 0;
-    margin-bottom: 30px;
-    color: black;
-}
-
-#desktop #detail #vote-button.open {
-    cursor: pointer;
-}
-
-#desktop #detail #vote-button.open.voted {
-    background-color: #383838;
-    color: white;
-}
-
-#desktop #detail #author-button {
-    width: 100%;
-    text-align: center;
-}
-
-#desktop #detail #author-button button {
-    border-radius: 30px;
-    border: 1px solid #383838;
-    background-color: white;
-    font-family: 'Lora-Medium';
-    font-size: max(15px, 1.2vw);
-    width: max(90px, 8%);
-    height: max(25px, 2vw);
-    padding: 0;
-    margin: 0 5px 30px 5px;
-    cursor: pointer;
-}
-
-#desktop #detail #author-button button:hover {
-    background-color: #383838;
-    color: white;
-}
-
 
 
 #mobile #detail {

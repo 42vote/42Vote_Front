@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { customAxios } from "../../Lib/customAxios";
+import { customAxios } from "../../lib/customAxios";
 import {
   documentListQuery,
   documentListRes,

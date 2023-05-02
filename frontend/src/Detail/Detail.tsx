@@ -4,7 +4,9 @@ import Swal from 'sweetalert2';
 import './Detail.css';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { customAxios } from '../lib/customAxios';
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import DetailLoading from './DetailLoading';
+import NotFound from '../Etc/NotFound';
 
 interface document {
     title: string,
@@ -25,49 +27,40 @@ function Detail() {
     const isMobile: boolean = useMediaQuery({query: '(max-width: 768px)'});
     const nav: NavigateFunction = useNavigate();
     const docId: number = Number(window.location.pathname.split('/')[2]);
-    const [data, setData] = useState<document | null>(null);
 
-    useEffect(() => {
-        customAxios().get('/document/' + docId).then((res) => {
-            setData(res.data);
-        })
-    }, []);
-
-    useEffect(() => {
-        if (data) {
-            const now: Date = new Date();
-            const expire: Date = new Date(data.voteExpiredAt);
-            const imgFileEl: HTMLElement | null = document.getElementById('img-file');
-            const voteButtonEl: HTMLButtonElement = document.getElementById('vote-button') as HTMLButtonElement;
-        
-            if (now >= expire) {
-                imgFileEl?.classList.add('expire');
-                if (voteButtonEl) {
-                    voteButtonEl.classList.remove('open');
-                    voteButtonEl.classList.add('expire');
-                    voteButtonEl.innerText = 'close';
-                    voteButtonEl.disabled = true;
-                }
-            } else if (data.isVote) {
-                if (voteButtonEl)
-                    voteButtonEl.classList.add('voted');
-            }
-        }
-    }, [data])
+    const getData = async () => {
+        const res = await customAxios().get('/document/' + docId);
+        return res.data;
+    }
     
-    // const data: document = {
-    //     title: '✨ 최애의 아이 ✨',
-    //     content: '일본의 만화. 카구야 님은 고백받고 싶어의 아카사카 아카가 스토리를, 쓰레기의 본망의 요코야리 멩고가 작화를 맡았다. \'카구야 님\'과 같은 주간 영 점프에 동시 연재 중이다. 원제는 \'오시(推し)의 아이\'이며 한국어판에선 오시를 최애라는 단어로 의역하였다. 최애와 오시가 완전히 같지는 않으나 만화를 이해하는 데에는 문제가 없다. 자세한 차이는 각각의 문서 참고. \n\n\n이상의 최애의 아이 1편을 모두 보고 왔으면 좋겠습니다.\n\n',
-    //     author: 'sojoo',
-    //     isAuthor: false,
-    //     createAt: "2023-03-21T12:30:00.000Z",
-    //     voteExpiredAt: "2023-05-21T09:22:00.000Z",
-    //     goal: 4,
-    //     voteCnt: 2,
-    //     isVote: true,
-    //     isVoteExpired: false,
-    //     image: ['https://i1.ruliweb.com/thumb/23/04/07/1875af7eea934d9e5.jpg', 'https://ccdn.lezhin.com/v2/comics/5469317090312192/images/tall.jpg?updated=1634099797967&width=840', 'https://tvstore-phinf.pstatic.net/20230413_238/16813549589071Xlji_JPEG/00041.jpg']
-    // }
+    const { data, isLoading, isError } = useQuery<document>(['detail'], getData, {retry: 0});
+
+    if (isLoading)
+        return (<div id={isMobile ? "mobile" : "desktop"}><FixedTop/><DetailLoading/></div>);
+
+    if (isError)
+        return (<div><FixedTop/><NotFound/></div>);
+    
+    /*--------이부분 useEffect에 안들어가면 사이즈 조절시 리셋됨--------*/
+    
+    const imgFileEl: HTMLElement | null = document.getElementById('img-file');
+    const voteButtonEl: HTMLButtonElement = document.getElementById('vote-button') as HTMLButtonElement;
+
+    if (data.isVoteExpired) {
+        imgFileEl?.classList.add('expire');
+        if (voteButtonEl) {
+            voteButtonEl.classList.remove('open');
+            voteButtonEl.classList.add('expire');
+            voteButtonEl.innerText = 'close';
+            voteButtonEl.disabled = true;
+        }
+    } else if (data.isVote) {
+        if (voteButtonEl)
+            voteButtonEl.classList.add('voted');
+    }
+
+    /*--------------------------------------------------------*/
+
 
     const TimeLine = (): string => {
         if (data) {
@@ -108,7 +101,7 @@ function Detail() {
                 img.classList.add('active');
                 background.style.backgroundImage = 'url(' + img.getAttribute('src') + ')';
             }
-        })
+        });
     }
 
     const ImgArrowClick = (event: React.MouseEvent<HTMLButtonElement>, direction: number): void => {
@@ -136,7 +129,6 @@ function Detail() {
             else {
                 img.classList.add('active');
                 background.style.backgroundImage = 'url(' + img.getAttribute('src') + ')';
-                //뒤에 블러 할까? 말까? blur filter가 transition 때문에 살짝 느리게 뜸
             }
         });
 
@@ -152,21 +144,26 @@ function Detail() {
         if (data) {
             const target: HTMLElement = event.target as HTMLButtonElement;
             const progressBar: HTMLElement = document.getElementById('progress-bar-in') as HTMLDivElement;
+            const count: HTMLDivElement = document.getElementById('count') as HTMLDivElement;
     
             if (target.classList.contains('voted')) {
                 target.classList.remove('voted');
-                //투표 취소 api
+                target.setAttribute('disabled', '');
+                customAxios().delete('/vote/me', {data: {documentId: docId}}).then(() => {
+                    target.removeAttribute('disabled');
+                });
                 data.voteCnt--;
             }
             else {
                 target.classList.add('voted');
-                //투표 api
+                target.setAttribute('disabled', '');
+                customAxios().post('/vote/me', {documentId: docId}).then(() => {
+                    target.removeAttribute('disabled');
+                });
                 data.voteCnt++
             }
-            //너무 여러번 누를 수도 있으니까 페이지를 떠날때 cnt가 다르면 api를 보낼까?
-            //근데 그건 어케 하지
             progressBar.style.width = (data.voteCnt / data.goal * 100) + '%';
-            progressBar.textContent = data.voteCnt + ' / ' + data.goal;
+            count.textContent = data.voteCnt + ' / ' + data.goal;
         }
     }
 
@@ -179,9 +176,13 @@ function Detail() {
             confirmButtonText: 'delete'
         }).then((res) => {
             if (res.isConfirmed) {
-                //삭제 api
-                Swal.fire('삭제되었습니다.').then(() => {
-                    nav('/main');
+                customAxios().delete('/document/' + docId).then(() => {
+                    Swal.fire('삭제되었습니다.').then(() => {
+                        nav('/main');
+                    });
+                }).catch((err) => {
+                    if (err.response.status === 404)
+                        nav('/notfound') //notfound 컴포넌트
                 });
             }
         });
@@ -191,7 +192,7 @@ function Detail() {
         return (
             <>
             {
-                data ? (
+                data && (
                     <div id="detail">
                         <div id="title">{data.title}</div>
                         <div id="content-wrapper">
@@ -224,7 +225,10 @@ function Detail() {
                             </div>
                         </div>
                         <div id="progress-bar">
-                            <div id="progress-bar-in" style={{width: (data.voteCnt / data.goal * 100) + '%'}}>{data.voteCnt} / {data.goal}</div>
+                            <div id="progress-bar-out">
+                                <div id="progress-bar-in" style={{width: (data.voteCnt / data.goal * 100) + '%'}}></div>
+                            </div>
+                            <div id="count">{data.voteCnt} / {data.goal}</div>
                         </div>
                         {
                             data.isAuthor === false &&
@@ -238,8 +242,6 @@ function Detail() {
                             </div>
                         }
                     </div>
-                ) : (
-                    <div>Loading</div>
                 )
             }
             </>
