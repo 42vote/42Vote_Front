@@ -4,11 +4,11 @@ export interface selectTagProps {
 }
 
 export interface CardProps {
-  id: number;
-  title: string;
-  description: string;
-  imageUrl: string;
-  tag: string;
+  id : string,
+  title :string,
+  goal : string,
+  voteCnt : string, 
+  isVoteExpired : string,
 }
 
 export interface responsiveVariable {
@@ -22,7 +22,20 @@ export interface responsiveVariable {
 export interface documentListQuery {
   categoryId: string,
   listSize: string,
-  listIndex: string,
   myPost: string,
   myVote: string,
+}
+
+export interface categoryRes {
+  id: string,
+  title: string,
+  expired: string,
+}
+
+export interface documentListRes {
+  id : string,
+  title :string,
+  goal : string,
+  voteCnt : string, 
+  isVoteExpired : string,
 }
