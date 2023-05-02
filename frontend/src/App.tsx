@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login LoginText="Login with 42OAuth"/>} />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail/*" element={<Detail />} />
           <Route path="/main" element={<MainIndex />} />
           <Route path="/auth/42/redirect" element={<Auth/>} />
           <Route path="/posting" element={<Posting/>}/>
