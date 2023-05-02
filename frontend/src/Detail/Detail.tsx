@@ -6,7 +6,7 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 function Detail() {
     //url에서 도큐먼트 번호따와서 api 요청하고 없으면 (404) notfound로 연결
-    const isDesktop: boolean = useMediaQuery({query: '(min-width: 769px)'})
+    const isDesktop: boolean = useMediaQuery({query: '(min-width: 769px)'});
     const isMobile: boolean = useMediaQuery({query: '(max-width: 768px)'});
     const nav: NavigateFunction = useNavigate();
     
@@ -28,12 +28,12 @@ function Detail() {
         title: '✨ 최애의 아이 ✨',
         content: '일본의 만화. 카구야 님은 고백받고 싶어의 아카사카 아카가 스토리를, 쓰레기의 본망의 요코야리 멩고가 작화를 맡았다. \'카구야 님\'과 같은 주간 영 점프에 동시 연재 중이다. 원제는 \'오시(推し)의 아이\'이며 한국어판에선 오시를 최애라는 단어로 의역하였다. 최애와 오시가 완전히 같지는 않으나 만화를 이해하는 데에는 문제가 없다. 자세한 차이는 각각의 문서 참고. \n\n\n이상의 최애의 아이 1편을 모두 보고 왔으면 좋겠습니다.\n\n',
         author: 'sojoo',
-        isAuthor: true,
+        isAuthor: false,
         createAt: "2023-03-21T12:30:00.000Z",
         voteExpiredAt: "2023-05-21T09:22:00.000Z",
         goal: 4,
         voteCnt: 2,
-        isVote: false,
+        isVote: true,
         isVoteExpired: false,
         image: ['https://i1.ruliweb.com/thumb/23/04/07/1875af7eea934d9e5.jpg', 'https://ccdn.lezhin.com/v2/comics/5469317090312192/images/tall.jpg?updated=1634099797967&width=840', 'https://tvstore-phinf.pstatic.net/20230413_238/16813549589071Xlji_JPEG/00041.jpg']
     } // API 응답 받아놓는 부분 (useQuery 쓰려면 API 요청 함수 만들기)
@@ -45,12 +45,16 @@ function Detail() {
 
     if (now >= expire) {
         imgFileEl?.classList.add('expire');
-        voteButtonEl.classList.remove('open');
-        voteButtonEl.classList.add('expire');
-        voteButtonEl.innerText = 'close';
-        voteButtonEl.disabled = true;
-    } else if (data.isVote)
-        voteButtonEl.classList.add('voted');
+        if (voteButtonEl) {
+            voteButtonEl.classList.remove('open');
+            voteButtonEl.classList.add('expire');
+            voteButtonEl.innerText = 'close';
+            voteButtonEl.disabled = true;
+        }
+    } else if (data.isVote) {
+        if (voteButtonEl)
+            voteButtonEl.classList.add('voted');
+    }
 
     //여기까지를 useEffect에 넣고 싶은데?
 
