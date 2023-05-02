@@ -7,7 +7,7 @@ import { useTags } from "../../customHooks/useTags";
 import Card from "./Card";
 import NoCards from "./NoCards";
 import SkeletonCards from "./SkeletonCards";
-import { useDocSize } from "../../customHooks/useDocSize";
+// import { useDocSize } from "../../customHooks/useDocSize";
 
 interface cardsProps {
   tag: string;
@@ -25,10 +25,6 @@ const CardsContainer = (props: cardsProps) => {
 
   const { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage } =
     useCards(documentApiQuery);
-  if (getCardsIsSuccess) {
-    console.log(getCards);
-    console.log("getNextPageIsPossible:" + getNextPageIsPossible);
-  }
   const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
 
   const scrollRef = useRef<HTMLDivElement>(null);
