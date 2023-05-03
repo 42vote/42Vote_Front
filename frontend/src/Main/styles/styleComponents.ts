@@ -14,11 +14,11 @@ export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
     props.responsiveVar.isDesktop ? "auto" : "43rem"};
   grid-template-columns: 1fr ${(props) =>
     props.responsiveVar.isFiveCards
-      ? "69.375rem"
+      ? "59.375rem"
       : props.responsiveVar.isFourCards
-      ? "55.5rem"
+      ? "47.5rem"
       : props.responsiveVar.isThreeCards
-      ? "41.625rem"
+      ? "35.625rem"
       : "65%"} 1fr;
   overflow-y: auto;
     scrollbar-width: none;
@@ -51,11 +51,12 @@ export const CardsList = styled.div<{ responsiveVar: responsiveVariable }>`
     prop.responsiveVar.isDesktop ? "row" : "column"};
   flex-wrap: nowrap;
   align-items: ${(prop) =>
-    prop.responsiveVar.isDesktop ? "start" : "center"};
+    prop.responsiveVar.isDesktop ? "center" : "center"};
+  justify-items: center;
   -ms-overflow-style: none; /* IE, Edge */
   overflow-x: auto;
   scrollbar-width: none;
-  height: ${(prop) => (prop.responsiveVar.isDesktop ? "17.8125rem" : "auto")};
+  height: ${(prop) => (prop.responsiveVar.isDesktop ? "14.8125rem" : "auto")};
   -webkit-overflow-scrolling: touch; /* Optional: Enable momentum scrolling in iOS */
   scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
   &::-webkit-scrollbar {

@@ -7,7 +7,7 @@ import { useTags } from "../../customHooks/useTags";
 import Card from "./Card";
 import NoCards from "./NoCards";
 import SkeletonCards from "./SkeletonCards";
-// import { useDocSize } from "../../customHooks/useDocSize";
+import { useDocSize } from "../../customHooks/useDocSize";
 
 interface cardsProps {
   tag: string;
@@ -21,10 +21,10 @@ const CardsContainer = (props: cardsProps) => {
     myPost: "false",
     myVote: "false",
   };
-  // const res = useDocSize(props.tag);
+  const docSize = useDocSize(props.tag);
 
   const { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage } =
-    useCards(documentApiQuery);
+    useCards(documentApiQuery, docSize.data ? docSize.data.categorySize : -1);
   const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -38,28 +38,33 @@ const CardsContainer = (props: cardsProps) => {
 
   const scrollMove = (direction: number) => {
     if (responsiveVar.isFiveCards)
-      scrollRef.current!.scrollLeft += 70.47 * fontSizeNum * direction;
+      scrollRef.current!.scrollLeft += 60 * fontSizeNum * direction;
     else if (responsiveVar.isFourCards)
-      scrollRef.current!.scrollLeft += 56.5 * fontSizeNum * direction;
-    else scrollRef.current!.scrollLeft += 42.35 * fontSizeNum * direction;
+      scrollRef.current!.scrollLeft += 48 * fontSizeNum * direction;
+    else scrollRef.current!.scrollLeft += 36.125 * fontSizeNum * direction;
   };
 
   const scrollEvent = () => {
     const container = scrollRef.current;
     if (container) {
-      const isEnd =
-        container.scrollLeft >= container.scrollWidth - container.offsetWidth;
+      let isEnd: boolean = false;
+      if (responsiveVar.isDesktop)
+        isEnd =
+          container.scrollLeft >= container.scrollWidth - container.offsetWidth;
+      else if (responsiveVar.isMobile) {
+        isEnd =
+          container.scrollTop + container.clientHeight >=
+          container.scrollHeight - 1;
+      }
       if (isEnd && getNextPageIsPossible) getNextPage();
     }
   };
 
   const handleNext = () => {
-    // setPage((page) => page++);
     scrollMove(1);
   };
 
   const handlePrev = () => {
-    // setPage((page) => page++);
     scrollMove(-1);
   };
 

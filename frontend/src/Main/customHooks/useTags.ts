@@ -9,8 +9,3 @@ export const useTags = () =>
       return data.data;
     },
   });
-
-// export const useTags = () =>
-//   useQuery(["tags"], () => {
-//     return tags
-//   });
