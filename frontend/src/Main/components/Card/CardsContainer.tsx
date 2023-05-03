@@ -41,7 +41,16 @@ const CardsContainer = (props: cardsProps) => {
       scrollRef.current!.scrollLeft += 70.47 * fontSizeNum * direction;
     else if (responsiveVar.isFourCards)
       scrollRef.current!.scrollLeft += 56.5 * fontSizeNum * direction;
-    else scrollRef.current!.scrollLeft += 41.78 * fontSizeNum * direction;
+    else scrollRef.current!.scrollLeft += 42.35 * fontSizeNum * direction;
+  };
+
+  const scrollEvent = () => {
+    const container = scrollRef.current;
+    if (container) {
+      const isEnd =
+        container.scrollLeft >= container.scrollWidth - container.offsetWidth;
+      if (isEnd && getNextPageIsPossible) getNextPage();
+    }
   };
 
   const handleNext = () => {
@@ -71,7 +80,11 @@ const CardsContainer = (props: cardsProps) => {
           <div className="nullLeft"></div>
         </div>
       )}
-      <CardsList responsiveVar={responsiveVar} ref={scrollRef}>
+      <CardsList
+        responsiveVar={responsiveVar}
+        ref={scrollRef}
+        onScroll={scrollEvent}
+      >
         {getCardsIsSuccess && getCards ? (
           getCards.pages[0].cardArrary.length > 0 ? (
             getCards.pages.map((pages) =>
@@ -85,9 +98,9 @@ const CardsContainer = (props: cardsProps) => {
             <SkeletonCards key={index} />
           ))
         )}
-        {getNextPageIsPossible && (
-          <button onClick={() => getNextPage()}>LoadMore</button>
-        )}
+        {getCards &&
+          getNextPageIsPossible &&
+          getCards.pages[0].cardArrary.length > 0 && <SkeletonCards />}
       </CardsList>
       {getCardsIsSuccess &&
       getCards &&

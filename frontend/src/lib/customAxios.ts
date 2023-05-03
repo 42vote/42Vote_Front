@@ -1,15 +1,15 @@
 import axios, { AxiosInstance } from 'axios';
+import Cookies from "js-cookie";
 
 export const customAxios = () => {
-    const token = localStorage.getItem('token');
-    const rtoken = localStorage.getItem('rtoken');
+    const token = Cookies.get('token');
+    const rtoken = Cookies.get('rtoken');
     const baseAxios: AxiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        withCredentials: true,
     })
 
     const maxRetry = 2;
@@ -30,8 +30,8 @@ export const customAxios = () => {
                 } 
             });
             if (res.status === 201 && overRetry) {
-                localStorage.removeItem("token");
-                localStorage.setItem("token", res.data.token.access_token);
+                Cookies.remove("token");
+                Cookies.set("token", res.data.token.access_token);
                 error.config.retryCount += 1;
                 error.config.headers = {
                     'Authorization': `Bearer ${res.data.token.access_token}`,
@@ -42,7 +42,7 @@ export const customAxios = () => {
         const errorMsg = (error.message === "Network Error") ? {
             response: {
                 status: 500,
-                data: { message: "Network Error" }
+                data: { message: "Network Error23" }
             }
         } : { response: { 
                 data: error.response.data,
