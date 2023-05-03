@@ -7,21 +7,21 @@ export const CardsContainersDiv = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-`
+`;
 export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
   grid-template-rows: 0.5fr ${(props) =>
-    props.responsiveVar.isDesktop ? "auto" : "43rem"};
+      props.responsiveVar.isDesktop ? "auto" : "43rem"};
   grid-template-columns: 1fr ${(props) =>
-    props.responsiveVar.isFiveCards
-      ? "59.375rem"
-      : props.responsiveVar.isFourCards
-      ? "47.5rem"
-      : props.responsiveVar.isThreeCards
-      ? "35.625rem"
-      : "65%"} 1fr;
+      props.responsiveVar.isFiveCards
+        ? "59.375rem"
+        : props.responsiveVar.isFourCards
+        ? "47.5rem"
+        : props.responsiveVar.isThreeCards
+        ? "35.625rem"
+        : "65%"} 1fr;
   overflow-y: auto;
-    scrollbar-width: none;
+  scrollbar-width: none;
   animation: comeOut 0.5s;
 
   @keyframes comeOut {
@@ -62,7 +62,6 @@ export const CardsList = styled.div<{ responsiveVar: responsiveVariable }>`
   &::-webkit-scrollbar {
     display: none;
   }
-
 `;
 
 export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
@@ -77,15 +76,16 @@ export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
 
 export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
-  margin-top: 1.875rem;
-  grid-template-columns: 1fr ${(prop) =>
-      prop.responsiveVar.isFiveCards
-        ? "69.375rem"
-        : prop.responsiveVar.isFourCards
-        ? "55.5rem"
-        : prop.responsiveVar.isThreeCards
-        ? "41.625rem"
-        : "80%"} 1fr;
+  margin-top: ${(props) =>
+    props.responsiveVar.isDesktop ? "3rem" : "1.875rem"};
+  grid-template-columns: 1fr ${(props) =>
+      props.responsiveVar.isFiveCards
+        ? "59.375rem"
+        : props.responsiveVar.isFourCards
+        ? "47.5rem"
+        : props.responsiveVar.isThreeCards
+        ? "35.625rem"
+        : "65%"} 1fr;
 `;
 
 export const SkeletonTag = styled.div`
