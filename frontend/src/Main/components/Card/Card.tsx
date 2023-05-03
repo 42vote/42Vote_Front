@@ -6,8 +6,7 @@ import styled from "styled-components";
 const ImgContainer = styled.div<{ imgURL: string }>`
   background-image: url(${(prop) => prop.imgURL});
   background-color: #d9d9d9;
-  background-size: fit;
-  backdrop-filter: blur(30px);
+  background-size: cover;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   height: 7.5rem;
 `;

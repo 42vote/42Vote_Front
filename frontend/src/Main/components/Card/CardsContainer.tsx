@@ -42,7 +42,7 @@ const CardsContainer = (props: cardsProps) => {
       scrollRef.current!.scrollLeft += 60 * fontSizeNum * direction;
     else if (responsiveVar.isFourCards)
       scrollRef.current!.scrollLeft += 48 * fontSizeNum * direction;
-    else scrollRef.current!.scrollLeft += 36.125 * fontSizeNum * direction;
+    else scrollRef.current!.scrollLeft += 36.325 * fontSizeNum * direction;
   };
 
   const scrollEvent = () => {
