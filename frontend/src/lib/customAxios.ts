@@ -1,15 +1,15 @@
 import axios, { AxiosInstance } from 'axios';
+import Cookies from "js-cookie";
 
 export const customAxios = () => {
-    const token = localStorage.getItem('token');
-    const rtoken = localStorage.getItem('rtoken');
+    const token = Cookies.get('token');
+    const rtoken = Cookies.get('rtoken');
     const baseAxios: AxiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        withCredentials: true,
     })
 
     const maxRetry = 2;
@@ -20,18 +20,21 @@ export const customAxios = () => {
         if (error.response && error.response.status === 401) {
 
             const res = await axios({
-                method: 'get',
+                method: 'post',
                 url: process.env.REACT_APP_API_URL + '/user/refresh',
                 headers: {
-                    'Authorization': `Bearer ${rtoken}`,
-                }
+                    'Content-Type': 'application/json',
+                },
+                data: {
+                    refresh_token: rtoken,
+                } 
             });
-            if (res.status === 200 && overRetry) {
-                localStorage.removeItem("token");
-                localStorage.setItem("token", res.data.accessToken);
+            if (res.status === 201 && overRetry) {
+                Cookies.remove("token");
+                Cookies.set("token", res.data.token.access_token);
                 error.config.retryCount += 1;
                 error.config.headers = {
-                    'Authorization': `Bearer ${res.data.accessToken}`,
+                    'Authorization': `Bearer ${res.data.token.access_token}`,
                 }
                 return baseAxios.request(error.config);
             }
@@ -39,7 +42,7 @@ export const customAxios = () => {
         const errorMsg = (error.message === "Network Error") ? {
             response: {
                 status: 500,
-                data: { message: "Network Error" }
+                data: { message: "Network Error23" }
             }
         } : { response: { 
                 data: error.response.data,

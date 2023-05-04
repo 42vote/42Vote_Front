@@ -2,7 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { genToken } from "./util/genToken";
 import { useEffect } from "react";
 import Login from "../login";
-import { useTokenExist } from "../customHook/useTokenCheck";
+import { useTokenExist } from "../customHook/useTokenExist";
+import Cookies from "js-cookie";
 
 const Auth = () => {
   const location = useLocation();
