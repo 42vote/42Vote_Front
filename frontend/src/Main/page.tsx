@@ -8,32 +8,35 @@ import { responsiveVariable } from "./types";
 import { useResponsive } from "./customHooks/useResponsive";
 
 const MainPage: React.FC = () => {
-  //need to fix. tags to [].
   const { data, isLoading } = useTags();
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
-  const responsiveVar:responsiveVariable = useResponsive();
-  useEffect(()=>{
-    let tagList:string[] = [];
-    if (!isLoading && data){
+  const responsiveVar: responsiveVariable = useResponsive();
+  useEffect(() => {
+    let tagList: string[] = [];
+    if (!isLoading && data) {
       if (responsiveVar.isDesktop)
-        for (let i = 0; i < data.length; i++){
+        for (let i = 0; i < data.length; i++) {
           tagList.push(data[i].id);
         }
-      else
-        tagList.push(data[0].id);
+      else tagList.push(data[0].id);
     }
     setSelectedTag(tagList);
-  },[isLoading, data])
+  }, [isLoading, data]);
 
   return (
     <div>
       <div id="mobile">
         <FixedTop />
       </div>
-      <CategoryContainer selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
+      <CategoryContainer
+        selectedTag={selectedTag}
+        setSelectedTag={setSelectedTag}
+        isMain={true}
+      />
       <CardsContainers
         selectedTag={selectedTag}
         setSelectedTag={setSelectedTag}
+        isMain={true}
       />
     </div>
   );
