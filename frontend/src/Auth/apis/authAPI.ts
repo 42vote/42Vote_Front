@@ -1,16 +1,10 @@
 import { customAxios } from "../../Lib/customAxios";
 import { AxiosResponse } from "axios";
-
-interface getMeRes {
-  intraId: string;
-  coalition: string;
-  wallet: number;
-  isAdmin: boolean;
-}
+import { getUserMeRes } from "../types";
 
 export const authAPI = {
-  getMe: async () => {
-    const res: AxiosResponse<getMeRes> = await customAxios().get("/user/me");
+  getUserMe: async () => {
+    const res: AxiosResponse<getUserMeRes> = await customAxios().get("/user/me").catch();
     return {MyData: res.data};
   },
 };
