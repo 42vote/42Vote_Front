@@ -14,7 +14,6 @@ export const genToken = async (code: string) => {
       return tokens;
     })
     .catch((error) => {
-      window.alert(JSON.stringify(error));
     });
   return tokens;
 };

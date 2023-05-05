@@ -1,6 +1,7 @@
 import MainPage from "./page";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Cookies from "js-cookie";
+import { Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -11,11 +12,10 @@ const queryClient = new QueryClient({
 });
 
 const MainIndex: React.FC = () => {
-  const token = Cookies.get('token');
-  if (token === "undefined" || !token){
-    window.alert(token);
-    // return <Navigate to="/" replace />
-  }
+  const tokenExist = Cookies.get('token') !== undefined ? true : false;
+  if (!tokenExist)
+    return <Navigate to="/" replace />
+
   return (
     <QueryClientProvider client={queryClient}>
       <MainPage />
