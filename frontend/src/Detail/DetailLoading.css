@@ -35,7 +35,6 @@
     height: 50px;
     margin-bottom: 30px;
     border-radius: 10px;
-    background-color: #D9D9D9;
 }
 
 #desktop #detail-loading #content-wrapper {
@@ -106,10 +105,9 @@
 }
 
 
-#mobile #detail {
+#mobile #detail-loading {
     padding-top: 35.5px;
     box-sizing: border-box;
-    /*어떻게 해야 정확히 떨어뜨리지?*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,21 +115,20 @@
     min-height: 100vh;
 }
 
-#mobile #detail #title {
-    font-family: 'Lora-Bold', 'kbiz-Bold';
-    font-size: max(23px, 4.5vw);
+#mobile #detail-loading #title {
+    width: 50%;
+    height: 30px;
     margin: 30px 0 20px 0;
-    text-align: center;
 }
 
-#mobile #detail #content-wrapper {
+#mobile #detail-loading #content-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#mobile #detail #content-wrapper #img-section {
+#mobile #detail-loading #content-wrapper #img-section {
     width: 80%;
     max-width: 390px;
     display: flex;
@@ -139,7 +136,7 @@
     margin-bottom: 20px;
 }
 
-#mobile #detail #content-wrapper #img-section button {
+#mobile #detail-loading #content-wrapper #img-section button {
     width: min(60px, 15%);
     border: none;
     background-color: transparent;
@@ -150,153 +147,38 @@
     padding: 0;
 }
 
-#mobile #detail #content-wrapper #img-section #img-file {
+#mobile #detail-loading #content-wrapper #img-section #img-file {
     width: min(260px, 55vw);
     height: min(260px, 55vw);
     margin: 0 10px 0 10px;
-    background-color: #D9D9D9;
-    background-size: cover;
-    position: relative;
 }
 
-#mobile #detail #content-wrapper #img-section #img-file img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    object-fit: contain;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.5s;
-    -webkit-user-drag: none;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-}
-
-#mobile #detail #content-wrapper #img-section #img-file .active {
-    opacity: 1;
-}
-
-#mobile #detail #content-wrapper #img-section #img-nav {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    width: 100%;
-}
-
-#mobile #detail #content-wrapper #img-section #img-file #img-nav div {
-    width: min(10px, 2vw);
-    height: min(10px, 2vw);
-    background-color: rgba(255, 255, 255, 0.5);
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 50px;
-    margin: 0 2px 3px 2px;
-}
-
-#mobile #detail #content-wrapper #img-section #img-file #img-nav .active {
-    background-color: white;
-}
-
-#mobile #detail #txt-section {
+#mobile #detail-loading #txt-section {
     width: 80%;
     max-width: 390px;
-    height: auto;
-    max-height: min(25vh, 180px);
-    overflow-y: auto;
+    height: 25vh;
     margin-bottom: 20px;
 }
 
-#mobile #detail #txt-section #info-wrapper div {
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-#mobile #detail #txt-section #info-wrapper #author {
-    font-family: 'Lora-Bold';
-    font-size: max(18px, 3vw);
-    margin-right: 10px;
-}
-
-#mobile #detail #txt-section #info-wrapper #date {
-    font-family: 'Lora-Regular';
-    font-size: max(12px, 2vw);
-}
-
-#mobile #detail #txt-section #descript {
-    font-family: 'Lora-Regular', 'kbiz-Light';
-    font-size: 15px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-#mobile #detail #progress-bar {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    width: 85%;
-    height: 15px;
-    margin-bottom: 10px;
-    font-size: max(13px, 2vw);
-}
-
-#mobile #detail #progress-bar #progress-bar-out {
-    width: 80%;
-    height: 100%;
-    max-width: 390px;
-    border: 1px solid #383838;
-    border-radius: 20px;
-    margin-right: 2%;
-    overflow: hidden;
-}
-
-#mobile #detail #progress-bar #progress-bar-out #progress-bar-in {
-    width: 33%;
-    height: 100%;
-    background-color: #383838;
-    border-radius: 20px;
-}
-
-#mobile #detail #vote-button {
-    border-radius: 30px;
-    border: 1px solid #383838;
-    background-color: white;
-    font-family: 'Lora-Medium';
-    font-size: 15px;
-    width: 100px;
-    height: 30px;
-    padding: 0;
-    margin-bottom: 30px;
-}
-
-#mobile #detail #vote-button.open {
-    cursor: pointer;
-}
-
-#mobile #detail #vote-button.open.voted {
-    background-color: #383838;
-    color: white;
-}
-
-#mobile #detail #author-button {
+#mobile #detail-loading #txt-section #info-wrapper {
     width: 100%;
-    text-align: center;
+    height: 20%;
+    margin-bottom: 10px;
 }
 
-#mobile #detail #author-button button {
-    border-radius: 30px;
-    border: 1px solid #383838;
-    background-color: white;
-    font-family: 'Lora-Medium';
-    font-size: max(15px, 2vw);
-    width: max(80px, 8%);
-    height: max(25px, 3.5vw);
-    padding: 0;
-    margin: 0 5px 30px 5px;
+#mobile #detail-loading #txt-section #descript {
+    width: 100%;
+    height: 80%;
 }
 
-#mobile #detail #author-button button:hover {
-    background-color: #383838;
-    color: white;
+#mobile #detail-loading #progress-bar {
+    width: 85%;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+#mobile #detail-loading #author-button {
+    width: 30%;
+    height: 4vh;
+    margin-bottom: 30px;
 }

@@ -7,7 +7,8 @@ import { useMediaQuery } from 'react-responsive';
 function Posting() {
     const isDesktop: boolean = useMediaQuery({query: '(min-width: 769px)'});
     const isMobile: boolean = useMediaQuery({query: '(max-width: 768px)'});
-    
+
+
     const radioClick = (event: React.MouseEvent<HTMLLabelElement>): void => {
         const target: HTMLLabelElement = event.target as HTMLLabelElement;
         const targetChild: HTMLInputElement | null = target.querySelector('input');
@@ -55,9 +56,9 @@ function Posting() {
 
     const Layout = (): JSX.Element => {
         const [title, setTitle] = useState('New Post Title');
-        const handleTitle = (event: React.ChangeEvent<HTMLInputElement>): void => {
-            const target: HTMLInputElement = event.target as HTMLInputElement;
 
+        const handleTitle = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const target: HTMLInputElement = event.target as HTMLInputElement;
             setTitle(target.value); //왜 포커스가 풀리지?
         }
 
