@@ -20,18 +20,21 @@ export const customAxios = () => {
         if (error.response && error.response.status === 401) {
 
             const res = await axios({
-                method: 'get',
+                method: 'post',
                 url: process.env.REACT_APP_API_URL + '/user/refresh',
                 headers: {
-                    'Authorization': `Bearer ${rtoken}`,
-                }
+                    'Content-Type': 'application/json',
+                },
+                data: {
+                    refresh_token: rtoken,
+                } 
             });
-            if (res.status === 200 && overRetry) {
+            if (res.status === 201 && overRetry) {
                 localStorage.removeItem("token");
-                localStorage.setItem("token", res.data.accessToken);
+                localStorage.setItem("token", res.data.token.access_token);
                 error.config.retryCount += 1;
                 error.config.headers = {
-                    'Authorization': `Bearer ${res.data.accessToken}`,
+                    'Authorization': `Bearer ${res.data.token.access_token}`,
                 }
                 return baseAxios.request(error.config);
             }

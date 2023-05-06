@@ -1,15 +1,26 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { mainAPI } from "../apis/mainAPI";
-import { documentListQuery, documentListRes } from "../types";
-import { AxiosResponse } from "axios";
+import { documentListQuery } from "../types";
 
-export const useCards = (documentListQuery: documentListQuery) =>
-  useQuery(
-    ["cards", documentListQuery.categoryId],
-    () => mainAPI.getDocList(documentListQuery),
+export const useCards = (documentListQuery: documentListQuery) => {
+  const {
+    data: getCards,
+    isSuccess: getCardsIsSuccess,
+    hasNextPage: getNextPageIsPossible,
+    fetchNextPage: getNextPage,
+  } = useInfiniteQuery(
+    ["cardsInfin", documentListQuery.categoryId],
+    ({ pageParam = 0 }) => mainAPI.getDocList(documentListQuery, pageParam),
     {
-      select: (data: AxiosResponse<documentListRes[]>) => {
-        return data.data;
+      getNextPageParam: (lastPage, allPages) => {
+        if (lastPage.currentPage < 2) return lastPage.currentPage + 1;
+        return undefined;
+      },
+      getPreviousPageParam: (firstPage, allPages) => {
+        if (firstPage.currentPage > 0) return firstPage.currentPage - 1;
+        return undefined;
       },
     }
   );
+  return { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage };
+};

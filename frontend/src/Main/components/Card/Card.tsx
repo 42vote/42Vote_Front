@@ -1,13 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { CardProps } from "../../types";
 
-interface CardProps {
-  id : string,
-  title :string,
-  goal : string,
-  voteCnt : string, 
-  isVoteExpired : string,
-}
 
 const Card: React.FC<CardProps> = ({ id, title, goal, voteCnt, isVoteExpired }) => {
   const ret = Number(voteCnt) * (100 / Number(goal));

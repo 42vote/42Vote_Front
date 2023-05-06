@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { responsiveVariable } from "../types";
-
+export const CardsContainersDiv = styled.div`
+  max-height: 62rem;
+  overflow-y: auto;
+  scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
 export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
   grid-template-rows: 0.5fr ${(props) =>
@@ -14,6 +21,26 @@ export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
       ? "41.625rem"
       : "65%"} 1fr;
   overflow-y: auto;
+    scrollbar-width: none;
+  animation: comeOut 0.5s;
+
+  @keyframes comeOut {
+    0% {
+      opacity: 0;
+      margin-top: 30rem;
+    }
+    50% {
+      opacity: 0.65;
+      opcity: 0.25;
+    }
+    80% {
+      opacity: 0.95;
+    }
+    100% {
+      margin-top: 0rem;
+      opacity: 1;
+    }
+  }
 `;
 
 export const CardsList = styled.div<{ responsiveVar: responsiveVariable }>`
@@ -34,6 +61,7 @@ export const CardsList = styled.div<{ responsiveVar: responsiveVariable }>`
   &::-webkit-scrollbar {
     display: none;
   }
+
 `;
 
 export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
