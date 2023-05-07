@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
 
 export const tokenExist = () => {
-  const token = Cookies.get('token')
-  if (token === undefined)
+  const rtoken = Cookies.get('rtoken')
+  if (rtoken === undefined)
     return false;
   return (true);
 };
