@@ -5,8 +5,8 @@ const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10rem;
-  height: 11.875rem;
+  width: 8rem;
+  height: 9.375rem;
   margin: 1rem;
   padding: 1rem;
 `;
@@ -15,7 +15,7 @@ const ProductCard = styled.div`
   margin: 0.625rem;
   padding: 1.25rem;
   border-radius: 0.625rem;
-  height: 11.75rem;
+  height: 10.7rem;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 0px 0px 0.625rem rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -31,8 +31,8 @@ const ProductCard = styled.div`
 `;
 
 const ProductImage = styled.div`
-  width: 9.375rem;
-  height: 9.375rem;
+  width: 7.5rem;
+  height: 7.5rem;
   object-fit: contain;
   border-radius: 0.3125rem;
   background-color: #ddd;
@@ -65,7 +65,7 @@ const ProductTitle = styled.h2`
   color: #333333;
   transition: color 0.5s ease-in-out;
   white-space: nowrap;
-  max-width: 9.375rem;
+  max-width: 7.5rem;
   margin-bottom: 0.3125rem;
   overflow: hidden;
   text-overflow: ellipsis;
