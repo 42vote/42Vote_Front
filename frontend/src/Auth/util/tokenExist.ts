@@ -1,10 +1,8 @@
-import { authAPI } from "../apis/authAPI";
+import Cookies from "js-cookie";
 
-export const tokenExist = async () => {
-  try {
-    await authAPI.getUserMe()
-  } catch {
-    return (false);
-  }
+export const tokenExist = () => {
+  const token = Cookies.get('token')
+  if (token === undefined)
+    return false;
   return (true);
 };

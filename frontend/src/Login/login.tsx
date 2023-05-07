@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Cookies from "js-cookie";
-import "./login.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { tokenExist } from "../Auth/util/tokenExist";
+import "./login.css";
 
 interface loginProps {
   LoginText: string;
@@ -10,18 +9,12 @@ interface loginProps {
 
 const Login = (prop: loginProps) => {
   const [LoginText, setLoginText] = useState(prop.LoginText);
-  // const isToken = tokenExist().then((data) => {
-  //   if (data)
-  //     navi("/main"); 
-  // });
   const navi = useNavigate();
   const handleLogin = () => {
     setLoginText("Wait a second...");
-    const tokenExist = Cookies.get('token') !== undefined ? true : false;
-    if (!tokenExist)
+    if (!tokenExist())
       window.location.href = process.env.REACT_APP_LOGIN_URL || "";
-    else
-      navi("/main");
+    else navi("/main");
   };
 
   return (
