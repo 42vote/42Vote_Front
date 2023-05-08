@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./login.css";
-import { useTokenExist } from "./customHook/useTokenExist";
 import { useNavigate } from "react-router-dom";
+import { tokenExist } from "../Auth/util/tokenExist";
+import "./login.css";
 
 interface loginProps {
   LoginText: string;
@@ -9,12 +9,12 @@ interface loginProps {
 
 const Login = (prop: loginProps) => {
   const [LoginText, setLoginText] = useState(prop.LoginText);
-  const tokenExist = useTokenExist();
   const navi = useNavigate();
   const handleLogin = () => {
     setLoginText("Wait a second...");
-    if (tokenExist) navi("/main");
-    else window.location.href = process.env.REACT_APP_LOGIN_URL || "";
+    if (!tokenExist())
+      window.location.href = process.env.REACT_APP_LOGIN_URL || "";
+    else navi("/main");
   };
 
   return (
