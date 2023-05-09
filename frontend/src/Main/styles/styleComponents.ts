@@ -38,7 +38,7 @@ export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
     }
     50% {
       opacity: 0.65;
-      opcity: 0.25;
+      opacity: 0.25;
     }
     80% {
       opacity: 0.95;
