@@ -1,6 +1,7 @@
 export interface selectTagProps {
   selectedTag: string[];
   setSelectedTag: React.Dispatch<React.SetStateAction<string[]>>;
+  isMain: boolean;
 }
 
 export interface CardProps {

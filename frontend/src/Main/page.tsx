@@ -7,7 +7,6 @@ import { responsiveVariable } from "./types";
 import { useResponsive } from "./customHooks/useResponsive";
 
 const MainPage: React.FC = () => {
-  //need to fix. tags to [].
   const { data, isLoading } = useTags();
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
   const responsiveVar: responsiveVariable = useResponsive();
@@ -28,10 +27,12 @@ const MainPage: React.FC = () => {
       <CategoryContainer
         selectedTag={selectedTag}
         setSelectedTag={setSelectedTag}
+        isMain={true}
       />
       <CardsContainers
         selectedTag={selectedTag}
         setSelectedTag={setSelectedTag}
+        isMain={true}
       />
     </div>
   );
