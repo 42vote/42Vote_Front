@@ -27,7 +27,6 @@ const CardsContainer = (props: cardsProps) => {
     useCards(documentApiQuery, docSize.data ? docSize.data.categorySize : -1);
   const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
 
-  console.log(getCards);
   const scrollRef = useRef<HTMLDivElement>(null);
   const responsiveVar = useResponsive();
   const fontSizeNum: number = Number(

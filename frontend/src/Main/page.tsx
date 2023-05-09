@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import FixedTop from "../Etc/FixedTop";
 import CategoryContainer from "./components/Category/CategoryContainer";
 import CardsContainers from "./components/Card/CardsContainers";
 import "./styles/style.css";
@@ -26,7 +25,6 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
-      <FixedTop />
       <CategoryContainer
         selectedTag={selectedTag}
         setSelectedTag={setSelectedTag}

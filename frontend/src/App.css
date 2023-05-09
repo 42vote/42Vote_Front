@@ -1,5 +1,5 @@
 .transitions-wrapper {
-    position: relative;
+    position: absolute;
     overflow: hidden;
     height: calc(var(--vh, 1vh) * 100);
     width: 100vw;

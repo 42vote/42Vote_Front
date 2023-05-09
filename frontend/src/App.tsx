@@ -15,7 +15,7 @@ function App() {
   const locationSearch = location.search;
   return (
     <TransitionGroup>
-      <CSSTransition key={location.pathname} classNames="right" timeout={40000}>
+      <CSSTransition key={location.pathname} classNames="right" timeout={300}>
         <Routes location={location}>
           <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Login LoginText="Login with 42OAuth" />} />

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokenExist } from "../Auth/util/tokenExist";
 import "./login.css";
+import { AbsolutedDiv } from "../Main/styles/styleComponents";
 
 interface loginProps {
   LoginText: string;
@@ -18,20 +19,22 @@ const Login = (prop: loginProps) => {
   };
 
   return (
-    <div className="login-container">
-      <div className="logo">
-        <h2>42Vote</h2>
+    <AbsolutedDiv>
+      <div className="login-container">
+        <div className="logo">
+          <h2>42Vote</h2>
+        </div>
+        <div className="oauth-container">
+          <button
+            disabled={LoginText === "Wait a second..."}
+            className="oauth-btn"
+            onClick={handleLogin}
+          >
+            {LoginText}
+          </button>
+        </div>
       </div>
-      <div className="oauth-container">
-        <button
-          disabled={LoginText === "Wait a second..."}
-          className="oauth-btn"
-          onClick={handleLogin}
-        >
-          {LoginText}
-        </button>
-      </div>
-    </div>
+    </AbsolutedDiv>
   );
 };
 
