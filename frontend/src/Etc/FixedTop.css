@@ -24,6 +24,7 @@
 }
 
 #fixed-top #button-wrap #my-profile-button {
+    cursor: pointer;
     background-image: url(../../public/img/my-profile-button.svg);
 }
 
