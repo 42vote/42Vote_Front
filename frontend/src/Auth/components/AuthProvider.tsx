@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import { Navigate, Outlet } from "react-router-dom";
 import { tokenExist } from "../util/tokenExist";
 

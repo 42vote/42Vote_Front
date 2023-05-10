@@ -22,6 +22,7 @@ const MainPage: React.FC = () => {
     setSelectedTag(tagList);
   }, [isLoading, data]);
 
+  //이 부분 transition안되는 이유?
   return (
     <div>
       <CategoryContainer
