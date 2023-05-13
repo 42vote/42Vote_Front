@@ -46,19 +46,19 @@
 
 @font-face {
     font-family: 'kbiz-Regular';
-    src: url('../public/Fonts/KBIZ한마음명조\ R.ttf');
+    src: url('../public/Fonts/KBIZ한마음명조\ R.ttf');
     unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
     font-family: 'kbiz-Medium';
-    src: url('../public/Fonts/KBIZ한마음명조\ M.ttf');
+    src: url('../public/Fonts/KBIZ한마음명조\ M.ttf');
     unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
     font-family: 'kbiz-Bold';
-    src: url('../public/Fonts/KBIZ한마음명조\ B.ttf');
+    src: url('../public/Fonts/KBIZ한마음명조\ B.ttf');
     unicode-range: U+AC00-D7A3;
 }
 
