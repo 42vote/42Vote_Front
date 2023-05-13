@@ -1,6 +1,5 @@
 import ScaleLoader from "react-spinners/ScaleLoader";
 import "../../App.css";
-import { Modal } from "react-bootstrap";
 import styled from "styled-components";
 
 const LoadingContainer = styled.div`

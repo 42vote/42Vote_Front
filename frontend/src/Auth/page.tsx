@@ -17,11 +17,11 @@ const Auth = ({ locationSearch }: AuthProps) => {
   useEffect(() => {
     if (code && !tokenExist())
       genToken(code).then((response: tokens | void) => {
-        if (response && response.access_token)
-          setTimeout(() => {
-            navi("/main");
-          }, 200);
+        setTimeout(() => {
+          navi("/main");
+        }, 100);
       });
+    if (tokenExist()) navi("/main");
   }, [code, navi]);
 
   return <LoadingModal />;
