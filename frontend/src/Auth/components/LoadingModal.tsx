@@ -17,7 +17,7 @@ const LoadingModal = () => {
   return (
     <LoadingContainer>
       <ScaleLoader color="#000" />
-      <h2>Loading...</h2>
+      <h2>Loading</h2>
     </LoadingContainer>
   );
 };

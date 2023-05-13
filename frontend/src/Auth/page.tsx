@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { genToken } from "./util/genToken";
 import { useEffect } from "react";
-import Cookies from "js-cookie";
 import LoadingModal from "./components/LoadingModal";
+import { tokenExist } from "./util/tokenExist";
+import { tokens } from "./types";
 
 interface AuthProps {
   locationSearch: string;
@@ -11,12 +12,17 @@ interface AuthProps {
 const Auth = ({ locationSearch }: AuthProps) => {
   const query = new URLSearchParams(locationSearch);
   const code = query.get("code");
-  const tokenExist = Cookies.get("token") !== undefined ? true : false;
   const navi = useNavigate();
 
   useEffect(() => {
-    if (code && !tokenExist) genToken(code).then(() => console.log(""));
-  }, [code, tokenExist, navi]);
+    if (code && !tokenExist())
+      genToken(code).then((response: tokens | void) => {
+        if (response && response.access_token)
+          setTimeout(() => {
+            navi("/main");
+          }, 200);
+      });
+  }, [code, navi]);
 
   return <LoadingModal />;
 };
