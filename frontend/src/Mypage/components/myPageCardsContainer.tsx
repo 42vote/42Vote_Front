@@ -1,33 +1,35 @@
-import React, { useRef } from "react";
-import { useCards } from "../../customHooks/useCards";
-import { CardsList, TagHeader } from "../../styles/styleComponents";
-import { useResponsive } from "../../customHooks/useResponsive";
-import { documentListQuery } from "../../types";
-import { useTags } from "../../customHooks/useTags";
-import Card from "./Card";
-import NoCards from "./NoCards";
-import SkeletonCards from "./SkeletonCards";
-import { useDocSize } from "../../customHooks/useDocSize";
+import { CardsList, TagHeader } from "../../Main/styles/styleComponents";
+import { documentListQuery } from "../../Main/types";
+import { useCards } from "../../Main/customHooks/useCards";
+import { useRef } from "react";
+import { useResponsive } from "../../Main/customHooks/useResponsive";
+import Card from "../../Main/components/Card/Card";
+import NoCards from "../../Main/components/Card/NoCards";
+import SkeletonCards from "../../Main/components/Card/SkeletonCards";
+
+const myPostListQuery: documentListQuery = {
+  categoryId: "",
+  listSize: "5",
+  myPost: "true",
+  myVote: "false",
+};
+const myVoteListQuery: documentListQuery = {
+  categoryId: "",
+  listSize: "5",
+  myPost: "true",
+  myVote: "false",
+};
 
 interface cardsProps {
   tag: string;
   isMain: boolean;
 }
 
-const CardsContainer = (props: cardsProps) => {
-  const selectedTag = props.tag;
-  const documentApiQuery: documentListQuery = {
-    categoryId: selectedTag,
-    listSize: "5",
-    myPost: "false",
-    myVote: "false",
-  };
-
-  const docSize = useDocSize(props.tag);
+const MyPageCards = (props: cardsProps) => {
+  // need to update NestJS
+  // const docSize = useDocSize();
   const { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage } =
-    useCards(documentApiQuery, docSize.data ? docSize.data.categorySize : -1);
-  const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
-
+    useCards(props.tag === "-1" ? myPostListQuery : myVoteListQuery, 1);
   const scrollRef = useRef<HTMLDivElement>(null);
   const responsiveVar = useResponsive();
   const fontSizeNum: number = Number(
@@ -36,7 +38,6 @@ const CardsContainer = (props: cardsProps) => {
       .getPropertyValue("font-size")
       .split("px")[0]
   );
-
   const scrollMove = (direction: number) => {
     if (responsiveVar.isFiveCards)
       scrollRef.current!.scrollLeft += 60 * fontSizeNum * direction;
@@ -44,7 +45,6 @@ const CardsContainer = (props: cardsProps) => {
       scrollRef.current!.scrollLeft += 48 * fontSizeNum * direction;
     else scrollRef.current!.scrollLeft += 36.325 * fontSizeNum * direction;
   };
-
   const scrollEvent = () => {
     const container = scrollRef.current;
     if (container) {
@@ -60,7 +60,6 @@ const CardsContainer = (props: cardsProps) => {
       if (isEnd && getNextPageIsPossible) getNextPage();
     }
   };
-
   const handleNext = () => {
     scrollMove(1);
   };
@@ -72,7 +71,7 @@ const CardsContainer = (props: cardsProps) => {
   return (
     <>
       <TagHeader responsiveVar={responsiveVar}>
-        #{tagInfo ? tagInfo[0].title : ""}
+        #{props.tag === "-1" ? "MyPost" : "MyVote"}
       </TagHeader>
       {getCardsIsSuccess &&
       getCards &&
@@ -118,6 +117,7 @@ const CardsContainer = (props: cardsProps) => {
       ) : null}
     </>
   );
+
 };
 
-export default CardsContainer;
+export default MyPageCards;

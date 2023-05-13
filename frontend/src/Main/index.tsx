@@ -1,24 +1,23 @@
 import MainPage from "./page";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Cookies from "js-cookie";
+import { AbsolutedDiv } from "./styles/styleComponents";
+import FixedTop from "../Etc/FixedTop";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 10000,
-    }
-  }
+    },
+  },
 });
 
 const MainIndex: React.FC = () => {
-  const token = Cookies.get('token');
-  if (token === "undefined" || !token){
-    window.alert(token);
-    // return <Navigate to="/" replace />
-  }
   return (
     <QueryClientProvider client={queryClient}>
-      <MainPage />
+      <FixedTop />
+      <AbsolutedDiv>
+        <MainPage />
+      </AbsolutedDiv>
     </QueryClientProvider>
   );
 };

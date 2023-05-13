@@ -1,5 +1,13 @@
 import styled from "styled-components";
 import { responsiveVariable } from "../types";
+
+export const AbsolutedDiv = styled.div`
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  width:100%;
+`
 export const CardsContainersDiv = styled.div`
   max-height: 62rem;
   overflow-y: auto;

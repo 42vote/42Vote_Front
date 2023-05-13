@@ -1,9 +1,11 @@
 import { useMediaQuery } from 'react-responsive';
 import './FixedTop.css';
+import { useNavigate } from 'react-router-dom';
 
 function FixedTop() {
     const isDesktop: boolean = useMediaQuery({query: '(min-width: 769px)'})
     const isMobile: boolean = useMediaQuery({query: '(max-width: 768px)'});
+    const navi = useNavigate();
 
     //props로 admin 권한 확인 추가
     //로고 클릭시 main 이동
@@ -16,7 +18,7 @@ function FixedTop() {
                     <button id="new-post-button">
                         <span>New Post</span>
                     </button>
-                    <button id="my-profile-button" className="img-button"></button>
+                    <button onClick={()=>navi("/mypage")} id="my-profile-button" className="img-button"></button>
                     <button id="admin-button" className="img-button"></button>
                 </div>
             </div>

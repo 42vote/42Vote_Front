@@ -3,6 +3,7 @@ import CardsContainer from "./CardsContainer";
 import { selectTagProps } from "../../types";
 import { useResponsive } from "../../customHooks/useResponsive";
 import { CardsArea, CardsContainersDiv } from "../../styles/styleComponents";
+import MyPageCards from "../../../Mypage/components/myPageCardsContainer";
 
 const CardsContainers = (props: selectTagProps) => {
   const selectedTag = props.selectedTag;
@@ -13,7 +14,11 @@ const CardsContainers = (props: selectTagProps) => {
       {selectedTag.map((tag) => (
         <div key={tag}>
           <CardsArea key={tag} responsiveVar={responsiveVar}>
-            <CardsContainer tag={tag} />
+            {props.isMain ? (
+              <CardsContainer tag={tag} isMain={props.isMain} />
+            ) : (
+              <MyPageCards tag={tag} isMain={props.isMain} />
+            )}
           </CardsArea>
         </div>
       ))}
