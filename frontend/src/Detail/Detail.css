@@ -400,3 +400,12 @@
     background-color: #383838;
     color: white;
 }
+
+.swal2-popup, .swal2-styled {
+    font-family: 'kbiz-Bold', 'Lora-Regular';
+}
+
+.swal2-confirm {
+    background-color: #D9D9D9 !important;
+    color: #383838 !important;
+}

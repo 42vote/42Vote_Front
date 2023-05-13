@@ -3,8 +3,9 @@ import { useMediaQuery } from 'react-responsive';
 import Swal from 'sweetalert2';
 import './Detail.css';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { customAxios } from '../lib/customAxios';
+import { customAxios } from '../Lib/customAxios';
 import { useQuery } from '@tanstack/react-query';
+import { SlideImage } from './SlideImage';
 import DetailLoading from './DetailLoading';
 import NotFound from '../Etc/NotFound';
 
@@ -33,7 +34,7 @@ function Detail() {
         return res.data;
     }
     
-    const { data, isLoading, isError } = useQuery<document>(['detail'], getData, {retry: 0});
+    const { data, isLoading, isError } = useQuery<document>(['detail'], getData, {retry: false, staleTime: 60 * 1000, refetchOnWindowFocus: false});
 
     if (isLoading)
         return (<div id={isMobile ? "mobile" : "desktop"}><FixedTop/><DetailLoading/></div>);
@@ -61,7 +62,6 @@ function Detail() {
 
     /*--------------------------------------------------------*/
 
-
     const TimeLine = (): string => {
         if (data) {
             let result: string = '';
@@ -80,65 +80,6 @@ function Detail() {
         return '';
     }
 
-    const ImgNavClick = (event: React.MouseEvent<HTMLDivElement>): void => {
-        const target: HTMLElement = event.target as HTMLDivElement;
-        const targetSibling: Element[] = Array.from(target.parentElement?.children || []);
-        const idx: number = targetSibling.indexOf(target);
-        const images: NodeListOf<Element> | undefined = target.parentElement?.parentElement?.querySelectorAll('.doc-img');
-        const background: HTMLElement = document.getElementById('img-file') as HTMLDivElement;
-
-        targetSibling.forEach(sibling => {
-            if (sibling !== target)
-                sibling.classList.remove('active');
-            else
-                sibling.classList.add('active');
-        });
-
-        images?.forEach((img, index) => {
-            if (index !== idx)
-                img.classList.remove('active');
-            else {
-                img.classList.add('active');
-                background.style.backgroundImage = 'url(' + img.getAttribute('src') + ')';
-            }
-        });
-    }
-
-    const ImgArrowClick = (event: React.MouseEvent<HTMLButtonElement>, direction: number): void => {
-        const target: HTMLElement = event.target as HTMLButtonElement;
-        const images: NodeListOf<Element> | undefined = target.parentElement?.querySelectorAll('.doc-img');
-        const nav: NodeListOf<Element> | undefined = target.parentElement?.querySelectorAll('.nav');
-        const background: HTMLElement = document.getElementById('img-file') as HTMLDivElement;
-        let idx: number = 0;
-        
-        images?.forEach((img, index) => {
-            if (img.classList.contains('active'))
-                idx = index;
-        });
-
-        idx += direction;
-        if (idx === -1) {
-            idx = images ? images.length - 1 : 0;
-        } else if (idx === images?.length) {
-            idx = 0;
-        }
-
-        images?.forEach((img, index) => {
-            if (index !== idx)
-                img.classList.remove('active');
-            else {
-                img.classList.add('active');
-                background.style.backgroundImage = 'url(' + img.getAttribute('src') + ')';
-            }
-        });
-
-        nav?.forEach((nav, index) => {
-            if (index !== idx)
-                nav.classList.remove('active');
-            else
-                nav.classList.add('active');
-        });
-    }
 
     const Vote = (event: React.MouseEvent<HTMLButtonElement>): void => {
         if (data) {
@@ -173,7 +114,7 @@ function Detail() {
             showCancelButton: true,
             confirmButtonColor: 'white',
             cancelButtonColor: '#383838',
-            confirmButtonText: 'delete'
+            confirmButtonText: 'Delete'
         }).then((res) => {
             if (res.isConfirmed) {
                 customAxios().delete('/document/' + docId).then(() => {
@@ -182,11 +123,13 @@ function Detail() {
                     });
                 }).catch((err) => {
                     if (err.response.status === 404)
-                        nav('/notfound') //notfound 컴포넌트
+                        nav('/notfound') //notfound 컴포넌트 || 접속하지 못한 페이지의 글을 삭제할 수 있나?
                 });
             }
         });
     }
+
+    //stat 만들기
 
     const Layout = (): JSX.Element => {
         return (
@@ -197,7 +140,7 @@ function Detail() {
                         <div id="title">{data.title}</div>
                         <div id="content-wrapper">
                             <div id="img-section">
-                                <button id="img-left" onClick={event => ImgArrowClick(event, -1)}></button>
+                                <button id="img-left" onClick={event => SlideImage.ImgArrowClick(event, -1)}></button>
                                 <div id="img-file" style={{backgroundImage: 'url(' + data.image[0] + ')'}}>
                                     {
                                         data.image.map((img, idx) => (
@@ -208,13 +151,13 @@ function Detail() {
                                     <div id="img-nav">
                                         {
                                             data.image.map((img, idx) => (
-                                                idx === 0 ? <div className="nav active" onClick={ImgNavClick} key={img}></div>
-                                                : <div className="nav" onClick={ImgNavClick} key={img}></div>
+                                                idx === 0 ? <div className="nav active" onClick={SlideImage.ImgNavClick} key={img}></div>
+                                                : <div className="nav" onClick={SlideImage.ImgNavClick} key={img}></div>
                                             ))
                                         }
                                     </div>
                                 </div>
-                                <button id="img-right" onClick={event => ImgArrowClick(event, 1)}></button>
+                                <button id="img-right" onClick={event => SlideImage.ImgArrowClick(event, 1)}></button>
                             </div>
                             <div id="txt-section">
                                 <div id="info-wrapper">
@@ -234,13 +177,13 @@ function Detail() {
                             data.isAuthor === false &&
                             <button id="vote-button" className="open" onClick={Vote}>support</button>
                         }
-                        {
-                            data.isAuthor && 
+                        {/* {
+                            data.isAuthor &&  */}
                             <div id="author-button">
                                 <button id="doc-delete" onClick={DocDelete}>Delete</button>
                                 <button id="doc-stat">Stat</button>
                             </div>
-                        }
+                        {/* } */}
                     </div>
                 )
             }
