@@ -14,7 +14,6 @@ const queryClient = new QueryClient({
 const MainIndex: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <FixedTop />
       <AbsolutedDiv>
         <MainPage />
       </AbsolutedDiv>

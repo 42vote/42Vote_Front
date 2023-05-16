@@ -4,6 +4,16 @@
 }
 
 @font-face {
+    font-family: 'Roboto-Mono-M';
+    src: url('./../public/Fonts/RobotoMono-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto-Mono-B';
+    src: url('./../public/Fonts/RobotoMono-Bold.ttf');
+}
+
+@font-face {
     font-family: 'Lora-BoldItalic';
     src: url('../public/Fonts/Lora-BoldItalic.ttf');
 }
@@ -61,6 +71,7 @@
     src: url('../public/Fonts/KBIZ한마음명조\ B.ttf');
     unicode-range: U+AC00-D7A3;
 }
+
 
 html, body {
     margin: 0;

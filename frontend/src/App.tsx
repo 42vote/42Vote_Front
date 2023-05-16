@@ -8,14 +8,12 @@ import Auth from "./Auth/page";
 import MyPage from "./Mypage";
 import Posting from "./Posting/Posting";
 import ProtectRoute from "./Auth/components/AuthProvider";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 function App() {
   const location = useLocation();
+  const locationPathName = location.pathname;
   const locationSearch = location.search;
   return (
-    <TransitionGroup>
-      <CSSTransition key={location.pathname} classNames="right" timeout={400}>
         <Routes location={location}>
           <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Login LoginText="Login with 42OAuth" />} />
@@ -23,15 +21,13 @@ function App() {
             path="/auth/42/redirect"
             element={<Auth locationSearch={locationSearch} />}
           />
-          <Route element={<ProtectRoute />}>
+          <Route element={<ProtectRoute pathname={locationPathName}/>}>
             <Route path="/main" element={<MainIndex />} />
             <Route path="/detail" element={<Detail />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/posting" element={<Posting />} />
           </Route>
         </Routes>
-      </CSSTransition>
-    </TransitionGroup>
   );
 }
 

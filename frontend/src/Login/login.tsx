@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokenExist } from "../Auth/util/tokenExist";
-import "./login.css";
 import { AbsolutedDiv } from "../Main/styles/styleComponents";
+import "./login.css";
 
 interface loginProps {
   LoginText: string;
