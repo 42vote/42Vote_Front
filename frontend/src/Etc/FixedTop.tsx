@@ -13,7 +13,7 @@ function FixedTop() {
     const Layout = (): JSX.Element => {
         return (
             <div id="fixed-top">
-                <div id="logo">42 Vote</div>
+                <div id="logo" onClick={()=>navi("/main")}>42 Vote</div>
                 <div id="button-wrap">
                     <button id="new-post-button">
                         <span>New Post</span>

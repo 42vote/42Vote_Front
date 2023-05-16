@@ -15,7 +15,6 @@ const queryClient = new QueryClient({
 const MyPageIndex: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <FixedTop />
       <AbsolutedDiv>
         <MyPage />
       </AbsolutedDiv>
