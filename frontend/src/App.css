@@ -1,23 +1,26 @@
 .transitions-wrapper {
-    position: absolute;
-    overflow: hidden;
-    height: calc(var(--vh, 1vh) * 100);
-    width: 100vw;
-  }
-  .right-enter {
-    transform: translateX(100%);
-  }
-  
-  .right-enter-active {
-    transform: translateX(0);
-    transition: transform 300ms ease-in-out;
-  }
-  
-  .right-exit {
-    transform: translateX(0);
-  }
-  
-  .right-exit-active {
-    transform: translateX(-100%);
-    transition: transform 300ms ease-in-out;
-  }
+  position: absolute;
+  overflow: hidden;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100vw;
+}
+.fade-enter {
+  opacity: 0;
+  transform: scale(0.98)
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 600ms, transform 600ms;
+}
+
+.fade-exit {
+  opacity: 0;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 600ms, transform 600ms;
+}

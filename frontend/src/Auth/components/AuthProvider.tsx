@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { tokenExist } from "../util/tokenExist";
-import FixedTop from "../../Etc/FixedTop";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import FixedTop from "../../Etc/FixedTop";
 
 interface ProtectRouteProps {
   pathname: string;
@@ -16,7 +16,7 @@ const ProtectRoute = (props: ProtectRouteProps): React.ReactElement | null => {
     <>
       <FixedTop />
       <TransitionGroup>
-        <CSSTransition key={props.pathname} classNames="right" timeout={400}>
+        <CSSTransition key={props.pathname} classNames="fade" timeout={600}>
           <Outlet />
         </CSSTransition>
       </TransitionGroup>
