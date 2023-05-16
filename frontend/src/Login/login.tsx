@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { tokenExist } from "../Auth/util/tokenExist";
 import { AbsolutedDiv } from "../Main/styles/styleComponents";
 import "./login.css";
+import ScramblerComponent from "../Mypage/effects/Scrambler";
 
 interface loginProps {
   LoginText: string;
@@ -22,7 +23,9 @@ const Login = (prop: loginProps) => {
     <AbsolutedDiv>
       <div className="login-container">
         <div className="logo">
-          <h2>42Vote</h2>
+          <h2>
+            <ScramblerComponent text="42Vote" />
+          </h2>
         </div>
         <div className="oauth-container">
           <button
@@ -30,7 +33,7 @@ const Login = (prop: loginProps) => {
             className="oauth-btn"
             onClick={handleLogin}
           >
-            {LoginText}
+            <ScramblerComponent text={LoginText} />
           </button>
         </div>
       </div>
