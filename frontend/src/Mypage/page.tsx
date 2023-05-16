@@ -1,5 +1,4 @@
 import React from "react";
-import FixedTop from "../Etc/FixedTop";
 import CardsContainers from "../Main/components/Card/CardsContainers";
 import UserInfoContainer from "./components/UserInfoContainer";
 import { useUser } from "./customHooks/useUser";
