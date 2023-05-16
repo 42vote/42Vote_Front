@@ -4,10 +4,10 @@ import FixedTop from "../../Etc/FixedTop";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 interface ProtectRouteProps {
-    pathname: string;
+  pathname: string;
 }
 
-const ProtectRoute = (props:ProtectRouteProps): React.ReactElement | null => {
+const ProtectRoute = (props: ProtectRouteProps): React.ReactElement | null => {
   if (!tokenExist()) {
     alert("다시 로그인 해주세요.");
     return <Navigate to="/" />;

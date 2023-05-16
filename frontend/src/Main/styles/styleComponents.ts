@@ -30,25 +30,25 @@ export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
         : "65%"} 1fr;
   overflow-y: auto;
   scrollbar-width: none;
-  animation: comeOut 0.5s;
+  // animation: comeOut 0.5s;
 
-  @keyframes comeOut {
-    0% {
-      opacity: 0;
-      margin-top: 30rem;
-    }
-    50% {
-      opacity: 0.65;
-      opacity: 0.25;
-    }
-    80% {
-      opacity: 0.95;
-    }
-    100% {
-      margin-top: 0rem;
-      opacity: 1;
-    }
-  }
+  // @keyframes comeOut {
+  //   0% {
+  //     opacity: 0;
+  //     margin-top: 30rem;
+  //   }
+  //   50% {
+  //     opacity: 0.65;
+  //     opacity: 0.25;
+  //   }
+  //   80% {
+  //     opacity: 0.95;
+  //   }
+  //   100% {
+  //     margin-top: 0rem;
+  //     opacity: 1;
+  //   }
+  // }
 `;
 
 export const CardsList = styled.div<{ responsiveVar: responsiveVariable }>`
