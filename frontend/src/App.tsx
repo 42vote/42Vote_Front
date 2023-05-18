@@ -26,7 +26,7 @@ function App() {
           <Route path="/detail/*" element={<Detail />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/posting" element={<Posting />} />
-          <Route element={<ProtectRoute pathname={locationPathName}/>}>
+          <Route element={<ProtectRoute pathname={locationPathName}/>} />
         </Routes>
       </QueryClientProvider>
   );

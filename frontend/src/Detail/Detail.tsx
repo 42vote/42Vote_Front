@@ -177,13 +177,13 @@ function Detail() {
                             data.isAuthor === false &&
                             <button id="vote-button" className="open" onClick={Vote}>support</button>
                         }
-                        {/* {
-                            data.isAuthor &&  */}
+                        {
+                            data.isAuthor && 
                             <div id="author-button">
                                 <button id="doc-delete" onClick={DocDelete}>Delete</button>
                                 <button id="doc-stat">Stat</button>
                             </div>
-                        {/* } */}
+                        }
                     </div>
                 )
             }
