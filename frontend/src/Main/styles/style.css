@@ -6,6 +6,8 @@
 
 .tags-container {
   grid-column: 2;
+  display: flex;
+  overflow: hidden;
   margin-top: 1.875rem;
   margin-left: 1rem;
 }
@@ -21,12 +23,15 @@
   background-color: #ddd;
   cursor: pointer;
   user-select: none;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 3px 3px 0.125rem rgba(0, 0, 0, 0.3);
 }
 
 .tag.selected {
   background-color: #000;
   border: none;
   color: #fff;
+  box-shadow: 2px 2px 0.125rem rgba(0, 0, 0, 0.3);
 }
 
 /* Cards */
@@ -60,13 +65,13 @@
   border-radius: 0.625rem;
   height: 11.25rem;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  box-shadow: 0px 0px 0.625rem rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 0.625rem rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
 .product-card:hover {
   transform: scale(1.09);
-  box-shadow: 0px 0px 0.625rem rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 0.625rem rgba(0, 0, 0, 0.4);
 }
 
 .product-card__image {
@@ -111,6 +116,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  overflow: hidden;
   margin-left: 1.875rem;
 }
 

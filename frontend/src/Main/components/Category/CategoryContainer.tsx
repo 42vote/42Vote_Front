@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useTags } from "../../customHooks/useTags";
 import { selectTagProps } from "../../types";
 import { useResponsive } from "../../customHooks/useResponsive";
-import { SkeletonTag, TagConatiner } from "../../styles/styleComponents";
+import { SkeletonTag, TagConatiner, Tags } from "../../styles/styleComponents";
 import Category from "./Category";
 
 const CategoryContainer = (props: selectTagProps) => {
@@ -27,7 +27,7 @@ const CategoryContainer = (props: selectTagProps) => {
 
   return (
     <TagConatiner responsiveVar={responsiveVar}>
-      <div className="tags-container">
+      <Tags responsiveVar={responsiveVar}>
         {!isLoading
           ? data?.map((tag) => (
               <Category
@@ -41,7 +41,7 @@ const CategoryContainer = (props: selectTagProps) => {
           : Array.from({ length: 4 }).map((_, index) => (
               <SkeletonTag key={index} />
             ))}
-      </div>
+      </Tags>
     </TagConatiner>
   );
 };
