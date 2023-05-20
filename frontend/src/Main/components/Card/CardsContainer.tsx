@@ -26,7 +26,12 @@ const CardsContainer = (props: cardsProps) => {
   const docSize = useDocSize(props.tag);
   const { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage } =
     useCards(documentApiQuery, docSize.data ? docSize.data.categorySize : -1);
+  if (getCards)
+    console.log(getCards);
   const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
+  if (getCards)
+    console.log(getCards.pages[0].cardArrary[0].image.toString());
+
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const responsiveVar = useResponsive();

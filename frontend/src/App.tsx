@@ -8,6 +8,7 @@ import Auth from "./Auth/page";
 import MyPage from "./Mypage";
 import Posting from "./Posting/Posting";
 import ProtectRoute from "./Auth/components/AuthProvider";
+import Test from "./Test/test";
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/posting" element={<Posting />} />
           </Route>
+          <Route path="/test" element={<Test/>}/>
         </Routes>
   );
 }
