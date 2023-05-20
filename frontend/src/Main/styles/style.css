@@ -63,6 +63,7 @@
   margin: 0.625rem;
   padding: 1.25rem;
   border-radius: 0.625rem;
+  width: 7.5rem;
   height: 11.25rem;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 3px 3px 0.625rem rgba(0, 0, 0, 0.3);
