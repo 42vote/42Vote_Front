@@ -138,6 +138,7 @@ export const Cards = styled.div<{ mainColor: string }>`
 
 export const ProductCard = styled.div<{ mainColor: string }>`
   background-color: ${(prop) => prop.mainColor};
+  width: 7.5rem;
   margin: 0.625rem;
   padding: 1.25rem;
   border-radius: 0.625rem;
