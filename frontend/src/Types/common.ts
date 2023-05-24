@@ -1,6 +1,8 @@
 export interface categoryRes {
     id: string,
     title: string,
+    goalSettable: boolean,
+    goal: number,
     expired: string,
   }
   
