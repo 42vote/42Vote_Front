@@ -9,6 +9,7 @@ const CategoryContainer = (props: selectTagProps) => {
   const setSelectedTag = props.setSelectedTag;
 
   const handleTagSelect = (tagId: string) => {
+    if (selectedTag.length === 1 && selectedTag[0] === tagId) return;
     if (selectedTag.includes(tagId))
       setSelectedTag(selectedTag.filter((tag) => tag !== tagId));
     else if (responsiveVar.isDesktop)
