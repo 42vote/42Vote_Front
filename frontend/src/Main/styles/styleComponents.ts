@@ -146,6 +146,8 @@ export const Tags = styled.div<{ responsiveVar: responsiveVariable }>`
 `;
 
 export const SkeletonTag = styled.div`
+  justify-content: center;
+  align-items: center;
   display: inline-block;
   padding: 0.3125rem 1rem;
   margin: 0.25rem;
@@ -173,54 +175,55 @@ export const SkeletonTag = styled.div`
 `;
 
 export const SelectedCategory = styled.div`
-    grid-row: 1;
-    margin-left: 0.5em;
-    display: flex;
-    width: 10rem;
-    justify-content: center;
-    align-items: center;
-`
-export const DropDownToggle = styled.span<{selected: boolean}>`
-    grid-row: 1;
-    width: 0.5em;
-    height: 0.5em;
-    display: inline-block;
-    vertical-align: middle;
-    border-left: 0.15em solid currentColor;
-    border-bottom: 0.15em solid currentColor;
-    transform: rotate(-45deg);
-    margin-left: 0.38em;
-    margin-top: ${(props) => (props.selected ? "4px" : "-0.25em")};
-    transition: transform 100ms ease-in-out;
-    ${(props) => (props.selected ? "transform: rotate(-225deg);" : "")}
-    cursor: pointer;
-`
+  grid-row: 1;
+  margin-left: 0.5em;
+  display: flex;
+  width: 10rem;
+  justify-content: center;
+  align-items: center;
+`;
+export const DropDownToggle = styled.span<{ selected: boolean }>`
+  grid-row: 1;
+  width: 0.5em;
+  height: 0.5em;
+  display: inline-block;
+  vertical-align: middle;
+  border-left: 0.15em solid currentColor;
+  border-bottom: 0.15em solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.38em;
+  margin-top: ${(props) => (props.selected ? "4px" : "-0.25em")};
+  transition: transform 100ms ease-in-out;
+  ${(props) => (props.selected ? "transform: rotate(-225deg);" : "")}
+  cursor: pointer;
+`;
 
-export const TagsDrop = styled.div<{isOpen: boolean, size: number}>`
-    grid-row: 2;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: flex-start;
-    width: 10rem;
-    overflow: hidden;
-    animation: ${(props) => (props.isOpen ? "fade-in" : "fade-out")} 300ms ease-in-out;
+export const TagsDrop = styled.div<{ isOpen: boolean; size: number }>`
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: flex-start;
+  width: 10rem;
+  overflow: hidden;
+  animation: ${(props) => (props.isOpen ? "fade-in" : "fade-out")} 300ms
+    ease-in-out;
 
-    @keyframes fade-in {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: ${(props) => ((props.size * 32.75) + "px")};
-      }
+  @keyframes fade-in {
+    0% {
+      height: 0;
     }
+    100% {
+      height: ${(props) => props.size * 32.75 + "px"};
+    }
+  }
 
-    @keyframes fade-out {
-      0% {
-        height: ${(props) => ((props.size * 32.75) + "px")};
-      }
-      100% {
-        height: 0;
-      }
-    } 
-`
+  @keyframes fade-out {
+    0% {
+      height: ${(props) => props.size * 32.75 + "px"};
+    }
+    100% {
+      height: 0;
+    }
+  }
+`;

@@ -6,7 +6,6 @@ import {
   SelectedCategory,
   TagsDrop,
 } from "../../styles/styleComponents";
-import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
 
 interface DropDownCategoryProps {
   data: categoryRes[];

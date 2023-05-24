@@ -37,7 +37,7 @@ const Categorys = (props: categorysProps) => {
             />
           )
         ) : (
-          Array.from({ length: 4 }).map((_, index) => (
+          Array.from({ length: responsiveVar.isDesktop ? 4 : 1 }).map((_, index) => (
             <SkeletonTag key={index} />
           ))
         )}
