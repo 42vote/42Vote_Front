@@ -34,7 +34,7 @@ function Detail() {
         return res.data;
     }
     
-    const { data, isLoading, isError } = useQuery<document>(['detail'], getData, {retry: false, staleTime: 60 * 1000, refetchOnWindowFocus: false});
+    const { data, isLoading, isError } = useQuery<document>(['detail/' + docId], getData, {retry: false, staleTime: 60 * 1000, refetchOnWindowFocus: false, refetchOnMount: 'always'});
 
     if (isLoading)
         return (<div id={isMobile ? "mobile" : "desktop"}><FixedTop/><DetailLoading/></div>);
