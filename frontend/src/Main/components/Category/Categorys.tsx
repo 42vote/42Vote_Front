@@ -9,7 +9,7 @@ interface categorysProps {
   handleSelect: (tagId: string) => void;
 }
 
-const DeskCategorys = (props: categorysProps) => {
+const Categorys = (props: categorysProps) => {
   const { data, isLoading } = useTags();
   const responsiveVar = useResponsive();
   const handleTagSelect = props.handleSelect;
@@ -46,4 +46,4 @@ const DeskCategorys = (props: categorysProps) => {
   );
 };
 
-export default DeskCategorys;
+export default Categorys;

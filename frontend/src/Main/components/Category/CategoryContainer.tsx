@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-import { useTags } from "../../customHooks/useTags";
 import { selectTagProps } from "../../types";
 import { useResponsive } from "../../customHooks/useResponsive";
-import DeskCategorys from "./DeskCategorys";
+import Categorys from "./Categorys";
 
 const CategoryContainer = (props: selectTagProps) => {
-  const { data, isLoading } = useTags();
   const responsiveVar = useResponsive();
   const selectedTag = props.selectedTag;
   const setSelectedTag = props.setSelectedTag;
@@ -24,11 +22,7 @@ const CategoryContainer = (props: selectTagProps) => {
     if (responsiveVar.isMobile) setSelectedTag([selectedTag[0]]);
   }, [responsiveVar.isMobile]);
 
-  return (
-    <>
-      <DeskCategorys selectedTag={selectedTag} handleSelect={handleTagSelect} />
-    </>
-  );
+  return <Categorys selectedTag={selectedTag} handleSelect={handleTagSelect} />;
 };
 
 export default CategoryContainer;
