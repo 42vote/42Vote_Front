@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import { customAxios } from "../../Lib/customAxios";
-import { documentListQuery, documentListRes } from "../types";
+import { documentListQuery } from "../types";
+import { documentListRes } from "../../Types/common";
 
 const makeQuery = (category: string, targetString: string) => {
   if (targetString !== "") return category + "=" + targetString;
@@ -30,7 +31,18 @@ export const mainAPI = {
     return { cardArrary: res.data, currentPage: pageParam };
   },
   getDocSize: async (categoryId: string) => {
-    const res = await customAxios().get("/category/size/" + categoryId);
+    let myPost = "false";
+    let myVote = "false";
+    if (categoryId == "-1") myPost = "true";
+    if (categoryId == "-2") myVote = "true";
+    const Query =
+      "?" +
+      makeQuery("categoryId", categoryId) +
+      "&" +
+      makeQuery("myPost", myPost) +
+      "&" +
+      makeQuery("myVote", myVote);
+    const res = await customAxios().get("/category/size/" + Query);
     return res.data;
   },
 };

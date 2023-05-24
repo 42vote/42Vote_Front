@@ -27,6 +27,10 @@ const CardsContainer = (props: cardsProps) => {
   const { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage } =
     useCards(documentApiQuery, docSize.data ? docSize.data.categorySize : -1);
   const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
+  const cardExist: boolean =
+    getCards !== undefined &&
+    getCardsIsSuccess &&
+    getCards.pages[0].cardArrary.length > 0;
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const responsiveVar = useResponsive();
@@ -74,7 +78,7 @@ const CardsContainer = (props: cardsProps) => {
       <TagHeader responsiveVar={responsiveVar}>
         #{tagInfo ? tagInfo[0].title : ""}
       </TagHeader>
-      {getCardsIsSuccess &&
+      {cardExist &&
       getCards &&
       getCards.pages[0].cardArrary.length > 4 &&
       responsiveVar.isDesktop ? (
@@ -104,11 +108,12 @@ const CardsContainer = (props: cardsProps) => {
             <SkeletonCards key={index} />
           ))
         )}
-        {getCards &&
+        {cardExist &&
+          getCards &&
           getNextPageIsPossible &&
           getCards.pages[0].cardArrary.length > 0 && <SkeletonCards />}
       </CardsList>
-      {getCardsIsSuccess &&
+      {cardExist &&
       getCards &&
       getCards.pages[0].cardArrary.length > 4 &&
       responsiveVar.isDesktop ? (
