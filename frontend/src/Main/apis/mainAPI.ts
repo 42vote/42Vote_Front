@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import { customAxios } from "../../Lib/customAxios";
-import { documentListQuery, documentListRes } from "../types";
+import { documentListQuery } from "../types";
+import { documentListRes } from "../../Types/common";
 
 const makeQuery = (category: string, targetString: string) => {
   if (targetString !== "") return category + "=" + targetString;
