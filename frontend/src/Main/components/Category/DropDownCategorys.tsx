@@ -19,15 +19,16 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
   const [visualOpen, setVisualOpen] = useState(false);
   const [timeId, setTimeId] = useState<NodeJS.Timeout | null>(null);
   const toggleDropdown = () => {
-    setVisualOpen(!visualOpen);
     if (isOpen) {
+      setVisualOpen(false);
       setTimeId(setTimeout(() => {
         setIsOpen(false);
-      }, 900));
+      }, 250));
     }
     else {
       clearTimeout(timeId? timeId : 0);
       setTimeId(null);
+      setVisualOpen(true);
       setIsOpen(true);
     }
   };
@@ -55,7 +56,7 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
         <DropDownToggle selected={isOpen} onClick={toggleDropdown} />
       </SelectedCategory>
       {isOpen && (
-        <TagsDrop size={data.length} isOpen={!visualOpen}>
+        <TagsDrop size={data.length} isOpen={visualOpen}>
           {data.map((category) => (
             <Category
               key={category.id}

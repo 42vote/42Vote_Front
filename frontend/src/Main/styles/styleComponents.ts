@@ -204,7 +204,7 @@ export const TagsDrop = styled.div<{isOpen: boolean, size: number}>`
     align-items: flex-start;
     width: 10rem;
     overflow: hidden;
-    animation: ${(props) => (props.isOpen ? "fade-in" : "fade-out")} 1s ease-in-out;
+    animation: ${(props) => (props.isOpen ? "fade-in" : "fade-out")} 300ms ease-in-out;
 
     @keyframes fade-in {
       0% {
