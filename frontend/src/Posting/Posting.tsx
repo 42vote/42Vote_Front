@@ -1,13 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FixedTop from '../Etc/FixedTop';
 import './Posting.css'
 import { useMediaQuery } from 'react-responsive';
+import { customAxios } from '../Lib/customAxios';
+import { categoryRes } from "../Main/types";
+import Swal from 'sweetalert2';
 
 
 function Posting() {
-    const isDesktop: boolean = useMediaQuery({query: '(min-width: 769px)'});
-    const isMobile: boolean = useMediaQuery({query: '(max-width: 768px)'});
+    const isDesktop = useMediaQuery({query: '(min-width: 769px)'});
+    const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+    const [categoryList, setCategoryList] = useState(Array<categoryRes>);
+    const [title, setTitle] = useState('New Post Title');
 
+    const handleTitle = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const target: HTMLInputElement = event.target as HTMLInputElement;
+        setTitle(target.value); //왜 포커스가 풀리지?
+    }
+
+    useEffect(() => {
+        customAxios().get('/category').then((res) => {
+            setCategoryList(res.data);
+        })
+    }, []);
 
     const radioClick = (event: React.MouseEvent<HTMLLabelElement>): void => {
         const target: HTMLLabelElement = event.target as HTMLLabelElement;
@@ -54,14 +69,70 @@ function Posting() {
         }
     }
 
-    const Layout = (): JSX.Element => {
-        const [title, setTitle] = useState('New Post Title');
+    const getCheckedCategory = async () => {
+        const categorys = document.getElementsByName('category') as NodeListOf<HTMLInputElement>;
+        let checkdCategoryId = -1;
 
-        const handleTitle = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        const target: HTMLInputElement = event.target as HTMLInputElement;
-            setTitle(target.value); //왜 포커스가 풀리지?
+        categorys.forEach((category) => {
+            if (category.parentElement?.classList.contains('checked'))
+                checkdCategoryId = Number(category.value);
+        });
+
+        return checkdCategoryId;
+    }
+
+    const convertBase64 = (file: FileList | null, files: string[]) => {
+        if (file && file.length > 0) {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file[0]);
+            fileReader.onloadend = () => {
+                files.push(fileReader.result as string);
+            }
         }
+    }
 
+    const getImageFiles = async () => {
+        const file1 = (document.getElementById('file1') as HTMLInputElement).files;
+        const file2 = (document.getElementById('file2') as HTMLInputElement).files;
+        const file3 = (document.getElementById('file3') as HTMLInputElement).files;
+        let base64Files: string[] = [];
+
+        convertBase64(file1, base64Files);
+        convertBase64(file2, base64Files);
+        convertBase64(file3, base64Files);
+        
+        return base64Files;
+    }
+
+    const submitPost = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        const docTitle = title.trim();
+        const description = document.getElementById('text-area') as HTMLTextAreaElement;
+        const goalInput = document.getElementById('goal') as HTMLInputElement;
+        const checkedCategoryId = await getCheckedCategory();
+        const base64Files = await getImageFiles();
+   
+        if (docTitle.length === 0 || docTitle === 'New Post Title')
+            Swal.fire('글 제목을 입력해주세요.')
+        else if (checkedCategoryId === -1)
+            Swal.fire('카테고리를 선택해주세요.');
+        else if (goalInput.value === '')
+            Swal.fire('목표치를 입력해주세요.');
+        else if (description.value.length < 10)
+            Swal.fire('설명글을 10자 이상 적어주세요.');
+        else if (base64Files.length === 0)
+            Swal.fire('사진을 최소 1장 등록해주세요.');
+
+        // customAxios().post('/document', {
+        //     title: title,
+        //     context: description.value,
+        //     categoryId: selectedCategory,
+        //     goal: goalInput.value,
+        //     image: base64Files
+        // })
+    }
+
+    const Layout = (): JSX.Element => {
         return (
             <div id="posting">
                 <form id="post-form">
@@ -69,17 +140,14 @@ function Posting() {
                     <div id="category-wrapper">
                         <p>Category</p>
                         <div id="radio-list">
-                            {/*category list map*/}
-                            <label className='checked' onClick={radioClick}><input type="radio" name="category" value="apple" defaultChecked/>TagA</label>
-                            <label onClick={radioClick}><input type="radio" name="category" value="banana"/>TagB</label>
-                            <label onClick={radioClick}><input type="radio" name="category" value="banana"/>goods</label>
-                            <label onClick={radioClick}><input type="radio" name="category" value="banana"/>TagB</label>
-                            <label onClick={radioClick}><input type="radio" name="category" value="banana"/>goods</label>
-                            <label onClick={radioClick}><input type="radio" name="category" value="banana"/>TagB</label>
-                            <label onClick={radioClick}><input type="radio" name="category" value="banana"/>goods</label>
+                            {
+                                categoryList.map((category, idx) => (
+                                    <label className={idx === 0 ? 'checked' : ''} onClick={radioClick} key={idx}><input type="radio" name="category" value={category.id}/>{category.title}</label>
+                                ))
+                            }
                         </div>
                     </div>
-                    <label>Goal<input id="goal" type="number" min="1"/></label>
+                    <label>Goal<input id="goal" type="number" min="1" max="1000"/></label>
                     <label>Description<textarea id="text-area"></textarea></label>
                     <div id="image-wrapper">
                         <p>Images</p>
@@ -107,7 +175,7 @@ function Posting() {
                             </div>
                         </div>
                     </div>
-                    <button type="submit">Post</button>
+                    <button type="submit" onClick={submitPost}>Post</button>
                 </form>
             </div>
         )

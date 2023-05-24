@@ -34,14 +34,15 @@
     margin-bottom: 10px;
 }
 
-#posting #post-form #category-wrapper * {
-    display: inline-block;
-}
-
 #posting #post-form p {
     font-family: 'Lora-SemiBold';
     font-size: max(20px, 2vw);
     margin: 0 20px 0 0;
+}
+
+#posting #post-form #category-wrapper #radio-list {
+    display: flex;
+    align-items: flex-start;
 }
 
 #posting #post-form #category-wrapper #radio-list label {
