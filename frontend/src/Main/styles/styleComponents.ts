@@ -181,7 +181,6 @@ export const SelectedCategory = styled.div`
     align-items: center;
 `
 export const DropDownToggle = styled.span<{selected: boolean}>`
-    align-self: center;
     grid-row: 1;
     width: 0.5em;
     height: 0.5em;
@@ -197,11 +196,31 @@ export const DropDownToggle = styled.span<{selected: boolean}>`
     cursor: pointer;
 `
 
-export const TagsDrop = styled.div`
+export const TagsDrop = styled.div<{isOpen: boolean, size: number}>`
     grid-row: 2;
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: flex-start;
     width: 10rem;
+    overflow: hidden;
+    animation: ${(props) => (props.isOpen ? "fade-in" : "fade-out")} 1s ease-in-out;
+
+    @keyframes fade-in {
+      0% {
+        height: 0;
+      }
+      100% {
+        height: ${(props) => ((props.size * 32.75) + "px")};
+      }
+    }
+
+    @keyframes fade-out {
+      0% {
+        height: ${(props) => ((props.size * 32.75) + "px")};
+      }
+      100% {
+        height: 0;
+      }
+    } 
 `

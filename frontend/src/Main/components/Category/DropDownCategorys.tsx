@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { categoryRes } from "../../../Types/common";
 import Category from "./Category";
-import { DropDownToggle, SelectedCategory, TagsDrop } from "../../styles/styleComponents";
+import {
+  DropDownToggle,
+  SelectedCategory,
+  TagsDrop,
+} from "../../styles/styleComponents";
 import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
 
 interface DropDownCategoryProps {
@@ -12,8 +16,20 @@ interface DropDownCategoryProps {
 
 const DropDownCategorys = (props: DropDownCategoryProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [visualOpen, setVisualOpen] = useState(false);
+  const [timeId, setTimeId] = useState<NodeJS.Timeout | null>(null);
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+    setVisualOpen(!visualOpen);
+    if (isOpen) {
+      setTimeId(setTimeout(() => {
+        setIsOpen(false);
+      }, 900));
+    }
+    else {
+      clearTimeout(timeId? timeId : 0);
+      setTimeId(null);
+      setIsOpen(true);
+    }
   };
 
   const data = props.data;
@@ -39,7 +55,7 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
         <DropDownToggle selected={isOpen} onClick={toggleDropdown} />
       </SelectedCategory>
       {isOpen && (
-        <TagsDrop>
+        <TagsDrop size={data.length} isOpen={!visualOpen}>
           {data.map((category) => (
             <Category
               key={category.id}
