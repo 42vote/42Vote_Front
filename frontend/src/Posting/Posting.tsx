@@ -5,9 +5,11 @@ import { useMediaQuery } from 'react-responsive';
 import { customAxios } from '../Lib/customAxios';
 import { categoryRes } from "../Types/common";
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 function Posting() {
     const isDesktop = useMediaQuery({query: '(min-width: 769px)'});
+    const nav = useNavigate();
     const [categoryList, setCategoryList] = useState(Array<categoryRes>);
     const [title, setTitle] = useState('New Post Title');
     const [descriptLength, setDescriptLength] = useState(0);
@@ -15,22 +17,33 @@ function Posting() {
     useEffect(() => {
         customAxios().get('/category').then((res) => {
             setCategoryList(res.data);
-        })
+        });
     }, []);
 
-    const radioClick = (event: React.MouseEvent<HTMLLabelElement>): void => {
-        const target: HTMLLabelElement = event.target as HTMLLabelElement;
-        const targetChild: HTMLInputElement | null = target.querySelector('input');
-        const prevTarget: HTMLLabelElement | null | undefined = target.parentElement?.querySelector('.checked');
-        const prevChild: HTMLInputElement | null | undefined = prevTarget?.querySelector('input');
+    useEffect(() => {
+        if (categoryList.length !== 0 && categoryList[0].goalSettable === false) {
+            const goalInput = document.getElementById('goal') as HTMLInputElement;
+            goalInput.value = String(categoryList[0].goal);
+            goalInput.setAttribute('disabled', '');
+        }
+    }, [categoryList])
+
+    const radioClick = (event: React.MouseEvent<HTMLLabelElement>) => {
+        event.preventDefault();
+        const target = event.target as HTMLLabelElement;
+        const prevTarget = target.parentElement?.querySelector('.checked');
+        const targetData = categoryList.find((category) => String(category.id) === (target.querySelector('input')?.value));
+        const goalInput = document.getElementById('goal') as HTMLInputElement;
         
-        if (targetChild) {
-            target.classList.add('checked');
-            targetChild.checked = true;
-            if (prevChild) {
-                prevTarget?.classList.remove('checked');
-                prevChild.checked = false;
-            }
+        target.classList.add('checked');
+        prevTarget?.classList.remove('checked');
+
+        if (target === prevTarget || targetData?.goalSettable === true) {
+            goalInput.value = '';
+            goalInput.removeAttribute('disabled');
+        } else {
+            goalInput.value = String(targetData?.goal);
+            goalInput.setAttribute('disabled', '');
         }
     }
 
@@ -121,13 +134,23 @@ function Posting() {
         else if (base64Files.length === 0)
             Swal.fire('사진을 최소 1장 등록해주세요.');
         else {
-            customAxios().post('/document', {
-                title: docTitle,
-                context: description.value,
-                categoryId: checkedCategoryId,
-                goal: goalInput,
-                image: base64Files
-            }).then(() => {console.log('OK!')})
+            Swal.fire({
+                text: '글을 등록하시겠습니까?',
+                showCancelButton: true,
+                confirmButtonColor: 'white',
+                cancelButtonColor: '#383838',
+                confirmButtonText: 'OK'
+            }).then((res) => {
+                if (res.isConfirmed) {
+                    customAxios().post('/document', {
+                        title: docTitle,
+                        context: description.value,
+                        categoryId: checkedCategoryId,
+                        goal: goalInput,
+                        image: base64Files
+                    }).then(() => nav('/main'));
+                }
+            });
         }
     }
 
@@ -142,7 +165,7 @@ function Posting() {
                         <div id="radio-list">
                             {
                                 categoryList.map((category, idx) => (
-                                    <label className={idx === 0 ? 'checked' : ''} onClick={radioClick} key={idx}><input type="radio" name="category" value={category.id}/>{category.title}</label>
+                                    <label className={idx === 0 ? 'checked' : ''} onClick={(e) => radioClick(e)} key={idx}><input type="radio" name="category" value={category.id}/>{category.title}</label>
                                 ))
                             }
                         </div>
