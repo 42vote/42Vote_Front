@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useTags } from "../../customHooks/useTags";
 import { selectTagProps } from "../../types";
 import { useResponsive } from "../../customHooks/useResponsive";
-import { SkeletonTag, TagConatiner, Tags } from "../../styles/styleComponents";
-import Category from "./Category";
+import DeskCategorys from "./DeskCategorys";
 
 const CategoryContainer = (props: selectTagProps) => {
   const { data, isLoading } = useTags();
@@ -26,23 +25,9 @@ const CategoryContainer = (props: selectTagProps) => {
   }, [responsiveVar.isMobile]);
 
   return (
-    <TagConatiner responsiveVar={responsiveVar}>
-      <Tags responsiveVar={responsiveVar}>
-        {!isLoading
-          ? data?.map((tag) => (
-              <Category
-                key={tag.id}
-                tagId={tag.id}
-                label={tag.title}
-                onSelect={handleTagSelect}
-                isSelected={selectedTag.includes(tag.id)}
-              />
-            ))
-          : Array.from({ length: 4 }).map((_, index) => (
-              <SkeletonTag key={index} />
-            ))}
-      </Tags>
-    </TagConatiner>
+    <>
+      <DeskCategorys selectedTag={selectedTag} handleSelect={handleTagSelect} />
+    </>
   );
 };
 

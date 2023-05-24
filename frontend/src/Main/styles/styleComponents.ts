@@ -6,8 +6,8 @@ export const AbsolutedDiv = styled.div`
   z-index: 10;
   display: flex;
   justify-content: center;
-  width:100%;
-`
+  width: 100%;
+`;
 export const CardsContainersDiv = styled.div`
   max-height: 62rem;
   overflow-y: auto;
@@ -15,15 +15,15 @@ export const CardsContainersDiv = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `;
 export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
   grid-template-rows: 0.5fr ${(props) =>
-      props.responsiveVar.isDesktop ? "auto" : "43rem"};
+      props.responsiveVar.isDesktop ? "auto" : "80vh"};
   grid-template-columns: 1fr ${(props) =>
       props.responsiveVar.isFiveCards
         ? "59.375rem"
@@ -67,16 +67,38 @@ export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
   margin-bottom: 0.625rem;
 `;
 
+export const SelectedCategory = styled.div`
+    grid-row: 1;
+` 
+
+export const DropDownToggle = styled.button`
+`
+
 export const Tags = styled.div<{ responsiveVar: responsiveVariable }>`
   grid-column: 2;
-  display: flex;
-  overflow: hidden;
+  grid-row: 1;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   margin-top: 1.875rem;
   margin-left: 1rem;
+  align-itmes: center;
+  justify-items: center;
 `;
+
+export const TagsDrop = styled.div`
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+`
 
 export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
+  position: relative;
+  z-index: 99;
   margin-top: ${(props) =>
     props.responsiveVar.isDesktop ? "3rem" : "1.875rem"};
   grid-template-columns: 1fr ${(props) =>
