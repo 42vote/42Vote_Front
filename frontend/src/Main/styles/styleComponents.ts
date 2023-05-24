@@ -69,22 +69,36 @@ export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
 
 export const SelectedCategory = styled.div`
     grid-row: 1;
-` 
+    margin-left: 0.5em;
+    display: flex;
+    width: 10rem;
+    justify-content: center;
+    align-items: center;
+`
 
-export const DropDownToggle = styled.button`
+export const DropDownToggle = styled.span<{selected: boolean}>`
+    align-self: center;
+    grid-row: 1;
+    width: 0.5em;
+    height: 0.5em;
+    display: inline-block;
+    vertical-align: middle;
+    border-left: 0.15em solid currentColor;
+    border-bottom: 0.15em solid currentColor;
+    transform: rotate(-45deg);
+    margin-left: 0.38em;
+    margin-top: ${(props) => (props.selected ? "4px" : "-0.25em")};
+    transition: transform 100ms ease-in-out;
+    ${(props) => (props.selected ? "transform: rotate(-225deg);" : "")}
+    cursor: pointer;
 `
 
 export const Tags = styled.div<{ responsiveVar: responsiveVariable }>`
   grid-column: 2;
-  grid-row: 1;
   display: grid;
   grid-template-rows: 1fr auto;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
   margin-top: 1.875rem;
   margin-left: 1rem;
-  align-itmes: center;
   justify-items: center;
 `;
 
@@ -93,6 +107,8 @@ export const TagsDrop = styled.div`
     display: flex;
     flex-direction: column;
     align-content: center;
+    align-items: flex-start;
+    width: 10rem;
 `
 
 export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`

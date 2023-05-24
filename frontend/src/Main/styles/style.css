@@ -25,6 +25,22 @@
   user-select: none;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 3px 3px 0.125rem rgba(0, 0, 0, 0.3);
+  animation: rotateX 300ms (num * 60ms) ease forwards;
+  transform-origin: top center;
+
+  @keyframes rotateX {
+    0% {
+        opacity: 0;
+        transform: rotateX(-90deg);
+    }
+    50% {
+        transform: rotateX(-20deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg);
+    }
+}
 }
 
 .tag.selected {

@@ -1,7 +1,6 @@
 import MainPage from "./page";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AbsolutedDiv } from "./styles/styleComponents";
-import FixedTop from "../Etc/FixedTop";
 
 const queryClient = new QueryClient({
   defaultOptions: {

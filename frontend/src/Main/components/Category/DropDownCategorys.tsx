@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { categoryRes } from "../../types";
+import { categoryRes } from "../../../Types/common";
 import Category from "./Category";
-import { TagsDrop } from "../../styles/styleComponents";
+import { DropDownToggle, SelectedCategory, TagsDrop } from "../../styles/styleComponents";
 import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
 
 interface DropDownCategoryProps {
@@ -29,13 +29,15 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
 
   return (
     <>
-      <Category
-        tagId={selectedData.id}
-        label={selectedData.title}
-        onSelect={handleTagSelect}
-        isSelected={selectedTag.includes(selectedData.id)}
-      />
-      <DropdownToggle onClick={toggleDropdown}>{"test"}</DropdownToggle>
+      <SelectedCategory>
+        <Category
+          tagId={selectedData.id}
+          label={selectedData.title}
+          onSelect={handleTagSelect}
+          isSelected={selectedTag.includes(selectedData.id)}
+        />
+        <DropDownToggle selected={isOpen} onClick={toggleDropdown} />
+      </SelectedCategory>
       {isOpen && (
         <TagsDrop>
           {data.map((category) => (
