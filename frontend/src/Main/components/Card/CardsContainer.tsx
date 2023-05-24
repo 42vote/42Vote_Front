@@ -55,7 +55,7 @@ const CardsContainer = (props: cardsProps) => {
       let isEnd: boolean = false;
       if (responsiveVar.isDesktop)
         isEnd =
-          container.scrollLeft >= container.scrollWidth - container.offsetWidth;
+          container.scrollLeft >= container.scrollWidth - container.offsetWidth - 1 * fontSizeNum;
       else if (responsiveVar.isMobile) {
         isEnd =
           container.scrollTop + container.clientHeight >=
