@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { responsiveVariable } from "../types";
 
+//common
+
 export const AbsolutedDiv = styled.div`
   position: absolute;
   z-index: 10;
@@ -8,6 +10,19 @@ export const AbsolutedDiv = styled.div`
   justify-content: center;
   width: 100%;
 `;
+
+//Cards
+
+export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
+  grid-row: 1;
+  grid-column: 2;
+  justify-self: ${(prop) =>
+    prop.responsiveVar.isDesktop ? "start" : "center"};
+  margin-left: ${(prop) => (prop.responsiveVar.isDesktop ? "1.25rem" : "0px")};
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
+`;
+
 export const CardsContainersDiv = styled.div`
   max-height: 62rem;
   overflow-y: auto;
@@ -20,6 +35,7 @@ export const CardsContainersDiv = styled.div`
   -ms-user-select: none;
   user-select: none;
 `;
+
 export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
   grid-template-rows: 0.5fr ${(props) =>
@@ -54,103 +70,6 @@ export const CardsList = styled.div<{ responsiveVar: responsiveVariable }>`
   scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
   &::-webkit-scrollbar {
     display: none;
-  }
-`;
-
-export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
-  grid-row: 1;
-  grid-column: 2;
-  justify-self: ${(prop) =>
-    prop.responsiveVar.isDesktop ? "start" : "center"};
-  margin-left: ${(prop) => (prop.responsiveVar.isDesktop ? "1.25rem" : "0px")};
-  margin-top: 0.625rem;
-  margin-bottom: 0.625rem;
-`;
-
-export const SelectedCategory = styled.div`
-    grid-row: 1;
-    margin-left: 0.5em;
-    display: flex;
-    width: 10rem;
-    justify-content: center;
-    align-items: center;
-`
-
-export const DropDownToggle = styled.span<{selected: boolean}>`
-    align-self: center;
-    grid-row: 1;
-    width: 0.5em;
-    height: 0.5em;
-    display: inline-block;
-    vertical-align: middle;
-    border-left: 0.15em solid currentColor;
-    border-bottom: 0.15em solid currentColor;
-    transform: rotate(-45deg);
-    margin-left: 0.38em;
-    margin-top: ${(props) => (props.selected ? "4px" : "-0.25em")};
-    transition: transform 100ms ease-in-out;
-    ${(props) => (props.selected ? "transform: rotate(-225deg);" : "")}
-    cursor: pointer;
-`
-
-export const Tags = styled.div<{ responsiveVar: responsiveVariable }>`
-  grid-column: 2;
-  display: ${(props) => (props.responsiveVar.isDesktop ? "flex" : "grid")};
-  grid-template-rows: 1fr auto;
-  margin-top: 1.875rem;
-  margin-left: 1rem;
-  justify-items: center;
-`;
-
-export const TagsDrop = styled.div`
-    grid-row: 2;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: flex-start;
-    width: 10rem;
-`
-
-export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
-  display: grid;
-  position: relative;
-  z-index: 99;
-  margin-top: ${(props) =>
-    props.responsiveVar.isDesktop ? "3rem" : "1.875rem"};
-  grid-template-columns: 1fr ${(props) =>
-      props.responsiveVar.isFiveCards
-        ? "59.375rem"
-        : props.responsiveVar.isFourCards
-        ? "47.5rem"
-        : props.responsiveVar.isThreeCards
-        ? "35.625rem"
-        : "65%"} 1fr;
-`;
-
-export const SkeletonTag = styled.div`
-  display: inline-block;
-  padding: 0.3125rem 1rem;
-  margin: 0.25rem;
-  height: 1rem;
-  width: 1.4rem;
-  font-weight: bold;
-  color: transparent;
-  border-radius: 0.625rem;
-  background-color: #ddd;
-  cursor: default;
-  user-select: none;
-  animation: skeleton-pulse 1s infinite;
-
-  @keyframes skeleton-pulse {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-    100% {
-      opacity: 1;
-    }
   }
 `;
 
@@ -198,3 +117,91 @@ export const ProductCardTitle = styled.h2<{ textColor: string }>`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
+
+//Category
+
+export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
+  display: grid;
+  position: relative;
+  z-index: 99;
+  margin-top: ${(props) =>
+    props.responsiveVar.isDesktop ? "3rem" : "1.875rem"};
+  grid-template-columns: 1fr ${(props) =>
+      props.responsiveVar.isFiveCards
+        ? "59.375rem"
+        : props.responsiveVar.isFourCards
+        ? "47.5rem"
+        : props.responsiveVar.isThreeCards
+        ? "35.625rem"
+        : "65%"} 1fr;
+`;
+
+export const Tags = styled.div<{ responsiveVar: responsiveVariable }>`
+  grid-column: 2;
+  display: ${(props) => (props.responsiveVar.isDesktop ? "flex" : "grid")};
+  grid-template-rows: 1fr auto;
+  margin-top: 1.875rem;
+  margin-left: 1rem;
+  justify-items: center;
+`;
+
+export const SkeletonTag = styled.div`
+  display: inline-block;
+  padding: 0.3125rem 1rem;
+  margin: 0.25rem;
+  height: 1rem;
+  width: 1.4rem;
+  font-weight: bold;
+  color: transparent;
+  border-radius: 0.625rem;
+  background-color: #ddd;
+  cursor: default;
+  user-select: none;
+  animation: skeleton-pulse 1s infinite;
+
+  @keyframes skeleton-pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
+export const SelectedCategory = styled.div`
+    grid-row: 1;
+    margin-left: 0.5em;
+    display: flex;
+    width: 10rem;
+    justify-content: center;
+    align-items: center;
+`
+export const DropDownToggle = styled.span<{selected: boolean}>`
+    align-self: center;
+    grid-row: 1;
+    width: 0.5em;
+    height: 0.5em;
+    display: inline-block;
+    vertical-align: middle;
+    border-left: 0.15em solid currentColor;
+    border-bottom: 0.15em solid currentColor;
+    transform: rotate(-45deg);
+    margin-left: 0.38em;
+    margin-top: ${(props) => (props.selected ? "4px" : "-0.25em")};
+    transition: transform 100ms ease-in-out;
+    ${(props) => (props.selected ? "transform: rotate(-225deg);" : "")}
+    cursor: pointer;
+`
+
+export const TagsDrop = styled.div`
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: flex-start;
+    width: 10rem;
+`
