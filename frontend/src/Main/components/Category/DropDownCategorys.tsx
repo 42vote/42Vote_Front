@@ -25,7 +25,7 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === selectedTag[0]) setSelectedData(data[i]);
     }
-  }, []);
+  }, [selectedTag]);
 
   return (
     <>

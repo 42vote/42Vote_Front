@@ -95,7 +95,7 @@ export const DropDownToggle = styled.span<{selected: boolean}>`
 
 export const Tags = styled.div<{ responsiveVar: responsiveVariable }>`
   grid-column: 2;
-  display: grid;
+  display: ${(props) => (props.responsiveVar.isDesktop ? "flex" : "grid")};
   grid-template-rows: 1fr auto;
   margin-top: 1.875rem;
   margin-left: 1rem;
