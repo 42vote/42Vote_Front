@@ -22,6 +22,19 @@ const MainPage: React.FC = () => {
     setSelectedTag(tagList);
   }, [isLoading, data]);
 
+  useEffect(()=> {
+    if (responsiveVar.isMobile) setRootFontSize(15)
+    if (responsiveVar.isDesktop) setRootFontSize(14)
+    
+  },[responsiveVar])
+
+  const setRootFontSize = (size: number) => {
+    let root = document.documentElement;
+    root.style.setProperty('--font-size', size+"px")
+    localStorage.setItem('fontSize', size+"px")
+    root.style.setProperty('fontSize', localStorage.getItem('fontSize'))
+  }
+
   return (
     <div>
       <CategoryContainer
