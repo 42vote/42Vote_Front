@@ -5,6 +5,7 @@ import "./styles/style.css";
 import { useTags } from "./customHooks/useTags";
 import { responsiveVariable } from "./types";
 import { useResponsive } from "./customHooks/useResponsive";
+import { setRootFontSize } from "../Lib/setRootFontSize";
 
 const MainPage: React.FC = () => {
   const { data, isLoading } = useTags();
@@ -27,13 +28,6 @@ const MainPage: React.FC = () => {
     if (responsiveVar.isDesktop) setRootFontSize(14)
     
   },[responsiveVar])
-
-  const setRootFontSize = (size: number) => {
-    let root = document.documentElement;
-    root.style.setProperty('--font-size', size+"px")
-    localStorage.setItem('fontSize', size+"px")
-    root.style.setProperty('fontSize', localStorage.getItem('fontSize'))
-  }
 
   return (
     <div>
