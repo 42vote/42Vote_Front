@@ -1,3 +1,8 @@
+#detail #vote-button:disabled {
+    color: #383838;
+    cursor: not-allowed !important;
+}
+
 #desktop #detail {
     padding-top: calc(clamp(30px, 3%, 50px) + 20px);
     box-sizing: border-box;
@@ -130,22 +135,28 @@
 }
 
 #desktop #detail #progress-bar {
-    width: 50%;
-    height: 20px;
-    border: 1px solid #383838;
-    border-radius: 20px;
-    margin-bottom: 15px;
-}
-
-#desktop #detail #progress-bar #progress-bar-in {
-    height: 100%;
-    background-color: #383838;
-    border-radius: 20px;
-    color: white;
-    font-size: 1vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 60%;
+    height: 20px;
+    font-size: max(13px, 1vw);
+    margin-bottom: 15px;
+}
+
+#desktop #detail #progress-bar #progress-bar-out {
+    width: 85%;
+    height: 100%;
+    border: 1px solid #383838;
+    border-radius: 20px;
+    margin-right: 2%;
+    overflow: hidden;
+}
+
+#desktop #detail #progress-bar #progress-bar-out #progress-bar-in {
+    height: 100%;
+    background-color: #383838;
+    border-radius: 20px;
 }
 
 #desktop #detail #vote-button {
@@ -321,22 +332,30 @@
 }
 
 #mobile #detail #progress-bar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 85%;
+    height: 15px;
+    margin-bottom: 10px;
+    font-size: max(13px, 2vw);
+}
+
+#mobile #detail #progress-bar #progress-bar-out {
     width: 80%;
+    height: 100%;
     max-width: 390px;
     border: 1px solid #383838;
     border-radius: 20px;
-    margin-bottom: 10px;
+    margin-right: 2%;
+    overflow: hidden;
 }
 
-#mobile #detail #progress-bar #progress-bar-in {
+#mobile #detail #progress-bar #progress-bar-out #progress-bar-in {
     width: 33%;
+    height: 100%;
     background-color: #383838;
     border-radius: 20px;
-    color: white;
-    font-size: max(13px, 2vw);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 #mobile #detail #vote-button {
@@ -380,4 +399,13 @@
 #mobile #detail #author-button button:hover {
     background-color: #383838;
     color: white;
+}
+
+.swal2-popup, .swal2-styled {
+    font-family: 'kbiz-Bold', 'Lora-Regular';
+}
+
+.swal2-confirm {
+    background-color: #D9D9D9 !important;
+    color: #383838 !important;
 }
