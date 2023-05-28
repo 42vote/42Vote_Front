@@ -53,7 +53,7 @@ const CardsContainer = (props: cardsProps) => {
     const container = scrollRef.current;
     if (container) {
       let isEnd: boolean = false;
-      if (responsiveVar.isDesktop)
+      if (responsiveVar.isDesktop || responsiveVar.isTwoCards)
         isEnd =
           container.scrollLeft >= container.scrollWidth - container.offsetWidth - 1 * fontSizeNum;
       else if (responsiveVar.isMobile) {

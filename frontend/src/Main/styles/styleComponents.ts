@@ -47,6 +47,8 @@ export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
         ? "47.5rem"
         : props.responsiveVar.isThreeCards
         ? "35.625rem"
+        : props.responsiveVar.isTwoCards
+        ? "23.75rem"
         : "65%"} 1fr;
   overflow-y: auto;
   scrollbar-width: none;
@@ -133,6 +135,8 @@ export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
         ? "47.5rem"
         : props.responsiveVar.isThreeCards
         ? "35.625rem"
+        : props.responsiveVar.isTwoCards
+        ? "23.75rem"
         : "65%"} 1fr;
 `;
 
