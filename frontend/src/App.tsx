@@ -26,6 +26,8 @@ function App() {
             <Route path="/detail" element={<Detail />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/posting" element={<Posting />} />
+            <Route path="/detail/*" element={<Detail />} />
+            <Route path="/posting" element={<Posting />} />
           </Route>
         </Routes>
   );
