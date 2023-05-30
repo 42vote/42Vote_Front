@@ -1,8 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CardProps } from "../../types";
-import styled from "styled-components";
-import { useColor } from "color-thief-react";
 import {
   Cards,
   ProductCard,
