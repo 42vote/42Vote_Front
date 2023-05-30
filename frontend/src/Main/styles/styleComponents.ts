@@ -180,9 +180,8 @@ export const SkeletonTag = styled.div`
 
 export const SelectedCategory = styled.div`
   grid-row: 1;
-  margin-left: 0.5em;
   display: flex;
-  width: 10rem;
+  width: 12rem;
   justify-content: center;
   align-items: center;
 `;

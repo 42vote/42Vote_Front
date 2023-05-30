@@ -46,16 +46,20 @@ const CardsContainer = (props: cardsProps) => {
       scrollRef.current!.scrollLeft += 60 * fontSizeNum * direction;
     else if (responsiveVar.isFourCards)
       scrollRef.current!.scrollLeft += 48 * fontSizeNum * direction;
-    else scrollRef.current!.scrollLeft += 36.325 * fontSizeNum * direction;
+    else if (responsiveVar.isThreeCards)
+      scrollRef.current!.scrollLeft += 36.325 * fontSizeNum * direction;
+    else if (responsiveVar.isTwoCards)
+      scrollRef.current!.scrollLeft += 24.05 * fontSizeNum * direction;
   };
 
   const scrollEvent = () => {
     const container = scrollRef.current;
     if (container) {
       let isEnd: boolean = false;
-      if (responsiveVar.isDesktop || responsiveVar.isTwoCards)
+      if (responsiveVar.isDesktop)
         isEnd =
-          container.scrollLeft >= container.scrollWidth - container.offsetWidth - 1 * fontSizeNum;
+          container.scrollLeft >=
+          container.scrollWidth - container.offsetWidth - 1 * fontSizeNum;
       else if (responsiveVar.isMobile) {
         isEnd =
           container.scrollTop + container.clientHeight >=
@@ -86,9 +90,13 @@ const CardsContainer = (props: cardsProps) => {
           <button onClick={handlePrev} className="prevButton" />
         </div>
       ) : (
-        <div className="prevButtonContainer">
-          <div className="nullLeft"></div>
-        </div>
+        <>
+          <div className="prevButtonContainer">
+          </div>
+          <div className="nextButtonContainer">
+            <div className="nullLeft" />
+          </div>
+        </>
       )}
       <CardsList
         responsiveVar={responsiveVar}
