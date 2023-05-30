@@ -1,9 +1,14 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './NotFound.css';
 
 const NotFound = () => {
+  const nav = useNavigate();
+
   return (
-    <div>
-        404 Not Found.
+    <div id="not-found">
+        <div>404</div>
+        <div>Not Found</div>
+        <button onClick={() => nav('/')}>Home</button>
     </div>
   );
 };
