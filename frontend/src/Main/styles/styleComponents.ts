@@ -143,7 +143,9 @@ export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
 export const Tags = styled.div<{ responsiveVar: responsiveVariable }>`
   grid-column: 2;
   display: ${(props) => (props.responsiveVar.isDesktop ? "flex" : "grid")};
-  grid-template-rows: 1fr auto;
+  flex-wrap: wrap;
+  align-content:center;
+  ${(props) => (props.responsiveVar.isDesktop ? "" : "grid-template-rows: 1fr auto;")}
   margin-top: 1.875rem;
   margin-left: 1rem;
   justify-items: center;
@@ -209,10 +211,10 @@ export const TagsDrop = styled.div<{ isOpen: boolean; size: number }>`
   align-items: flex-start;
   width: 10rem;
   overflow: hidden;
-  animation: ${(props) => (props.isOpen ? "fade-in" : "fade-out")} 300ms
+  animation: ${(props) => (props.isOpen ? "get-in" : "get-out")} 300ms
     ease-in-out;
 
-  @keyframes fade-in {
+  @keyframes get-in {
     0% {
       height: 0;
     }
@@ -221,7 +223,7 @@ export const TagsDrop = styled.div<{ isOpen: boolean; size: number }>`
     }
   }
 
-  @keyframes fade-out {
+  @keyframes get-out {
     0% {
       height: ${(props) => props.size * 32.75 + "px"};
     }

@@ -19,7 +19,7 @@ const Categorys = (props: categorysProps) => {
     <TagConatiner responsiveVar={responsiveVar}>
       <Tags responsiveVar={responsiveVar}>
         {!isLoading && data ? (
-          responsiveVar.isDesktop && !responsiveVar.isTwoCards ? (
+          responsiveVar.isDesktop ? (
             data.map((tag) => (
               <Category
                 key={tag.id}

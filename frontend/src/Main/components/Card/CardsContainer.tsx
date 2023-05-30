@@ -49,7 +49,7 @@ const CardsContainer = (props: cardsProps) => {
     else if (responsiveVar.isThreeCards)
       scrollRef.current!.scrollLeft += 36.325 * fontSizeNum * direction;
     else if (responsiveVar.isTwoCards)
-      scrollRef.current!.scrollLeft += 24.05 * fontSizeNum * direction;
+      scrollRef.current!.scrollLeft += 24.08 * fontSizeNum * direction;
   };
 
   const scrollEvent = () => {
