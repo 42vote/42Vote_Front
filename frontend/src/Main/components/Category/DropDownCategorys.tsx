@@ -59,7 +59,7 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
         <DropDownToggle selected={isOpen} onClick={toggleDropdown} />
       </SelectedCategory>
       {isOpen && (
-        <TagsDrop size={data.length} isOpen={visualOpen}>
+        <TagsDrop size={data.length - 0.5} isOpen={visualOpen}>
           {data.map((category) => (
             <>
               {category.id === selectedData.id ? null : (
