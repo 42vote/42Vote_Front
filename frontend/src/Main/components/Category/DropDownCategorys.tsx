@@ -20,12 +20,13 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
   const toggleDropdown = () => {
     if (isOpen) {
       setVisualOpen(false);
-      setTimeId(setTimeout(() => {
-        setIsOpen(false);
-      }, 250));
-    }
-    else {
-      clearTimeout(timeId? timeId : 0);
+      setTimeId(
+        setTimeout(() => {
+          setIsOpen(false);
+        }, 250)
+      );
+    } else {
+      clearTimeout(timeId ? timeId : 0);
       setTimeId(null);
       setVisualOpen(true);
       setIsOpen(true);
@@ -35,7 +36,10 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
   const data = props.data;
   const selectedTag = props.selectedTag;
   const [selectedData, setSelectedData] = useState<categoryRes>(data[0]);
-  const handleTagSelect = props.handleSelect;
+  const handleTagSelect = (tagId:string) => {
+    // toggleDropdown();
+    props.handleSelect(tagId);
+  };
 
   useEffect(() => {
     for (let i = 0; i < data.length; i++) {
@@ -57,13 +61,17 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
       {isOpen && (
         <TagsDrop size={data.length} isOpen={visualOpen}>
           {data.map((category) => (
-            <Category
-              key={category.id}
-              tagId={category.id}
-              label={category.title}
-              onSelect={handleTagSelect}
-              isSelected={selectedTag.includes(category.id)}
-            />
+            <>
+              {category.id === selectedData.id ? null : (
+                <Category
+                  key={category.id}
+                  tagId={category.id}
+                  label={category.title}
+                  onSelect={handleTagSelect}
+                  isSelected={selectedTag.includes(category.id)}
+                />
+              )}
+            </>
           ))}
         </TagsDrop>
       )}
