@@ -61,17 +61,16 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
       {isOpen && (
         <TagsDrop size={data.length - 0.5} isOpen={visualOpen}>
           {data.map((category) => (
-            <>
+            <div key={category.id}>
               {category.id === selectedData.id ? null : (
                 <Category
-                  key={category.id}
                   tagId={category.id}
                   label={category.title}
                   onSelect={handleTagSelect}
                   isSelected={selectedTag.includes(category.id)}
                 />
               )}
-            </>
+            </div>
           ))}
         </TagsDrop>
       )}
