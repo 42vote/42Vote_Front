@@ -1,8 +1,8 @@
 import React from "react";
-import { selectTagProps } from "../../types";
-import { useResponsive } from "../../customHooks/useResponsive";
-import { CardsArea, CardsContainersDiv } from "../../styles/styleComponents";
-import CardsContainer2 from "../../../CardsComponents/CardsContainer";
+import { selectTagProps } from "../Main/types";
+import { useResponsive } from "../Main/customHooks/useResponsive";
+import { CardsArea, CardsContainersDiv } from "../Main/styles/styleComponents";
+import CardsContainer2 from "./CardsContainer";
 
 const CardsContainers = (props: selectTagProps) => {
   const selectedTag = props.selectedTag;

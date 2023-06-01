@@ -12,7 +12,7 @@ export const useCards = (
     hasNextPage: getNextPageIsPossible,
     fetchNextPage: getNextPage,
   } = useInfiniteQuery(
-    ["cardsInfin", documentListQuery.categoryId],
+    ["cardsInfin", documentListQuery],
     ({ pageParam = 0 }) => mainAPI.getDocList(documentListQuery, pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
