@@ -37,7 +37,6 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
   const selectedTag = props.selectedTag;
   const [selectedData, setSelectedData] = useState<categoryRes>(data[0]);
   const handleTagSelect = (tagId:string) => {
-    // toggleDropdown();
     props.handleSelect(tagId);
   };
 
@@ -45,7 +44,7 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === selectedTag[0]) setSelectedData(data[i]);
     }
-  }, [selectedTag]);
+  }, [selectedTag, data]);
 
   return (
     <>

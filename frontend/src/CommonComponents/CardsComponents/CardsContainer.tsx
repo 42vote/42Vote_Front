@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
-import { useCards } from "../Main/customHooks/useCards";
-import { CardsList, TagHeader } from "../Main/styles/styleComponents";
-import { useResponsive } from "../Main/customHooks/useResponsive";
-import { useTags } from "../Main/customHooks/useTags";
-import Card from "../Main/components/Card/Card";
-import NoCards from "../Main/components/Card/NoCards";
-import SkeletonCards from "../Main/components/Card/SkeletonCards";
-import { useDocSize } from "../Main/customHooks/useDocSize";
+import { useCards } from "../../Main/customHooks/useCards";
+import { CardsList, TagHeader } from "../../Main/styles/styleComponents";
+import { useResponsive } from "../../Main/customHooks/useResponsive";
+import { useTags } from "../../Main/customHooks/useTags";
+import { useDocSize } from "../../Main/customHooks/useDocSize";
 import { cardsProps } from "./types";
 import { documentApiQuery, getShownCardsNum } from "./utils";
+import Card from "./Card";
+import NoCards from "./NoCards";
+import SkeletonCards from "./SkeletonCards";
 
 const CardsContainer2 = (props: cardsProps) => {
   const docSize = useDocSize(props.tag);

@@ -1,5 +1,5 @@
-import { documentListQuery } from "../Main/types";
-import { responsiveVariable } from "../Main/types";
+import { documentListQuery } from "../../Main/types";
+import { responsiveVariable } from "../../Main/types";
 
 export const getShownCardsNum = (responsiveVar: responsiveVariable) => {
   if (responsiveVar.isFiveCards) return 5;
