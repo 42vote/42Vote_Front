@@ -15,7 +15,7 @@ function FixedTop() {
             <div id="fixed-top">
                 <div id="logo" onClick={()=>navi("/main")}>42 Vote</div>
                 <div id="button-wrap">
-                    <button id="new-post-button">
+                    <button id="new-post-button" onClick={()=>navi("/posting")}>
                         <span>New Post</span>
                     </button>
                     <button onClick={()=>navi("/mypage")} id="my-profile-button" className="img-button"></button>
