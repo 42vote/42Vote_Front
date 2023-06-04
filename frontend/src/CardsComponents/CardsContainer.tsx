@@ -12,7 +12,6 @@ import { documentApiQuery, getShownCardsNum } from "./utils";
 
 const CardsContainer2 = (props: cardsProps) => {
   const docSize = useDocSize(props.tag);
-  if (docSize.data) console.log(props.tag, docSize.data.categorySize);
   const selectedTag = props.tag;
   const documentQuery = documentApiQuery(
     selectedTag,
