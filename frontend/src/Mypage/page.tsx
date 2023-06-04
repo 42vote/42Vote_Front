@@ -1,5 +1,5 @@
 import React from "react";
-import CardsContainers from "../Main/components/Card/CardsContainers";
+import CardsContainers from "../CommonComponents/CardsComponents/CardsContainers";
 import UserInfoContainer from "./components/UserInfoContainer";
 import { useUser } from "./customHooks/useUser";
 import { MyPageHeader } from "./styles/styledComponents";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CategoryContainer from "./components/Category/CategoryContainer";
-import CardsContainers from "./components/Card/CardsContainers";
+import CardsContainers from "../CommonComponents/CardsComponents/CardsContainers";
 import "./styles/style.css";
 import { useTags } from "./customHooks/useTags";
 import { responsiveVariable } from "./types";
@@ -21,7 +21,7 @@ const MainPage: React.FC = () => {
       else tagList.push(data[0].id);
     }
     setSelectedTag(tagList);
-  }, [isLoading, data]);
+  }, [isLoading, data, responsiveVar.isDesktop]);
 
   useEffect(()=> {
     if (responsiveVar.isMobile) setRootFontSize(15)

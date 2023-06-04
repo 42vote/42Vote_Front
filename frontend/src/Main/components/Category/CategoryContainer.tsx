@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { selectTagProps } from "../../types";
 import { useResponsive } from "../../customHooks/useResponsive";
 import Categorys from "./Categorys";
@@ -6,6 +6,7 @@ import Categorys from "./Categorys";
 const CategoryContainer = (props: selectTagProps) => {
   const responsiveVar = useResponsive();
   const selectedTag = props.selectedTag;
+  const selectedOne = props.selectedTag[0];
   const setSelectedTag = props.setSelectedTag;
 
   const handleTagSelect = (tagId: string) => {
@@ -19,9 +20,17 @@ const CategoryContainer = (props: selectTagProps) => {
     else setSelectedTag([tagId]);
   };
 
+  const mobileSet = useCallback(
+    () => {
+      setSelectedTag([selectedOne])
+    },
+    [selectedOne, setSelectedTag],
+  )
+  
+
   useEffect(() => {
-    if (responsiveVar.isMobile) setSelectedTag([selectedTag[0]]);
-  }, [responsiveVar.isMobile]);
+    if (responsiveVar.isMobile) mobileSet();
+  }, [responsiveVar.isMobile, mobileSet]);
 
   return <Categorys selectedTag={selectedTag} handleSelect={handleTagSelect} />;
 };
