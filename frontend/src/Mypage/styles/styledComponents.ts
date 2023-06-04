@@ -33,6 +33,8 @@ export const MyPageUserInfoContainer = styled.div<{ responsiveVar: responsiveVar
         ? "47.5rem"
         : props.responsiveVar.isThreeCards
         ? "35.625rem"
+        : props.responsiveVar.isTwoCards
+        ? "23.75rem"
         : "65%"} 1fr;
 
 `;

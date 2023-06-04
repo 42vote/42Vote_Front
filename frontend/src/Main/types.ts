@@ -17,6 +17,7 @@ export interface responsiveVariable {
   isFiveCards: boolean;
   isFourCards: boolean;
   isThreeCards: boolean;
+  isTwoCards: boolean;
   isDesktop: boolean;
   isMobile: boolean;
 }

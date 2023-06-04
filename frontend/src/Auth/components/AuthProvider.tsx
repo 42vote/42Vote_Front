@@ -14,12 +14,12 @@ const ProtectRoute = (props: ProtectRouteProps): React.ReactElement | null => {
   }
   return (
     <>
-      <FixedTop />
       <TransitionGroup>
         <CSSTransition key={props.pathname} classNames="fade" timeout={600}>
           <Outlet />
         </CSSTransition>
       </TransitionGroup>
+      <FixedTop />
     </>
   );
 };

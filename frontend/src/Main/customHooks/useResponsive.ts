@@ -8,14 +8,18 @@ export const useResponsive = () => {
   const isThreeCards: boolean = useMediaQuery({
     query: "(min-width: 801px) and (max-width: 1021px)",
   });
-  const isDesktop: boolean = useMediaQuery({ query: "(min-width: 800px)" });
-  const isMobile : boolean = useMediaQuery({ query: "(max-width: 799px)" });
+  const isTwoCards: boolean = useMediaQuery({
+    query: "(min-width: 534px) and (max-width: 800px)",
+  });
+  const isDesktop: boolean = useMediaQuery({ query: "(min-width: 534px)" });
+  const isMobile : boolean = useMediaQuery({ query: "(max-width: 533px)" });
 
   return (
     {
         isFiveCards: isFiveCards,
         isFourCards: isFourCards,
         isThreeCards: isThreeCards,
+        isTwoCards: isTwoCards,
         isDesktop: isDesktop,
         isMobile: isMobile
     }

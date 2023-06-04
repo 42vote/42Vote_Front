@@ -33,8 +33,8 @@ export const mainAPI = {
   getDocSize: async (categoryId: string) => {
     let myPost = "false";
     let myVote = "false";
-    if (categoryId == "-1") myPost = "true";
-    if (categoryId == "-2") myVote = "true";
+    if (categoryId === "-1") myPost = "true";
+    if (categoryId === "-2") myVote = "true";
     const Query =
       "?" +
       makeQuery("categoryId", categoryId) +
