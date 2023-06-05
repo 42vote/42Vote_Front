@@ -12,14 +12,6 @@
     animation: 1.5s shine linear infinite;
 }
 
-#detail-loading #content-wrapper #img-section #img-left {
-    background-image: url('../../public/img/left-button.svg');
-}
-
-#detail-loading #content-wrapper #img-section #img-right {
-    background-image: url('../../public/img/right-button.svg');
-}
-
 #desktop #detail-loading {
     padding-top: calc(clamp(30px, 3%, 50px) + 20px);
     box-sizing: border-box;
@@ -48,18 +40,6 @@
     width: 55%;
     display: flex;
     justify-content: center;
-}
-
-#desktop #detail-loading #content-wrapper #img-section button {
-    width: 10%;
-    border: none;
-    border-radius: 10px;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    cursor: pointer;
-    padding: 0;
 }
 
 #desktop #detail-loading #content-wrapper #img-section #img-file {

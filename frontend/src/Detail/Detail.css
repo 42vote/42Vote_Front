@@ -1,8 +1,3 @@
-#detail #vote-button:disabled {
-    color: #383838;
-    cursor: not-allowed !important;
-}
-
 #desktop #detail {
     padding-top: calc(clamp(30px, 3%, 50px) + 20px);
     box-sizing: border-box;
@@ -176,9 +171,13 @@
     cursor: pointer;
 }
 
-#desktop #detail #vote-button.open.voted {
+#desktop #detail #vote-button.voted {
     background-color: #383838;
     color: white;
+}
+
+#desktop #detail #vote-button.expire, #vote-button:disabled {
+    cursor: not-allowed !important;
 }
 
 #desktop #detail #author-button {
@@ -374,9 +373,13 @@
     cursor: pointer;
 }
 
-#mobile #detail #vote-button.open.voted {
+#mobile #detail #vote-button.voted {
     background-color: #383838;
     color: white;
+}
+
+#mobile #detail #vote-button.expire, #vote-button:disabled {
+    cursor: not-allowed !important;
 }
 
 #mobile #detail #author-button {

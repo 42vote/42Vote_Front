@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { SlideImage } from './SlideImage';
 import DetailLoading from './DetailLoading';
 import NotFound from '../Etc/NotFound';
+import { useEffect } from 'react';
 
 interface document {
     title: string,
@@ -41,26 +42,7 @@ function Detail() {
 
     if (isError)
         return (<div><FixedTop/><NotFound/></div>);
-    
-    /*--------이부분 useEffect에 안들어가면 사이즈 조절시 리셋됨--------*/
-    
-    const imgFileEl: HTMLElement | null = document.getElementById('img-file');
-    const voteButtonEl: HTMLButtonElement = document.getElementById('vote-button') as HTMLButtonElement;
 
-    if (data.isVoteExpired) {
-        imgFileEl?.classList.add('expire');
-        if (voteButtonEl) {
-            voteButtonEl.classList.remove('open');
-            voteButtonEl.classList.add('expire');
-            voteButtonEl.innerText = 'close';
-            voteButtonEl.disabled = true;
-        }
-    } else if (data.isVote) {
-        if (voteButtonEl)
-            voteButtonEl.classList.add('voted');
-    }
-
-    /*--------------------------------------------------------*/
 
     const TimeLine = (): string => {
         if (data) {
@@ -129,19 +111,20 @@ function Detail() {
         });
     }
 
-    //stat 만들기
-
-    const Layout = (): JSX.Element => {
-        return (
-            <>
+    return (
+        <div id={isDesktop ? "desktop" : "mobile"}>
+            <FixedTop/>
             {
                 data && (
                     <div id="detail">
                         <div id="title">{data.title}</div>
                         <div id="content-wrapper">
                             <div id="img-section">
-                                <button id="img-left" onClick={event => SlideImage.ImgArrowClick(event, -1)}></button>
-                                <div id="img-file" style={{backgroundImage: 'url(' + data.image[0] + ')'}}>
+                                {
+                                    data.image.length > 1 &&
+                                    <button id="img-left" onClick={event => SlideImage.ImgArrowClick(event, -1)}/>
+                                }
+                                <div id="img-file" className={data.isVoteExpired ? 'expire' : ''} style={{backgroundImage: 'url(' + data.image[0] + ')'}}>
                                     {
                                         data.image.map((img, idx) => (
                                             idx === 0 ? <img className="doc-img active" src={img} key={img} alt="img"/> :
@@ -150,6 +133,7 @@ function Detail() {
                                     }
                                     <div id="img-nav">
                                         {
+                                            data.image.length > 1 &&
                                             data.image.map((img, idx) => (
                                                 idx === 0 ? <div className="nav active" onClick={SlideImage.ImgNavClick} key={img}></div>
                                                 : <div className="nav" onClick={SlideImage.ImgNavClick} key={img}></div>
@@ -157,7 +141,10 @@ function Detail() {
                                         }
                                     </div>
                                 </div>
-                                <button id="img-right" onClick={event => SlideImage.ImgArrowClick(event, 1)}></button>
+                                {
+                                    data.image.length > 1 &&
+                                    <button id="img-right" onClick={event => SlideImage.ImgArrowClick(event, 1)}/>
+                                }
                             </div>
                             <div id="txt-section">
                                 <div id="info-wrapper">
@@ -174,28 +161,21 @@ function Detail() {
                             <div id="count">{data.voteCnt} / {data.goal}</div>
                         </div>
                         {
-                            data.isAuthor === false &&
-                            <button id="vote-button" className="open" onClick={Vote}>support</button>
-                        }
-                        {
-                            data.isAuthor && 
-                            <div id="author-button">
-                                <button id="doc-delete" onClick={DocDelete}>Delete</button>
-                                <button id="doc-stat">Stat</button>
-                            </div>
+                            data.isAuthor ?
+                            (
+                                <div id="author-button">
+                                    <button id="doc-delete" onClick={DocDelete}>Delete</button>
+                                    <button id="doc-stat">Stat</button>
+                                </div>
+                            ) : (
+                                data.isVoteExpired ? <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'expire'} onClick={Vote} disabled>close</button> :
+                                <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'open'} onClick={Vote}>support</button>
+                            )
                         }
                     </div>
                 )
             }
-            </>
-        );
-    }
-
-    return (
-        <>
-            {isMobile && <div id="mobile"><FixedTop/><Layout/></div>}
-            {isDesktop && <div id="desktop"><FixedTop/><Layout/></div>}
-        </>
+        </div>
     )
 }
 
