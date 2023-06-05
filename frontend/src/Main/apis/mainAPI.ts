@@ -14,9 +14,13 @@ export const mainAPI = {
     return await customAxios().get("/category" + Query);
   },
   getDocList: async (docListQuery: documentListQuery, pageParam: number) => {
+    const tempCategoryId =
+      docListQuery.categoryId === "-1" || docListQuery.categoryId === "-2"
+        ? "0"
+        : docListQuery.categoryId;
     const Query: string =
       "?" +
-      makeQuery("categoryId", docListQuery.categoryId) +
+      makeQuery("categoryId", tempCategoryId) +
       "&" +
       makeQuery("listSize", docListQuery.listSize) +
       "&" +
@@ -35,6 +39,7 @@ export const mainAPI = {
     let myVote = "false";
     if (categoryId === "-1") myPost = "true";
     if (categoryId === "-2") myVote = "true";
+    if (categoryId === "-1" || categoryId === "-2") categoryId = "0";
     const Query =
       "?" +
       makeQuery("categoryId", categoryId) +

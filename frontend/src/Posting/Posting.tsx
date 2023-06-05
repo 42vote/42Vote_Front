@@ -3,7 +3,7 @@ import FixedTop from '../Etc/FixedTop';
 import './Posting.css'
 import { useMediaQuery } from 'react-responsive';
 import { customAxios } from '../Lib/customAxios';
-import { categoryRes } from "../Types/common";
+import { categoryRes } from '../Types/common';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 

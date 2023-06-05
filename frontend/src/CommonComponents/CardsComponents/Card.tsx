@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { CardProps } from "../../types";
+import { CardProps } from "../../Main/types";
 import {
   Cards,
   ProductCard,
   ImgContainer,
   ProductCardTitle,
-} from "../../styles/styleComponents";
-import { getTextColorByBackgroundColor } from "../../../Lib/getColors";
+} from "../../Main/styles/styleComponents";
+import { getTextColorByBackgroundColor } from "../../Lib/getColors";
 
 const Card: React.FC<CardProps> = ({
   id,
