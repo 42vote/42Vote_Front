@@ -9,6 +9,7 @@ import MyPage from "./Mypage";
 import Posting from "./Posting/Posting";
 import ProtectRoute from "./Auth/components/AuthProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Admin from "./Admin";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/posting" element={<Posting />} />
           <Route path="/detail/*" element={<Detail />} />
           <Route path="/posting" element={<Posting />} />
+          <Route path="/admin" element={<Admin/>} />
         </Route>
       </Routes>
     </QueryClientProvider>

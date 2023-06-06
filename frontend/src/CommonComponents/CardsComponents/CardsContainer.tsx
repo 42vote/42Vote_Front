@@ -10,7 +10,7 @@ import Card from "./Card";
 import NoCards from "./NoCards";
 import SkeletonCards from "./SkeletonCards";
 
-const CardsContainer2 = (props: cardsProps) => {
+const CardsContainer = (props: cardsProps) => {
   const docSize = useDocSize(props.tag);
   const selectedTag = props.tag;
   const documentQuery = documentApiQuery(
@@ -74,13 +74,23 @@ const CardsContainer2 = (props: cardsProps) => {
     scrollMove(-1);
   };
 
+  console.log("cardExist: ", cardExist);
+  console.log("getCards: ", getCards);
+  console.log(
+    "getCards.pags[0].cardArray.length",
+    getCards?.pages[0].cardArrary.length
+  );
+  console.log("shownCardsNum: ", shownCardsNum);
+  console.log("isDesktop: ", responsiveVar.isDesktop);
+
   return (
     <>
       <TagHeader responsiveVar={responsiveVar}>#{title}</TagHeader>
-      {cardExist &&
-      getCards &&
-      getCards.pages[0].cardArrary.length > shownCardsNum &&
-      responsiveVar.isDesktop ? (
+      {(cardExist &&
+        getCards &&
+        getCards.pages[0].cardArrary.length > shownCardsNum &&
+        responsiveVar.isDesktop) ||
+      (getNextPageIsPossible && responsiveVar.isDesktop) ? (
         <div className="prevButtonContainer">
           <button onClick={handlePrev} className="prevButton" />
         </div>
@@ -115,10 +125,11 @@ const CardsContainer2 = (props: cardsProps) => {
           getNextPageIsPossible &&
           getCards.pages[0].cardArrary.length > 0 && <SkeletonCards />}
       </CardsList>
-      {cardExist &&
-      getCards &&
-      getCards.pages[0].cardArrary.length > shownCardsNum &&
-      responsiveVar.isDesktop ? (
+      {(cardExist &&
+        getCards &&
+        getCards.pages[0].cardArrary.length > shownCardsNum &&
+        responsiveVar.isDesktop) ||
+      (getNextPageIsPossible && responsiveVar.isDesktop) ? (
         <div className="nextButtonContainer">
           <button onClick={handleNext} className="nextButton" />
         </div>
@@ -127,4 +138,4 @@ const CardsContainer2 = (props: cardsProps) => {
   );
 };
 
-export default CardsContainer2;
+export default CardsContainer;
