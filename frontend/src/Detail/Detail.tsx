@@ -8,7 +8,8 @@ import { useQuery } from '@tanstack/react-query';
 import { SlideImage } from './SlideImage';
 import DetailLoading from './DetailLoading';
 import NotFound from '../Etc/NotFound';
-import { useEffect } from 'react';
+import { useState } from 'react';
+import StatDialog from './StatDialog';
 
 interface document {
     title: string,
@@ -29,6 +30,8 @@ function Detail() {
     const isMobile: boolean = useMediaQuery({query: '(max-width: 768px)'});
     const nav: NavigateFunction = useNavigate();
     const docId: number = Number(window.location.pathname.split('/')[2]);
+
+    const [isOpen, setIsOpen] = useState(false);
 
     const getData = async () => {
         const res = await customAxios().get('/document/' + docId);
@@ -113,7 +116,6 @@ function Detail() {
 
     return (
         <div id={isDesktop ? "desktop" : "mobile"}>
-            <FixedTop/>
             {
                 data && (
                     <div id="detail">
@@ -165,7 +167,7 @@ function Detail() {
                             (
                                 <div id="author-button">
                                     <button id="doc-delete" onClick={DocDelete}>Delete</button>
-                                    <button id="doc-stat">Stat</button>
+                                    <button id="doc-stat" onClick={()=>setIsOpen(true)}>Stat</button>
                                 </div>
                             ) : (
                                 data.isVoteExpired ? <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'expire'} onClick={Vote} disabled>close</button> :
@@ -175,6 +177,7 @@ function Detail() {
                     </div>
                 )
             }
+            <StatDialog isOpen={isOpen} setIsOpen={setIsOpen}/>
         </div>
     )
 }
