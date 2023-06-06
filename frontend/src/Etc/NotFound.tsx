@@ -8,7 +8,7 @@ const NotFound = () => {
     <div id="not-found">
         <div>404</div>
         <div>Not Found</div>
-        <button onClick={() => nav('/')}>Home</button>
+        <button onClick={() => nav('/main')}>Home</button>
     </div>
   );
 };
