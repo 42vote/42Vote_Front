@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import FixedTop from '../Etc/FixedTop';
 import './Posting.css'
 import { useMediaQuery } from 'react-responsive';
 import { customAxios } from '../Lib/customAxios';
@@ -15,7 +14,7 @@ function Posting() {
     const [descriptLength, setDescriptLength] = useState(0);
 
     useEffect(() => {
-        customAxios().get('/category').then((res) => {
+        customAxios().get('/category', {params: {expired: false}}).then((res) => {
             setCategoryList(res.data);
         });
     }, []);
@@ -156,7 +155,6 @@ function Posting() {
 
     return (
         <div id={isDesktop ? "desktop" : "mobile"}>
-            <FixedTop/>
             <div id="posting">
                 <form id="post-form">
                     <input id="title" type="text" value={title} onChange={(e) => {setTitle(e.target.value)}}/>
