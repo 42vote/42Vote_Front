@@ -30,7 +30,6 @@ function Detail() {
     const isMobile: boolean = useMediaQuery({query: '(max-width: 768px)'});
     const nav: NavigateFunction = useNavigate();
     const docId: number = Number(window.location.pathname.split('/')[2]);
-
     const [isOpen, setIsOpen] = useState(false);
 
     const getData = async () => {
@@ -41,10 +40,10 @@ function Detail() {
     const { data, isLoading, isError } = useQuery<document>(['detail/' + docId], getData, {retry: false, staleTime: 60 * 1000, refetchOnWindowFocus: false, refetchOnMount: 'always'});
 
     if (isLoading)
-        return (<div id={isMobile ? "mobile" : "desktop"}><FixedTop/><DetailLoading/></div>);
+        return (<DetailLoading/>);
 
     if (isError)
-        return (<div><FixedTop/><NotFound/></div>);
+        return (<NotFound/>);
 
 
     const TimeLine = (): string => {
@@ -108,7 +107,7 @@ function Detail() {
                     });
                 }).catch((err) => {
                     if (err.response.status === 404)
-                        nav('/notfound') //notfound 컴포넌트 || 접속하지 못한 페이지의 글을 삭제할 수 있나?
+                        return (<NotFound/>)
                 });
             }
         });
