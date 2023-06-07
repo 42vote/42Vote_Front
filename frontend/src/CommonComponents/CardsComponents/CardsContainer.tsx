@@ -27,7 +27,7 @@ const CardsContainer = (props: cardsProps) => {
     getCardsIsSuccess &&
     getCards.pages[0].cardArrary.length > 0;
   const shownCardsNum = getShownCardsNum(responsiveVar);
-  const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
+  const tagInfo = useTags("false").data?.filter((arr) => arr.id === selectedTag);
   const title = tagInfo?.length
     ? tagInfo[0].title
     : props.tag === "-1"
@@ -47,7 +47,7 @@ const CardsContainer = (props: cardsProps) => {
     else if (responsiveVar.isFourCards)
       scrollRef.current!.scrollLeft += 48 * fontSizeNum * direction;
     else if (responsiveVar.isThreeCards)
-      scrollRef.current!.scrollLeft += 36.325 * fontSizeNum * direction;
+      scrollRef.current!.scrollLeft += 36.045 * fontSizeNum * direction;
     else if (responsiveVar.isTwoCards)
       scrollRef.current!.scrollLeft += 24.08 * fontSizeNum * direction;
   };
