@@ -1,5 +1,5 @@
 const CategoryDetail = () => {
-    return (<></>)
+    return (<>Detail</>)
 }
 
 export default CategoryDetail

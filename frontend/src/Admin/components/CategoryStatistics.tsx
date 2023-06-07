@@ -1,6 +1,6 @@
 
 const CategoryStatistics = () => {
-    return (<></>)
+    return (<>Statistics</>)
 }
 
 export default CategoryStatistics;
