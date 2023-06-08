@@ -1,16 +1,33 @@
 import { SelectedCategoryInfoContainer } from "../styles/styledComponents";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CategoryDetail from "./CategoryDetail";
 import CategoryStatistics from "./CategoryStatistics";
+import { selectedComponentContext } from "../contexts/setDetailComponents";
+import CategoryCreate from "./CategoryCreate";
 
 const SelectedCategoryInfo = () => {
+  const { selectedComponent, setSelectedComponent } = useContext(
+    selectedComponentContext
+  );
   const [isStatistics, setIsStatistics] = useState(false);
   const setInfoType = () => {
-    setIsStatistics(!isStatistics);
-  }
+    if (isStatistics) {
+      setSelectedComponent("detail");
+      setIsStatistics(false);
+    } else {
+      setSelectedComponent("statistics");
+      setIsStatistics(true);
+    }
+  };
   return (
     <SelectedCategoryInfoContainer>
-      {isStatistics ? <CategoryStatistics /> : <CategoryDetail />}
+      {selectedComponent === "statistics" ? (
+        <CategoryStatistics />
+      ) : selectedComponent === "detail" ? (
+        <CategoryDetail />
+      ) : (
+        <CategoryCreate />
+      )}
       <button onClick={setInfoType}>ChangeInfoType</button>
     </SelectedCategoryInfoContainer>
   );
