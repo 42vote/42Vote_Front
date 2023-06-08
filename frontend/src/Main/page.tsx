@@ -25,8 +25,7 @@ const MainPage: React.FC = () => {
 
   useEffect(()=> {
     if (responsiveVar.isMobile) setRootFontSize(15)
-    if (responsiveVar.isDesktop) setRootFontSize(14)
-    
+    if (responsiveVar.isDesktop) setRootFontSize(14) 
   },[responsiveVar])
 
   return (

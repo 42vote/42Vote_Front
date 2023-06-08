@@ -10,7 +10,7 @@ import Card from "./Card";
 import NoCards from "./NoCards";
 import SkeletonCards from "./SkeletonCards";
 
-const CardsContainer2 = (props: cardsProps) => {
+const CardsContainer = (props: cardsProps) => {
   const docSize = useDocSize(props.tag);
   const selectedTag = props.tag;
   const documentQuery = documentApiQuery(
@@ -47,7 +47,7 @@ const CardsContainer2 = (props: cardsProps) => {
     else if (responsiveVar.isFourCards)
       scrollRef.current!.scrollLeft += 48 * fontSizeNum * direction;
     else if (responsiveVar.isThreeCards)
-      scrollRef.current!.scrollLeft += 36.325 * fontSizeNum * direction;
+      scrollRef.current!.scrollLeft += 36.045 * fontSizeNum * direction;
     else if (responsiveVar.isTwoCards)
       scrollRef.current!.scrollLeft += 24.08 * fontSizeNum * direction;
   };
@@ -127,4 +127,4 @@ const CardsContainer2 = (props: cardsProps) => {
   );
 };
 
-export default CardsContainer2;
+export default CardsContainer;
