@@ -39,3 +39,8 @@
     padding: 5px 16px !important;
     justify-content: center;
 }
+
+.comment {
+    text-align: center;
+    font-family: 'Lora-Regular';
+}

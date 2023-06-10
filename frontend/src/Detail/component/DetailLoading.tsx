@@ -1,4 +1,4 @@
-import './DetailLoading.css';
+import '../style/DetailLoading.css';
 
 function DetailLoading() {
     return (

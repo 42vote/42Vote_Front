@@ -1,12 +1,12 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Detail from "./Detail/Detail";
+import Detail from "./Detail/component/Detail";
 import MainIndex from "./Main/index";
 import NotFound from "./Etc/NotFound";
 import Login from "./Login/login";
 import Auth from "./Auth/page";
 import MyPage from "./Mypage";
-import Posting from "./Posting/Posting";
+import Posting from "./Posting/component/Posting";
 import ProtectRoute from "./Auth/components/AuthProvider";
 import "./App.css";
 

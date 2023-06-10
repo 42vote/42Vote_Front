@@ -1,9 +1,9 @@
-const ImgNavClick = (event: React.MouseEvent<HTMLDivElement>): void => {
-    const target: HTMLElement = event.target as HTMLDivElement;
-    const targetSibling: Element[] = Array.from(target.parentElement?.children || []);
-    const idx: number = targetSibling.indexOf(target);
-    const images: NodeListOf<Element> | undefined = target.parentElement?.parentElement?.querySelectorAll('.doc-img');
-    const background: HTMLElement = document.getElementById('img-file') as HTMLDivElement;
+const ImgNavClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLDivElement;
+    const targetSibling = Array.from(target.parentElement?.children || []);
+    const idx = targetSibling.indexOf(target);
+    const images = target.parentElement?.parentElement?.querySelectorAll('.doc-img');
+    const background = document.getElementById('img-file') as HTMLDivElement;
 
     targetSibling.forEach(sibling => {
         if (sibling !== target)
@@ -22,12 +22,12 @@ const ImgNavClick = (event: React.MouseEvent<HTMLDivElement>): void => {
     });
 }
 
-const ImgArrowClick = (event: React.MouseEvent<HTMLButtonElement>, direction: number): void => {
-    const target: HTMLElement = event.target as HTMLButtonElement;
-    const images: NodeListOf<Element> | undefined = target.parentElement?.querySelectorAll('.doc-img');
-    const nav: NodeListOf<Element> | undefined = target.parentElement?.querySelectorAll('.nav');
-    const background: HTMLElement = document.getElementById('img-file') as HTMLDivElement;
-    let idx: number = 0;
+const ImgArrowClick = (event: React.MouseEvent<HTMLButtonElement>, direction: number) => {
+    const target = event.target as HTMLButtonElement;
+    const images = target.parentElement?.querySelectorAll('.doc-img');
+    const nav = target.parentElement?.querySelectorAll('.nav');
+    const background = document.getElementById('img-file') as HTMLDivElement;
+    let idx = 0;
     
     images?.forEach((img, index) => {
         if (img.classList.contains('active'))

@@ -5,30 +5,32 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import './StatDialog.css';
-
-interface StatDialogProps {
-    isOpen: boolean;
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { StatDialogProps } from "../interface/DetailInterface";
+import '../style/StatDialog.css';
+import { getStatData } from "../service/GetData";
+import { useEffect, useState } from "react";
 
 function StatDialog(props: StatDialogProps) {
-    const emails = ["sojoo", "yachoi", "yonshin", "joupark", "heeskim", "hyunjcho", "sunghkim", "jonhan", "mykang", "jbok", "ahhlee", "jnam", "hjeong"];
-    //api로 투표자 목록 받아오기 -> api 응답 데이터가 이상해요...
+    const [emails, setEmails] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (props.isOpen)
+            getStatData(props.docId, setEmails);
+    }, [props.isOpen]);
 
     return (
         <Dialog onClose={()=>props.setIsOpen(false)} open={props.isOpen}>
             <DialogTitle>Voter List</DialogTitle>
             <List>
                 <div className="users">
-                    {emails.map((email) => (
-                            <ListItem>
+                    {emails.length > 0 ? emails.map((email) => (
+                            <ListItem key={email}>
                                 <ListItemButton onClick={()=>window.open("https://profile.intra.42.fr/users/" + email)}>
                                     <AccountCircle/>
                                     <ListItemText primary={email}/>
                                 </ListItemButton>
                             </ListItem>
-                    ))}
+                    )) : <div className="comment">No Voter</div>}
                 </div>
                 <ListItem className="close-button">
                     <ListItemButton onClick={()=>props.setIsOpen(false)}>
