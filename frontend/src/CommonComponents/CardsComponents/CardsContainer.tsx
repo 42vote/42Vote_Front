@@ -27,7 +27,7 @@ const CardsContainer = (props: cardsProps) => {
     getCardsIsSuccess &&
     getCards.pages[0].cardArrary.length > 0;
   const shownCardsNum = getShownCardsNum(responsiveVar);
-  const tagInfo = useTags().data?.filter((arr) => arr.id === selectedTag);
+  const tagInfo = useTags("false").data?.filter((arr) => arr.id === selectedTag);
   const title = tagInfo?.length
     ? tagInfo[0].title
     : props.tag === "-1"
@@ -74,13 +74,23 @@ const CardsContainer = (props: cardsProps) => {
     scrollMove(-1);
   };
 
+  console.log("cardExist: ", cardExist);
+  console.log("getCards: ", getCards);
+  console.log(
+    "getCards.pags[0].cardArray.length",
+    getCards?.pages[0].cardArrary.length
+  );
+  console.log("shownCardsNum: ", shownCardsNum);
+  console.log("isDesktop: ", responsiveVar.isDesktop);
+
   return (
     <>
       <TagHeader responsiveVar={responsiveVar}>#{title}</TagHeader>
-      {cardExist &&
-      getCards &&
-      getCards.pages[0].cardArrary.length > shownCardsNum &&
-      responsiveVar.isDesktop ? (
+      {(cardExist &&
+        getCards &&
+        getCards.pages[0].cardArrary.length > shownCardsNum &&
+        responsiveVar.isDesktop) ||
+      (getNextPageIsPossible && responsiveVar.isDesktop) ? (
         <div className="prevButtonContainer">
           <button onClick={handlePrev} className="prevButton" />
         </div>
@@ -115,10 +125,11 @@ const CardsContainer = (props: cardsProps) => {
           getNextPageIsPossible &&
           getCards.pages[0].cardArrary.length > 0 && <SkeletonCards />}
       </CardsList>
-      {cardExist &&
-      getCards &&
-      getCards.pages[0].cardArrary.length > shownCardsNum &&
-      responsiveVar.isDesktop ? (
+      {(cardExist &&
+        getCards &&
+        getCards.pages[0].cardArrary.length > shownCardsNum &&
+        responsiveVar.isDesktop) ||
+      (getNextPageIsPossible && responsiveVar.isDesktop) ? (
         <div className="nextButtonContainer">
           <button onClick={handleNext} className="nextButton" />
         </div>

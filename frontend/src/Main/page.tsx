@@ -8,7 +8,7 @@ import { useResponsive } from "./customHooks/useResponsive";
 import { setRootFontSize } from "../Lib/setRootFontSize";
 
 const MainPage: React.FC = () => {
-  const { data, isLoading } = useTags();
+  const { data, isLoading } = useTags("false");
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
   const responsiveVar: responsiveVariable = useResponsive();
   useEffect(() => {
