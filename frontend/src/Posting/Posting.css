@@ -53,9 +53,8 @@
     margin: 0 10px 10px 0;
     border: 1px solid #383838;
     border-radius: 20px;
-    width: max(60px, 6vw);
     text-align: center;
-    padding: 5px;
+    padding: 5px 10px;
 }
 
 #posting #post-form #category-wrapper #radio-list label.checked {
