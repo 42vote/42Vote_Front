@@ -7,13 +7,25 @@ import DropDownCategorys from "./DropDownCategorys";
 interface categorysProps {
   selectedTag: string[];
   handleSelect: (tagId: string) => void;
+  isMain: boolean;
 }
 
 const Categorys = (props: categorysProps) => {
   const { data, isLoading } = useTags("false");
-  const responsiveVar = useResponsive();
+  let responsiveVar = useResponsive();
   const handleTagSelect = props.handleSelect;
   const selectedTag = props.selectedTag;
+
+  if (!props.isMain) {
+    responsiveVar = {
+      isFiveCards: false,
+      isFourCards: false,
+      isThreeCards: false,
+      isTwoCards: true,
+      isDesktop: true,
+      isMobile: false
+    }
+  }
 
   return (
       <Tags responsiveVar={responsiveVar}>

@@ -248,3 +248,19 @@ export const Tag = styled.div<{isSelected: boolean}>`
   user-select: none;
   box-shadow: 2px 2px 0.125rem rgba(0, 0, 0, 0.3);
 `;
+
+export const CreateButton = styled.div<{selectedComponent: string}>`
+  display: inline-block;
+  padding: 0.3125rem 1rem;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: ${(prop) => prop.selectedComponent === "create" ? "#000" : "#ddd"};
+  color: ${(prop) => prop.selectedComponent === "create" ? "#ddd" : "#000"};
+  ${(prop) => prop.selectedComponent === "create" ? "border: none;" : null}
+  border-radius: 0.625rem;
+  cursor: pointer;
+  margin-left: 1.25rem;
+  user-select: none;
+  box-shadow: 2px 2px 0.125rem rgba(0, 0, 0, 0.3);
+`;

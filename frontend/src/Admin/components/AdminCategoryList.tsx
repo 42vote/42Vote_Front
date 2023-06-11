@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { selectedComponentContext } from "../contexts/setDetailComponents";
 import { selectTagProps } from "../../Main/types";
 import Categorys from "../../Main/components/Category/Categorys";
+import { CreateButton } from "../../Main/styles/styleComponents";
 
 const AdminCategoryList = (props: selectTagProps) => {
   const { selectedComponent, setSelectedComponent } = useContext(
@@ -14,16 +15,27 @@ const AdminCategoryList = (props: selectTagProps) => {
   const handleTagSelect = (tagId: string) => {
     if (selectedTag.length === 1 && selectedTag[0] === tagId) return;
     setSelectedTag([tagId]);
+    setSelectedComponent("detail");
   };
 
   const getCreatePage = () => {
     setSelectedComponent("create");
+    setSelectedTag([]);
   };
-  
+
   return (
     <AdminCategoryListContainer>
-      <Categorys selectedTag={selectedTag} handleSelect={handleTagSelect} />
-      <button onClick={getCreatePage}>CreateCategory</button>
+      <Categorys
+        selectedTag={selectedTag}
+        handleSelect={handleTagSelect}
+        isMain={props.isMain}
+      />
+      <CreateButton
+        onClick={getCreatePage}
+        selectedComponent={selectedComponent}
+      >
+        +
+      </CreateButton>
     </AdminCategoryListContainer>
   );
 };
