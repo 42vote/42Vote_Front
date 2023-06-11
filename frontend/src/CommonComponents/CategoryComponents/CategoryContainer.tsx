@@ -1,8 +1,8 @@
 import React, { useEffect, useCallback } from "react";
-import { selectTagProps } from "../../types";
-import { useResponsive } from "../../customHooks/useResponsive";
+import { selectTagProps } from "../../Main/types";
+import { useResponsive } from "../../Main/customHooks/useResponsive";
 import Categorys from "./Categorys";
-import { TagConatiner } from "../../styles/styleComponents";
+import { TagContainer } from "../../Main/styles/styleComponents";
 
 const CategoryContainer = (props: selectTagProps) => {
   const responsiveVar = useResponsive();
@@ -30,9 +30,9 @@ const CategoryContainer = (props: selectTagProps) => {
   }, [responsiveVar.isMobile, mobileSet]);
 
   return (
-    <TagConatiner responsiveVar={responsiveVar}>
+    <TagContainer responsiveVar={responsiveVar}>
       <Categorys selectedTag={selectedTag} handleSelect={handleTagSelect} isMain={props.isMain} />
-    </TagConatiner>
+    </TagContainer>
   );
 };
 

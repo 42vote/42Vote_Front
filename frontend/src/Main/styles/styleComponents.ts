@@ -122,7 +122,7 @@ export const ProductCardTitle = styled.h2<{ textColor: string }>`
 
 //Category
 
-export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
+export const TagContainer = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
   position: relative;
   z-index: 99;

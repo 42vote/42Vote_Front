@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CategoryContainer from "./components/Category/CategoryContainer";
+import CategoryContainer from "../CommonComponents/CategoryComponents/CategoryContainer";
 import CardsContainers from "../CommonComponents/CardsComponents/CardsContainers";
 import "./styles/style.css";
 import { useTags } from "./customHooks/useTags";

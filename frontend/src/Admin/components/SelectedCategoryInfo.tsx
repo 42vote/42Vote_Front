@@ -1,10 +1,10 @@
 import { SelectedCategoryInfoContainer } from "../styles/styledComponents";
 import { useState, useContext } from "react";
-import CategoryDetail from "./CategoryDetail";
-import CategoryStatistics from "./CategoryStatistics";
 import { selectedComponentContext } from "../contexts/setDetailComponents";
-import CategoryCreate from "./CategoryCreate";
 import { selectTagProps } from "../../Main/types";
+import CategoryDetail from "./CategoryDetail";
+import CategoryCreate from "./CategoryCreate";
+import CategoryStatistics from "./CategoryStatistics";
 
 const SelectedCategoryInfo = (props: selectTagProps) => {
   const { selectedComponent, setSelectedComponent } = useContext(
@@ -27,7 +27,11 @@ const SelectedCategoryInfo = (props: selectTagProps) => {
   return (
     <SelectedCategoryInfoContainer>
       {selectedComponent === "statistics" ? (
-        <CategoryStatistics />
+        <CategoryStatistics
+          isMain={true}
+          setSelectedTag={setSelectedTag}
+          selectedTag={selectedTag}
+        />
       ) : selectedComponent === "detail" ? (
         <CategoryDetail />
       ) : (

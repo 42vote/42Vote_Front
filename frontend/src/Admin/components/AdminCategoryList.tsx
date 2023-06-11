@@ -2,8 +2,8 @@ import { AdminCategoryListContainer } from "../styles/styledComponents";
 import { useContext } from "react";
 import { selectedComponentContext } from "../contexts/setDetailComponents";
 import { selectTagProps } from "../../Main/types";
-import Categorys from "../../Main/components/Category/Categorys";
 import { CreateButton } from "../../Main/styles/styleComponents";
+import Categorys from "../../CommonComponents/CategoryComponents/Categorys";
 
 const AdminCategoryList = (props: selectTagProps) => {
   const { selectedComponent, setSelectedComponent } = useContext(

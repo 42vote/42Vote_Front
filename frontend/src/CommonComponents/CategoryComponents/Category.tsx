@@ -1,5 +1,5 @@
 import React from "react";
-import { Tag } from "../../styles/styleComponents";
+import { Tag } from "../../Main/styles/styleComponents";
 
 type TagProps = {
   label: string;

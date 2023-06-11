@@ -1,7 +1,7 @@
-import { SkeletonTag, Tags } from "../../styles/styleComponents";
-import { useTags } from "../../customHooks/useTags";
+import { SkeletonTag, Tags } from "../../Main/styles/styleComponents";
+import { useTags } from "../../Main/customHooks/useTags";
+import { useResponsive } from "../../Main/customHooks/useResponsive";
 import Category from "./Category";
-import { useResponsive } from "../../customHooks/useResponsive";
 import DropDownCategorys from "./DropDownCategorys";
 
 interface categorysProps {
