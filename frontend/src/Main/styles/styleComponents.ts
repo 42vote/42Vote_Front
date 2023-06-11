@@ -232,3 +232,19 @@ export const TagsDrop = styled.div<{ isOpen: boolean; size: number }>`
     }
   }
 `;
+
+
+export const Tag = styled.div<{isSelected: boolean}>`
+  display: inline-block;
+  padding: 0.3125rem 1rem;
+  margin: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: ${(prop) => prop.isSelected ? "#000" : "#ddd"};
+  color: ${(prop) => prop.isSelected ? "#ddd" : "#000"};
+  ${(prop) => prop.isSelected ? "border: none;" : null}
+  border-radius: 0.625rem;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 2px 2px 0.125rem rgba(0, 0, 0, 0.3);
+`;

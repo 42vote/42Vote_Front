@@ -74,15 +74,6 @@ const CardsContainer = (props: cardsProps) => {
     scrollMove(-1);
   };
 
-  console.log("cardExist: ", cardExist);
-  console.log("getCards: ", getCards);
-  console.log(
-    "getCards.pags[0].cardArray.length",
-    getCards?.pages[0].cardArrary.length
-  );
-  console.log("shownCardsNum: ", shownCardsNum);
-  console.log("isDesktop: ", responsiveVar.isDesktop);
-
   return (
     <>
       <TagHeader responsiveVar={responsiveVar}>#{title}</TagHeader>

@@ -1,22 +1,27 @@
-import React from 'react';
+import React from "react";
+import { Tag } from "../../styles/styleComponents";
 
 type TagProps = {
   label: string;
   tagId: string;
   onSelect: (label: string) => void;
   isSelected: boolean;
-}
+};
 
-const Category: React.FC<TagProps> = ({ label, tagId, onSelect, isSelected }) => {
-
+const Category: React.FC<TagProps> = ({
+  label,
+  tagId,
+  onSelect,
+  isSelected,
+}) => {
   const handleClick = () => {
     onSelect(tagId);
   };
 
   return (
-    <div className={`tag ${isSelected ? 'selected' : ''}`} onClick={handleClick}>
+    <Tag isSelected={isSelected} onClick={handleClick}>
       {label}
-    </div>
+    </Tag>
   );
 };
 

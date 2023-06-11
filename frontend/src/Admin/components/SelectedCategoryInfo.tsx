@@ -4,8 +4,9 @@ import CategoryDetail from "./CategoryDetail";
 import CategoryStatistics from "./CategoryStatistics";
 import { selectedComponentContext } from "../contexts/setDetailComponents";
 import CategoryCreate from "./CategoryCreate";
+import { selectTagProps } from "../../Main/types";
 
-const SelectedCategoryInfo = () => {
+const SelectedCategoryInfo = (props: selectTagProps) => {
   const { selectedComponent, setSelectedComponent } = useContext(
     selectedComponentContext
   );
@@ -19,6 +20,10 @@ const SelectedCategoryInfo = () => {
       setIsStatistics(true);
     }
   };
+
+  const selectedTag = props.selectedTag;
+  const setSelectedTag = props.setSelectedTag;
+
   return (
     <SelectedCategoryInfoContainer>
       {selectedComponent === "statistics" ? (

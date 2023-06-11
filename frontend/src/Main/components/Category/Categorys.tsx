@@ -1,4 +1,4 @@
-import { SkeletonTag, TagConatiner, Tags } from "../../styles/styleComponents";
+import { SkeletonTag, Tags } from "../../styles/styleComponents";
 import { useTags } from "../../customHooks/useTags";
 import Category from "./Category";
 import { useResponsive } from "../../customHooks/useResponsive";
@@ -16,7 +16,6 @@ const Categorys = (props: categorysProps) => {
   const selectedTag = props.selectedTag;
 
   return (
-    <TagConatiner responsiveVar={responsiveVar}>
       <Tags responsiveVar={responsiveVar}>
         {!isLoading && data ? (
           responsiveVar.isDesktop ? (
@@ -42,7 +41,6 @@ const Categorys = (props: categorysProps) => {
           ))
         )}
       </Tags>
-    </TagConatiner>
   );
 };
 
