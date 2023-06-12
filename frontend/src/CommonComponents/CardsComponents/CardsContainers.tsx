@@ -1,4 +1,3 @@
-import React from "react";
 import { selectTagProps } from "../../Main/types";
 import { useResponsive } from "../../Main/customHooks/useResponsive";
 import { CardsArea, CardsContainersDiv } from "../../Main/styles/styleComponents";

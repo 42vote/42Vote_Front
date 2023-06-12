@@ -4,7 +4,7 @@ import { selectedComponentContext } from "../contexts/setDetailComponents";
 import { selectTagProps } from "../../Main/types";
 import CategoryDetail from "./CategoryDetail";
 import CategoryCreate from "./CategoryCreate";
-import CategoryStatistics from "./CategoryStatistics";
+import CategoryStatistics from "./Statistics/CategoryStatistics";
 
 const SelectedCategoryInfo = (props: selectTagProps) => {
   const { selectedComponent, setSelectedComponent } = useContext(
