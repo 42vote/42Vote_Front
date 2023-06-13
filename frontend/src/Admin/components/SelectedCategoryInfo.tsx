@@ -26,6 +26,7 @@ const SelectedCategoryInfo = (props: selectTagProps) => {
 
   return (
     <SelectedCategoryInfoContainer>
+      <button onClick={setInfoType}>ChangeInfoType</button>
       {selectedComponent === "statistics" ? (
         <CategoryStatistics
           isMain={true}
@@ -37,7 +38,6 @@ const SelectedCategoryInfo = (props: selectTagProps) => {
       ) : (
         <CategoryCreate />
       )}
-      <button onClick={setInfoType}>ChangeInfoType</button>
     </SelectedCategoryInfoContainer>
   );
 };

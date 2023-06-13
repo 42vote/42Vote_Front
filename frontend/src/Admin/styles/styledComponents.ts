@@ -17,13 +17,24 @@ export const AdminCategoryListContainer = styled.div`
 export const SelectedCategoryInfoContainer = styled.div`
   grid-column: 2;
   margin-left: 1.5rem;
-  border: 1px solid black;
+  // border: 1px solid black;
 `;
 
 export const StatisticsContainer = styled.div`
   display: grid;
   height: 90%;
   grid-template-rows: 3rem 1.6fr;
+`;
+
+export const SelectedCategorys = styled.div<{ responsiveVar: responsiveVariable }>`
+  grid-column: 2;
+  display: ${(props) => (props.responsiveVar.isDesktop ? "flex" : "grid")};
+  flex-wrap: wrap;
+  align-content:center;
+  ${(props) => (props.responsiveVar.isDesktop ? "" : "grid-template-rows: 1fr auto;")}
+  justify-items: center;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
 `;
 
 export const StatisticsDocListContainer = styled.div`

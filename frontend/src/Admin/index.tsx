@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { selectedComponentContext } from "./contexts/setDetailComponents";
+import { categoryDocumentsContext } from "./contexts/setDocuments";
+import { documentListRes } from "../Types/common";
 import Admin from "./pages";
 
 const AdminIndex = () => {
@@ -9,9 +11,23 @@ const AdminIndex = () => {
     setSelectedComponent: setSelectedComponent,
   };
 
+  const [categoryDocuments, setCategoryDocuments] = useState<documentListRes[]>(
+    []
+  );
+  const categoryDocumentsVal = {
+    categoryDocuments: categoryDocuments,
+    setCategoryDocuments: setCategoryDocuments,
+  };
+
+  useEffect(()=>{
+    console.log(categoryDocuments);
+  }, [categoryDocuments])
+
   return (
     <selectedComponentContext.Provider value={selectedCategoryComponent}>
-      <Admin />
+      <categoryDocumentsContext.Provider value={categoryDocumentsVal}>
+        <Admin />
+      </categoryDocumentsContext.Provider>
     </selectedComponentContext.Provider>
   );
 };

@@ -1,19 +1,19 @@
-import { getShownCardsNum } from "../../../CommonComponents/CardsComponents/utils";
+import { useContext, useEffect } from "react";
 import { useCards } from "../../../Main/customHooks/useCards";
 import { useDocSize } from "../../../Main/customHooks/useDocSize";
 import { useResponsive } from "../../../Main/customHooks/useResponsive";
 import { useTags } from "../../../Main/customHooks/useTags";
-import { CardsArea, TagHeader } from "../../../Main/styles/styleComponents";
+import { TagHeader } from "../../../Main/styles/styleComponents";
 import { documentListQuery } from "../../../Main/types";
+import { categoryDocumentsContext } from "../../contexts/setDocuments";
 import {
-    StatisticsCardsArea,
+  StatisticsCardsArea,
   StatisticsCardsContainer,
   StatisticsDocListContainer,
 } from "../../styles/styledComponents";
 import Card from "../../../CommonComponents/CardsComponents/Card";
 import NoCards from "../../../CommonComponents/CardsComponents/NoCards";
 import SkeletonCards from "../../../CommonComponents/CardsComponents/SkeletonCards";
-import { useEffect } from "react";
 
 interface TagId {
   tagId: string;
@@ -32,8 +32,25 @@ const StatisticsCards = (prop: TagId) => {
     myPost: "false",
     myVote: "false",
   };
-  const { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage } =
-    useCards(documentQuery, docSize.data ? docSize.data.categorySize : -1);
+  const { getCards, getCardsIsSuccess } = useCards(
+    documentQuery,
+    docSize.data ? docSize.data.categorySize : -1
+  );
+
+  const DocContext = useContext(categoryDocumentsContext);
+  useEffect(() => {
+    if (
+      getCards &&
+      getCardsIsSuccess &&
+      DocContext.categoryDocuments.length < 1
+    )
+      DocContext.setCategoryDocuments(getCards.pages[0].cardArrary);
+  }, [getCards, getCardsIsSuccess]);
+
+  useEffect(() => {
+    console.log(DocContext.categoryDocuments);
+  },[DocContext.categoryDocuments])
+
   return (
     <StatisticsDocListContainer>
       <StatisticsCardsArea responsiveVar={responsiveVar}>
@@ -41,9 +58,9 @@ const StatisticsCards = (prop: TagId) => {
         <StatisticsCardsContainer>
           {getCardsIsSuccess && getCards ? (
             getCards.pages[0].cardArrary.length > 0 ? (
-              getCards.pages.map((pages) =>
-                pages.cardArrary.map((card) => <Card key={card.id} {...card} />)
-              )
+              DocContext.categoryDocuments.map((card) => (
+                <Card key={card.id} {...card} />
+              ))
             ) : (
               <NoCards />
             )
