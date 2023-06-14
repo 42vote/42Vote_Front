@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const AdminContainer = styled.div`
-  margin-top: 4%;
-  height: 100vh;
+  padding-top: calc(clamp(30px, 3%, 50px) + 20px);
+  min-height: 100vh;
   display: grid;
+  box-sizing: border-box;
   grid-template-columns: 12.6rem 1.618fr;
 `;
 
