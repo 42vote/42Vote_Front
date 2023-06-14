@@ -25,11 +25,11 @@ const CardsContainer = (props: cardsProps) => {
   const shownCardsNum = getShownCardsNum(responsiveVar);
   const getNeedScrollButton = () => {
     let cardsNum = 0;
-    if (getCards) {
+    if (getCards && docSize) {
       const pageOneLength = getCards.pages[0].cardArrary.length;
       if(pageOneLength < 5)
         cardsNum = pageOneLength;
-      else if (docSize)
+      else if (docSize.data)
         cardsNum = ((docSize.data.categorySize + 1) * 5); 
     }
     return cardsNum > shownCardsNum;
