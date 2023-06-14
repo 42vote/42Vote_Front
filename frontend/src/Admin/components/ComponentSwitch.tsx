@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { selectedComponentContext } from "../contexts/setDetailComponents";
 import { useResponsive } from "../../Main/customHooks/useResponsive";
 import {
@@ -7,23 +7,24 @@ import {
   Slider,
   SliderRound,
 } from "../styles/styledComponents";
+import { toggleOnContext } from "../contexts/setToggle";
 
 const ToggleSwitch = () => {
-  const [isOn, setIsOn] = useState(false);
   const { setSelectedComponent } = useContext(selectedComponentContext);
+  const {toggleOn, setToggleOn } = useContext(toggleOnContext);
   const responsiveVar = useResponsive();
 
   const handleToggle = () => {
-    if (isOn) setSelectedComponent("detail");
+    if (toggleOn) setSelectedComponent("detail");
     else setSelectedComponent("statistics");
-    setIsOn(!isOn);
+    setToggleOn(!toggleOn);
   };
 
   return (
     <SwitchLayOut responsiveVar={responsiveVar}>
       <SwitchContainer>
-        <Slider isOn={isOn} onClick={handleToggle}>
-          <SliderRound isOn={isOn} />
+        <Slider isOn={toggleOn} onClick={handleToggle}>
+          <SliderRound isOn={toggleOn} />
         </Slider>
       </SwitchContainer>
     </SwitchLayOut>

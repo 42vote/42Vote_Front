@@ -9,7 +9,6 @@ import ToggleSwitch from "./ComponentSwitch";
 
 const SelectedCategoryInfo = (props: selectTagProps) => {
   const { selectedComponent } = useContext(selectedComponentContext);
-
   const selectedTag = props.selectedTag;
   const setSelectedTag = props.setSelectedTag;
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { selectedComponentContext } from "./contexts/setDetailComponents";
 import { categoryDocumentsContext } from "./contexts/setDocuments";
+import { toggleOnContext } from "./contexts/setToggle";
 import { documentListRes } from "../Types/common";
 import Admin from "./pages";
 
@@ -19,10 +20,18 @@ const AdminIndex = () => {
     setCategoryDocuments: setCategoryDocuments,
   };
 
+  const [toggleOn, setToggleOn] = useState(false);
+  const togglenOnVal = {
+    toggleOn: toggleOn,
+    setToggleOn: setToggleOn,
+  };
+
   return (
     <selectedComponentContext.Provider value={selectedCategoryComponent}>
       <categoryDocumentsContext.Provider value={categoryDocumentsVal}>
-        <Admin />
+        <toggleOnContext.Provider value={togglenOnVal}>
+          <Admin />
+        </toggleOnContext.Provider>
       </categoryDocumentsContext.Provider>
     </selectedComponentContext.Provider>
   );
