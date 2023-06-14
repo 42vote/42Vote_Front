@@ -126,8 +126,7 @@ export const TagContainer = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
   position: relative;
   z-index: 99;
-  margin-top: ${(props) =>
-    props.responsiveVar.isDesktop ? "3rem" : "1.875rem"};
+  margin-top: calc(clamp(30px, 3%, 50px) + 20px);
   grid-template-columns: 1fr ${(props) =>
       props.responsiveVar.isFiveCards
         ? "59.375rem"
