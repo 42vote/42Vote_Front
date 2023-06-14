@@ -14,6 +14,7 @@ import {
 import Card from "../../../CommonComponents/CardsComponents/Card";
 import NoCards from "../../../CommonComponents/CardsComponents/NoCards";
 import SkeletonCards from "../../../CommonComponents/CardsComponents/SkeletonCards";
+import { getShownCardsNum } from "../../../CommonComponents/CardsComponents/utils";
 
 interface TagId {
   tagId: string;
@@ -45,7 +46,7 @@ const StatisticsCards = (prop: TagId) => {
       DocContext.categoryDocuments.length < 1
     )
       DocContext.setCategoryDocuments(getCards.pages[0].cardArrary);
-  }, [getCards, getCardsIsSuccess]);
+  }, [getCards, getCardsIsSuccess, DocContext]);
 
   return (
     <StatisticsDocListContainer>
@@ -61,7 +62,7 @@ const StatisticsCards = (prop: TagId) => {
               <NoCards />
             )
           ) : (
-            Array.from({ length: 4 }).map((_, index) => (
+            Array.from({ length: getShownCardsNum(responsiveVar) }).map((_, index) => (
               <SkeletonCards key={index} />
             ))
           )}
