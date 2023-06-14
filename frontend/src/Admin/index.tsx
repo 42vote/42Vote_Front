@@ -19,10 +19,6 @@ const AdminIndex = () => {
     setCategoryDocuments: setCategoryDocuments,
   };
 
-  useEffect(()=>{
-    console.log(categoryDocuments);
-  }, [categoryDocuments])
-
   return (
     <selectedComponentContext.Provider value={selectedCategoryComponent}>
       <categoryDocumentsContext.Provider value={categoryDocumentsVal}>

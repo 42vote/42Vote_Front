@@ -47,10 +47,6 @@ const StatisticsCards = (prop: TagId) => {
       DocContext.setCategoryDocuments(getCards.pages[0].cardArrary);
   }, [getCards, getCardsIsSuccess]);
 
-  useEffect(() => {
-    console.log(DocContext.categoryDocuments);
-  },[DocContext.categoryDocuments])
-
   return (
     <StatisticsDocListContainer>
       <StatisticsCardsArea responsiveVar={responsiveVar}>

@@ -10,16 +10,18 @@ import {
   SelectedCategorys,
 } from "../../styles/styledComponents";
 
+
 const sortByVote = (DocContext: categoryDocuments) => {
-  const sortedDoc = DocContext.categoryDocuments.sort((card1, card2) => {
+  const sortedDoc = [...DocContext.categoryDocuments].sort((card1, card2) => {
     const voteRate1: number = parseInt(card1.voteCnt) / parseInt(card1.goal);
     const voteRate2: number = parseInt(card2.voteCnt) / parseInt(card2.goal);
     return voteRate1 < voteRate2 ? 1 : -1;
   });
   return sortedDoc;
 };
+
 const sortById = (DocContext: categoryDocuments) => {
-  const sortedDoc = DocContext.categoryDocuments.sort((card1, card2) => {
+  const sortedDoc = [...DocContext.categoryDocuments].sort((card1, card2) => {
     return card1.id < card2.id ? 1 : -1;
   });
   return sortedDoc;
@@ -40,10 +42,6 @@ const StatisticsOption = () => {
       DocContext.setCategoryDocuments(sortedDoc);
     }
   };
-
-  useEffect(()=>{
-    console.log(DocContext.categoryDocuments);
-  },[DocContext, DocContext.categoryDocuments])
 
   return (
     <StatisticsOptionContainer responsiveVar={responsiveVar}>
