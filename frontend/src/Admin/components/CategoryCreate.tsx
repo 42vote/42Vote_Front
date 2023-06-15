@@ -4,9 +4,9 @@ import CategoryInfoBox from "./CategoryInfoBox";
 import { createCategory } from "./Logics";
 
 const CategoryCreate = () => {
-    const title = useRef<HTMLInputElement>(null);
     const today = dayjs();
 
+    const [title, setTitle] = useState('');
     const [voteEnd, setVoteEnd] = useState<Dayjs | null>(today);
     const [tagEnd, setTagEnd] = useState<Dayjs | null>(today);
     const [goalSet, setGoalSet] = useState(false);
@@ -15,7 +15,7 @@ const CategoryCreate = () => {
     const [multiple, setMultiple] = useState(false);
     
     const options = {
-        title: title.current ? title.current.value : '',
+        title: title,
         voteEnd: voteEnd,
         tagEnd: tagEnd,
         goalSet: goalSet,
@@ -26,7 +26,7 @@ const CategoryCreate = () => {
 
     return (
         <div id="category-create">
-            <input id="title" type='text' ref={title} placeholder='category name'/>
+            <input id="title" type='text' value={title} onChange={(e)=>setTitle(e.target.value)} placeholder='category name'/>
             <CategoryInfoBox
                 voteEnd={voteEnd}
                 setVoteEnd={setVoteEnd}
