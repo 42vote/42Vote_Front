@@ -24,7 +24,7 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
                     />
                 </div>
                 <div className="expire-date doc-expire">
-                    <span>태그 유효 기간</span>
+                    <span>카테고리 유효 기간</span>
                     <DatePicker label="시작" value={today} format={"YYYY/MM/DD"} disabled/>
                     <DatePicker
                         label="종료" value={props.tagEnd} format={"YYYY/MM/DD"}
@@ -35,7 +35,7 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
                 <div id="goal-set">
                     <span>목표치 통일</span>
                     <Switch onChange={(e)=>props.setGoalSet(e.target.checked)} checked={props.goalSet} disabled={toggleDisable}/>
-                    <input type="number" min="1" max="1000" value={props.goalSet ? props.goal : ''} 
+                    <input type="number" min="1" max="1000" value={(props.goalSet ? props.goal : '') || ''} 
                         onChange={(e)=>handleGoalInput(e, props.setGoal)} disabled={!props.goalSet || dateDisable}/>
                 </div>
                 <div id="vote-option">

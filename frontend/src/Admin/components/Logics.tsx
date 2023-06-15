@@ -60,7 +60,7 @@ export interface ConfirmOptions {
 } //input confrim & edit용 object
 
 export interface CategoryDetailProps {
-    // categoryId: number
+    categoryId: number
 }
 
 

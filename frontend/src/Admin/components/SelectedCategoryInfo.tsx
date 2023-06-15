@@ -22,7 +22,7 @@ const SelectedCategoryInfo = (props: selectTagProps) => {
           selectedTag={selectedTag}
         />
       ) : selectedComponent === "detail" ? (
-        <CategoryDetail />
+        <CategoryDetail categoryId={Number(selectedTag[0])}/>
       ) : (
         <CategoryCreate />
       )}
