@@ -68,7 +68,8 @@ const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, title: stri
             confirmButtonText: 'OK'
         }).then((res) => {
             if (res.isConfirmed) {
-                postDoc(docTitle, description.value, goalInput, checkedCategoryId, base64Files).then(() => nav('/main'));
+                (event.target as HTMLButtonElement).disabled = true;
+                postDoc(docTitle, description.value, checkedCategoryId, goalInput, base64Files).then(() => nav('/main'));
             }
         });
     }
