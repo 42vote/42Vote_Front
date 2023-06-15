@@ -3,7 +3,8 @@ import { getCategoryInfo } from "../apis/adminApis";
 import CategoryInfoBox from "./CategoryInfoBox";
 import dayjs, { Dayjs } from "dayjs";
 import { useEffect, useState } from "react";
-import { CategoryDetailProps, deleteCategory, editCategory } from "./Logics";
+import { deleteCategory, editCategory } from "../logics/Logics";
+import { CategoryDetailProps } from "../types";
 
 const CategoryDetail = (props: CategoryDetailProps) => {
     const categoryId = props.categoryId;
@@ -39,7 +40,11 @@ const CategoryDetail = (props: CategoryDetailProps) => {
             setMultiple(categoryInfo.multipleVote);
         }
     }, [categoryInfo]);
-    
+
+    useEffect(() => {
+        setState(1);
+    }, [categoryId])
+
     if (isLoading)
         return (<img src="img/loading-spinner.gif" alt="loading"/>);
     if (isError)
@@ -47,9 +52,8 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     
     return (
         <div id="category-detail">
-            {/* 카테고리 수정 및 즉시 종료가 voteExpire 기준? docExpire 기준? 으로 가능한가 */}
             <input id="title" type='text' value={title} onChange={(e)=>setTitle(e.target.value)} disabled={state === 1 ? true : false}/>
-            {state === 1 && today.isBefore(tagEnd) && <button id="modify-button" onClick={()=>setState(2)}>카테고리 수정</button>}
+            {state === 1 && <button id="modify-button" onClick={()=>setState(2)}>카테고리 수정</button>}
             <CategoryInfoBox
                 voteEnd={voteEnd}
                 setVoteEnd={setVoteEnd}

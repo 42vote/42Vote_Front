@@ -4,7 +4,8 @@ import { Switch } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
-import { CategoryInfoBoxProps, handleGoalInput } from "./Logics";
+import { handleGoalInput } from "../logics/Logics";
+import { CategoryInfoBoxProps } from "../types";
 
 const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
     const today = dayjs();
