@@ -53,9 +53,8 @@
     margin: 0 10px 10px 0;
     border: 1px solid #383838;
     border-radius: 20px;
-    width: max(60px, 6vw);
     text-align: center;
-    padding: 5px;
+    padding: 5px 10px;
 }
 
 #posting #post-form #category-wrapper #radio-list label.checked {
@@ -126,7 +125,7 @@
     padding-bottom: 100%;
     display: inline-block;
     background-color: #D9D9D9;
-    background-image: url('../../public/img/file-add-button.svg');
+    background-image: url('../../../public/img/file-add-button.svg');
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -156,7 +155,7 @@
 }
 
 #posting #post-form #image-wrapper #file-list .file-field div > button {
-    background-image: url('../../public/img/delete-button.svg');
+    background-image: url('../../../public/img/delete-button.svg');
     border: none;
     background-size: contain;
     background-repeat: no-repeat;

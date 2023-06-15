@@ -12,10 +12,14 @@
     z-index: 42;
 }
 
-#fixed-top #logo {
+#fixed-top button {
     cursor: pointer;
+}
+
+#fixed-top #logo {
     font-family: 'Lora-Bold';
     font-size: max(2vw, 20px);
+    cursor: pointer;
 }
 
 #fixed-top #button-wrap {
@@ -25,7 +29,6 @@
 }
 
 #fixed-top #button-wrap #my-profile-button {
-    cursor: pointer;
     background-image: url(../../public/img/my-profile-button.svg);
 }
 

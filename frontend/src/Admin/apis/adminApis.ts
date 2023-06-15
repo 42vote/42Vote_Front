@@ -1,9 +1,31 @@
+import { customAxios } from "../../Lib/customAxios"
+import { CategoryOptions, ConfirmOptions } from "../components/Logics";
 
-
-export const getCategoryInfo = () => {
-    return ("getCategoryInfo")
+export const getCategoryInfo = async (categoryId: number) => {
+    const res = await customAxios().get('/category/' + categoryId);
+    return res.data;
 }
 
-export const postCreateCategory = () => {
-    return ("CreateResult")
+export const postCreateCategory = (option: CategoryOptions) => {
+    return customAxios().post('/category', {
+        title: option.title,
+        multipleVote: option.multiple,
+        anonymousVote: option.anony,
+        voteExpire: option.voteEnd!.format('YYYY-MM-DD'),
+        docExpire: option.tagEnd!.format('YYYY-MM-DD'),
+        goal: Number(option.goal)
+    });
+}
+
+export const deleteCategoryReq = (categoryId: number) => {
+    return customAxios().delete('/category/' + categoryId)
+}
+
+export const patchCategory = (option: ConfirmOptions, categoryId: number) => {
+    return customAxios().patch('/category/' + categoryId, {
+        title: option.title,
+        voteExpire: option.voteEnd,
+        docExpire: option.tagEnd,
+        goal: Number(option.goal)
+    })
 }

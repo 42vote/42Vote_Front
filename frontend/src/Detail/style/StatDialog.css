@@ -1,0 +1,46 @@
+.MuiDialog-paper {
+    width: min(70%, 450px) !important;
+    max-height: calc(100% - 200px) !important;
+}
+
+.MuiDialogTitle-root {
+    text-align: center;
+    font-family: 'Lora-Bold' !important;
+    font-size: clamp(20px, 3vw, 30px) !important;
+}
+
+.MuiListItemText-primary {
+    font-family: 'Lora-Medium' !important;
+}
+
+.MuiListItemText-root.close-button {
+    text-align: center;
+}
+
+.MuiSvgIcon-root {
+    margin-right: 10px;
+}
+
+.MuiListItem-root {
+    padding: 0 16px !important;
+}
+
+.MuiListItem-root.close-button {
+    padding-top: 25px !important;
+    padding-bottom: 10px !important;
+}
+
+.MuiListItem-root.close-button .MuiListItemButton-root {
+    background-color: #f0efef;
+    border-radius: 10px;
+}
+
+.MuiListItemButton-root {
+    padding: 5px 16px !important;
+    justify-content: center;
+}
+
+.comment {
+    text-align: center;
+    font-family: 'Lora-Regular';
+}
