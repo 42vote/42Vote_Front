@@ -1,6 +1,7 @@
 import { customAxios } from "../../Lib/customAxios";
 
 const postDoc = (title: string, context: string, categoryId: number, goal: number, image: string[]) => {
+    console.log(categoryId, goal);
     return customAxios().post('/document', {
         title: title,
         context: context,
