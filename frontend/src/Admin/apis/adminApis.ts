@@ -1,5 +1,5 @@
 import { customAxios } from "../../Lib/customAxios"
-import { CategoryOptions, ConfirmOptions } from "../logics/Logics";
+import { CategoryOptions, ConfirmOptions } from "../types";
 
 export const getCategoryInfo = async (categoryId: number) => {
     const res = await customAxios().get('/category/' + categoryId);
