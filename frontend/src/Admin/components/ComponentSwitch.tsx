@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { selectedComponentContext } from "../contexts/setDetailComponents";
 import { useResponsive } from "../../Main/customHooks/useResponsive";
 import {
