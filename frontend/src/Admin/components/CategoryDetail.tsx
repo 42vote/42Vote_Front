@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 import { CategoryDetailProps, deleteCategory, editCategory } from "./Logics";
 
 const CategoryDetail = (props: CategoryDetailProps) => {
-    // const categoryId = props.categoryId;
-    const categoryId = 12;
+    const categoryId = props.categoryId;
     const queryClient = useQueryClient();
     const today = dayjs();
     const { data: categoryInfo, isLoading, isError } = useQuery(['categoryInfo-' + categoryId], ()=>getCategoryInfo(categoryId), {staleTime: 1000, retry: 0});
