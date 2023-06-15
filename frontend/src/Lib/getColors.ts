@@ -12,5 +12,4 @@ export const getTextColorByBackgroundColor = (hexColor: string) => {
 
 export const useGetPrimeColor = (src: string) => {
   const color = useColor(src, "hex");
-  console.log(color);
 }

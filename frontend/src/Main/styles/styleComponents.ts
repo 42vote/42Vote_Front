@@ -122,12 +122,11 @@ export const ProductCardTitle = styled.h2<{ textColor: string }>`
 
 //Category
 
-export const TagConatiner = styled.div<{ responsiveVar: responsiveVariable }>`
+export const TagContainer = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
   position: relative;
   z-index: 99;
-  margin-top: ${(props) =>
-    props.responsiveVar.isDesktop ? "3rem" : "1.875rem"};
+  margin-top: calc(clamp(30px, 3%, 50px) + 20px);
   grid-template-columns: 1fr ${(props) =>
       props.responsiveVar.isFiveCards
         ? "59.375rem"
@@ -144,8 +143,9 @@ export const Tags = styled.div<{ responsiveVar: responsiveVariable }>`
   grid-column: 2;
   display: ${(props) => (props.responsiveVar.isDesktop ? "flex" : "grid")};
   flex-wrap: wrap;
-  align-content:center;
-  ${(props) => (props.responsiveVar.isDesktop ? "" : "grid-template-rows: 1fr auto;")}
+  align-content: center;
+  ${(props) =>
+    props.responsiveVar.isDesktop ? "" : "grid-template-rows: 1fr auto;"}
   margin-top: 1.875rem;
   margin-left: 1rem;
   justify-items: center;
@@ -231,4 +231,36 @@ export const TagsDrop = styled.div<{ isOpen: boolean; size: number }>`
       height: 0;
     }
   }
+`;
+
+export const Tag = styled.div<{ isSelected: boolean }>`
+  display: inline-block;
+  padding: 0.3125rem 1rem;
+  margin: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: ${(prop) => (prop.isSelected ? "#000" : "#ddd")};
+  color: ${(prop) => (prop.isSelected ? "#ddd" : "#000")};
+  ${(prop) => (prop.isSelected ? "border: none;" : null)}
+  border-radius: 0.625rem;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 2px 2px 0.125rem rgba(0, 0, 0, 0.3);
+`;
+
+export const CreateButton = styled.div<{ selectedComponent: string }>`
+  display: inline-block;
+  padding: 0.3125rem 1rem;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: ${(prop) =>
+    prop.selectedComponent === "create" ? "#000" : "#ddd"};
+  color: ${(prop) => (prop.selectedComponent === "create" ? "#ddd" : "#000")};
+  ${(prop) => (prop.selectedComponent === "create" ? "border: none;" : null)}
+  border-radius: 0.625rem;
+  cursor: pointer;
+  margin-left: 1.25rem;
+  user-select: none;
+  box-shadow: 2px 2px 0.125rem rgba(0, 0, 0, 0.3);
 `;

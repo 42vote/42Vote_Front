@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CategoryContainer from "./components/Category/CategoryContainer";
+import CategoryContainer from "../CommonComponents/CategoryComponents/CategoryContainer";
 import CardsContainers from "../CommonComponents/CardsComponents/CardsContainers";
 import "./styles/style.css";
 import { useTags } from "./customHooks/useTags";
@@ -25,8 +25,7 @@ const MainPage: React.FC = () => {
 
   useEffect(()=> {
     if (responsiveVar.isMobile) setRootFontSize(15)
-    if (responsiveVar.isDesktop) setRootFontSize(14)
-    
+    if (responsiveVar.isDesktop) setRootFontSize(14) 
   },[responsiveVar])
 
   return (

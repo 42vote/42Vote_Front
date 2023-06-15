@@ -125,7 +125,7 @@
     padding-bottom: 100%;
     display: inline-block;
     background-color: #D9D9D9;
-    background-image: url('../../public/img/file-add-button.svg');
+    background-image: url('../../../public/img/file-add-button.svg');
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -155,7 +155,7 @@
 }
 
 #posting #post-form #image-wrapper #file-list .file-field div > button {
-    background-image: url('../../public/img/delete-button.svg');
+    background-image: url('../../../public/img/delete-button.svg');
     border: none;
     background-size: contain;
     background-repeat: no-repeat;

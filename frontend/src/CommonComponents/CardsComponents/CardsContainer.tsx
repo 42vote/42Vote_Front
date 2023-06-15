@@ -22,12 +22,21 @@ const CardsContainer = (props: cardsProps) => {
     useCards(documentQuery, docSize.data ? docSize.data.categorySize : -1);
 
   const responsiveVar = useResponsive();
-  const cardExist: boolean =
-    getCards !== undefined &&
-    getCardsIsSuccess &&
-    getCards.pages[0].cardArrary.length > 0;
   const shownCardsNum = getShownCardsNum(responsiveVar);
-  const tagInfo = useTags("false").data?.filter((arr) => arr.id === selectedTag);
+  const getNeedScrollButton = () => {
+    let cardsNum = 0;
+    if (getCards && docSize) {
+      const pageOneLength = getCards.pages[0].cardArrary.length;
+      if(pageOneLength < 5)
+        cardsNum = pageOneLength;
+      else if (docSize.data)
+        cardsNum = ((docSize.data.categorySize + 1) * 5); 
+    }
+    return cardsNum > shownCardsNum;
+  }
+  const tagInfo = useTags("false").data?.filter(
+    (arr) => arr.id === selectedTag
+  );
   const title = tagInfo?.length
     ? tagInfo[0].title
     : props.tag === "-1"
@@ -58,11 +67,11 @@ const CardsContainer = (props: cardsProps) => {
       if (responsiveVar.isDesktop)
         isEnd =
           container.scrollLeft >=
-          container.scrollWidth - container.offsetWidth - 1 * fontSizeNum;
+          container.scrollWidth - container.offsetWidth - (6 * fontSizeNum);
       else if (responsiveVar.isMobile) {
         isEnd =
           container.scrollTop + container.clientHeight >=
-          container.scrollHeight - 1;
+          container.scrollHeight - (6 * fontSizeNum);
       }
       if (isEnd && getNextPageIsPossible) getNextPage();
     }
@@ -74,21 +83,11 @@ const CardsContainer = (props: cardsProps) => {
     scrollMove(-1);
   };
 
-  console.log("cardExist: ", cardExist);
-  console.log("getCards: ", getCards);
-  console.log(
-    "getCards.pags[0].cardArray.length",
-    getCards?.pages[0].cardArrary.length
-  );
-  console.log("shownCardsNum: ", shownCardsNum);
-  console.log("isDesktop: ", responsiveVar.isDesktop);
-
   return (
     <>
       <TagHeader responsiveVar={responsiveVar}>#{title}</TagHeader>
-      {(cardExist &&
-        getCards &&
-        getCards.pages[0].cardArrary.length > shownCardsNum &&
+      {(getCards &&
+        getNeedScrollButton() &&
         responsiveVar.isDesktop) ||
       (getNextPageIsPossible && responsiveVar.isDesktop) ? (
         <div className="prevButtonContainer">
@@ -120,14 +119,11 @@ const CardsContainer = (props: cardsProps) => {
             <SkeletonCards key={index} />
           ))
         )}
-        {cardExist &&
-          getCards &&
-          getNextPageIsPossible &&
-          getCards.pages[0].cardArrary.length > 0 && <SkeletonCards />}
+        { getCards &&
+          getNextPageIsPossible && <SkeletonCards />}
       </CardsList>
-      {(cardExist &&
-        getCards &&
-        getCards.pages[0].cardArrary.length > shownCardsNum &&
+      {(getCards &&
+        getNeedScrollButton() &&
         responsiveVar.isDesktop) ||
       (getNextPageIsPossible && responsiveVar.isDesktop) ? (
         <div className="nextButtonContainer">

@@ -38,11 +38,16 @@ export const customAxios = () => {
                 }
                 return baseAxios.request(error.config);
             }
+            if (!overRetry) {
+                Cookies.remove("token");
+                Cookies.remove("rtoken");
+            }
+
         }
         const errorMsg = (error.message === "Network Error") ? {
             response: {
                 status: 500,
-                data: { message: "Network Error23" }
+                data: { message: "Network Error" }
             }
         } : { response: { 
                 data: error.response.data,

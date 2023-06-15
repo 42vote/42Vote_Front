@@ -1,19 +1,38 @@
-import { useTags } from "../Main/customHooks/useTags";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { selectedComponentContext } from "./contexts/setDetailComponents";
+import { categoryDocumentsContext } from "./contexts/setDocuments";
+import { toggleOnContext } from "./contexts/setToggle";
+import { documentListRes } from "../Types/common";
 import Admin from "./pages";
 
 const AdminIndex = () => {
-  const { isLoading } = useTags("all");
   const [selectedComponent, setSelectedComponent] = useState("detail");
   const selectedCategoryComponent = {
     selectedComponent: selectedComponent,
     setSelectedComponent: setSelectedComponent,
   };
 
+  const [categoryDocuments, setCategoryDocuments] = useState<documentListRes[]>(
+    []
+  );
+  const categoryDocumentsVal = {
+    categoryDocuments: categoryDocuments,
+    setCategoryDocuments: setCategoryDocuments,
+  };
+
+  const [toggleOn, setToggleOn] = useState(false);
+  const togglenOnVal = {
+    toggleOn: toggleOn,
+    setToggleOn: setToggleOn,
+  };
+
   return (
     <selectedComponentContext.Provider value={selectedCategoryComponent}>
-      {isLoading ? null : <Admin />}
+      <categoryDocumentsContext.Provider value={categoryDocumentsVal}>
+        <toggleOnContext.Provider value={togglenOnVal}>
+          <Admin />
+        </toggleOnContext.Provider>
+      </categoryDocumentsContext.Provider>
     </selectedComponentContext.Provider>
   );
 };

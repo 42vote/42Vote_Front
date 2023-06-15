@@ -1,25 +1,49 @@
-import CategoryContainer from "../../Main/components/Category/CategoryContainer";
 import { AdminCategoryListContainer } from "../styles/styledComponents";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { selectedComponentContext } from "../contexts/setDetailComponents";
+import { selectTagProps } from "../../Main/types";
+import { CreateButton } from "../../Main/styles/styleComponents";
+import Categorys from "../../CommonComponents/CategoryComponents/Categorys";
+import { categoryDocumentsContext } from "../contexts/setDocuments";
+import { toggleOnContext } from "../contexts/setToggle";
 
-const AdminCategoryList = () => {
-  const [selectedTag, setSelectedTag] = useState<string[]>([]);
-  const {selectedComponent, setSelectedComponent} = useContext(selectedComponentContext);
+const AdminCategoryList = (props: selectTagProps) => {
+  const { selectedComponent, setSelectedComponent } = useContext(
+    selectedComponentContext
+  );
+  const { setCategoryDocuments } = useContext(categoryDocumentsContext);
+  const { setToggleOn } = useContext(toggleOnContext);
+  const selectedTag = props.selectedTag;
+  const setSelectedTag = props.setSelectedTag;
+
+  const handleTagSelect = (tagId: string) => {
+    if (selectedTag.length === 1 && selectedTag[0] === tagId) return;
+    setSelectedTag([tagId]);
+    setSelectedComponent("detail");
+    setCategoryDocuments([]);
+    setToggleOn(false);
+  };
 
   const getCreatePage = () => {
     setSelectedComponent("create");
-  }
+    setSelectedTag([]);
+  };
+
   return (
     <AdminCategoryListContainer>
-      <CategoryContainer
+      <Categorys
         selectedTag={selectedTag}
-        setSelectedTag={setSelectedTag}
-        isMain={true}
+        handleSelect={handleTagSelect}
+        isMain={props.isMain}
       />
-      <button onClick={getCreatePage}>CreateCategory</button>
+      <CreateButton
+        onClick={getCreatePage}
+        selectedComponent={selectedComponent}
+      >
+        +
+      </CreateButton>
     </AdminCategoryListContainer>
   );
 };
 
-export default AdminCategoryList
+export default AdminCategoryList;
