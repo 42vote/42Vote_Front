@@ -15,11 +15,11 @@ function FixedTop(props: FixedTopProps) {
             <div id="fixed-top">
                 <div id="logo" onClick={()=>navi("/main")}>42 Vote</div>
                 <div id="button-wrap">
-                    <button id="new-post-button" onClick={()=>navi('/posting')}>
+                    <button id="new-post-button" onClick={()=>navi("/posting")}>
                         <span>New Post</span>
                     </button>
                     <button id="my-profile-button" className="img-button" onClick={()=>navi("/mypage")}/>
-                    {props.isAdmin && <button id="admin-button" className="img-button" onClick={()=>navi('/admin')}/>}
+                    {props.isAdmin && <button id="admin-button" className="img-button" onClick={()=>navi("/admin")}/>}
                 </div>
             </div>
         </div>

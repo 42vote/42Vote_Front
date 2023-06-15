@@ -8,6 +8,7 @@ import Auth from "./Auth/page";
 import MyPage from "./Mypage";
 import Posting from "./Posting/component/Posting";
 import ProtectRoute from "./Auth/components/AuthProvider";
+import AdminIndex from "./Admin";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/posting" element={<Posting />} />
           <Route path="/detail/*" element={<Detail />} />
+          <Route path="/admin" element={<AdminIndex/>} />
         </Route>
       </Routes>
     </QueryClientProvider>

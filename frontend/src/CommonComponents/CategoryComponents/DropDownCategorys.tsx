@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { categoryRes } from "../../../Types/common";
-import Category from "./Category";
+import { categoryRes } from "../../Types/common";
 import {
   DropDownToggle,
   SelectedCategory,
   TagsDrop,
-} from "../../styles/styleComponents";
+} from "../../Main/styles/styleComponents";
+import Category from "./Category";
 
 interface DropDownCategoryProps {
   data: categoryRes[];
@@ -36,8 +36,7 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
   const data = props.data;
   const selectedTag = props.selectedTag;
   const [selectedData, setSelectedData] = useState<categoryRes>(data[0]);
-  const handleTagSelect = (tagId:string) => {
-    // toggleDropdown();
+  const handleTagSelect = (tagId: string) => {
     props.handleSelect(tagId);
   };
 
@@ -45,7 +44,7 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === selectedTag[0]) setSelectedData(data[i]);
     }
-  }, [selectedTag]);
+  }, [selectedTag, data]);
 
   return (
     <>

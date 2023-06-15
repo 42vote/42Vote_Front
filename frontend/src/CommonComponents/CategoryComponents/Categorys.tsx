@@ -1,22 +1,33 @@
-import { SkeletonTag, TagConatiner, Tags } from "../../styles/styleComponents";
-import { useTags } from "../../customHooks/useTags";
+import { SkeletonTag, Tags } from "../../Main/styles/styleComponents";
+import { useTags } from "../../Main/customHooks/useTags";
+import { useResponsive } from "../../Main/customHooks/useResponsive";
 import Category from "./Category";
-import { useResponsive } from "../../customHooks/useResponsive";
 import DropDownCategorys from "./DropDownCategorys";
 
 interface categorysProps {
   selectedTag: string[];
   handleSelect: (tagId: string) => void;
+  isMain: boolean;
 }
 
 const Categorys = (props: categorysProps) => {
-  const { data, isLoading } = useTags();
-  const responsiveVar = useResponsive();
+  const { data, isLoading } = useTags("false");
+  let responsiveVar = useResponsive();
   const handleTagSelect = props.handleSelect;
   const selectedTag = props.selectedTag;
 
+  if (!props.isMain) {
+    responsiveVar = {
+      isFiveCards: false,
+      isFourCards: false,
+      isThreeCards: false,
+      isTwoCards: true,
+      isDesktop: true,
+      isMobile: false
+    }
+  }
+
   return (
-    <TagConatiner responsiveVar={responsiveVar}>
       <Tags responsiveVar={responsiveVar}>
         {!isLoading && data ? (
           responsiveVar.isDesktop ? (
@@ -42,7 +53,6 @@ const Categorys = (props: categorysProps) => {
           ))
         )}
       </Tags>
-    </TagConatiner>
   );
 };
 

@@ -1,11 +1,19 @@
-import React from "react";
-import CardsContainers from "../Main/components/Card/CardsContainers";
+import React, { useEffect } from "react";
+import CardsContainers from "../CommonComponents/CardsComponents/CardsContainers";
 import UserInfoContainer from "./components/UserInfoContainer";
 import { useUser } from "./customHooks/useUser";
 import { MyPageHeader } from "./styles/styledComponents";
+import { useResponsive } from "../Main/customHooks/useResponsive";
+import { setRootFontSize } from "../Lib/setRootFontSize";
 
 const MyPage: React.FC = () => {
   const user = useUser();
+  const responsiveVar = useResponsive();
+
+  useEffect(() => {
+    if (responsiveVar.isMobile) setRootFontSize(15);
+    if (responsiveVar.isDesktop) setRootFontSize(14);
+  }, [responsiveVar]);
 
   return (
     <div>
