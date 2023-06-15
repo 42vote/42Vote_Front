@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
-import { categoryRes } from "../../Types/common";
+import { categoryRes } from '../../Types/common';
 import { uploadFile, deleteFile } from '../page/HandleFile';
 import radioClick from '../page/RadioClick';
 import submitDoc from '../page/SubmitDoc';
