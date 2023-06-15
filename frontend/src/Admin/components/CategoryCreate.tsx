@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import CategoryInfoBox from "./CategoryInfoBox";
 import { createCategory } from "./Logics";
