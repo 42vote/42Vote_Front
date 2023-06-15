@@ -3,6 +3,8 @@ export interface Document {
     content: string,
     author: string,
     isAuthor: boolean,
+    categoryId: number,
+    multipleVote: boolean,
     createAt: string,
     voteExpiredAt: string,
     goal: number,
