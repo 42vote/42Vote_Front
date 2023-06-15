@@ -18,18 +18,18 @@
   margin: 0.25rem;
   font-size: 1rem;
   font-weight: bold;
+  background-color: #ddd;
   color: #000;
   border-radius: 0.625rem;
-  background-color: #ddd;
   cursor: pointer;
   user-select: none;
+  box-shadow: 2px 2px 0.125rem rgba(0, 0, 0, 0.3);
 }
 
 .tag.selected {
   background-color: #000;
-  border: none;
   color: #fff;
-  box-shadow: 2px 2px 0.125rem rgba(0, 0, 0, 0.3);
+  border: none;
 }
 
 /* Cards */
