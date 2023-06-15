@@ -11,7 +11,7 @@ interface categorysProps {
 }
 
 const Categorys = (props: categorysProps) => {
-  const { data, isLoading } = useTags("false");
+  const { data, isLoading } = useTags(props.isMain ? "false" : "all");
   let responsiveVar = useResponsive();
   const handleTagSelect = props.handleSelect;
   const selectedTag = props.selectedTag;

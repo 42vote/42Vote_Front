@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { selectedComponentContext } from "./contexts/setDetailComponents";
 import { categoryDocumentsContext } from "./contexts/setDocuments";
 import { toggleOnContext } from "./contexts/setToggle";
