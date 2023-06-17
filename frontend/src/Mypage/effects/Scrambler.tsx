@@ -9,8 +9,8 @@ const ScramblerComponent = (props:props) => {
   const [msg, setMsg] = useState(props.text);
   const scramblerRef = useRef(new Scrambler());
   useEffect(() => {
-    scramblerRef.current.scramble(props.text, setMsg, {characters: ["4", "2"]});
-  }, [props.text]);
+    scramblerRef.current.scramble(msg, setMsg);
+  }, []);
   return <>{msg}</>;
 };
 

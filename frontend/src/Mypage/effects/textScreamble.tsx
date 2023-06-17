@@ -44,16 +44,19 @@ export default class Scrambler {
   private frameIndex = 0;
 
   public scramble(
+    //매개변수로 텍스트와 텍스트 변환 함수 그리고 옵션을 받아온다.
     text: string,
     onScramble: (text: string) => void,
     option: { characters?: string[] } | null = null
   ): void {
+    //받아온 옵션 값에 따라, 스크램블될 때 사용할 알파벳을 설정한다. 없다면 기본값을 가져온다.
     if (option?.characters) {
       this.characters = [...option.characters];
     } else {
       this.characters = [...Scrambler.CHARACTERS.DEFAULT];
     }
 
+    //받아온 타겟 문자열과 변형해나갈 문자열, ?generateCounters함수에 두 문자열을 넣어 반환값을 저장한다
     this.targetText = text;
     this.scrambledText = "";
     this.encodingCounters = this.generateCounters(this.scrambledText);

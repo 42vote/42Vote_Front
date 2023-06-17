@@ -41,7 +41,7 @@ export const SelectedCategorys = styled.div<{ responsiveVar: responsiveVariable 
 export const StatisticsDocListContainer = styled.div`
   grid-row: 2;
   max-height: 75%;
-  overflow-y: auth;
+  overflow-y: auto;
   scroll-begavior: smooth;
   &::-webkit-scrollbar {
     display: none;
