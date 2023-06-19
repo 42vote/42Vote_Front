@@ -40,9 +40,7 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
                 </div>  
                 <div id="goal-set">
                     <span>목표치 통일</span>
-                    <Switch onChange={(e)=>props.setGoalSet(e.target.checked)} checked={props.goalSet} disabled={toggleDisable}/>
-                    <input type="number" min="1" max="1000" value={(props.goalSet ? props.goal : '') || ''} 
-                        onChange={(e)=>handleGoalInput(e, props.setGoal)} disabled={!props.goalSet || dateDisable}/>
+                    <input type="number" min="1" max="1000" value={props.goal} onChange={(e)=>handleGoalInput(e, props.setGoal)} disabled={dateDisable}/>
                 </div>
                 <div id="vote-option">
                     <div className="toggle-box anony">

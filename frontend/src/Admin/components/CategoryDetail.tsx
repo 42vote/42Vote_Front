@@ -17,7 +17,6 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     const [title, setTitle] = useState('');
     const [voteEnd, setVoteEnd] = useState<Dayjs | null>(dayjs());
     const [tagEnd, setTagEnd] = useState<Dayjs | null>(dayjs());
-    const [goalSet, setGoalSet] = useState(false);
     const [goal, setGoal] = useState('');
     const [anony, setAnony] = useState(false);
     const [multiple, setMultiple] = useState(false);
@@ -26,7 +25,6 @@ const CategoryDetail = (props: CategoryDetailProps) => {
         title: title,
         voteEnd: voteEnd,
         tagEnd: tagEnd,
-        goalSet: goalSet,
         goal: goal
     }
 
@@ -35,7 +33,6 @@ const CategoryDetail = (props: CategoryDetailProps) => {
             setTitle(categoryInfo.title);
             setVoteEnd(dayjs(categoryInfo.voteExpire));
             setTagEnd(dayjs(categoryInfo.docExpire));
-            setGoalSet(categoryInfo.goal === 0 ? false : true);
             setGoal(categoryInfo.goal);
             setAnony(categoryInfo.anonymousVote);
             setMultiple(categoryInfo.multipleVote);
@@ -63,8 +60,6 @@ const CategoryDetail = (props: CategoryDetailProps) => {
                 setVoteEnd={setVoteEnd}
                 tagEnd={tagEnd}
                 setTagEnd={setTagEnd}
-                goalSet={goalSet}
-                setGoalSet={setGoalSet}
                 goal={goal}
                 setGoal={setGoal}
                 anony={anony}
