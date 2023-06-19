@@ -179,6 +179,10 @@
     margin-bottom: 50px;
 }
 
+#posting #post-form > button:disabled {
+    cursor: not-allowed;
+}
+
 #mobile #posting {
     padding-top: 35.5px;
 }
