@@ -10,8 +10,16 @@
     text-align: center;
 }
 
-.expire-date, #goal-set, .anony, .multiple {
+.expire-date, .anony, .multiple {
     margin-bottom: 10px;
+}
+
+#goal-set {
+    margin-bottom: 20px;
+}
+
+.doc-expire {
+    margin-bottom: 20px;
 }
 
 .expire-date {
@@ -30,4 +38,8 @@
 
 .MuiFormControl-root {
     margin: 0 10px 10px 0 !important;
+}
+
+#goal-set > span {
+    margin-right: 10px;
 }
