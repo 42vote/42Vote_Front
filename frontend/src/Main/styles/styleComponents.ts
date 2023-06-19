@@ -24,8 +24,6 @@ export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
 `;
 
 export const CardsContainersDiv = styled.div`
-  max-height: 62rem;
-  overflow-y: auto;
   scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
   &::-webkit-scrollbar {
     display: none;
