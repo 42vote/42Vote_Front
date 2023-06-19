@@ -2,9 +2,10 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCategoryInfo } from "../apis/adminApis";
 import CategoryInfoBox from "./CategoryInfoBox";
 import dayjs, { Dayjs } from "dayjs";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { deleteCategory, editCategory } from "../logics/Logics";
 import { CategoryDetailProps } from "../types";
+import '../styles/CategoryDetail.css';
 
 const CategoryDetail = (props: CategoryDetailProps) => {
     const categoryId = props.categoryId;
@@ -52,7 +53,10 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     
     return (
         <div id="category-detail">
-            <input id="title" type='text' value={title} onChange={(e)=>setTitle(e.target.value)} disabled={state === 1 ? true : false}/>
+            {
+                state === 1 ? <div id="title">{title}</div> :
+                <textarea id="title" value={title} onChange={(e)=>setTitle(e.target.value)} spellCheck={false}/>
+            }
             {state === 1 && <button id="modify-button" onClick={()=>setState(2)}>카테고리 수정</button>}
             <CategoryInfoBox
                 voteEnd={voteEnd}

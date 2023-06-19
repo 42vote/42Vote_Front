@@ -89,7 +89,7 @@ function Detail() {
                     </div>
                 )
             }
-            <StatDialog docId= {docId} isOpen={isOpen} setIsOpen={setIsOpen}/>
+            <StatDialog docId={docId} anony={data.anonymousVote} isOpen={isOpen} setIsOpen={setIsOpen}/>
         </div>
     )
 }

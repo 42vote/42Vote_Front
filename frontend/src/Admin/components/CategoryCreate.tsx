@@ -2,6 +2,7 @@ import { useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import CategoryInfoBox from "./CategoryInfoBox";
 import { createCategory } from "../logics/Logics";
+import '../styles/CategoryDetail.css';
 
 const CategoryCreate = () => {
     const today = dayjs();
@@ -26,7 +27,7 @@ const CategoryCreate = () => {
 
     return (
         <div id="category-create">
-            <input id="title" type='text' value={title} onChange={(e)=>setTitle(e.target.value)} placeholder='category name'/>
+            <textarea id="title" value={title} onChange={(e)=>setTitle(e.target.value)} placeholder='category name' spellCheck={false}/>
             <CategoryInfoBox
                 voteEnd={voteEnd}
                 setVoteEnd={setVoteEnd}

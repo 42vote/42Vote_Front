@@ -1,0 +1,33 @@
+#info-box {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#info-box span, #info-box p {
+    font-family: 'kbiz-Medium';
+    text-align: center;
+}
+
+.expire-date, #goal-set, .anony, .multiple {
+    margin-bottom: 10px;
+}
+
+.expire-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.doc-expire > p {
+    margin-top: 7px;
+}
+
+.calander {
+    text-align: center;
+}
+
+.MuiFormControl-root {
+    margin: 0 10px 10px 0 !important;
+}
