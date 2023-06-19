@@ -4,6 +4,7 @@ export interface Document {
     author: string,
     isAuthor: boolean,
     categoryId: number,
+    anonymousVote: boolean,
     multipleVote: boolean,
     createAt: string,
     voteExpiredAt: string,
@@ -16,6 +17,7 @@ export interface Document {
 
 export interface StatDialogProps {
     docId: number,
+    anony: boolean,
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import { handleGoalInput } from "../logics/Logics";
 import { CategoryInfoBoxProps } from "../types";
+import '../styles/CategoryInfoBox.css';
 
 const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
     const today = dayjs();
@@ -16,22 +17,26 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
             <div id="info-box">
                 <div className="expire-date vote-expire">
-                    <span>투표 기간</span>
-                    <DatePicker label="시작" value={today} format={"YYYY/MM/DD"} disabled/>
-                    <DatePicker 
-                        label="종료" value={props.voteEnd} format={"YYYY/MM/DD"}
-                        onChange={(v)=>props.setVoteEnd(v)}
-                        disablePast disabled={dateDisable}
-                    />
+                    <p>투표 기간</p>
+                    <div className="calander">
+                        <DatePicker label="시작" value={today} format={"YYYY/MM/DD"} disabled/>
+                        <DatePicker 
+                            label="종료" value={props.voteEnd} format={"YYYY/MM/DD"}
+                            onChange={(v)=>props.setVoteEnd(v)}
+                            disablePast disabled={dateDisable}
+                        />
+                    </div>
                 </div>
                 <div className="expire-date doc-expire">
-                    <span>카테고리 유효 기간</span>
-                    <DatePicker label="시작" value={today} format={"YYYY/MM/DD"} disabled/>
-                    <DatePicker
-                        label="종료" value={props.tagEnd} format={"YYYY/MM/DD"}
-                        onChange={(v)=>props.setTagEnd(v)}
-                        disablePast minDate={props.voteEnd} disabled={dateDisable}
-                    />
+                    <p>카테고리 유효 기간</p>
+                    <div className="calander">
+                        <DatePicker label="시작" value={today} format={"YYYY/MM/DD"} disabled/>
+                        <DatePicker
+                            label="종료" value={props.tagEnd} format={"YYYY/MM/DD"}
+                            onChange={(v)=>props.setTagEnd(v)}
+                            disablePast minDate={props.voteEnd} disabled={dateDisable}
+                        />
+                    </div>
                 </div>  
                 <div id="goal-set">
                     <span>목표치 통일</span>
