@@ -30,6 +30,7 @@ const StatisticsCards = (prop: TagId) => {
   const documentQuery: documentListQuery = {
     categoryId: tagId,
     listSize: docSizeNum ? docSizeNum.toString() : "50",
+    expired: "all",
     myPost: "false",
     myVote: "false",
   };

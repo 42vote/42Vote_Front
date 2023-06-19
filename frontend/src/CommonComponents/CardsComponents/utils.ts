@@ -12,20 +12,23 @@ export const getShownCardsNum = (responsiveVar: responsiveVariable) => {
 export const myPostListQuery: documentListQuery = {
   categoryId: "0",
   listSize: "5",
+  expired: "false",
   myPost: "true",
   myVote: "false",
 };
 export const myVoteListQuery: documentListQuery = {
   categoryId: "0",
   listSize: "5",
+  expired: "false",
   myPost: "false",
   myVote: "true",
 };
 
-export const documentApiQuery = (selectedTag: string, myPost: string, myVote: string) => {
+export const documentApiQuery = (selectedTag: string, myPost: string, myVote: string, isExpired: boolean) => {
   const resultQuery:documentListQuery = {
     categoryId: selectedTag,
     listSize: "5",
+    expired: isExpired ? "false" : "all",
     myPost: myPost,
     myVote: myVote
   }

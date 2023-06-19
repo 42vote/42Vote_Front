@@ -25,6 +25,7 @@ export interface responsiveVariable {
 export interface documentListQuery {
   categoryId: string,
   listSize: string,
+  expired: string,
   myPost: string,
   myVote: string,
 }
