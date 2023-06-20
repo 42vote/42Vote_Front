@@ -3,6 +3,7 @@ export interface Document {
     content: string,
     author: string,
     isAuthor: boolean,
+    isAdmin: boolean,
     categoryId: number,
     anonymousVote: boolean,
     multipleVote: boolean,

@@ -82,8 +82,11 @@ function Detail() {
                                     <button id="doc-stat" onClick={()=>setIsOpen(true)}>Stat</button>
                                 </div>
                             ) : (
-                                data.isVoteExpired ? <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'expire'} onClick={(e)=>Voting(e, docId, data)} disabled>close</button> :
-                                <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'open'} onClick={(e)=>Voting(e, docId, data)}>support</button>
+                                <div id="user-button">
+                                    {data.isVoteExpired ? <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'expire'} onClick={(e)=>Voting(e, docId, data)} disabled>Close</button> :
+                                    <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'open'} onClick={(e)=>Voting(e, docId, data)}>Support</button>}
+                                    {data.isAdmin && <button id="doc-stat" onClick={()=>setIsOpen(true)}>Stat</button>}
+                                </div>
                             )
                         }
                     </div>
