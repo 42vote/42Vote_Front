@@ -22,16 +22,43 @@ export const ActiveCategoryListContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 50vh;
 `;
+
+export const ActiveCategoryListDiv = styled.div`
+  overflow-y: scroll;
+  scrollbar-width: none;
+  scroll-begavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`
 
 export const ExpiredCategoryListContainer = styled.div`
   grid-row: 2;
   display: flex;
-  max-height: 100%;
-  overflow-y: hidden;
   flex-direction: column;
   align-items: flex-start;
+  height: 33vh;
 `;
+
+export const ExpiredCategoryListDiv = styled.div`
+  overflow-y: scroll;
+  scrollbar-width: none;
+  scroll-begavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`
+
 
 export const SelectedCategoryInfoContainer = styled.div`
   grid-column: 2;
@@ -61,7 +88,7 @@ export const SelectedCategorys = styled.div<{
 
 export const StatisticsDocListContainer = styled.div`
   grid-row: 2;
-  max-height: 75%;
+  max-height: 80vh;
   overflow-y: auto;
   scroll-begavior: smooth;
   &::-webkit-scrollbar {
@@ -188,6 +215,6 @@ export const SliderRound = styled.span<{ isOn: boolean }>`
 
 export const ListHeader = styled.div`
   font-family: "Lora-Bold", "kbiz-Bold";
-  font-size: max(15px, 2vw);
+  font-size: max(15px, 1.9vw);
   margin-left: 1.6rem;
 `;
