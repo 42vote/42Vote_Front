@@ -39,7 +39,11 @@ const AdminCategoryList = (props: selectTagProps) => {
   return (
     <AdminCategoryListContainer>
       <ActiveCategoryListContainer>
+<<<<<<< HEAD
         <ListHeader>activated</ListHeader>
+=======
+        <ListHeader>Activate</ListHeader>
+>>>>>>> ba46cfd ([EDIT] AdminCategoryList ListHeader msg changed)
         <ActiveCategoryListDiv>
           <Categorys
             selectedTag={selectedTag}
@@ -56,7 +60,7 @@ const AdminCategoryList = (props: selectTagProps) => {
         </ActiveCategoryListDiv>
       </ActiveCategoryListContainer>
       <ExpiredCategoryListContainer>
-        <ListHeader>expired</ListHeader>
+        <ListHeader>Expire</ListHeader>
         <ExpiredCategoryListDiv>
           <Categorys
             selectedTag={selectedTag}
