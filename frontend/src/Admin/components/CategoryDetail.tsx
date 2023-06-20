@@ -31,8 +31,8 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     useEffect(() => {
         if (categoryInfo) {
             setTitle(categoryInfo.title);
-            setVoteEnd(dayjs(categoryInfo.voteExpire));
-            setTagEnd(dayjs(categoryInfo.docExpire));
+            setVoteEnd(dayjs(categoryInfo.voteExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
+            setTagEnd(dayjs(categoryInfo.docExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
             setGoal(categoryInfo.goal);
             setAnony(categoryInfo.anonymousVote);
             setMultiple(categoryInfo.multipleVote);
