@@ -27,7 +27,7 @@ export const confirmInputs = (option: ConfirmOptions) => {
         Swal.fire('기간을 정확하게 입력해주세요.')
     else if (option.tagEnd.isBefore(option.voteEnd))
         Swal.fire('카테고리 유효 기간은 투표 종료 이후여야 합니다.');
-    else if (option.goal === '')
+    else if (option.goal === '' || Number(option.goal) === 0)
         Swal.fire('목표치를 입력해주세요.');
     else
         return (true);

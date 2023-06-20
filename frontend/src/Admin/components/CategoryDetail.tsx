@@ -2,7 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCategoryInfo } from "../apis/adminApis";
 import CategoryInfoBox from "./CategoryInfoBox";
 import dayjs, { Dayjs } from "dayjs";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteCategory, editCategory } from "../logics/Logics";
 import { CategoryDetailProps } from "../types";
 import '../styles/CategoryDetail.css';

@@ -40,7 +40,7 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
                 </div>  
                 <div id="goal-set">
                     <span>목표치 통일</span>
-                    <input type="number" min="1" max="1000" value={props.goal} onChange={(e)=>handleGoalInput(e, props.setGoal)} disabled={dateDisable}/>
+                    <input type="number" min="1" max="1000" value={props.goal || ''} onChange={(e)=>handleGoalInput(e, props.setGoal)} disabled={dateDisable}/>
                 </div>
                 <div id="vote-option">
                     <div className="toggle-box anony">
