@@ -9,5 +9,5 @@ export const postVote = (docId: number) => {
 };
 
 export const deleteDocument = (docId: number) => {
-    return customAxios().delete(`/document/${docId}`);
+    return customAxios().delete('/document/' + docId);
 };

@@ -3,6 +3,14 @@ import { Document } from '../interface/DetailInterface';
 import { customAxios } from '../../Lib/customAxios';
 import Swal from 'sweetalert2';
 
+const displayBar = (data: Document) => {
+    const progressBar = document.getElementById('progress-bar-in') as HTMLDivElement;
+    const count = document.getElementById('count') as HTMLDivElement;
+
+    progressBar.style.width = (data.voteCnt / data.goal * 100) + '%';
+    count.textContent = data.voteCnt + ' / ' + data.goal;
+}
+
 const voteReq = (target: HTMLButtonElement, docId: number, data: Document) => {
     target.classList.add('voted');
     target.setAttribute('disabled', '');
@@ -10,12 +18,11 @@ const voteReq = (target: HTMLButtonElement, docId: number, data: Document) => {
         target.removeAttribute('disabled');
     });
     data.voteCnt++
+    displayBar(data);
 }
 
 const Voting = (event: React.MouseEvent<HTMLButtonElement>, docId: number, data: Document) => {
     const target = event.target as HTMLButtonElement;
-    const progressBar = document.getElementById('progress-bar-in') as HTMLDivElement;
-    const count = document.getElementById('count') as HTMLDivElement;
 
     if (target.classList.contains('voted')) {
         target.classList.remove('voted');
@@ -24,8 +31,8 @@ const Voting = (event: React.MouseEvent<HTMLButtonElement>, docId: number, data:
             target.removeAttribute('disabled');
         });
         data.voteCnt--;
-    }
-    else if (!data.multipleVote) {
+        displayBar(data);
+    } else if (!data.multipleVote) {
         customAxios().get('/vote/me', {params: {categoryId: data.categoryId}}).then((res) => {
             if (res.data.length > 0) {
                 Swal.fire({
@@ -43,8 +50,7 @@ const Voting = (event: React.MouseEvent<HTMLButtonElement>, docId: number, data:
         })
     } else
         voteReq(target, docId, data);
-    progressBar.style.width = (data.voteCnt / data.goal * 100) + '%';
-    count.textContent = data.voteCnt + ' / ' + data.goal;
+
 }
 
 export default Voting;

@@ -2,9 +2,10 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCategoryInfo } from "../apis/adminApis";
 import CategoryInfoBox from "./CategoryInfoBox";
 import dayjs, { Dayjs } from "dayjs";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { deleteCategory, editCategory } from "../logics/Logics";
 import { CategoryDetailProps } from "../types";
+import '../styles/CategoryDetail.css';
 
 const CategoryDetail = (props: CategoryDetailProps) => {
     const categoryId = props.categoryId;
@@ -16,7 +17,6 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     const [title, setTitle] = useState('');
     const [voteEnd, setVoteEnd] = useState<Dayjs | null>(dayjs());
     const [tagEnd, setTagEnd] = useState<Dayjs | null>(dayjs());
-    const [goalSet, setGoalSet] = useState(false);
     const [goal, setGoal] = useState('');
     const [anony, setAnony] = useState(false);
     const [multiple, setMultiple] = useState(false);
@@ -25,7 +25,6 @@ const CategoryDetail = (props: CategoryDetailProps) => {
         title: title,
         voteEnd: voteEnd,
         tagEnd: tagEnd,
-        goalSet: goalSet,
         goal: goal
     }
 
@@ -34,7 +33,6 @@ const CategoryDetail = (props: CategoryDetailProps) => {
             setTitle(categoryInfo.title);
             setVoteEnd(dayjs(categoryInfo.voteExpire));
             setTagEnd(dayjs(categoryInfo.docExpire));
-            setGoalSet(categoryInfo.goal === 0 ? false : true);
             setGoal(categoryInfo.goal);
             setAnony(categoryInfo.anonymousVote);
             setMultiple(categoryInfo.multipleVote);
@@ -52,15 +50,16 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     
     return (
         <div id="category-detail">
-            <input id="title" type='text' value={title} onChange={(e)=>setTitle(e.target.value)} disabled={state === 1 ? true : false}/>
+            {
+                state === 1 ? <div id="title">{title}</div> :
+                <textarea id="title" value={title} onChange={(e)=>setTitle(e.target.value)} spellCheck={false}/>
+            }
             {state === 1 && <button id="modify-button" onClick={()=>setState(2)}>카테고리 수정</button>}
             <CategoryInfoBox
                 voteEnd={voteEnd}
                 setVoteEnd={setVoteEnd}
                 tagEnd={tagEnd}
                 setTagEnd={setTagEnd}
-                goalSet={goalSet}
-                setGoalSet={setGoalSet}
                 goal={goal}
                 setGoal={setGoal}
                 anony={anony}
