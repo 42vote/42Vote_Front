@@ -12,7 +12,25 @@ export const AdminContainer = styled.div`
 export const AdminCategoryListContainer = styled.div`
   overflow: hidden;
   grid-column: 1;
+  display: grid;
+  grid-template-rows: 1.618fr 1fr;
   // border: 1px solid black;
+`;
+
+export const ActiveCategoryListContainer = styled.div`
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+export const ExpiredCategoryListContainer = styled.div`
+  grid-row: 2;
+  display: flex;
+  max-height: 100%;
+  overflow-y: hidden;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const SelectedCategoryInfoContainer = styled.div`
@@ -27,12 +45,15 @@ export const StatisticsContainer = styled.div`
   grid-template-rows: 3rem 1.6fr;
 `;
 
-export const SelectedCategorys = styled.div<{ responsiveVar: responsiveVariable }>`
+export const SelectedCategorys = styled.div<{
+  responsiveVar: responsiveVariable;
+}>`
   grid-column: 2;
   display: ${(props) => (props.responsiveVar.isDesktop ? "flex" : "grid")};
   flex-wrap: wrap;
-  align-content:center;
-  ${(props) => (props.responsiveVar.isDesktop ? "" : "grid-template-rows: 1fr auto;")}
+  align-content: center;
+  ${(props) =>
+    props.responsiveVar.isDesktop ? "" : "grid-template-rows: 1fr auto;"}
   justify-items: center;
   margin-left: 1rem;
   margin-top: 0.5rem;
@@ -70,9 +91,11 @@ export const StatisticsCardsContainer = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-`
+`;
 
-export const StatisticsOptionContainer = styled.div<{responsiveVar:responsiveVariable}>`
+export const StatisticsOptionContainer = styled.div<{
+  responsiveVar: responsiveVariable;
+}>`
   grid-row: 1;
   display: grid;
   grid-template-columns: 1fr ${(props) =>
@@ -87,7 +110,9 @@ export const StatisticsOptionContainer = styled.div<{responsiveVar:responsiveVar
         : "65%"} 1fr;
 `;
 
-export const StatisticsCardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
+export const StatisticsCardsArea = styled.div<{
+  responsiveVar: responsiveVariable;
+}>`
   display: grid;
   grid-template-rows: 0.5fr ${(props) =>
       props.responsiveVar.isDesktop ? "auto" : "80vh"};
@@ -159,4 +184,10 @@ export const SliderRound = styled.span<{ isOn: boolean }>`
   transform: translateX(
     ${(props) => (props.isOn ? "1.7333rem" : "0")}
   ); /* Converted from 26px */
+`;
+
+export const ListHeader = styled.div`
+  font-family: "Lora-Bold", "kbiz-Bold";
+  font-size: max(15px, 2vw);
+  margin-left: 1.6rem;
 `;

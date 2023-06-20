@@ -1,4 +1,9 @@
-import { AdminCategoryListContainer } from "../styles/styledComponents";
+import {
+  ActiveCategoryListContainer,
+  AdminCategoryListContainer,
+  ExpiredCategoryListContainer,
+  ListHeader,
+} from "../styles/styledComponents";
 import { useContext } from "react";
 import { selectedComponentContext } from "../contexts/setDetailComponents";
 import { selectTagProps } from "../../Main/types";
@@ -31,17 +36,30 @@ const AdminCategoryList = (props: selectTagProps) => {
 
   return (
     <AdminCategoryListContainer>
-      <Categorys
-        selectedTag={selectedTag}
-        handleSelect={handleTagSelect}
-        isMain={props.isMain}
-      />
-      <CreateButton
-        onClick={getCreatePage}
-        selectedComponent={selectedComponent}
-      >
-        +
-      </CreateButton>
+      <ActiveCategoryListContainer>
+        <ListHeader>active</ListHeader>
+        <Categorys
+          selectedTag={selectedTag}
+          handleSelect={handleTagSelect}
+          isMain={props.isMain}
+          isExpired="false"
+        />
+        <CreateButton
+          onClick={getCreatePage}
+          selectedComponent={selectedComponent}
+        >
+          +
+        </CreateButton>
+      </ActiveCategoryListContainer>
+      <ExpiredCategoryListContainer>
+        <ListHeader>expired</ListHeader>
+        <Categorys
+          selectedTag={selectedTag}
+          handleSelect={handleTagSelect}
+          isMain={props.isMain}
+          isExpired="true"
+        />
+      </ExpiredCategoryListContainer>
     </AdminCategoryListContainer>
   );
 };

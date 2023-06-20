@@ -4,7 +4,7 @@ import { AxiosResponse } from "axios";
 import { categoryRes } from "../../Types/common";
 
 export const useTags = (expired: string) =>
-  useQuery(["tags"], () => mainAPI.getTags(expired), {
+  useQuery(["tags", expired], () => mainAPI.getTags(expired), {
     select: (data: AxiosResponse<categoryRes[]>) => {
       return data.data;
     },
