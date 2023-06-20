@@ -32,7 +32,7 @@
     border-radius: 20px;
     border: 1px solid #383838;
     padding: 6px 15px;
-    margin: 20px 0 10px 0;
+    margin: 20px 0;
 }
 
 #modify-button:hover, #delete-button:hover, #edit-button:hover, #post-button:hover {

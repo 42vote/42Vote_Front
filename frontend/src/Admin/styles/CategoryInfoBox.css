@@ -5,17 +5,17 @@
     align-items: center;
 }
 
-#info-box span, #info-box p {
+#info-box span {
     font-family: 'kbiz-Medium';
     text-align: center;
 }
 
-.expire-date, .anony, .multiple {
+.expire-date, #goal-set, .anony, .multiple {
     margin-bottom: 10px;
 }
 
-#goal-set {
-    margin-bottom: 20px;
+#goal-set > input {
+    margin-left: 10px;
 }
 
 .doc-expire {
@@ -28,10 +28,6 @@
     align-items: center;
 }
 
-.doc-expire > p {
-    margin-top: 7px;
-}
-
 .calander {
     text-align: center;
 }
@@ -40,6 +36,16 @@
     margin: 0 10px 10px 0 !important;
 }
 
-#goal-set > span {
-    margin-right: 10px;
+.MuiSvgIcon-root {
+    margin: 0;
+}
+
+.title-tooltip {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.title-tooltip > span {
+    margin-right: 5px;
 }
