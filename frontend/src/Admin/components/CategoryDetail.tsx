@@ -56,6 +56,7 @@ const CategoryDetail = (props: CategoryDetailProps) => {
             }
             {state === 1 && <button id="modify-button" onClick={()=>setState(2)}>카테고리 수정</button>}
             <CategoryInfoBox
+                createAt={dayjs(categoryInfo?.createAt)}
                 voteEnd={voteEnd}
                 setVoteEnd={setVoteEnd}
                 tagEnd={tagEnd}

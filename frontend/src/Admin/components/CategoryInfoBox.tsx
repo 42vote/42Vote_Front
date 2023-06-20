@@ -1,15 +1,14 @@
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Switch } from '@mui/material';
+import { Switch, Tooltip } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs from "dayjs";
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import "dayjs/locale/ko";
 import { handleGoalInput } from "../logics/Logics";
 import { CategoryInfoBoxProps } from "../types";
 import '../styles/CategoryInfoBox.css';
 
 const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
-    const today = dayjs();
     const dateDisable = props.state === 1 ? true : false;
     const toggleDisable = props.state === 0 ? false : true;
 
@@ -17,9 +16,14 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
             <div id="info-box">
                 <div className="expire-date vote-expire">
-                    <p>투표 기간</p>
+                    <div className="title-tooltip">
+                        <span>투표 기간</span>
+                        <Tooltip title="투표가 가능한 기간입니다. 카테고리 생성 시 시작되며, 종료 날짜의 23시 59분 59초까지 진행됩니다." arrow>
+                            <HelpOutlineOutlinedIcon sx={{ color: "#888888" }}/>
+                        </Tooltip>
+                    </div>
                     <div className="calander">
-                        <DatePicker label="시작" value={today} format={"YYYY/MM/DD"} disabled/>
+                        <DatePicker label="시작" value={props.createAt} format={"YYYY/MM/DD"} disabled/>
                         <DatePicker 
                             label="종료" value={props.voteEnd} format={"YYYY/MM/DD"}
                             onChange={(v)=>props.setVoteEnd(v)}
@@ -28,9 +32,9 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
                     </div>
                 </div>
                 <div className="expire-date doc-expire">
-                    <p>카테고리 유효 기간</p>
+                    <span>카테고리 유효 기간</span>
                     <div className="calander">
-                        <DatePicker label="시작" value={today} format={"YYYY/MM/DD"} disabled/>
+                        <DatePicker label="시작" value={props.createAt} format={"YYYY/MM/DD"} disabled/>
                         <DatePicker
                             label="종료" value={props.tagEnd} format={"YYYY/MM/DD"}
                             onChange={(v)=>props.setTagEnd(v)}
