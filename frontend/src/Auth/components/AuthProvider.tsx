@@ -17,7 +17,7 @@ const ProtectRoute = (props: ProtectRouteProps): React.ReactElement | null => {
   const [isTokenExpired, setIsTokenExpired] = useState(false);
   const accessTokenExpirationString = Cookies.get("token_expire");
   const currentTime = new Date().getTime();
-  const accessTokenExpiration = accessTokenExpirationString
+  let accessTokenExpiration = accessTokenExpirationString
     ? parseInt(accessTokenExpirationString)
     : currentTime + 100000;
 
@@ -42,9 +42,12 @@ const ProtectRoute = (props: ProtectRouteProps): React.ReactElement | null => {
 
   const handleTokenRefresh = async () => {
     clearTimeout(accessTokenTimer);
-    onRefreshToken();
-    setIsTokenExpired(false);
-    startTokenExpirationTimer();
+    onRefreshToken().then(() => {
+      const tempString = Cookies.get("token_expire");
+      accessTokenExpiration = tempString ? parseInt(tempString) : 100000;
+      setIsTokenExpired(false);
+      startTokenExpirationTimer();
+    });
   };
 
   useEffect(() => {

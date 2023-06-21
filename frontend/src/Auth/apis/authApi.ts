@@ -15,6 +15,7 @@ export const onRefreshToken = async () => {
         }
     }).then((response) => {
         Cookies.set("token", response.data.token.access_token);
+        Cookies.set("token_expire",response.data.token.access_expire);
     });
   } catch (e: any) {
     Cookies.remove("token")
