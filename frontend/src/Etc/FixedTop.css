@@ -26,6 +26,8 @@
     display: flex;
     justify-content: right;
     align-items: center;
+    -webkit-justify-content: flex-end;
+    -webkit-align-items: center;
 }
 
 #fixed-top #button-wrap #my-profile-button {
