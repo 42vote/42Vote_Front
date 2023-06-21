@@ -7,6 +7,7 @@ import { customAxios } from "../../Lib/customAxios";
 import Cookies from "js-cookie";
 import { onRefreshToken } from "../apis/authApi";
 import { isToken } from "typescript";
+import NotFound from "../../Etc/NotFound";
 
 interface ProtectRouteProps {
   pathname: string;
@@ -73,6 +74,8 @@ const ProtectRoute = (props: ProtectRouteProps): React.ReactElement | null => {
     alert("다시 로그인 해주세요.");
     return <Navigate to="/" />;
   }
+  if(props.pathname === "/admin" && !isAdmin)
+    return <NotFound />;
 
   return (
     <>
