@@ -41,11 +41,11 @@ const getImageFiles = async () => {
     return base64Files;
 }
 
-const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, title: string, nav: NavigateFunction) => {
+const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, title: string, goal: string, nav: NavigateFunction) => {
     event.preventDefault();
     const docTitle = title.trim();
     const description = document.getElementById('text-area') as HTMLTextAreaElement;
-    const goalInput = Number((document.getElementById('goal') as HTMLInputElement).value);
+    const goalInput = Number(goal);
     const checkedCategoryId = getCheckedCategory();
     const base64Files = await getImageFiles();
 

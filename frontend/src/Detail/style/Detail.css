@@ -154,22 +154,9 @@
     border-radius: 20px;
 }
 
-#desktop #detail #vote-button, #doc-stat {
-    border-radius: 30px;
-    border: 1px solid #383838;
-    background-color: white;
-    font-family: 'Lora-Medium';
-    font-size: max(15px, 1.2vw);
-    width: max(110px, 10%);
-    height: max(30px, 2.5vw);
-    padding: 0;
-    margin-bottom: 30px;
-    color: black;
-}
-
-#desktop #detail #doc-stat {
-    margin-left: 10px;
-    cursor: pointer;
+#desktop #detail #buttons {
+    width: 80%;
+    text-align: center;
 }
 
 #desktop #detail #vote-button.open {
@@ -188,24 +175,31 @@
 #desktop #detail #author-button, #user-button {
     width: 100%;
     text-align: center;
+    display: inline;
 }
 
-#desktop #detail #author-button button {
+#desktop #detail #author-button button, #user-button button {
     border-radius: 30px;
     border: 1px solid #383838;
     background-color: white;
+    color: black;
     font-family: 'Lora-Medium';
     font-size: max(15px, 1.2vw);
-    width: max(90px, 8%);
-    height: max(25px, 2vw);
+    width: max(110px, 10%);
+    height: max(30px, 2.5vw);
     padding: 0;
     margin: 0 5px 30px 5px;
     cursor: pointer;
 }
 
-#desktop #detail #author-button button:hover, #doc-stat:hover {
+#detail #author-button button:hover, #user-button button:hover {
     background-color: #383838;
     color: white;
+}
+
+#detail #vote-button.voted:hover {
+    background-color: white;
+    color: black;
 }
 
 
@@ -213,7 +207,6 @@
 #mobile #detail {
     padding-top: 35.5px;
     box-sizing: border-box;
-    /*어떻게 해야 정확히 떨어뜨리지?*/
     display: flex;
     flex-direction: column;
     align-items: center;
