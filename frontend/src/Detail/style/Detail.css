@@ -161,10 +161,11 @@
 
 #detail #vote-button.voted {
     background-color: #383838 !important;
-    color: white;
+    color: white !important;
 }
 
-#detail #vote-button.expire, #vote-button:disabled {
+#detail #vote-button.expire, 
+#vote-button:disabled {
     cursor: not-allowed !important;
 }
 
@@ -174,7 +175,8 @@
     display: inline;
 }
 
-#desktop #detail #author-button button, #desktop #detail #user-button button {
+#desktop #detail #author-button button, 
+#desktop #detail #user-button button {
     border-radius: 30px;
     border: 1px solid #383838;
     background-color: white;
@@ -188,9 +190,10 @@
     cursor: pointer;
 }
 
-#detail #author-button button:hover, #user-button button:hover {
-    background-color: #383838 !important;
-    color: white !important;
+#desktop #detail #author-button button:hover, 
+#desktop #detail #user-button button:hover {
+    background-color: #383838;
+    color: white;
 }
 
 
@@ -350,10 +353,12 @@
     text-align: center;
 }
 
-#mobile #detail #author-button button, #mobile #detail #vote-button {
+#mobile #detail #author-button button, 
+#mobile #detail #vote-button {
     border-radius: 30px;
     border: 1px solid #383838;
     background-color: white;
+    color: black;
     font-family: 'Lora-Medium';
     font-size: max(13px, 2vw);
     width: max(80px, 8%);
