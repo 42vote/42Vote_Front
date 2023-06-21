@@ -24,8 +24,6 @@ export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
 `;
 
 export const CardsContainersDiv = styled.div`
-  max-height: 62rem;
-  overflow-y: auto;
   scroll-behavior: smooth; /* Optional: Add smooth scrolling behavior */
   &::-webkit-scrollbar {
     display: none;
@@ -249,6 +247,7 @@ export const Tag = styled.div<{ isSelected: boolean }>`
 `;
 
 export const CreateButton = styled.div<{ selectedComponent: string }>`
+  grid-row: 1;
   display: inline-block;
   padding: 0.3125rem 1rem;
   margin-top: 0.25rem;

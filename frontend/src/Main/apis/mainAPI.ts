@@ -26,6 +26,8 @@ export const mainAPI = {
       "&" +
       makeQuery("listIndex", pageParam.toString()) +
       "&" +
+      makeQuery("expired", docListQuery.expired) +
+      "&" +
       makeQuery("myPost", docListQuery.myPost) +
       "&" +
       makeQuery("myVote", docListQuery.myVote);

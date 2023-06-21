@@ -31,7 +31,12 @@ const CategoryContainer = (props: selectTagProps) => {
 
   return (
     <TagContainer responsiveVar={responsiveVar}>
-      <Categorys selectedTag={selectedTag} handleSelect={handleTagSelect} isMain={props.isMain} />
+      <Categorys
+        selectedTag={selectedTag}
+        handleSelect={handleTagSelect}
+        isMain={props.isMain}
+        isExpired="false"
+      />
     </TagContainer>
   );
 };

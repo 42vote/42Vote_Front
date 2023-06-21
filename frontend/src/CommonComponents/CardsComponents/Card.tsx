@@ -20,7 +20,9 @@ const Card: React.FC<CardProps> = ({
   // const color = useColor(image, "hex", { crossOrigin: "Anonymous" });
   let mainColor = "#ffffff";
   // if (color.data) mainColor = color.data;
-  const ret = Number(voteCnt) * (100 / Number(goal));
+  let ret = Number(voteCnt) * (100 / Number(goal));
+  if (ret > 100)
+    ret = 100;
   const navi = useNavigate();
   const handleCardClick = () => {
     navi("/detail/" + id);

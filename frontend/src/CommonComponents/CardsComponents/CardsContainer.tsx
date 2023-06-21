@@ -16,7 +16,8 @@ const CardsContainer = (props: cardsProps) => {
   const documentQuery = documentApiQuery(
     selectedTag,
     props.tag === "-1" ? "true" : "false",
-    props.tag === "-2" ? "true" : "false"
+    props.tag === "-2" ? "true" : "false",
+    props.isMain
   );
   const { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage } =
     useCards(documentQuery, docSize.data ? docSize.data.categorySize : -1);
@@ -27,13 +28,11 @@ const CardsContainer = (props: cardsProps) => {
     let cardsNum = 0;
     if (getCards && docSize) {
       const pageOneLength = getCards.pages[0].cardArrary.length;
-      if(pageOneLength < 5)
-        cardsNum = pageOneLength;
-      else if (docSize.data)
-        cardsNum = ((docSize.data.categorySize + 1) * 5); 
+      if (pageOneLength < 5) cardsNum = pageOneLength;
+      else if (docSize.data) cardsNum = (docSize.data.categorySize + 1) * 5;
     }
     return cardsNum > shownCardsNum;
-  }
+  };
   const tagInfo = useTags("false").data?.filter(
     (arr) => arr.id === selectedTag
   );
@@ -67,11 +66,11 @@ const CardsContainer = (props: cardsProps) => {
       if (responsiveVar.isDesktop)
         isEnd =
           container.scrollLeft >=
-          container.scrollWidth - container.offsetWidth - (6 * fontSizeNum);
+          container.scrollWidth - container.offsetWidth - 6 * fontSizeNum;
       else if (responsiveVar.isMobile) {
         isEnd =
           container.scrollTop + container.clientHeight >=
-          container.scrollHeight - (6 * fontSizeNum);
+          container.scrollHeight - 6 * fontSizeNum;
       }
       if (isEnd && getNextPageIsPossible) getNextPage();
     }
@@ -86,10 +85,8 @@ const CardsContainer = (props: cardsProps) => {
   return (
     <>
       <TagHeader responsiveVar={responsiveVar}>#{title}</TagHeader>
-      {(getCards &&
-        getNeedScrollButton() &&
-        responsiveVar.isDesktop) ||
-      (getNextPageIsPossible && responsiveVar.isDesktop) ? (
+      {((getNeedScrollButton() && getCards) || getNextPageIsPossible) &&
+      responsiveVar.isDesktop ? (
         <div className="prevButtonContainer">
           <button onClick={handlePrev} className="prevButton" />
         </div>
@@ -119,13 +116,10 @@ const CardsContainer = (props: cardsProps) => {
             <SkeletonCards key={index} />
           ))
         )}
-        { getCards &&
-          getNextPageIsPossible && <SkeletonCards />}
+        {getCards && getNextPageIsPossible && <SkeletonCards />}
       </CardsList>
-      {(getCards &&
-        getNeedScrollButton() &&
-        responsiveVar.isDesktop) ||
-      (getNextPageIsPossible && responsiveVar.isDesktop) ? (
+      {((getNeedScrollButton() && getCards) || getNextPageIsPossible) &&
+      responsiveVar.isDesktop ? (
         <div className="nextButtonContainer">
           <button onClick={handleNext} className="nextButton" />
         </div>
