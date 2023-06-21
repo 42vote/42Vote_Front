@@ -68,7 +68,8 @@ const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, title: stri
             confirmButtonText: 'OK'
         }).then((res) => {
             if (res.isConfirmed) {
-                (event.target as HTMLButtonElement).disabled = true;
+                (event.target as HTMLButtonElement).style.display = 'none';
+                (document.getElementById('loading') as HTMLImageElement).style.display = 'block';
                 postDoc(docTitle, description.value, checkedCategoryId, goalInput, base64Files).then(() => nav('/main'));
             }
         });

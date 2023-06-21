@@ -71,6 +71,7 @@ function Posting() {
                             </div>
                         </div>
                     </div>
+                    <img id="loading" src='img/loading-spinner.gif'/>
                     <button type="submit" onClick={(e)=>submitDoc(e, title, goal, nav)}>Post</button>
                 </form>
             </div>
