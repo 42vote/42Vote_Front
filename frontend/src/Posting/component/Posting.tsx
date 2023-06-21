@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { categoryRes } from '../../Types/common';
 import { uploadFile, deleteFile } from '../page/HandleFile';
+import { handleGoalInput } from '../../Admin/logics/Logics';
 import radioClick from '../page/RadioClick';
 import submitDoc from '../page/SubmitDoc';
 import getCategory from '../service/GetCategory';
@@ -13,7 +14,8 @@ function Posting() {
     const isDesktop = useMediaQuery({query: '(min-width: 769px)'});
     const nav = useNavigate();
     const [categoryList, setCategoryList] = useState(Array<categoryRes>);
-    const [title, setTitle] = useState('New Post Title');
+    const [title, setTitle] = useState('');
+    const [goal, setGoal] = useState('');
     const [descriptLength, setDescriptLength] = useState(0);
 
     useEffect(() => {
@@ -30,7 +32,7 @@ function Posting() {
         <div id={isDesktop ? "desktop" : "mobile"}>
             <div id="posting">
                 <form id="post-form">
-                    <input id="title" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+                    <input id="title" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}} placeholder='New Post Title' maxLength={42} spellCheck='false'/>
                     <div id="category-wrapper">
                         <p>Category</p>
                         <div id="radio-list">
@@ -41,7 +43,7 @@ function Posting() {
                             }
                         </div>
                     </div>
-                    <label>Goal<input id="goal" type="number" min="1" max="1000"/></label>
+                    <label>Goal<input id="goal" type="number" min="1" max="1000" value={goal || ''} onChange={(e)=>handleGoalInput(e, setGoal)}/></label>
                     <label>Description<textarea id="text-area" maxLength={500} onChange={(e)=>setDescriptLength(e.target.value.length)}></textarea><div id="text-length">{descriptLength} / 500</div></label>
                     <div id="image-wrapper">
                         <p>Images</p>
@@ -69,7 +71,7 @@ function Posting() {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" onClick={(e)=>submitDoc(e, title, nav)}>Post</button>
+                    <button type="submit" onClick={(e)=>submitDoc(e, title, goal, nav)}>Post</button>
                 </form>
             </div>
         </div>
