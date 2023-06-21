@@ -1,6 +1,7 @@
 import { Dayjs } from "dayjs"
 
 export interface CategoryInfoBoxProps {
+    createAt: Dayjs,
     voteEnd: Dayjs | null,
     setVoteEnd: React.Dispatch<React.SetStateAction<Dayjs | null>>,
     tagEnd: Dayjs | null,

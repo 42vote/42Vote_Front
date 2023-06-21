@@ -154,7 +154,7 @@
     border-radius: 20px;
 }
 
-#desktop #detail #vote-button {
+#desktop #detail #vote-button, #doc-stat {
     border-radius: 30px;
     border: 1px solid #383838;
     background-color: white;
@@ -165,6 +165,11 @@
     padding: 0;
     margin-bottom: 30px;
     color: black;
+}
+
+#desktop #detail #doc-stat {
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 #desktop #detail #vote-button.open {
@@ -180,7 +185,7 @@
     cursor: not-allowed !important;
 }
 
-#desktop #detail #author-button {
+#desktop #detail #author-button, #user-button {
     width: 100%;
     text-align: center;
 }
@@ -198,7 +203,7 @@
     cursor: pointer;
 }
 
-#desktop #detail #author-button button:hover {
+#desktop #detail #author-button button:hover, #doc-stat:hover {
     background-color: #383838;
     color: white;
 }
@@ -357,6 +362,11 @@
     border-radius: 20px;
 }
 
+#mobile #detail #doc-stat {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 #mobile #detail #vote-button {
     border-radius: 30px;
     border: 1px solid #383838;
@@ -399,7 +409,7 @@
     margin: 0 5px 30px 5px;
 }
 
-#mobile #detail #author-button button:hover {
+#mobile #detail #author-button button:hover, #doc-stat:hover {
     background-color: #383838;
     color: white;
 }

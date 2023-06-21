@@ -27,6 +27,7 @@ const CategoryCreate = () => {
         <div id="category-create">
             <textarea id="title" value={title} onChange={(e)=>setTitle(e.target.value)} placeholder='category name' spellCheck={false}/>
             <CategoryInfoBox
+                createAt={today}
                 voteEnd={voteEnd}
                 setVoteEnd={setVoteEnd}
                 tagEnd={tagEnd}

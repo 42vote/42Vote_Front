@@ -2,7 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCategoryInfo } from "../apis/adminApis";
 import CategoryInfoBox from "./CategoryInfoBox";
 import dayjs, { Dayjs } from "dayjs";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteCategory, editCategory } from "../logics/Logics";
 import { CategoryDetailProps } from "../types";
 import '../styles/CategoryDetail.css';
@@ -31,8 +31,8 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     useEffect(() => {
         if (categoryInfo) {
             setTitle(categoryInfo.title);
-            setVoteEnd(dayjs(categoryInfo.voteExpire));
-            setTagEnd(dayjs(categoryInfo.docExpire));
+            setVoteEnd(dayjs(categoryInfo.voteExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
+            setTagEnd(dayjs(categoryInfo.docExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
             setGoal(categoryInfo.goal);
             setAnony(categoryInfo.anonymousVote);
             setMultiple(categoryInfo.multipleVote);
@@ -56,6 +56,7 @@ const CategoryDetail = (props: CategoryDetailProps) => {
             }
             {state === 1 && <button id="modify-button" onClick={()=>setState(2)}>카테고리 수정</button>}
             <CategoryInfoBox
+                createAt={dayjs(categoryInfo?.createAt)}
                 voteEnd={voteEnd}
                 setVoteEnd={setVoteEnd}
                 tagEnd={tagEnd}
