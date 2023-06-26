@@ -154,66 +154,52 @@
     border-radius: 20px;
 }
 
-#desktop #detail #vote-button, #doc-stat {
+#desktop #detail #buttons {
+    width: 80%;
+    text-align: center;
+}
+
+#detail #vote-button.voted {
+    background-color: #383838 !important;
+    color: white !important;
+}
+
+#detail #vote-button.expire, 
+#vote-button:disabled {
+    cursor: not-allowed !important;
+}
+
+#detail #author-button, #user-button {
+    width: 100%;
+    text-align: center;
+    display: inline;
+}
+
+#desktop #detail #author-button button, 
+#desktop #detail #user-button button {
     border-radius: 30px;
     border: 1px solid #383838;
     background-color: white;
+    color: black;
     font-family: 'Lora-Medium';
     font-size: max(15px, 1.2vw);
     width: max(110px, 10%);
     height: max(30px, 2.5vw);
     padding: 0;
-    margin-bottom: 30px;
-    color: black;
-}
-
-#desktop #detail #doc-stat {
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-#desktop #detail #vote-button.open {
-    cursor: pointer;
-}
-
-#desktop #detail #vote-button.voted {
-    background-color: #383838;
-    color: white;
-}
-
-#desktop #detail #vote-button.expire, #vote-button:disabled {
-    cursor: not-allowed !important;
-}
-
-#desktop #detail #author-button, #user-button {
-    width: 100%;
-    text-align: center;
-}
-
-#desktop #detail #author-button button {
-    border-radius: 30px;
-    border: 1px solid #383838;
-    background-color: white;
-    font-family: 'Lora-Medium';
-    font-size: max(15px, 1.2vw);
-    width: max(90px, 8%);
-    height: max(25px, 2vw);
-    padding: 0;
     margin: 0 5px 30px 5px;
     cursor: pointer;
 }
 
-#desktop #detail #author-button button:hover, #doc-stat:hover {
+#desktop #detail #author-button button:hover, 
+#desktop #detail #user-button button:hover {
     background-color: #383838;
     color: white;
 }
-
 
 
 #mobile #detail {
     padding-top: 35.5px;
     box-sizing: border-box;
-    /*어떻게 해야 정확히 떨어뜨리지?*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -341,7 +327,7 @@
     justify-content: center;
     width: 85%;
     height: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: max(13px, 2vw);
 }
 
@@ -362,56 +348,24 @@
     border-radius: 20px;
 }
 
-#mobile #detail #doc-stat {
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-#mobile #detail #vote-button {
-    border-radius: 30px;
-    border: 1px solid #383838;
-    background-color: white;
-    font-family: 'Lora-Medium';
-    font-size: 15px;
-    width: 100px;
-    height: 30px;
-    padding: 0;
-    margin-bottom: 30px;
-}
-
-#mobile #detail #vote-button.open {
-    cursor: pointer;
-}
-
-#mobile #detail #vote-button.voted {
-    background-color: #383838;
-    color: white;
-}
-
-#mobile #detail #vote-button.expire, #vote-button:disabled {
-    cursor: not-allowed !important;
-}
-
-#mobile #detail #author-button {
+#mobile #detail #buttons {
     width: 100%;
     text-align: center;
 }
 
-#mobile #detail #author-button button {
+#mobile #detail #author-button button, 
+#mobile #detail #vote-button {
     border-radius: 30px;
     border: 1px solid #383838;
     background-color: white;
+    color: black;
     font-family: 'Lora-Medium';
-    font-size: max(15px, 2vw);
+    font-size: max(13px, 2vw);
     width: max(80px, 8%);
     height: max(25px, 3.5vw);
     padding: 0;
     margin: 0 5px 30px 5px;
-}
-
-#mobile #detail #author-button button:hover, #doc-stat:hover {
-    background-color: #383838;
-    color: white;
+    cursor: pointer;
 }
 
 .swal2-popup, .swal2-styled {

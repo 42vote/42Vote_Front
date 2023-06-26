@@ -74,21 +74,22 @@ function Detail() {
                             </div>
                             <div id="count">{data.voteCnt} / {data.goal}</div>
                         </div>
+                        <div id="buttons">
                         {
-                            data.isAuthor ?
-                            (
-                                <div id="author-button">
-                                    <button id="doc-delete" onClick={()=>DocDelete(docId, nav)}>Delete</button>
-                                    <button id="doc-stat" onClick={()=>setIsOpen(true)}>Stat</button>
-                                </div>
-                            ) : (
-                                <div id="user-button">
-                                    {data.isVoteExpired ? <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'expire'} onClick={(e)=>Voting(e, docId, data)} disabled>Close</button> :
-                                    <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'open'} onClick={(e)=>Voting(e, docId, data)}>Support</button>}
-                                    {data.isAdmin && <button id="doc-stat" onClick={()=>setIsOpen(true)}>Stat</button>}
-                                </div>
-                            )
+                            !data.isAuthor &&
+                            <div id="user-button">
+                                {data.isVoteExpired ? <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'expire'} onClick={(e)=>Voting(e, docId, data)} disabled>Close</button> :
+                                <button id="vote-button" className={(data.isVote ? 'voted ' : '') + 'open'} onClick={(e)=>Voting(e, docId, data)}>Support</button>}
+                            </div>
                         }
+                        {
+                            (data.isAdmin || data.isAuthor) &&
+                            <div id="author-button">
+                                <button id="doc-delete" onClick={()=>DocDelete(docId, nav)}>Delete</button>
+                                <button id="doc-stat" onClick={()=>setIsOpen(true)}>Stat</button>
+                            </div>
+                        }
+                        </div>
                     </div>
                 )
             }
