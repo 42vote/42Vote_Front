@@ -1,4 +1,4 @@
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable, DropResult, DraggableLocation } from "react-beautiful-dnd";
 import CategoryColumn from "./CategoryColumn";
 import {
   Column,
@@ -7,19 +7,20 @@ import {
   initialDataColumns,
   initialDataTasks,
 } from "./initialData";
+import { useState } from "react";
 
 const ReorderCategory = () => {
   const TaskData: initialDataTasks = Task;
-  const ColumnData: initialDataColumns = Column;
+  const [ColumnData, setColumnData] = useState(Column);
   const columnOrderData: string[] = columnOrder;
   const onDragStart = () => {};
-  const onDragEnd = (result) => {
+  const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;
     if (!destination) {
       return;
     }
     if (
-      destination.draggableId === source.droppableId &&
+      destination.droppableId === source.droppableId &&
       destination.index === source.index
     ) {
       return;
@@ -35,12 +36,13 @@ const ReorderCategory = () => {
       taskIds: newTaskIds,
     }
 
-    const newData = {
+    const newColumnData = {
       columns: {
         ...ColumnData.columns,
         [newColumn.id]: newColumn,
       }
     }
+    setColumnData(newColumnData);
   };
 
   return (

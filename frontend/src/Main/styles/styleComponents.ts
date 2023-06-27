@@ -268,7 +268,7 @@ export const ReorderButton = styled.div<{ selectedComponent: string }>`
   grid-row: 1;
   display: inline-block;
   padding: 0.3125rem 1rem;
-  margin-top: 0.25rem;
+  margin-top: 2rem;
   font-size: 1rem;
   font-weight: bold;
   background-color: ${(prop) =>
