@@ -9,7 +9,7 @@ import {
 import { useContext } from "react";
 import { selectedComponentContext } from "../contexts/setDetailComponents";
 import { selectTagProps } from "../../Main/types";
-import { CreateButton } from "../../Main/styles/styleComponents";
+import { CreateButton, ReorderButton } from "../../Main/styles/styleComponents";
 import Categorys from "../../CommonComponents/CategoryComponents/Categorys";
 import { categoryDocumentsContext } from "../contexts/setDocuments";
 import { toggleOnContext } from "../contexts/setToggle";
@@ -31,8 +31,13 @@ const AdminCategoryList = (props: selectTagProps) => {
     setToggleOn(false);
   };
 
-  const getCreatePage = () => {
+  const goCreatePage = () => {
     setSelectedComponent("create");
+    setSelectedTag([]);
+  };
+
+  const goReOrderPage = () => {
+    setSelectedComponent("reorder");
     setSelectedTag([]);
   };
 
@@ -48,11 +53,17 @@ const AdminCategoryList = (props: selectTagProps) => {
             isExpired="false"
           />
           <CreateButton
-            onClick={getCreatePage}
+            onClick={goCreatePage}
             selectedComponent={selectedComponent}
           >
             +
           </CreateButton>
+          <ReorderButton
+            onClick={goReOrderPage}
+            selectedComponent={selectedComponent}
+          >
+            AdjeustOrder
+          </ReorderButton>
         </ActiveCategoryListDiv>
       </ActiveCategoryListContainer>
       <ExpiredCategoryListContainer>

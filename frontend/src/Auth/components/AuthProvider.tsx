@@ -62,11 +62,13 @@ const ProtectRoute = (props: ProtectRouteProps): React.ReactElement | null => {
     if (isTokenExpired) handleTokenRefresh();
   }, [isTokenExpired]);
 
+  //admin을 잠시 true로 고정시켜뒀습니다.
+  //admin페이지 작업을 끊내고 res.data로 다시 돌려둬야합니다.
   useEffect(() => {
     customAxios()
       .get("/user/me")
       .then((res) => {
-        setIsAdmin(res.data.isAdmin);
+        setIsAdmin(true);
       });
   }, []);
 

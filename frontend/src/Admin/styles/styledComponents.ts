@@ -36,6 +36,7 @@ export const ActiveCategoryListDiv = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  height 50vh;
 `
 
 export const ExpiredCategoryListContainer = styled.div`
