@@ -235,3 +235,10 @@ export const AdminButton = styled.button<{ isPatching: boolean }>`
     color: white;
   }
 `;
+
+export const ReorderContainer = styled.div`
+  display: flex;
+  margin-top: 1.6rem;
+  flex-direction: column;
+  align-items: center;
+`

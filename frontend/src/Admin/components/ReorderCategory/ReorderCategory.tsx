@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useTags } from "../../../Main/customHooks/useTags";
 import { categoryRes } from "../../../Types/common";
 import { patchCategoryOrder } from "../../apis/adminApis";
-import { AdminButton } from "../../styles/styledComponents";
+import { AdminButton, ReorderContainer } from "../../styles/styledComponents";
 import { queryClient } from "../../../App";
 
 const ReorderCategory = () => {
@@ -46,7 +46,7 @@ const ReorderCategory = () => {
         },
       });
     }
-  }, [data, isLoading]);
+  }, [data, isLoading, ColumnData]);
 
   const columnOrderData: string[] = columnOrder;
   const onDragEnd = (result: DropResult) => {
@@ -102,10 +102,10 @@ const ReorderCategory = () => {
       setPatchingArr([]);
       queryClient.invalidateQueries(["tags", "false"]);
     }
-  }, [patchingArr]);
+  }, [patchingArr, ColumnData]);
 
   return (
-    <>
+    <ReorderContainer>
       <DragDropContext onDragEnd={onDragEnd}>
         {columnOrderData.map((columnId) => {
           const column = ColumnData.columns[columnId];
@@ -125,7 +125,7 @@ const ReorderCategory = () => {
       >
         {isPatching ? "잠시만 기다려 주세요." : "수정 저장"}
       </AdminButton>
-    </>
+    </ReorderContainer>
   );
 };
 

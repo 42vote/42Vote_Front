@@ -12,7 +12,9 @@ const Container = styled.div<test>`
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 8px;
-  background-color: ${props => (props.isDragging ? 'lightgreen' : 'white')};
+  background-color: ${props => (props.isDragging ? 'black' : 'white')};
+  color: ${props => (props.isDragging ? 'white' : 'black')};
+
 `;
 
 interface taskprops {
