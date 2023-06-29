@@ -1,7 +1,8 @@
 import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
-import { Task, columnType, taskType } from "./initialData";
+import { columnType } from "./initialData";
 import TaskCom from "./Task";
+import { categoryRes } from "../../../Types/common";
 
 const Container = styled.div`
   margin: 8px;
@@ -16,27 +17,25 @@ const TaskList = styled.div`
 `;
 
 interface orderCategory {
-    column: columnType
-    tasks: taskType[]
+  column: columnType;
+  tasks: categoryRes[];
 }
 
 const CategoryColumn = (props: orderCategory) => {
-    
-
-    return (
-        <Container>
-        <Title>{props.column.title}</Title>
-        <Droppable droppableId={props.column.id}>
-          {provided => (
-            <TaskList ref={provided.innerRef} {...provided.droppableProps}>
-              {props.tasks.map((task, index) => (
-                <TaskCom key={task.id} task={task} index={index} />
-              ))}
-              {provided.placeholder}
-            </TaskList>
-          )}
-        </Droppable>
-      </Container>
-    )
-}
+  return (
+    <Container>
+      <Title>{props.column.title}</Title>
+      <Droppable droppableId={props.column.id}>
+        {(provided) => (
+          <TaskList ref={provided.innerRef} {...provided.droppableProps}>
+            {props.tasks.map((category, index) => (
+              <TaskCom key={category.title} category={category} index={index} />
+            ))}
+            {provided.placeholder}
+          </TaskList>
+        )}
+      </Droppable>
+    </Container>
+  );
+};
 export default CategoryColumn;

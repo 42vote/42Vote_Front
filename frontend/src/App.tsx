@@ -11,7 +11,7 @@ import ProtectRoute from "./Auth/components/AuthProvider";
 import AdminIndex from "./Admin";
 import "./App.css";
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 function App() {
   const location = useLocation();

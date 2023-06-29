@@ -3,6 +3,7 @@ export interface categoryRes {
     title: string,
     goalSettable: boolean,
     goal: number,
+    sort: number,
     expired: string,
   }
   
