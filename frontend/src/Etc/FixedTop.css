@@ -83,7 +83,7 @@
 
 #desktop-top #fixed-top #button-wrap #new-post-button {
     width: 40%;
-    height: 0;
+    height: 1.7vw;
     padding: 0;
     padding-bottom: clamp(25px, 10%, 35px);
     background-color: #383838;
