@@ -36,7 +36,8 @@ export const ActiveCategoryListDiv = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-`
+  height 50vh;
+`;
 
 export const ExpiredCategoryListContainer = styled.div`
   grid-row: 2;
@@ -57,8 +58,7 @@ export const ExpiredCategoryListDiv = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-`
-
+`;
 
 export const SelectedCategoryInfoContainer = styled.div`
   grid-column: 2;
@@ -218,3 +218,27 @@ export const ListHeader = styled.div`
   font-size: max(15px, 1.9vw);
   margin-left: 1.6rem;
 `;
+
+export const AdminButton = styled.button<{ isPatching: boolean }>`
+  font-family: "kbiz-Medium";
+  font-size: max(15px, 1.1vw);
+  background-color: ${(props) => (props.isPatching ? "#383838" : "white")};
+  color: ${(props) => (props.isPatching ? "white" : "black")};
+  border-radius: 20px;
+  border: 1px solid #383838;
+  padding: 6px 15px;
+  margin: 20px 0;
+  ${(props) =>
+    props.isPatching ? "" : "&:hover { background-color: #e5e5e5;}"}
+  &:active {
+    background-color: #383838;
+    color: white;
+  }
+`;
+
+export const ReorderContainer = styled.div`
+  display: flex;
+  margin-top: 1.6rem;
+  flex-direction: column;
+  align-items: center;
+`

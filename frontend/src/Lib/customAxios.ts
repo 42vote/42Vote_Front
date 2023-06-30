@@ -60,3 +60,16 @@ export const customAxios = () => {
 
     return baseAxios;
 }
+
+export const downloadAxios = () => {
+    const token = Cookies.get('token');
+    const downloadAxios: AxiosInstance = axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        responseType: 'blob' 
+    })
+    return downloadAxios;
+}

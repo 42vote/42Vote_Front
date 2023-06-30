@@ -50,25 +50,25 @@
 
 @font-face {
     font-family: 'kbiz-Light';
-    src: url('../public/Fonts/KBIZ한마음명조\ L.ttf');
+    src: url('../public/Fonts/KBIZ-Han\ L.ttf');
     unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
     font-family: 'kbiz-Regular';
-    src: url('../public/Fonts/KBIZ한마음명조\ R.ttf');
+    src: url('../public/Fonts/KBIZ-Han\ R.ttf');
     unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
     font-family: 'kbiz-Medium';
-    src: url('../public/Fonts/KBIZ한마음명조\ M.ttf');
+    src: url('../public/Fonts/KBIZ-Han\ M.ttf');
     unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
     font-family: 'kbiz-Bold';
-    src: url('../public/Fonts/KBIZ한마음명조\ B.ttf');
+    src: url('../public/Fonts/KBIZ-Han\ B.ttf');
     unicode-range: U+AC00-D7A3;
 }
 
