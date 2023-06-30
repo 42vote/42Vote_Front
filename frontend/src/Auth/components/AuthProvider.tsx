@@ -69,7 +69,8 @@ const ProtectRoute = (props: ProtectRouteProps): React.ReactElement | null => {
     customAxios()
       .get("/user/me")
       .then((res) => {
-        setIsAdmin(true);
+        console.log(res);
+        setIsAdmin(res.data.isAdmin);
       });
   }, []);
 
