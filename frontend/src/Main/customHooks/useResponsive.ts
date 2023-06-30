@@ -11,17 +11,27 @@ export const useResponsive = () => {
   const isTwoCards: boolean = useMediaQuery({
     query: "(min-width: 534px) and (max-width: 800px)",
   });
+  const isSmallScreen: boolean = useMediaQuery({
+    query: "(min-width: 2000px) and (max-width: 2500px)",
+  });
+  const isMediumScreen: boolean = useMediaQuery({
+    query: "(min-width: 2500px) and (max-width: 3100px)",
+  });
+  const isBigScreen: boolean = useMediaQuery({ query: "(min-width: 3101px)" });
+  const isScreen: boolean = useMediaQuery({ query: "(min-width: 2500px)" });
   const isDesktop: boolean = useMediaQuery({ query: "(min-width: 534px)" });
-  const isMobile : boolean = useMediaQuery({ query: "(max-width: 533px)" });
+  const isMobile: boolean = useMediaQuery({ query: "(max-width: 533px)" });
 
-  return (
-    {
-        isFiveCards: isFiveCards,
-        isFourCards: isFourCards,
-        isThreeCards: isThreeCards,
-        isTwoCards: isTwoCards,
-        isDesktop: isDesktop,
-        isMobile: isMobile
-    }
-  )
-}
+  return {
+    isFiveCards: isFiveCards,
+    isFourCards: isFourCards,
+    isThreeCards: isThreeCards,
+    isTwoCards: isTwoCards,
+    isScreen: isScreen,
+    isDesktop: isDesktop,
+    isMobile: isMobile,
+    isSmallScreen: isSmallScreen,
+    isMediumScreen: isMediumScreen,
+    isBigScreen: isBigScreen,
+  };
+};

@@ -12,7 +12,10 @@ const MyPage: React.FC = () => {
 
   useEffect(() => {
     if (responsiveVar.isMobile) setRootFontSize(15);
-    if (responsiveVar.isDesktop) setRootFontSize(14);
+    if (responsiveVar.isDesktop && !responsiveVar.isScreen) setRootFontSize(14);
+    if (responsiveVar.isSmallScreen) setRootFontSize(20);
+    if (responsiveVar.isMediumScreen) setRootFontSize(28);
+    if (responsiveVar.isBigScreen) setRootFontSize(33);
   }, [responsiveVar]);
 
   return (

@@ -34,7 +34,7 @@ export const CardsContainersDiv = styled.div`
   user-select: none;
 `;
 
-export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
+export const CardsArea = styled.div<{responsiveVar: responsiveVariable }>`
   display: grid;
   grid-template-rows: 0.5fr ${(props) =>
       props.responsiveVar.isDesktop ? "auto" : "80vh"};
