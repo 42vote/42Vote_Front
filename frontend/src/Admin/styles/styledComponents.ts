@@ -10,6 +10,7 @@ export const AdminContainer = styled.div`
 `;
 
 export const AdminCategoryListContainer = styled.div`
+  padding-top: calc(clamp(30px, 3%, 50px) + 20px);
   overflow: hidden;
   grid-column: 1;
   display: grid;
