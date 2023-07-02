@@ -64,13 +64,14 @@ export const ExpiredCategoryListDiv = styled.div`
 export const SelectedCategoryInfoContainer = styled.div`
   grid-column: 2;
   margin-left: 1.5rem;
+  margin-top: 1.5rem;
   // border: 1px solid black;
 `;
 
 export const StatisticsContainer = styled.div`
   display: grid;
   height: 90%;
-  grid-template-rows: 3rem 1.6fr;
+  grid-template-rows: 3rem 1.6fr 3rem;
 `;
 
 export const SelectedCategorys = styled.div<{
@@ -89,7 +90,7 @@ export const SelectedCategorys = styled.div<{
 
 export const StatisticsDocListContainer = styled.div`
   grid-row: 2;
-  max-height: 80vh;
+  max-height: 76vh;
   overflow-y: auto;
   scroll-begavior: smooth;
   &::-webkit-scrollbar {
@@ -223,6 +224,26 @@ export const ListHeader = styled.div`
 export const AdminButton = styled.button<{ isPatching: boolean }>`
   font-family: "kbiz-Medium";
   font-size: max(15px, 1.1vw);
+  height: 3rem;
+  background-color: ${(props) => (props.isPatching ? "#383838" : "white")};
+  color: ${(props) => (props.isPatching ? "white" : "black")};
+  border-radius: 20px;
+  border: 1px solid #383838;
+  padding: 6px 15px;
+  margin: 20px 0;
+  ${(props) =>
+    props.isPatching ? "" : "&:hover { background-color: #e5e5e5;}"}
+  &:active {
+    background-color: #383838;
+    color: white;
+  }
+`;
+
+export const ExportButton = styled.button<{ isPatching: boolean }>`
+  grid-column: 2;
+  font-family: "kbiz-Medium";
+  font-size: max(15px, 1.1vw);
+  height: 3rem;
   background-color: ${(props) => (props.isPatching ? "#383838" : "white")};
   color: ${(props) => (props.isPatching ? "white" : "black")};
   border-radius: 20px;

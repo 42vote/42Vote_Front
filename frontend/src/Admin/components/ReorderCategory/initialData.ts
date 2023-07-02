@@ -13,8 +13,3 @@ export interface initialDataColumns {
 }
 
 export const columnOrder = ["categoryReorder"];
-
-const draggableSnapshot = {
-  isDragging: true,
-  draggingOver: "categoryReorder",
-};

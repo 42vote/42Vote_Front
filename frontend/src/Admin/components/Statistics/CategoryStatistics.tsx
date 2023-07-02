@@ -2,6 +2,7 @@ import { selectTagProps } from "../../../Main/types";
 import StatisticsOption from "./SelectStatisticsOption";
 import { StatisticsContainer } from "../../styles/styledComponents";
 import StatisticsCards from "./StatisticsCards";
+import StatisticsExport from "./StatisticsExport";
 
 const CategoryStatistics = (props: selectTagProps) => {
   const selectedTag = props.selectedTag;
@@ -10,6 +11,7 @@ const CategoryStatistics = (props: selectTagProps) => {
     <StatisticsContainer>
       <StatisticsOption />
       <StatisticsCards tagId={selectedTag[0]} />
+      <StatisticsExport />
     </StatisticsContainer>
   );
 };

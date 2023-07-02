@@ -4,7 +4,7 @@ export interface categoryRes {
     goalSettable: boolean,
     goal: number,
     sort: number,
-    expired: string,
+    expired: boolean,
   }
   
   export interface documentListRes {

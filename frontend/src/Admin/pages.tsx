@@ -13,7 +13,8 @@ const Admin = () => {
 
   useEffect(() => {
     let tagList: string[] = [];
-    if (!isLoading && data) tagList.push(data[0].id);
+    if (!isLoading && data)
+      tagList.push(data.filter((doc) => doc.expired === false)[0].id);
     setSelectedTag(tagList);
   }, [isLoading, data]);
 

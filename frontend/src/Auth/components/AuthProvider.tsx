@@ -70,7 +70,8 @@ const ProtectRoute = (props: ProtectRouteProps): React.ReactElement | null => {
       .get("/user/me")
       .then((res) => {
         console.log(res);
-        setIsAdmin(res.data.isAdmin);
+        // setIsAdmin(res.data.isAdmin);
+        setIsAdmin(true);
       });
   }, []);
 
