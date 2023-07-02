@@ -46,8 +46,8 @@ export const patchCategoryOrder = async (sort: number, categoryId: string) => {
 export const downloadCSV = async (categoryId: string) => {
     try {
         const Query = "?" + makeQuery("categoryId", categoryId);
-        const res = await downloadAxios().get("/stat/excel/vote" + Query)
-        return res.data;
+        const res = await downloadAxios().get("/stat/excel/vote" + Query);
+        return (res.data);
     } catch (e:any) {
         console.log(e);
     }
