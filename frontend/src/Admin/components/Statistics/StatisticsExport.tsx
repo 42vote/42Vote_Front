@@ -26,7 +26,7 @@ const StatisticsExport = (prop: TagId) => {
   return (
     <ExportContainer responsiveVar={responsiveVar}>
       <ExportButton onClick={() => downloadFd()} isPatching={false}>
-        통계 추출 [.csv]
+        통계 추출 [.xlsx]
       </ExportButton>
     </ExportContainer>
   );
