@@ -12,12 +12,12 @@ const StatisticsExport = (prop: TagId) => {
   const responsiveVar = useResponsive();
   const downloadFd = () => {
     downloadCSV(prop.tagId).then((res:Blob) => {
-      const blob = new Blob([res], {type: 'text/csv;charset=utf-8;'});
+      const blob = new Blob([res], {type: 'text/excel;charset=utf-8;'});
       const fileUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = fileUrl;
       link.style.display = 'none';
-      link.download = tagInfo ? tagInfo[0].title + ".csv" : "csvFile.scv";
+      link.download = tagInfo ? tagInfo[0].title + ".xlsx" : "csvFile.xlsx";
       document.body.appendChild(link);
       link.click();
       link.remove();
