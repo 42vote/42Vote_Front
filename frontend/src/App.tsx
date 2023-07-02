@@ -11,7 +11,14 @@ import ProtectRoute from "./Auth/components/AuthProvider";
 import AdminIndex from "./Admin";
 import "./App.css";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60000,
+      cacheTime: 3600000,
+    },
+  },
+});
 
 function App() {
   const location = useLocation();
