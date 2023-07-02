@@ -11,7 +11,7 @@ const displayBar = (data: Document) => {
     count.textContent = data.voteCnt + ' / ' + data.goal;
 }
 
-const voteReq = (target: HTMLButtonElement, docId: number, data: Document) => {
+const voteReq = (target: HTMLButtonElement, docId: string, data: Document) => {
     target.classList.add('voted');
     target.setAttribute('disabled', '');
     postVote(docId).then(() => {
@@ -21,7 +21,7 @@ const voteReq = (target: HTMLButtonElement, docId: number, data: Document) => {
     displayBar(data);
 }
 
-const Voting = (event: React.MouseEvent<HTMLButtonElement>, docId: number, data: Document) => {
+const Voting = (event: React.MouseEvent<HTMLButtonElement>, docId: string, data: Document) => {
     const target = event.target as HTMLButtonElement;
 
     if (target.classList.contains('voted')) {
