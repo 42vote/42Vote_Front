@@ -263,4 +263,26 @@ export const ReorderContainer = styled.div`
   margin-top: 1.6rem;
   flex-direction: column;
   align-items: center;
-`
+`;
+
+export const ExportContainer = styled.div<{
+  responsiveVar: responsiveVariable;
+}>`
+  gird-row: 3;
+  height: 3rem;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr ${(props) =>
+      props.responsiveVar.isFiveCards
+        ? "61.375rem"
+        : props.responsiveVar.isFourCards
+        ? "49.5rem"
+        : props.responsiveVar.isThreeCards
+        ? "37.625rem"
+        : props.responsiveVar.isTwoCards
+        ? "25.75rem"
+        : "65%"} 1fr;
+  height: 1.6rem;
+  width: 100%;
+  flex-direction: row-reverse;
+`;

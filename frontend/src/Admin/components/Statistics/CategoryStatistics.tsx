@@ -11,7 +11,7 @@ const CategoryStatistics = (props: selectTagProps) => {
     <StatisticsContainer>
       <StatisticsOption tagId={selectedTag[0]} />
       <StatisticsCards tagId={selectedTag[0]} />
-      <StatisticsExport />
+      <StatisticsExport tagId={selectedTag[0]}/>
     </StatisticsContainer>
   );
 };

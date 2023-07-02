@@ -1,33 +1,16 @@
-import styled from "styled-components";
-import { ExportButton } from "../../styles/styledComponents";
-import { responsiveVariable } from "../../../Main/types";
+import { ExportButton, ExportContainer } from "../../styles/styledComponents";
 import { useResponsive } from "../../../Main/customHooks/useResponsive";
+import { downloadCSV } from "../../apis/adminApis";
 
-const ExportContainer = styled.div<{ responsiveVar: responsiveVariable }>`
-  gird-row: 3;
-  height: 3rem;
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr ${(props) =>
-      props.responsiveVar.isFiveCards
-        ? "61.375rem"
-        : props.responsiveVar.isFourCards
-        ? "49.5rem"
-        : props.responsiveVar.isThreeCards
-        ? "37.625rem"
-        : props.responsiveVar.isTwoCards
-        ? "25.75rem"
-        : "65%"} 1fr;
-  height: 1.6rem;
-  width: 100%;
-  flex-direction: row-reverse;
-`;
-
-const StatisticsExport = () => {
+interface TagId {
+  tagId: string,
+}
+//check is downloadCSV fixed in api server
+const StatisticsExport = (prop: TagId) => {
   const responsiveVar = useResponsive();
   return (
     <ExportContainer responsiveVar={responsiveVar}>
-      <ExportButton isPatching={false}>통계 추출</ExportButton>
+      <ExportButton onClick={ () => downloadCSV(prop.tagId)} isPatching={false}>통계 추출</ExportButton>
     </ExportContainer>
   );
 };
