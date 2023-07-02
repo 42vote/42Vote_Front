@@ -7,14 +7,14 @@ import { useResponsive } from "../Main/customHooks/useResponsive";
 import { setRootFontSize } from "../Lib/setRootFontSize";
 
 const Admin = () => {
-  const { isLoading, data } = useTags("all");
+  const { isLoading, data } = useTags("false");
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
   const responsiveVar = useResponsive();
 
   useEffect(() => {
     let tagList: string[] = [];
     if (!isLoading && data)
-      tagList.push(data.filter((doc) => doc.expired === false)[0].id);
+      tagList.push(data[0].id);
     setSelectedTag(tagList);
   }, [isLoading, data]);
 

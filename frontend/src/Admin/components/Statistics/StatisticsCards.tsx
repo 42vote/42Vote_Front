@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useCards } from "../../../Main/customHooks/useCards";
 import { useDocSize } from "../../../Main/customHooks/useDocSize";
 import { useResponsive } from "../../../Main/customHooks/useResponsive";
@@ -40,13 +40,13 @@ const StatisticsCards = (prop: TagId) => {
   );
 
   const DocContext = useContext(categoryDocumentsContext);
+  const isMounted = useRef(false);
+
   useEffect(() => {
-    if (
-      getCards &&
-      getCardsIsSuccess &&
-      DocContext.categoryDocuments.length < 1
-    )
+    if (getCards && getCardsIsSuccess && !isMounted.current) {
       DocContext.setCategoryDocuments(getCards.pages[0].cardArrary);
+      isMounted.current = true;
+    }
   }, [getCards, getCardsIsSuccess, DocContext]);
 
   return (
@@ -55,7 +55,7 @@ const StatisticsCards = (prop: TagId) => {
         <TagHeader responsiveVar={responsiveVar}>#{title}</TagHeader>
         <StatisticsCardsContainer>
           {getCardsIsSuccess && getCards ? (
-            getCards.pages[0].cardArrary.length > 0 ? (
+            DocContext.categoryDocuments.length > 0 ? (
               DocContext.categoryDocuments.map((card) => (
                 <Card key={card.id} {...card} />
               ))

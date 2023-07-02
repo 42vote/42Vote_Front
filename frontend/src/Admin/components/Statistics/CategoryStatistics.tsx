@@ -9,7 +9,7 @@ const CategoryStatistics = (props: selectTagProps) => {
 
   return (
     <StatisticsContainer>
-      <StatisticsOption />
+      <StatisticsOption tagId={selectedTag[0]} />
       <StatisticsCards tagId={selectedTag[0]} />
       <StatisticsExport />
     </StatisticsContainer>
