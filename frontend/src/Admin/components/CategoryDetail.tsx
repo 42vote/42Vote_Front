@@ -17,9 +17,11 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     const [title, setTitle] = useState('');
     const [voteEnd, setVoteEnd] = useState<Dayjs | null>(dayjs());
     const [tagEnd, setTagEnd] = useState<Dayjs | null>(dayjs());
+    const [allow, setAllow] = useState(false);
     const [goal, setGoal] = useState('');
     const [anony, setAnony] = useState(false);
     const [multiple, setMultiple] = useState(false);
+    const [whiteList, setWhiteList] = useState<Array<string>>([]);
 
     const options = {
         title: title,
@@ -33,9 +35,11 @@ const CategoryDetail = (props: CategoryDetailProps) => {
             setTitle(categoryInfo.title);
             setVoteEnd(dayjs(categoryInfo.voteExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
             setTagEnd(dayjs(categoryInfo.docExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
+            // setAllow(categoryInfo.whitelistOnly);
             setGoal(categoryInfo.goal);
             setAnony(categoryInfo.anonymousVote);
             setMultiple(categoryInfo.multipleVote);
+            // setWhiteList(categoryInfo.whitelist);
         }
     }, [categoryInfo]);
 
@@ -61,6 +65,10 @@ const CategoryDetail = (props: CategoryDetailProps) => {
                 setVoteEnd={setVoteEnd}
                 tagEnd={tagEnd}
                 setTagEnd={setTagEnd}
+                allow={allow}
+                setAllow={setAllow}
+                whiteList={whiteList}
+                setWhiteList={setWhiteList}
                 goal={goal}
                 setGoal={setGoal}
                 anony={anony}

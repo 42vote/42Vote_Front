@@ -6,6 +6,10 @@ export interface CategoryInfoBoxProps {
     setVoteEnd: React.Dispatch<React.SetStateAction<Dayjs | null>>,
     tagEnd: Dayjs | null,
     setTagEnd: React.Dispatch<React.SetStateAction<Dayjs | null>>,
+    allow: boolean,
+    setAllow: React.Dispatch<React.SetStateAction<boolean>>,
+    whiteList: Array<string>,
+    setWhiteList: React.Dispatch<React.SetStateAction<Array<string>>>
     goal: string,
     setGoal: React.Dispatch<React.SetStateAction<string>>,
     anony: boolean,
@@ -20,6 +24,8 @@ export interface CategoryOptions {
     title: string,
     voteEnd: Dayjs | null,
     tagEnd: Dayjs | null,
+    allow: boolean,
+    whiteList: Array<string>,
     goal: string,
     multiple: boolean,
     anony: boolean
@@ -34,4 +40,11 @@ export interface ConfirmOptions {
 
 export interface CategoryDetailProps {
     categoryId: number
+}
+
+export interface WhiteListDialogProps {
+    whiteList: Array<string>,
+    setWhiteList: React.Dispatch<React.SetStateAction<Array<string>>>
+    isOpen: boolean;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -10,10 +10,13 @@ export const getCategoryInfo = async (categoryId: number) => {
 };
 
 export const postCreateCategory = (option: CategoryOptions) => {
+  console.log(option);
   return customAxios().post("/category", {
     title: option.title,
     multipleVote: option.multiple,
     anonymousVote: option.anony,
+    whitelistOnly: option.allow,
+    whitelist: option.allow === true ? option.whiteList : [],
     voteExpire: option.voteEnd!.format("YYYY-MM-DDT23:59:59"),
     docExpire: option.tagEnd!.format("YYYY-MM-DDT23:59:59"),
     goal: Number(option.goal),
