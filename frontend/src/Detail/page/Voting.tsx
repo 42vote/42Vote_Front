@@ -38,7 +38,7 @@ const Voting = (event: React.MouseEvent<HTMLButtonElement>, docId: number, data:
                 Swal.fire({
                     text: '동일한 카테고리의 글에 이미 투표하셨습니다. 투표 중인 글의 투표를 취소하고 이 글에 투표하시겠습니까?',
                     showCancelButton: true,
-                    confirmButtonColor: 'white',
+                    confirmButtonColor: '#d9d9d9',
                     cancelButtonColor: '#383838',
                     confirmButtonText: 'OK'
                 }).then((res) => {

@@ -3,7 +3,7 @@ import { getCategoryInfo } from "../apis/adminApis";
 import CategoryInfoBox from "./CategoryInfoBox";
 import dayjs, { Dayjs } from "dayjs";
 import { useEffect, useState } from "react";
-import { deleteCategory, editCategory } from "../logics/Logics";
+import { closeCategory, deleteCategory, editCategory } from "../logics/Logics";
 import { CategoryDetailProps } from "../types";
 import '../styles/CategoryDetail.css';
 
@@ -79,8 +79,11 @@ const CategoryDetail = (props: CategoryDetailProps) => {
                 setMultiple={setMultiple}
                 state={state}
             />
-            {state === 1 && today.isBefore(tagEnd) && (<button id="delete-button" onClick={()=>deleteCategory(categoryId)}>카테고리 즉시 종료</button>)}
-            {state === 2 && (<button id="edit-button" onClick={()=>editCategory(options, categoryId, setState, queryClient)}>카테고리 수정</button>)}
+            <div id="buttons">
+                {state === 1 && today.isBefore(tagEnd) && (<button id="close-button" onClick={()=>closeCategory(categoryId)}>카테고리 즉시 종료</button>)}
+                {state === 2 && (<button id="edit-button" onClick={()=>editCategory(options, categoryId, setState, queryClient)}>카테고리 수정</button>)}
+                <button id="delete-button" onClick={()=>deleteCategory(categoryId)}>카테고리 삭제</button>
+            </div>
         </div>
     )
 }

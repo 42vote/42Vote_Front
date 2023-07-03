@@ -23,6 +23,10 @@ export const postCreateCategory = (option: CategoryCreateOptions) => {
   });
 };
 
+export const closeCategoryReq = (categoryId: number) => {
+  return customAxios().patch("/category/expire/" + categoryId);
+}
+
 export const deleteCategoryReq = (categoryId: number) => {
   return customAxios().delete("/category/" + categoryId);
 };

@@ -7,7 +7,7 @@ const DocDelete = (docId: number, nav: NavigateFunction) => {
     Swal.fire({
         text: '글을 삭제하시겠습니까?',
         showCancelButton: true,
-        confirmButtonColor: 'white',
+        confirmButtonColor: '#d9d9d9',
         cancelButtonColor: '#383838',
         confirmButtonText: 'Delete'
     }).then((res) => {
