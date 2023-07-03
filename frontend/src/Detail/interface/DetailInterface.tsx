@@ -13,7 +13,8 @@ export interface Document {
     voteCnt: number,
     isVote: boolean,
     isVoteExpired: boolean,
-    image: string[]
+    image: string[],
+    imageName: string[]
 }
 
 export interface StatDialogProps {

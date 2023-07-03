@@ -15,8 +15,10 @@ const showEditPage = (data: Document, setTitle: React.Dispatch<React.SetStateAct
     descript.value = data.content;
 
     data.image.forEach((v, idx) => {
+        const nameDiv = labels[idx].nextSibling as HTMLDivElement;
         labels[idx].style.backgroundImage = `url(${v})`;
-        (labels[idx].nextSibling as HTMLDivElement).classList.add('active');
+        nameDiv.classList.add('active');
+        nameDiv.children[0].textContent = data.imageName[idx];
     })
 
     setTitle(data.title);

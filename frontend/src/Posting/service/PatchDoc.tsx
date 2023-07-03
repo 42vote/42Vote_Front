@@ -1,11 +1,12 @@
 import { customAxios } from "../../Lib/customAxios";
 
-const patchDoc = (docId: string, title: string, context: string, goal: number, image: string[]) => {
+const patchDoc = (docId: string, title: string, context: string, goal: number, image: string[], filenames: string[]) => {
     return customAxios().patch('/document/' + docId, {
         title: title,
         context: context,
         goal: goal,
-        image: image
+        image: image,
+        imageName: filenames
     });
 }
 
