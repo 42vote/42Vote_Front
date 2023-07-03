@@ -14,7 +14,11 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     let tagList: string[] = [];
     if (!isLoading && data) {
-      tagList.push(data[0].id);
+      if (responsiveVar.isDesktop)
+        for (let i = 0; i < data.length; i++)
+          tagList.push(data[i].id);
+      else
+        tagList.push(data[0].id);
     }
     setSelectedTag(tagList);
   }, [isLoading, data, responsiveVar.isDesktop]);
