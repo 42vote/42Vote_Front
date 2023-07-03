@@ -37,8 +37,8 @@ function Posting() {
         if (!isError && data)
             showEditPage(data, setTitle, setGoal, categoryList.find((category) => Number(category.id) === data.categoryId));
         else
-            setDefaultGoal(categoryList);
-    }, [data, categoryList]);
+            setDefaultGoal(categoryList, setGoal);
+    }, [data, categoryList, isError]);
 
     if (isError && docId !== null && docId !== '')
         return (<NotFound/>);
