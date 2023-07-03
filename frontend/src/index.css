@@ -72,6 +72,18 @@
     unicode-range: U+AC00-D7A3;
 }
 
+@font-face {
+    font-family: 'NanumGothic';
+    src: url('../public/Fonts/NanumGothic.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+    font-family: 'NanumGothic-Bold';
+    src: url('../public/Fonts/NanumGothicBold.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
 
 html, body {
     margin: 0;
