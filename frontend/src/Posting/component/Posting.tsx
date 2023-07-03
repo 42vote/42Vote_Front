@@ -90,8 +90,8 @@ function Posting() {
                             </div>
                         </div>
                     </div>
-                    <img id="loading" src='img/loading-spinner.gif'/>
-                    <button type="submit" onClick={(e)=>submitDoc(e, title, goal, nav)}>Post</button>
+                    <img id="loading" src='img/loading-spinner.gif' alt="loading"/>
+                    <button type="submit" onClick={(e)=>{submitDoc(e, docId, title, goal, data, nav)}}>Post</button>
                 </form>
             </div>
         </div>
