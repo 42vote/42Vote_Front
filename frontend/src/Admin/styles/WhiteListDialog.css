@@ -68,3 +68,14 @@
     text-align: center;
     width: 50%;
 }
+
+#white-list .css-konndc-MuiListItemText-root {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#white-list svg {
+    margin-left: 5px;
+    cursor: pointer;
+}

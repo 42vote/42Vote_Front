@@ -51,8 +51,10 @@ export const createCategory = (option: CategoryOptions) => {
         }).then((res) => {
             if (res.isConfirmed)
                 postCreateCategory(option).then(() => {
-                    Swal.fire('카테고리가 생성되었습니다.');
-                    window.location.reload();
+                    Swal.fire('카테고리가 생성되었습니다.').then((res) => {
+                        if (res.isConfirmed)
+                            window.location.reload();
+                    })
                 });
         });
     }
