@@ -42,12 +42,17 @@ const StatisticsCards = (prop: TagId) => {
   const DocContext = useContext(categoryDocumentsContext);
   const isMounted = useRef(false);
 
+  useEffect(()=>{
+    isMounted.current = false;
+  },[prop.tagId])
+  
   useEffect(() => {
     if (getCards && getCardsIsSuccess && !isMounted.current) {
       DocContext.setCategoryDocuments(getCards.pages[0].cardArrary);
       isMounted.current = true;
     }
   }, [getCards, getCardsIsSuccess, DocContext]);
+
 
   return (
     <StatisticsDocListContainer>

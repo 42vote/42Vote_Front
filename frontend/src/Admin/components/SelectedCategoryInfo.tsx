@@ -6,7 +6,7 @@ import CategoryDetail from "./CategoryDetail";
 import CategoryCreate from "./CategoryCreate";
 import CategoryStatistics from "./Statistics/CategoryStatistics";
 import ToggleSwitch from "./ComponentSwitch";
-import ReorderCategory from "./ReorderCategory/ReorderCategory";
+import ReorderCategory from "./AdminCategorys/ReorderCategory/ReorderCategory";
 
 const SelectedCategoryInfo = (props: selectTagProps) => {
   const { selectedComponent } = useContext(selectedComponentContext);

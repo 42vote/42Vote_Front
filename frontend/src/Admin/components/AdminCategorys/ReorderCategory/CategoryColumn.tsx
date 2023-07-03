@@ -2,7 +2,7 @@ import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import { columnType } from "./initialData";
 import TaskCom from "./Task";
-import { categoryRes } from "../../../Types/common";
+import { categoryRes } from "../../../../Types/common";
 
 const Container = styled.div`
   width: 60%;
