@@ -81,12 +81,23 @@ const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, docId: stri
             confirmButtonText: 'OK'
         }).then((res) => {
             if (res.isConfirmed) {
-                (event.target as HTMLButtonElement).disabled = true;
+                (event.target as HTMLButtonElement).setAttribute('disabled', '');
                 if (data)
                     patchDoc(docId, docTitle, description.value, goalInput, base64Files, filenames).then(() => nav('/main'))
-                    .catch(() => nav('/notfound'));
+                    .catch((err) => {
+                        if (err.response.status === 404)
+                            nav('/notfound')
+                        else {
+                            Swal.fire('문제가 발생하였습니다. 잠시 후 다시 시도해주세요.');
+                            (event.target as HTMLButtonElement).removeAttribute('disabled');
+                        }
+                    });
                 else
-                    postDoc(docTitle, description.value, checkedCategoryId, goalInput, base64Files, filenames).then(() => nav('/main'));
+                    postDoc(docTitle, description.value, checkedCategoryId, goalInput, base64Files, filenames).then(() => nav('/main'))
+                    .catch(() => {
+                        Swal.fire('문제가 발생하였습니다. 잠시 후 다시 시도해주세요.');
+                        (event.target as HTMLButtonElement).removeAttribute('disabled');
+                    });
             }
         });
     }
