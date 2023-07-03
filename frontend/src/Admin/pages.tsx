@@ -2,20 +2,23 @@ import { AdminContainer } from "./styles/styledComponents";
 import SelectedCategoryInfo from "./components/SelectedCategoryInfo";
 import AdminCategoryList from "./components/AdminCategorys/AdminCategoryList";
 import { useTags } from "../Main/customHooks/useTags";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useResponsive } from "../Main/customHooks/useResponsive";
 import { setRootFontSize } from "../Lib/setRootFontSize";
+import { selectedComponentContext } from "./contexts/setDetailComponents";
 
 const Admin = () => {
   const { isLoading, data } = useTags("false");
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
   const responsiveVar = useResponsive();
-  const isMounted = useRef(false);
+  const selectedComponent = useContext(selectedComponentContext);
+  const selectedComponentRef = useRef(selectedComponent.selectedComponent);
+  selectedComponentRef.current = selectedComponent.selectedComponent;
+
   useEffect(() => {
     let tagList: string[] = [];
-    if (!isLoading && data && !isMounted.current){
+    if (!isLoading && data && selectedComponentRef.current !== "reorder") {
       tagList.push(data[0].id);
-      isMounted.current = true;
     }
     setSelectedTag(tagList);
   }, [isLoading, data]);

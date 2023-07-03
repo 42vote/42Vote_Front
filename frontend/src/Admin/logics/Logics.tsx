@@ -88,6 +88,8 @@ export const editCategory = (option: ConfirmOptions, categoryId: number, setStat
             if (res.isConfirmed) {
                 patchCategory(option, categoryId).then(() => {
                     queryClient.invalidateQueries({queryKey: ['categoryInfo-' + categoryId]})
+                    queryClient.invalidateQueries(["tags", "false"]);
+                    queryClient.invalidateQueries(["tags", "true"]);
                     Swal.fire('수정되었습니다.').then((res) => {
                         if (res.isConfirmed)
                             setState(1);
