@@ -10,7 +10,7 @@
     text-align: center;
 }
 
-.expire-date, #goal-set, .anony, .multiple {
+.expire-date, #allow-user, #goal-set, .anony, .multiple {
     margin-bottom: 10px;
 }
 
@@ -48,4 +48,24 @@
 
 .title-tooltip > span {
     margin-right: 5px;
+}
+
+#allow-user {
+    display: flex;
+}
+
+.switch-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.switch-button button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.switch-button button:disabled {
+    cursor: not-allowed;
 }

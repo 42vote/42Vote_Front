@@ -7,10 +7,14 @@ import "dayjs/locale/ko";
 import { handleGoalInput } from "../logics/Logics";
 import { CategoryInfoBoxProps } from "../types";
 import '../styles/CategoryInfoBox.css';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import WhiteListDialog from "./WhiteListDialog";
+import { useState } from "react";
 
 const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
     const dateDisable = props.state === 1 ? true : false;
     const toggleDisable = props.state === 0 ? false : true;
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
@@ -46,7 +50,20 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
                             disablePast minDate={props.voteEnd} disabled={dateDisable}
                         />
                     </div>
-                </div>  
+                </div>
+                <div id="allow-user">
+                    <div className="title-tooltip">
+                        <span>작성자 제한</span>
+                        <Tooltip title="특정 사용자만 해당 카테고리에 글을 작성할 수 있도록 정할 수 있습니다. 스위치를 켜지 않으면 모든 사용자가 글을 작성 할 수 있고, 스위치를 켠 후 버튼을 클릭하면 intraID를 통해 특정 사용자만 글을 작성하도록 할 수 있습니다." arrow>
+                            <HelpOutlineOutlinedIcon sx={{ color: "#888888" }}/>
+                        </Tooltip>
+                    </div>
+                    <div className="switch-button">
+                        <Switch onChange={(e)=>props.setAllow(e.target.checked)} checked={props.allow || false} disabled={dateDisable}/> {/*왜 false를 달아줘야하지*/}
+                        <button disabled={!props.allow} onClick={()=>setIsOpen(true)}><GroupAddIcon color={props.allow === false ? "disabled" : "action"}/></button>
+                        <WhiteListDialog isOpen={isOpen} setIsOpen={setIsOpen} whiteList={props.whiteList} setWhiteList={props.setWhiteList} state={props.state}/>
+                    </div>
+                </div>
                 <div id="goal-set">
                     <div className="title-tooltip">
                         <span>목표치</span>

@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
-import { deleteCategoryReq, patchCategory, postCreateCategory } from "../apis/adminApis";
+import { deleteCategoryReq, getExistUser, patchCategory, postCreateCategory } from "../apis/adminApis";
 import { QueryClient } from "@tanstack/react-query";
-import { CategoryOptions, ConfirmOptions } from "../types";
+import { CategoryCreateOptions, CategoryEditOptions, ConfirmOptions } from "../types";
 
 // CategoryInfoBox.tsx
 export const handleGoalInput = (e: React.ChangeEvent<HTMLInputElement>, setGoal: React.Dispatch<React.SetStateAction<string>>) => {
@@ -19,6 +19,32 @@ export const handleGoalInput = (e: React.ChangeEvent<HTMLInputElement>, setGoal:
     }
 }
 
+
+// WhiteListDialog.tsx
+export const addList = (e: React.FormEvent<HTMLFormElement>, whiteList: Array<string>, setWhiteList: React.Dispatch<React.SetStateAction<Array<string>>>) => {
+    e.preventDefault();
+    let id = document.getElementById("intraID") as HTMLInputElement || null;
+    if (id.value === '')
+        return ;
+    if (whiteList.find((user) => user === id.value))
+        Swal.fire('이미 추가한 사용자입니다.');
+    else {
+        getExistUser(id.value).then(()=>{
+            setWhiteList([...whiteList, id.value]);
+            id.value = '';
+        }).catch(()=>{
+            Swal.fire('존재하지 않는 사용자입니다.');
+            id.value = '';
+        });
+    }
+}
+
+export const deleteList = (user: string, whiteList: Array<string>, setWhiteList: React.Dispatch<React.SetStateAction<Array<string>>>) => {
+    whiteList.splice(whiteList.indexOf(user), 1);
+    setWhiteList([...whiteList]);
+}
+
+
 //CategoryCreate, CategoryDetail
 export const confirmInputs = (option: ConfirmOptions) => {
     if (option.title === '')
@@ -33,7 +59,7 @@ export const confirmInputs = (option: ConfirmOptions) => {
         return (true);
 }
 
-export const createCategory = (option: CategoryOptions) => {
+export const createCategory = (option: CategoryCreateOptions) => {
     const param = {
         title: option.title,
         voteEnd: option.voteEnd,
@@ -51,8 +77,10 @@ export const createCategory = (option: CategoryOptions) => {
         }).then((res) => {
             if (res.isConfirmed)
                 postCreateCategory(option).then(() => {
-                    Swal.fire('카테고리가 생성되었습니다.');
-                    window.location.reload();
+                    Swal.fire('카테고리가 생성되었습니다.').then((res) => {
+                        if (res.isConfirmed)
+                            window.location.reload();
+                    })
                 });
         });
     }
@@ -76,8 +104,15 @@ export const deleteCategory = (categoryId: number) => {
     })
 }
 
-export const editCategory = (option: ConfirmOptions, categoryId: number, setState: React.Dispatch<React.SetStateAction<number>>, queryClient: QueryClient) => {
-    if (confirmInputs(option)) {
+export const editCategory = (option: CategoryEditOptions, categoryId: number, setState: React.Dispatch<React.SetStateAction<number>>, queryClient: QueryClient) => {
+    const param = {
+        title: option.title,
+        voteEnd: option.voteEnd,
+        tagEnd: option.tagEnd,
+        goal: option.goal
+    }
+    
+    if (confirmInputs(param)) {
         Swal.fire({
             text: '카테고리를 수정하시겠습니까?',
             showCancelButton: true,
