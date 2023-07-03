@@ -14,6 +14,7 @@ export const AbsolutedDiv = styled.div`
 //Cards
 
 export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
+  font-family: 'NanumGothic-Bold';
   grid-row: 1;
   grid-column: 2;
   justify-self: ${(prop) =>
@@ -106,7 +107,8 @@ export const ProductCard = styled.div<{ mainColor: string }>`
 `;
 
 export const ProductCardTitle = styled.h2<{ textColor: string }>`
-  margin-top: 0.3125rem;
+font-family: 'NanumGothic';  
+margin-top: 0.3125rem;
   font-size: 1.2rem;
   font-weight: bold;
   color: ${(prop) => prop.textColor};
@@ -232,6 +234,7 @@ export const TagsDrop = styled.div<{ isOpen: boolean; size: number }>`
 `;
 
 export const Tag = styled.div<{ isSelected: boolean }>`
+  font-family: 'NanumGothic';
   display: inline-block;
   padding: 0.3125rem 1rem;
   margin: 0.25rem;

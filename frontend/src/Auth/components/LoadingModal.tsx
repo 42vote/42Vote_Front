@@ -12,11 +12,15 @@ const LoadingContainer = styled.div`
   justify-content: center;
 `;
 
+const LoadingMsg = styled.h2`
+  font-family: "NanumGothic";
+`;
+
 const LoadingModal = () => {
   return (
     <LoadingContainer>
       <ScaleLoader color="#000" />
-      <h2>Loading</h2>
+      <LoadingMsg>Loading</LoadingMsg>
     </LoadingContainer>
   );
 };
