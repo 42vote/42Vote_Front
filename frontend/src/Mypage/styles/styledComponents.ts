@@ -11,7 +11,7 @@ export const UserInfoList = styled.div`
     grid-column: 2;
     display: grid;
     justify-items: end;
-    grid-template-row: 1.5rem 1rem;
+    grid-template-row: 1.5rem 1rem 1rem;
 `
 
 export const UserName = styled.div`
@@ -20,8 +20,13 @@ export const UserName = styled.div`
 `
 
 export const UserWallet = styled.div`
-    font-size: 1.rem;
+    font-size: 1rem;
     gird-row: 2;
+`
+
+export const UserCoalition = styled.div`
+    font-size: 1rem;
+    gird-row: 3;
 `
 
 export const MyPageUserInfoContainer = styled.div<{ responsiveVar: responsiveVariable }>`
