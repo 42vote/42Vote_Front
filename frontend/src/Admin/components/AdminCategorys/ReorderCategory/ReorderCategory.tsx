@@ -2,11 +2,11 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import CategoryColumn from "./CategoryColumn";
 import { columnOrder, initialDataColumns } from "./initialData";
 import { useEffect, useState } from "react";
-import { useTags } from "../../../Main/customHooks/useTags";
-import { categoryRes } from "../../../Types/common";
-import { patchCategoryOrder } from "../../apis/adminApis";
-import { AdminButton, ReorderContainer } from "../../styles/styledComponents";
-import { queryClient } from "../../../App";
+import { useTags } from "../../../../Main/customHooks/useTags";
+import { categoryRes } from "../../../../Types/common";
+import { patchCategoryOrder } from "../../../apis/adminApis";
+import { AdminButton, ReorderContainer } from "../../../styles/styledComponents";
+import { queryClient } from "../../../../App";
 
 const ReorderCategory = () => {
   const { data, isLoading } = useTags("false");

@@ -1,8 +1,8 @@
 import { AdminContainer } from "./styles/styledComponents";
 import SelectedCategoryInfo from "./components/SelectedCategoryInfo";
-import AdminCategoryList from "./components/AdminCategoryList";
+import AdminCategoryList from "./components/AdminCategorys/AdminCategoryList";
 import { useTags } from "../Main/customHooks/useTags";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useResponsive } from "../Main/customHooks/useResponsive";
 import { setRootFontSize } from "../Lib/setRootFontSize";
 
@@ -10,11 +10,13 @@ const Admin = () => {
   const { isLoading, data } = useTags("false");
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
   const responsiveVar = useResponsive();
-
+  const isMounted = useRef(false);
   useEffect(() => {
     let tagList: string[] = [];
-    if (!isLoading && data)
+    if (!isLoading && data && !isMounted.current){
       tagList.push(data[0].id);
+      isMounted.current = true;
+    }
     setSelectedTag(tagList);
   }, [isLoading, data]);
 

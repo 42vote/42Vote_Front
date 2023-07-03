@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
-import { categoryRes } from '../../../Types/common';
+import { categoryRes } from '../../../../Types/common';
 
 interface test {
   isDragging: boolean

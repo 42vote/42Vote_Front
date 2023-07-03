@@ -5,30 +5,32 @@ import {
   ExpiredCategoryListContainer,
   ExpiredCategoryListDiv,
   ListHeader,
-} from "../styles/styledComponents";
+} from "../../styles/styledComponents";
 import { useContext } from "react";
-import { selectedComponentContext } from "../contexts/setDetailComponents";
-import { selectTagProps } from "../../Main/types";
-import { CreateButton, ReorderButton } from "../../Main/styles/styleComponents";
-import Categorys from "../../CommonComponents/CategoryComponents/Categorys";
-import { categoryDocumentsContext } from "../contexts/setDocuments";
-import { toggleOnContext } from "../contexts/setToggle";
+import { selectedComponentContext } from "../../contexts/setDetailComponents";
+import { selectTagProps } from "../../../Main/types";
+import {
+  CreateButton,
+  ReorderButton,
+} from "../../../Main/styles/styleComponents";
+import Categorys from "../../../CommonComponents/CategoryComponents/Categorys";
+import { categoryDocumentsContext } from "../../contexts/setDocuments";
+import { toggleOnContext } from "../../contexts/setToggle";
 
 const AdminCategoryList = (props: selectTagProps) => {
   const { selectedComponent, setSelectedComponent } = useContext(
     selectedComponentContext
   );
   const { setCategoryDocuments } = useContext(categoryDocumentsContext);
-  const { setToggleOn } = useContext(toggleOnContext);
+  const { toggleOn,  setToggleOn } = useContext(toggleOnContext);
   const selectedTag = props.selectedTag;
   const setSelectedTag = props.setSelectedTag;
 
   const handleTagSelect = (tagId: string) => {
     if (selectedTag.length === 1 && selectedTag[0] === tagId) return;
     setSelectedTag([tagId]);
-    setSelectedComponent("detail");
+    if (!toggleOn) setSelectedComponent("detail");
     setCategoryDocuments([]);
-    setToggleOn(false);
   };
 
   const goCreatePage = () => {
@@ -38,6 +40,7 @@ const AdminCategoryList = (props: selectTagProps) => {
 
   const goReOrderPage = () => {
     setSelectedComponent("reorder");
+    setToggleOn(false);
     setSelectedTag([]);
   };
 
