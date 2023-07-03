@@ -81,7 +81,12 @@ const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, docId: stri
             confirmButtonText: 'OK'
         }).then((res) => {
             if (res.isConfirmed) {
-                (event.target as HTMLButtonElement).setAttribute('disabled', '');
+                const target = event.target as HTMLButtonElement;
+                const loading = document.getElementById('loading') as HTMLImageElement;
+              
+                target.style.display = 'none';
+                loading.style.display = 'block';
+              
                 if (data)
                     patchDoc(docId, docTitle, description.value, goalInput, base64Files, filenames).then(() => nav('/main'))
                     .catch((err) => {
@@ -89,14 +94,16 @@ const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, docId: stri
                             nav('/notfound')
                         else {
                             Swal.fire('문제가 발생하였습니다. 잠시 후 다시 시도해주세요.');
-                            (event.target as HTMLButtonElement).removeAttribute('disabled');
+                            loading.style.display = 'none';
+                            target.style.display = 'block';
                         }
                     });
                 else
                     postDoc(docTitle, description.value, checkedCategoryId, goalInput, base64Files, filenames).then(() => nav('/main'))
                     .catch(() => {
                         Swal.fire('문제가 발생하였습니다. 잠시 후 다시 시도해주세요.');
-                        (event.target as HTMLButtonElement).removeAttribute('disabled');
+                        loading.style.display = 'none';
+                        target.style.display = 'block';
                     });
             }
         });
