@@ -29,18 +29,23 @@ const convertBase64 = (file: FileList | null, files: string[]) => {
     });
 }
 
-const getImageFiles = async (data: Document | undefined) => {
+const getImageFiles = async (data: Document | undefined, filenames: Array<string>) => {
     const labels = document.querySelectorAll(".file-field label") as NodeListOf<HTMLLabelElement>;
     let base64Files: string[] = [];
     let idx = 0;
 
     for (const label of Array.from(labels)) {
         if ((label.nextSibling as HTMLDivElement).classList.contains("active")) {
-            const base64 = await convertBase64((label.children[0] as HTMLInputElement).files, base64Files);
-            if (base64 === '' && data)
+            const file = (label.children[0] as HTMLInputElement).files;
+            const base64 = await convertBase64(file, base64Files);
+            if (base64 === '' && data) {
                 base64Files.push(data.image[idx]);
-            else if (base64 !== '')
+                filenames.push(data.imageName[idx]);
+            }
+            else if (base64 !== '' && file) {
                 base64Files.push(base64);
+                filenames.push(file[0].name)
+            }
         }
         idx++;
     };
@@ -50,11 +55,12 @@ const getImageFiles = async (data: Document | undefined) => {
 
 const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, docId: string, title: string, goal: string, data: Document | undefined, nav: NavigateFunction) => {
     event.preventDefault();
+    let filenames: string[] = [];
     const docTitle = title.trim();
     const description = document.getElementById('text-area') as HTMLTextAreaElement;
     const goalInput = Number(goal);
     const checkedCategoryId = getCheckedCategory();
-    const base64Files = await getImageFiles(data);
+    const base64Files = await getImageFiles(data, filenames);
 
     if (docTitle.length === 0 || docTitle === 'New Post Title')
         Swal.fire('글 제목을 입력해주세요.')
@@ -77,10 +83,10 @@ const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, docId: stri
             if (res.isConfirmed) {
                 (event.target as HTMLButtonElement).disabled = true;
                 if (data)
-                    patchDoc(docId, docTitle, description.value, goalInput, base64Files).then(() => nav('/main'))
+                    patchDoc(docId, docTitle, description.value, goalInput, base64Files, filenames).then(() => nav('/main'))
                     .catch(() => nav('/notfound'));
                 else
-                    postDoc(docTitle, description.value, checkedCategoryId, goalInput, base64Files).then(() => nav('/main'));
+                    postDoc(docTitle, description.value, checkedCategoryId, goalInput, base64Files, filenames).then(() => nav('/main'));
             }
         });
     }
