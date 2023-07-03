@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { deleteCategoryReq, getExistUser, patchCategory, postCreateCategory } from "../apis/adminApis";
+import { closeCategoryReq, deleteCategoryReq, getExistUser, patchCategory, postCreateCategory } from "../apis/adminApis";
 import { QueryClient } from "@tanstack/react-query";
 import { CategoryCreateOptions, CategoryEditOptions, ConfirmOptions } from "../types";
 
@@ -71,7 +71,7 @@ export const createCategory = (option: CategoryCreateOptions) => {
         Swal.fire({
             text: '카테고리를 생성하시겠습니까?',
             showCancelButton: true,
-            confirmButtonColor: 'white',
+            confirmButtonColor: '#d9d9d9',
             cancelButtonColor: '#383838',
             confirmButtonText: 'OK'
         }).then((res) => {
@@ -86,17 +86,35 @@ export const createCategory = (option: CategoryCreateOptions) => {
     }
 }
 
-export const deleteCategory = (categoryId: number) => {
+export const closeCategory = (categoryId: number) => {
     Swal.fire({
         text: '카테고리를 바로 종료하시겠습니까?',
         showCancelButton: true,
-        confirmButtonColor: '#FF0000',
+        confirmButtonColor: '#d9d9d9',
         cancelButtonColor: '#383838',
         confirmButtonText: 'Close'
     }).then((res) => {
         if (res.isConfirmed)
-            deleteCategoryReq(categoryId).then(() => {
+            closeCategoryReq(categoryId).then(() => {
                 Swal.fire('카테고리가 종료되었습니다.').then((res) => {
+                    if (res.isConfirmed)
+                        window.location.reload();
+                })
+            });
+    })
+}
+
+export const deleteCategory = (categoryId: number) => {
+    Swal.fire({
+        text: '카테고리를 완전히 삭제하시겠습니까?',
+        showCancelButton: true,
+        confirmButtonColor: '#d9d9d9',
+        cancelButtonColor: '#383838',
+        confirmButtonText: 'Delete'
+    }).then((res) => {
+        if (res.isConfirmed)
+            deleteCategoryReq(categoryId).then(() => {
+                Swal.fire('카테고리가 삭제되었습니다.').then((res) => {
                     if (res.isConfirmed)
                         window.location.reload();
                 })
@@ -116,7 +134,7 @@ export const editCategory = (option: CategoryEditOptions, categoryId: number, se
         Swal.fire({
             text: '카테고리를 수정하시겠습니까?',
             showCancelButton: true,
-            confirmButtonColor: 'white',
+            confirmButtonColor: '#d9d9d9',
             cancelButtonColor: '#383838',
             confirmButtonText: 'OK'
         }).then((res) => {

@@ -76,7 +76,7 @@ const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, docId: stri
         Swal.fire({
             text: '글을 등록하시겠습니까?',
             showCancelButton: true,
-            confirmButtonColor: 'white',
+            confirmButtonColor: '#d9d9d9',
             cancelButtonColor: '#383838',
             confirmButtonText: 'OK'
         }).then((res) => {
