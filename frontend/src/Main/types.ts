@@ -18,8 +18,12 @@ export interface responsiveVariable {
   isFourCards: boolean;
   isThreeCards: boolean;
   isTwoCards: boolean;
+  isScreen: boolean;
   isDesktop: boolean;
   isMobile: boolean;
+  isSmallScreen: boolean,
+  isMediumScreen: boolean,
+  isBigScreen: boolean,
 }
 
 export interface documentListQuery {

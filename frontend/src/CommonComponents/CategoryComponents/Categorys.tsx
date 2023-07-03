@@ -23,8 +23,12 @@ const Categorys = (props: categorysProps) => {
       isFourCards: false,
       isThreeCards: false,
       isTwoCards: true,
+      isScreen: false,
       isDesktop: true,
-      isMobile: false
+      isMobile: false,
+      isSmallScreen: false,
+      isMediumScreen: false,
+      isBigScreen: false 
     }
   }
 

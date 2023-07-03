@@ -6,6 +6,7 @@ import CategoryDetail from "./CategoryDetail";
 import CategoryCreate from "./CategoryCreate";
 import CategoryStatistics from "./Statistics/CategoryStatistics";
 import ToggleSwitch from "./ComponentSwitch";
+import ReorderCategory from "./AdminCategorys/ReorderCategory/ReorderCategory";
 
 const SelectedCategoryInfo = (props: selectTagProps) => {
   const { selectedComponent } = useContext(selectedComponentContext);
@@ -14,7 +15,7 @@ const SelectedCategoryInfo = (props: selectTagProps) => {
 
   return (
     <SelectedCategoryInfoContainer>
-      {selectedComponent !== "create" && <ToggleSwitch />}
+      {selectedComponent !== "create" && selectedComponent !== "reorder" && <ToggleSwitch />}
       {selectedComponent === "statistics" ? (
         <CategoryStatistics
           isMain={true}
@@ -22,7 +23,9 @@ const SelectedCategoryInfo = (props: selectTagProps) => {
           selectedTag={selectedTag}
         />
       ) : selectedComponent === "detail" ? (
-        <CategoryDetail categoryId={Number(selectedTag[0])}/>
+        <CategoryDetail categoryId={Number(selectedTag[0])} />
+      ) : selectedComponent === "reorder" ? (
+        <ReorderCategory />
       ) : (
         <CategoryCreate />
       )}

@@ -10,6 +10,7 @@ export const AdminContainer = styled.div`
 `;
 
 export const AdminCategoryListContainer = styled.div`
+  padding-top: calc(clamp(30px, 3%, 50px) + 20px);
   overflow: hidden;
   grid-column: 1;
   display: grid;
@@ -36,7 +37,8 @@ export const ActiveCategoryListDiv = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-`
+  height 50vh;
+`;
 
 export const ExpiredCategoryListContainer = styled.div`
   grid-row: 2;
@@ -57,19 +59,19 @@ export const ExpiredCategoryListDiv = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-`
-
+`;
 
 export const SelectedCategoryInfoContainer = styled.div`
   grid-column: 2;
   margin-left: 1.5rem;
+  margin-top: 1.5rem;
   // border: 1px solid black;
 `;
 
 export const StatisticsContainer = styled.div`
   display: grid;
   height: 90%;
-  grid-template-rows: 3rem 1.6fr;
+  grid-template-rows: 3rem 1.6fr 3rem;
 `;
 
 export const SelectedCategorys = styled.div<{
@@ -88,7 +90,7 @@ export const SelectedCategorys = styled.div<{
 
 export const StatisticsDocListContainer = styled.div`
   grid-row: 2;
-  max-height: 80vh;
+  max-height: 76vh;
   overflow-y: auto;
   scroll-begavior: smooth;
   &::-webkit-scrollbar {
@@ -217,4 +219,70 @@ export const ListHeader = styled.div`
   font-family: "Lora-Bold", "kbiz-Bold";
   font-size: max(15px, 1.9vw);
   margin-left: 1.6rem;
+`;
+
+export const AdminButton = styled.button<{ isPatching: boolean }>`
+  font-family: "kbiz-Medium";
+  font-size: max(15px, 1.1vw);
+  height: 3rem;
+  background-color: ${(props) => (props.isPatching ? "#383838" : "white")};
+  color: ${(props) => (props.isPatching ? "white" : "black")};
+  border-radius: 20px;
+  border: 1px solid #383838;
+  padding: 6px 15px;
+  margin: 20px 0;
+  ${(props) =>
+    props.isPatching ? "" : "&:hover { background-color: #e5e5e5;}"}
+  &:active {
+    background-color: #383838;
+    color: white;
+  }
+`;
+
+export const ExportButton = styled.button<{ isPatching: boolean }>`
+  grid-column: 2;
+  font-family: "kbiz-Medium";
+  font-size: max(15px, 1.1vw);
+  height: 3rem;
+  background-color: ${(props) => (props.isPatching ? "#383838" : "white")};
+  color: ${(props) => (props.isPatching ? "white" : "black")};
+  border-radius: 20px;
+  border: 1px solid #383838;
+  padding: 6px 15px;
+  margin: 20px 0;
+  ${(props) =>
+    props.isPatching ? "" : "&:hover { background-color: #e5e5e5;}"}
+  &:active {
+    background-color: #383838;
+    color: white;
+  }
+`;
+
+export const ReorderContainer = styled.div`
+  display: flex;
+  margin-top: 1.6rem;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ExportContainer = styled.div<{
+  responsiveVar: responsiveVariable;
+}>`
+  gird-row: 3;
+  height: 3rem;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr ${(props) =>
+      props.responsiveVar.isFiveCards
+        ? "61.375rem"
+        : props.responsiveVar.isFourCards
+        ? "49.5rem"
+        : props.responsiveVar.isThreeCards
+        ? "37.625rem"
+        : props.responsiveVar.isTwoCards
+        ? "25.75rem"
+        : "65%"} 1fr;
+  height: 1.6rem;
+  width: 100%;
+  flex-direction: row-reverse;
 `;

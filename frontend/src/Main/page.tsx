@@ -14,15 +14,22 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     let tagList: string[] = [];
     if (!isLoading && data) {
-      tagList.push(data[0].id);
+      if (responsiveVar.isDesktop)
+        for (let i = 0; i < data.length; i++)
+          tagList.push(data[i].id);
+      else
+        tagList.push(data[0].id);
     }
     setSelectedTag(tagList);
   }, [isLoading, data, responsiveVar.isDesktop]);
 
-  useEffect(()=> {
-    if (responsiveVar.isMobile) setRootFontSize(15)
-    if (responsiveVar.isDesktop) setRootFontSize(14) 
-  },[responsiveVar])
+  useEffect(() => {
+    if (responsiveVar.isMobile) setRootFontSize(15);
+    if (responsiveVar.isDesktop && !responsiveVar.isScreen) setRootFontSize(14);
+    if (responsiveVar.isSmallScreen) setRootFontSize(20);
+    if (responsiveVar.isMediumScreen) setRootFontSize(28);
+    if (responsiveVar.isBigScreen) setRootFontSize(33);
+  }, [responsiveVar]);
 
   return (
     <div>

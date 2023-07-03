@@ -14,6 +14,7 @@ export const AbsolutedDiv = styled.div`
 //Cards
 
 export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
+  font-family: 'NanumGothic-Bold';
   grid-row: 1;
   grid-column: 2;
   justify-self: ${(prop) =>
@@ -34,7 +35,7 @@ export const CardsContainersDiv = styled.div`
   user-select: none;
 `;
 
-export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
+export const CardsArea = styled.div<{responsiveVar: responsiveVariable }>`
   display: grid;
   grid-template-rows: 0.5fr ${(props) =>
       props.responsiveVar.isDesktop ? "auto" : "80vh"};
@@ -106,7 +107,8 @@ export const ProductCard = styled.div<{ mainColor: string }>`
 `;
 
 export const ProductCardTitle = styled.h2<{ textColor: string }>`
-  margin-top: 0.3125rem;
+font-family: 'NanumGothic';  
+margin-top: 0.3125rem;
   font-size: 1.2rem;
   font-weight: bold;
   color: ${(prop) => prop.textColor};
@@ -232,6 +234,7 @@ export const TagsDrop = styled.div<{ isOpen: boolean; size: number }>`
 `;
 
 export const Tag = styled.div<{ isSelected: boolean }>`
+  font-family: 'NanumGothic';
   display: inline-block;
   padding: 0.3125rem 1rem;
   margin: 0.25rem;
@@ -257,6 +260,24 @@ export const CreateButton = styled.div<{ selectedComponent: string }>`
     prop.selectedComponent === "create" ? "#000" : "#ddd"};
   color: ${(prop) => (prop.selectedComponent === "create" ? "#ddd" : "#000")};
   ${(prop) => (prop.selectedComponent === "create" ? "border: none;" : null)}
+  border-radius: 0.625rem;
+  cursor: pointer;
+  margin-left: 1.25rem;
+  user-select: none;
+  box-shadow: 2px 2px 0.125rem rgba(0, 0, 0, 0.3);
+`;
+
+export const ReorderButton = styled.div<{ selectedComponent: string }>`
+  grid-row: 1;
+  display: inline-block;
+  padding: 0.3125rem 1rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: ${(prop) =>
+    prop.selectedComponent === "reorder" ? "#000" : "#ddd"};
+  color: ${(prop) => (prop.selectedComponent === "reorder" ? "#ddd" : "#000")};
+  ${(prop) => (prop.selectedComponent === "reorder" ? "border: none;" : null)}
   border-radius: 0.625rem;
   cursor: pointer;
   margin-left: 1.25rem;

@@ -3,7 +3,7 @@ import { customAxios } from "../../Lib/customAxios";
 import { documentListQuery } from "../types";
 import { documentListRes } from "../../Types/common";
 
-const makeQuery = (category: string, targetString: string) => {
+export const makeQuery = (category: string, targetString: string) => {
   if (targetString !== "") return category + "=" + targetString;
   return "";
 };

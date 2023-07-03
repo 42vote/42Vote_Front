@@ -16,7 +16,7 @@ import '../style/Detail.css';
 function Detail() {
     const nav = useNavigate();
     const isDesktop = useMediaQuery({query: '(min-width: 769px)'});
-    const docId = Number(window.location.pathname.split('/')[2]);
+    const docId = window.location.pathname.split('/')[2];
     const [isOpen, setIsOpen] = useState(false);
     const { data, isLoading, isError } = useQuery<Document>(['detail/' + docId], ()=>getDocData(docId), {retry: false, staleTime: 60 * 1000, refetchOnWindowFocus: false, refetchOnMount: 'always'});
 
@@ -85,6 +85,7 @@ function Detail() {
                         {
                             (data.isAdmin || data.isAuthor) &&
                             <div id="author-button">
+                                {data.isAuthor && data.isVoteExpired === false && <button id="doc-edit" onClick={()=>nav('/posting?id=' + docId)}>Edit</button>}
                                 <button id="doc-delete" onClick={()=>DocDelete(docId, nav)}>Delete</button>
                                 <button id="doc-stat" onClick={()=>setIsOpen(true)}>Stat</button>
                             </div>

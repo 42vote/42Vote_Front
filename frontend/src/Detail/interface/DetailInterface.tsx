@@ -13,11 +13,12 @@ export interface Document {
     voteCnt: number,
     isVote: boolean,
     isVoteExpired: boolean,
-    image: string[]
+    image: string[],
+    imageName: string[]
 }
 
 export interface StatDialogProps {
-    docId: number,
+    docId: string,
     anony: boolean,
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;

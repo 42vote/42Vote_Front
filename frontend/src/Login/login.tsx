@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokenExist } from "../Auth/util/tokenExist";
 import { AbsolutedDiv } from "../Main/styles/styleComponents";
 import "./login.css";
-import ScramblerComponent from "../Mypage/effects/Scrambler";
+// import ScramblerComponent from "../Mypage/effects/Scrambler";
+import { setRootFontSize } from "../Lib/setRootFontSize";
+import { useResponsive } from "../Main/customHooks/useResponsive";
 
 interface loginProps {
   LoginText: string;
@@ -11,6 +13,7 @@ interface loginProps {
 
 const Login = (prop: loginProps) => {
   const [LoginText, setLoginText] = useState(prop.LoginText);
+  const responsiveVar = useResponsive();
   const navi = useNavigate();
   const handleLogin = () => {
     setLoginText("Wait a second...");
@@ -19,12 +22,20 @@ const Login = (prop: loginProps) => {
     else navi("/main");
   };
 
+  useEffect(() => {
+    if (responsiveVar.isMobile) setRootFontSize(15);
+    if (responsiveVar.isDesktop && !responsiveVar.isScreen) setRootFontSize(14);
+    if (responsiveVar.isSmallScreen) setRootFontSize(20);
+    if (responsiveVar.isMediumScreen) setRootFontSize(28);
+    if (responsiveVar.isBigScreen) setRootFontSize(33);
+  }, [responsiveVar]);
+
   return (
     <AbsolutedDiv>
       <div className="login-container">
         <div className="logo">
           <h2>
-            <ScramblerComponent text="42Vote" />
+            42Vote
           </h2>
         </div>
         <div className="oauth-container">
@@ -33,7 +44,7 @@ const Login = (prop: loginProps) => {
             className="oauth-btn"
             onClick={handleLogin}
           >
-            <ScramblerComponent text={LoginText} />
+            {LoginText}
           </button>
         </div>
       </div>

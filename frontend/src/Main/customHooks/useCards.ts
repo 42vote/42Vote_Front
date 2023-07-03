@@ -19,10 +19,6 @@ export const useCards = (
         if (lastPage.currentPage < docSize) return lastPage.currentPage + 1;
         return undefined;
       },
-      getPreviousPageParam: (firstPage, allPages) => {
-        if (firstPage.currentPage > 0) return firstPage.currentPage - 1;
-        return undefined;
-      },
     }
   );
   return { getCards, getCardsIsSuccess, getNextPageIsPossible, getNextPage };
