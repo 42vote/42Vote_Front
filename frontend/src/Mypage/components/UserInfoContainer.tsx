@@ -2,6 +2,7 @@ import { useResponsive } from "../../Main/customHooks/useResponsive";
 import ScramblerComponent from "../effects/Scrambler";
 import {
   MyPageUserInfoContainer,
+  UserCoalition,
   UserInfoList,
   UserName,
   UserWallet,
@@ -10,6 +11,7 @@ import {
 interface userInfoProps {
   intraId: string;
   wallet: number;
+  coalition: string;
 }
 
 const UserInfoContainer = (userInfoProps: userInfoProps) => {
@@ -21,6 +23,7 @@ const UserInfoContainer = (userInfoProps: userInfoProps) => {
           <ScramblerComponent text={userInfoProps.intraId} />
         </UserName>
         <UserWallet>Wallet: {userInfoProps.wallet}</UserWallet>
+        <UserCoalition>Coalition: {userInfoProps.coalition}</UserCoalition>
       </UserInfoList>
     </MyPageUserInfoContainer>
   );

@@ -25,6 +25,7 @@ const MyPage: React.FC = () => {
         <UserInfoContainer
           intraId={user.data.intraId}
           wallet={user.data.wallet}
+          coalition={user.data.coalition}
         />
       ) : null}
       <CardsContainers
