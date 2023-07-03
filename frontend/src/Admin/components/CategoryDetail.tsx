@@ -27,7 +27,9 @@ const CategoryDetail = (props: CategoryDetailProps) => {
         title: title,
         voteEnd: voteEnd,
         tagEnd: tagEnd,
-        goal: goal
+        goal: goal,
+        allow: allow,
+        whiteList: whiteList
     }
 
     useEffect(() => {
@@ -35,11 +37,11 @@ const CategoryDetail = (props: CategoryDetailProps) => {
             setTitle(categoryInfo.title);
             setVoteEnd(dayjs(categoryInfo.voteExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
             setTagEnd(dayjs(categoryInfo.docExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
-            // setAllow(categoryInfo.whitelistOnly);
+            setAllow(categoryInfo.whitelistOnly);
             setGoal(categoryInfo.goal);
             setAnony(categoryInfo.anonymousVote);
             setMultiple(categoryInfo.multipleVote);
-            // setWhiteList(categoryInfo.whitelist);
+            setWhiteList(categoryInfo.whitelist);
         }
     }, [categoryInfo]);
 

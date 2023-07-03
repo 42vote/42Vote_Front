@@ -61,7 +61,7 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
                     <div className="switch-button">
                         <Switch onChange={(e)=>props.setAllow(e.target.checked)} checked={props.allow || false} disabled={dateDisable}/> {/*왜 false를 달아줘야하지*/}
                         <button disabled={!props.allow} onClick={()=>setIsOpen(true)}><GroupAddIcon color={props.allow === false ? "disabled" : "action"}/></button>
-                        <WhiteListDialog isOpen={isOpen} setIsOpen={setIsOpen} whiteList={props.whiteList} setWhiteList={props.setWhiteList}/>
+                        <WhiteListDialog isOpen={isOpen} setIsOpen={setIsOpen} whiteList={props.whiteList} setWhiteList={props.setWhiteList} state={props.state}/>
                     </div>
                 </div>
                 <div id="goal-set">

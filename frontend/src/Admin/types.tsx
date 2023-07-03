@@ -20,7 +20,7 @@ export interface CategoryInfoBoxProps {
     //state -> 0 : create, 1 : detail, 2 : edit
 }
 
-export interface CategoryOptions {
+export interface CategoryCreateOptions {
     title: string,
     voteEnd: Dayjs | null,
     tagEnd: Dayjs | null,
@@ -31,12 +31,21 @@ export interface CategoryOptions {
     anony: boolean
 } //create용 object
 
+export interface CategoryEditOptions {
+    title: string,
+    voteEnd: Dayjs | null,
+    tagEnd: Dayjs | null,
+    goal: string,
+    allow: boolean,
+    whiteList: Array<string>
+} //edit용 object
+
 export interface ConfirmOptions {
     title: string,
     voteEnd: Dayjs | null,
     tagEnd: Dayjs | null,
     goal: string
-} //input confrim & edit용 object
+}
 
 export interface CategoryDetailProps {
     categoryId: number
@@ -44,7 +53,8 @@ export interface CategoryDetailProps {
 
 export interface WhiteListDialogProps {
     whiteList: Array<string>,
-    setWhiteList: React.Dispatch<React.SetStateAction<Array<string>>>
-    isOpen: boolean;
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setWhiteList: React.Dispatch<React.SetStateAction<Array<string>>>,
+    isOpen: boolean,
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    state: number
 }
