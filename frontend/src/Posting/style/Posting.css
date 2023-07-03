@@ -4,6 +4,10 @@
     justify-content: center;
 }
 
+#posting p, #posting label {
+    user-select: none;
+}
+
 #posting #post-form {
     width: 60%;
     display: flex;

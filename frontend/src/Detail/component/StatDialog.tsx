@@ -16,7 +16,7 @@ function StatDialog(props: StatDialogProps) {
     useEffect(() => {
         if (props.isOpen && !props.anony)
             getStatData(props.docId, setEmails);
-    }, [props.isOpen]);
+    }, [props.isOpen, props.anony, props.docId]);
 
     return (
         <Dialog onClose={()=>props.setIsOpen(false)} open={props.isOpen}>
