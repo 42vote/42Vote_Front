@@ -107,6 +107,7 @@
 
 .product-progress-bar {
   height: 100%;
+  border-radius: 0.625rem;
   background-color: #332f2e;
 }
 

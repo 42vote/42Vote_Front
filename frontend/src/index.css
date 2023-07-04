@@ -1,90 +1,90 @@
 @font-face {
-    font-family: 'Lora-Bold';
-    src: url('../public/Fonts/Lora-Bold.ttf');
+  font-family: "Lora-Bold";
+  src: url("../public/Fonts/Lora-Bold.ttf");
 }
 
 @font-face {
-    font-family: 'Roboto-Mono-M';
-    src: url('./../public/Fonts/RobotoMono-Medium.ttf');
+  font-family: "Roboto-Mono-M";
+  src: url("./../public/Fonts/RobotoMono-Medium.ttf");
 }
 
 @font-face {
-    font-family: 'Roboto-Mono-B';
-    src: url('./../public/Fonts/RobotoMono-Bold.ttf');
+  font-family: "Roboto-Mono-B";
+  src: url("./../public/Fonts/RobotoMono-Bold.ttf");
 }
 
 @font-face {
-    font-family: 'Lora-BoldItalic';
-    src: url('../public/Fonts/Lora-BoldItalic.ttf');
+  font-family: "Lora-BoldItalic";
+  src: url("../public/Fonts/Lora-BoldItalic.ttf");
 }
 
 @font-face {
-    font-family: 'Lora-Italic';
-    src: url('../public/Fonts/Lora-Italic.ttf');
+  font-family: "Lora-Italic";
+  src: url("../public/Fonts/Lora-Italic.ttf");
 }
 
 @font-face {
-    font-family: 'Lora-Medium';
-    src: url('../public/Fonts/Lora-Medium.ttf');
+  font-family: "Lora-Medium";
+  src: url("../public/Fonts/Lora-Medium.ttf");
 }
 
 @font-face {
-    font-family: 'Lora-MediumItalic';
-    src: url('../public/Fonts/Lora-MediumItalic.ttf');
+  font-family: "Lora-MediumItalic";
+  src: url("../public/Fonts/Lora-MediumItalic.ttf");
 }
 
 @font-face {
-    font-family: 'Lora-Regular';
-    src: url('../public/Fonts/Lora-Regular.ttf');
+  font-family: "Lora-Regular";
+  src: url("../public/Fonts/Lora-Regular.ttf");
 }
 
 @font-face {
-    font-family: 'Lora-SemiBold';
-    src: url('../public/Fonts/Lora-SemiBold.ttf');
+  font-family: "Lora-SemiBold";
+  src: url("../public/Fonts/Lora-SemiBold.ttf");
 }
 
 @font-face {
-    font-family: 'Lora-SemiBoldItalic';
-    src: url('../public/Fonts/Lora-SemiBoldItalic.ttf');
+  font-family: "Lora-SemiBoldItalic";
+  src: url("../public/Fonts/Lora-SemiBoldItalic.ttf");
 }
 
 @font-face {
-    font-family: 'kbiz-Light';
-    src: url('../public/Fonts/KBIZ-Han\ L.ttf');
-    unicode-range: U+AC00-D7A3;
+  font-family: "kbiz-Light";
+  src: url("../public/Fonts/KBIZ-Han\ L.ttf");
+  unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
-    font-family: 'kbiz-Regular';
-    src: url('../public/Fonts/KBIZ-Han\ R.ttf');
-    unicode-range: U+AC00-D7A3;
+  font-family: "kbiz-Regular";
+  src: url("../public/Fonts/KBIZ-Han\ R.ttf");
+  unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
-    font-family: 'kbiz-Medium';
-    src: url('../public/Fonts/KBIZ-Han\ M.ttf');
-    unicode-range: U+AC00-D7A3;
+  font-family: "kbiz-Medium";
+  src: url("../public/Fonts/KBIZ-Han\ M.ttf");
+  unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
-    font-family: 'kbiz-Bold';
-    src: url('../public/Fonts/KBIZ-Han\ B.ttf');
-    unicode-range: U+AC00-D7A3;
+  font-family: "kbiz-Bold";
+  src: url("../public/Fonts/KBIZ-Han\ B.ttf");
+  unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
-    font-family: 'NanumGothic';
-    src: url('../public/Fonts/NanumGothic.ttf');
-    unicode-range: U+AC00-D7A3;
+  font-family: "NanumGothic";
+  src: url("../public/Fonts/NanumGothic.ttf") format("font-woff2");
+  unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
-    font-family: 'NanumGothic-Bold';
-    src: url('../public/Fonts/NanumGothicBold.ttf');
-    unicode-range: U+AC00-D7A3;
+  font-family: "NanumGothic-Bold";
+  src: url("../public/Fonts/NanumGothicBold.ttf") format("font-woff2");
+  unicode-range: U+AC00-D7A3;
 }
 
-
-html, body {
-    margin: 0;
+html,
+body {
+  margin: 0;
 }
