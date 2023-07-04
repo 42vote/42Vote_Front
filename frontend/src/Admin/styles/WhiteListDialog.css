@@ -46,7 +46,7 @@
 }
 
 .swal2-container {
-    z-index: 3000;
+    z-index: 3000 !important;
 }
 
 #white-list .MuiTextField-root {
