@@ -69,7 +69,7 @@
     width: 50%;
 }
 
-#white-list .css-konndc-MuiListItemText-root {
+#white-list .MuiListItemText-root {
     display: flex;
     align-items: flex-start;
     justify-content: center;
