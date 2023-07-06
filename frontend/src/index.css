@@ -74,13 +74,19 @@
 
 @font-face {
   font-family: "NanumGothic";
-  src: url("../public/Fonts/NanumGothic.ttf") format("font-woff2");
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
   unicode-range: U+AC00-D7A3;
 }
 
 @font-face {
   font-family: "NanumGothic-Bold";
-  src: url("../public/Fonts/NanumGothicBold.ttf") format("font-woff2");
+  font-style: normal;
+  font-weight: 900;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
   unicode-range: U+AC00-D7A3;
 }
 

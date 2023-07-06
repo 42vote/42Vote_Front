@@ -65,7 +65,7 @@ const AdminCategoryList = (props: selectTagProps) => {
             onClick={goReOrderPage}
             selectedComponent={selectedComponent}
           >
-            AdjeustOrder
+            AdjustOrder
           </ReorderButton>
         </ActiveCategoryListDiv>
       </ActiveCategoryListContainer>
