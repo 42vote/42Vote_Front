@@ -3,7 +3,7 @@ import { getCategoryInfo } from "../apis/adminApis";
 import CategoryInfoBox from "./CategoryInfoBox";
 import dayjs, { Dayjs } from "dayjs";
 import { useEffect, useState } from "react";
-import { deleteCategory, editCategory } from "../logics/Logics";
+import { closeCategory, deleteCategory, editCategory } from "../logics/Logics";
 import { CategoryDetailProps } from "../types";
 import '../styles/CategoryDetail.css';
 
@@ -17,15 +17,19 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     const [title, setTitle] = useState('');
     const [voteEnd, setVoteEnd] = useState<Dayjs | null>(dayjs());
     const [tagEnd, setTagEnd] = useState<Dayjs | null>(dayjs());
+    const [allow, setAllow] = useState(false);
     const [goal, setGoal] = useState('');
     const [anony, setAnony] = useState(false);
     const [multiple, setMultiple] = useState(false);
+    const [whiteList, setWhiteList] = useState<Array<string>>([]);
 
     const options = {
         title: title,
         voteEnd: voteEnd,
         tagEnd: tagEnd,
-        goal: goal
+        goal: goal,
+        allow: allow,
+        whiteList: whiteList
     }
 
     useEffect(() => {
@@ -33,9 +37,11 @@ const CategoryDetail = (props: CategoryDetailProps) => {
             setTitle(categoryInfo.title);
             setVoteEnd(dayjs(categoryInfo.voteExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
             setTagEnd(dayjs(categoryInfo.docExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
+            setAllow(categoryInfo.whitelistOnly);
             setGoal(categoryInfo.goal);
             setAnony(categoryInfo.anonymousVote);
             setMultiple(categoryInfo.multipleVote);
+            setWhiteList(categoryInfo.whitelist);
         }
     }, [categoryInfo]);
 
@@ -61,6 +67,10 @@ const CategoryDetail = (props: CategoryDetailProps) => {
                 setVoteEnd={setVoteEnd}
                 tagEnd={tagEnd}
                 setTagEnd={setTagEnd}
+                allow={allow}
+                setAllow={setAllow}
+                whiteList={whiteList}
+                setWhiteList={setWhiteList}
                 goal={goal}
                 setGoal={setGoal}
                 anony={anony}
@@ -69,8 +79,11 @@ const CategoryDetail = (props: CategoryDetailProps) => {
                 setMultiple={setMultiple}
                 state={state}
             />
-            {state === 1 && today.isBefore(tagEnd) && (<button id="delete-button" onClick={()=>deleteCategory(categoryId)}>카테고리 즉시 종료</button>)}
-            {state === 2 && (<button id="edit-button" onClick={()=>editCategory(options, categoryId, setState, queryClient)}>카테고리 수정</button>)}
+            <div id="buttons">
+                {state === 1 && today.isBefore(tagEnd) && (<button id="close-button" onClick={()=>closeCategory(categoryId)}>카테고리 즉시 종료</button>)}
+                {state === 2 && (<button id="edit-button" onClick={()=>editCategory(options, categoryId, setState, queryClient)}>카테고리 수정</button>)}
+                <button id="delete-button" onClick={()=>deleteCategory(categoryId)}>카테고리 삭제</button>
+            </div>
         </div>
     )
 }

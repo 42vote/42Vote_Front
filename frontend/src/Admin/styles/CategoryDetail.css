@@ -8,7 +8,7 @@
     margin-top: 1.6rem;
 }
 
-#title {
+#category-detail #title, #category-create #title {
     width: 80%;
     text-align: center;
     font-family: 'Lora-Bold', 'kbiz-Bold';
@@ -21,25 +21,32 @@
     margin-top: 10px;
 }
 
-#title:focus {
+#category-detail #title:focus, #category-create #title:focus {
     outline: none;
 }
 
-#modify-button, #delete-button, #edit-button, #post-button {
+#modify-button, #close-button, #delete-button, #edit-button, #post-button {
     font-family: 'kbiz-Medium';
     font-size: max(15px, 1.1vw);
     background-color: white;
     border-radius: 20px;
     border: 1px solid #383838;
     padding: 6px 15px;
-    margin: 20px 0;
 }
 
-#modify-button:hover, #delete-button:hover, #edit-button:hover, #post-button:hover {
+#modify-button, #edit-button, #post-button {
+    margin: 20px 5px;
+}
+
+#close-button, #delete-button {
+    margin: 10px 5px;
+}
+
+#modify-button:hover, #close-button:hover, #delete-button:hover, #edit-button:hover, #post-button:hover {
     background-color: #e5e5e5;
 }
 
-#modify-button:active, #delete-button:active, #edit-button:active, #post-button:active {
+#modify-button:active, #close-button:active, #delete-button:active, #edit-button:active, #post-button:active {
     background-color: #383838;
     color: white;
 }

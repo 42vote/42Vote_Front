@@ -20,7 +20,7 @@ function Posting() {
     const nav = useNavigate();
 
     const docId = new URLSearchParams(window.location.search).get("id") || '';
-    const { data, isError, isSuccess } = useQuery<Document>(['detail/' + docId], ()=>getDocData(docId), {retry: false, staleTime: 60 * 1000});
+    const { data, isLoading, isError, isSuccess } = useQuery<Document>(['detail/' + docId], ()=>getDocData(docId), {retry: false, staleTime: 60 * 1000});
     
     const [categoryList, setCategoryList] = useState(Array<categoryRes>);
     const [title, setTitle] = useState('');
@@ -34,11 +34,15 @@ function Posting() {
     }, []);
 
     useEffect(() => {
-        if (!isError && data)
+        if (!isError && data && data.isAuthor === true)
             showEditPage(data, setTitle, setGoal, categoryList.find((category) => Number(category.id) === data.categoryId));
         else
-            setDefaultGoal(categoryList);
-    }, [data, categoryList]);
+            setDefaultGoal(categoryList, setGoal);
+    }, [data, categoryList, isError]);
+
+    if (isLoading)
+        return (<img src='img/loading-spinner.gif' style={{width: '100%'}} alt='loading'/>);
+    //skeleton ui로 바꾸기
 
     if (isError && docId !== null && docId !== '')
         return (<NotFound/>);
@@ -90,6 +94,7 @@ function Posting() {
                             </div>
                         </div>
                     </div>
+                    <img id="loading" src='img/loading-spinner.gif' alt="loading"/>
                     <button type="submit" onClick={(e)=>{submitDoc(e, docId, title, goal, data, nav)}}>Post</button>
                 </form>
             </div>

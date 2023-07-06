@@ -76,17 +76,35 @@ const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, docId: stri
         Swal.fire({
             text: '글을 등록하시겠습니까?',
             showCancelButton: true,
-            confirmButtonColor: 'white',
+            confirmButtonColor: '#d9d9d9',
             cancelButtonColor: '#383838',
             confirmButtonText: 'OK'
         }).then((res) => {
             if (res.isConfirmed) {
-                (event.target as HTMLButtonElement).disabled = true;
+                const target = event.target as HTMLButtonElement;
+                const loading = document.getElementById('loading') as HTMLImageElement;
+              
+                target.style.display = 'none';
+                loading.style.display = 'block';
+              
                 if (data)
                     patchDoc(docId, docTitle, description.value, goalInput, base64Files, filenames).then(() => nav('/main'))
-                    .catch(() => nav('/notfound'));
+                    .catch((err) => {
+                        if (err.response.status === 404)
+                            nav('/notfound')
+                        else {
+                            Swal.fire('문제가 발생하였습니다. 잠시 후 다시 시도해주세요.');
+                            loading.style.display = 'none';
+                            target.style.display = 'block';
+                        }
+                    });
                 else
-                    postDoc(docTitle, description.value, checkedCategoryId, goalInput, base64Files, filenames).then(() => nav('/main'));
+                    postDoc(docTitle, description.value, checkedCategoryId, goalInput, base64Files, filenames).then(() => nav('/main'))
+                    .catch(() => {
+                        Swal.fire('문제가 발생하였습니다. 잠시 후 다시 시도해주세요.');
+                        loading.style.display = 'none';
+                        target.style.display = 'block';
+                    });
             }
         });
     }
