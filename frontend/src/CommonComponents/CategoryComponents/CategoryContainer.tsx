@@ -5,13 +5,15 @@ import Categorys from "./Categorys";
 import { TagContainer } from "../../Main/styles/styleComponents";
 import ToggleSwitch from "../../Admin/components/ComponentSwitch";
 import { toggleOnContext } from "../../Admin/contexts/setToggle";
+import { selectedComponentContext } from "../../Admin/contexts/setDetailComponents";
 
 const CategoryContainer = (props: selectTagProps) => {
   const responsiveVar = useResponsive();
   const selectedTag = props.selectedTag;
   const selectedOne = props.selectedTag[0];
   const setSelectedTag = props.setSelectedTag;
-  const { toggleOn } = useContext(toggleOnContext);
+  const { toggleOn, setToggleOn } = useContext(toggleOnContext);
+  const { setSelectedComponent } = useContext(selectedComponentContext);
 
   const handleTagSelect = (tagId: string) => {
     if (toggleOn) {
@@ -30,7 +32,9 @@ const CategoryContainer = (props: selectTagProps) => {
 
   const mobileSet = useCallback(() => {
     setSelectedTag([selectedOne]);
-  }, [selectedOne, setSelectedTag]);
+    setToggleOn(false);
+    setSelectedComponent("line");
+  }, [selectedOne, setSelectedTag, setToggleOn, setSelectedComponent]);
 
   useEffect(() => {
     if (responsiveVar.isMobile) mobileSet();
@@ -46,7 +50,7 @@ const CategoryContainer = (props: selectTagProps) => {
           isExpired="false"
         />
       </TagContainer>
-      <ToggleSwitch off="line" on="rectangle" />
+      {!responsiveVar.isMobile && <ToggleSwitch off="line" on="rectangle" />}
     </>
   );
 };
