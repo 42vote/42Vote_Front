@@ -105,6 +105,7 @@ export const StatisticsDocListContainer = styled.div`
 export const StatisticsCardsContainer = styled.div`
   margin-top: 0.75rem;
   margin-left: 1rem;
+  padding-bottom: 1rem;
   grid-row: 2;
   grid-column: 2;
   display: flex;
