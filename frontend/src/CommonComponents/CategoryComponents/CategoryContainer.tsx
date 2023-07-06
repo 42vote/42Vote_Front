@@ -1,16 +1,23 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useContext } from "react";
 import { selectTagProps } from "../../Main/types";
 import { useResponsive } from "../../Main/customHooks/useResponsive";
 import Categorys from "./Categorys";
 import { TagContainer } from "../../Main/styles/styleComponents";
+import ToggleSwitch from "../../Admin/components/ComponentSwitch";
+import { toggleOnContext } from "../../Admin/contexts/setToggle";
 
 const CategoryContainer = (props: selectTagProps) => {
   const responsiveVar = useResponsive();
   const selectedTag = props.selectedTag;
   const selectedOne = props.selectedTag[0];
   const setSelectedTag = props.setSelectedTag;
+  const { toggleOn } = useContext(toggleOnContext);
 
   const handleTagSelect = (tagId: string) => {
+    if (toggleOn) {
+      setSelectedTag([tagId]);
+      return;
+    }
     if (selectedTag.length === 1 && selectedTag[0] === tagId) return;
     if (selectedTag.includes(tagId))
       setSelectedTag(selectedTag.filter((tag) => tag !== tagId));
@@ -30,14 +37,17 @@ const CategoryContainer = (props: selectTagProps) => {
   }, [responsiveVar.isMobile, mobileSet]);
 
   return (
-    <TagContainer responsiveVar={responsiveVar}>
-      <Categorys
-        selectedTag={selectedTag}
-        handleSelect={handleTagSelect}
-        isMain={props.isMain}
-        isExpired="false"
-      />
-    </TagContainer>
+    <>
+      <TagContainer responsiveVar={responsiveVar}>
+        <Categorys
+          selectedTag={selectedTag}
+          handleSelect={handleTagSelect}
+          isMain={props.isMain}
+          isExpired="false"
+        />
+      </TagContainer>
+      <ToggleSwitch off="line" on="rectangle" />
+    </>
   );
 };
 

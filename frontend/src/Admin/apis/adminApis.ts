@@ -1,5 +1,4 @@
 import { customAxios, downloadAxios } from "../../Lib/customAxios";
-import { makeQuery } from "../../Main/apis/mainAPI";
 import { CategoryCreateOptions, CategoryEditOptions } from "../types";
 
 export const getCategoryInfo = async (categoryId: number) => {

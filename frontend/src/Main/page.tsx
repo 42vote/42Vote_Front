@@ -1,24 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import CategoryContainer from "../CommonComponents/CategoryComponents/CategoryContainer";
-import CardsContainers from "../CommonComponents/CardsComponents/CardsContainers";
+import LineCardsContainers from "../CommonComponents/CardsComponents/LineCardsContainers";
 import "./styles/style.css";
 import { useTags } from "./customHooks/useTags";
 import { responsiveVariable } from "./types";
 import { useResponsive } from "./customHooks/useResponsive";
 import { setRootFontSize } from "../Lib/setRootFontSize";
+import { MarginTopDiv } from "./styles/styleComponents";
+import { selectedComponentContext } from "../Admin/contexts/setDetailComponents";
+import RectangleCardsContainer from "../CommonComponents/CardsComponents/rectangleCardsContainer";
+import { toggleOnContext } from "../Admin/contexts/setToggle";
 
 const MainPage: React.FC = () => {
   const { data, isLoading } = useTags("false");
+  const { selectedComponent } = useContext(selectedComponentContext);
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
   const responsiveVar: responsiveVariable = useResponsive();
+  const toggleOn = useContext(toggleOnContext);
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    if (isMounted) {
+      if (toggleOn.toggleOn) {
+        setSelectedTag((x) => [x[0]]);
+      }
+    }
+  }, [toggleOn.toggleOn]);
+
+  useEffect(() => {
+    isMounted.current = true;
+  }, []);
+
   useEffect(() => {
     let tagList: string[] = [];
     if (!isLoading && data) {
       if (responsiveVar.isDesktop)
-        for (let i = 0; i < data.length; i++)
-          tagList.push(data[i].id);
-      else
-        tagList.push(data[0].id);
+        for (let i = 0; i < data.length; i++) tagList.push(data[i].id);
+      else tagList.push(data[0].id);
     }
     setSelectedTag(tagList);
   }, [isLoading, data, responsiveVar.isDesktop]);
@@ -32,18 +50,27 @@ const MainPage: React.FC = () => {
   }, [responsiveVar]);
 
   return (
-    <div>
+    <MarginTopDiv>
       <CategoryContainer
         selectedTag={selectedTag}
         setSelectedTag={setSelectedTag}
         isMain={true}
       />
-      <CardsContainers
-        selectedTag={selectedTag}
-        setSelectedTag={setSelectedTag}
-        isMain={true}
-      />
-    </div>
+      {selectedComponent === "line" && (
+        <LineCardsContainers
+          selectedTag={selectedTag}
+          setSelectedTag={setSelectedTag}
+          isMain={true}
+        />
+      )}
+      {selectedComponent === "rectangle" && (
+        <RectangleCardsContainer
+          selectedTag={selectedTag}
+          setSelectedTag={setSelectedTag}
+          isMain={true}
+        />
+      )}
+    </MarginTopDiv>
   );
 };
 
