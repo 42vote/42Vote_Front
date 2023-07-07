@@ -371,7 +371,8 @@
 }
 
 .swal2-popup, .swal2-styled {
-    font-family: 'kbiz-Bold', 'Lora-Regular';
+    font-family: 'Roboto-Mono-B', 'Lora-Regular';
+    word-break: keep-all;
 }
 
 .swal2-confirm {

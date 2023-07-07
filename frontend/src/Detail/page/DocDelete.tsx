@@ -5,7 +5,7 @@ import { NavigateFunction } from "react-router-dom";
 
 const DocDelete = (docId: string, nav: NavigateFunction) => {
     Swal.fire({
-        text: '글을 삭제하시겠습니까?',
+        title: '글을 삭제하시겠습니까?',
         showCancelButton: true,
         confirmButtonColor: '#d9d9d9',
         cancelButtonColor: '#383838',

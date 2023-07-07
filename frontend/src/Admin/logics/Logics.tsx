@@ -69,7 +69,7 @@ export const createCategory = (option: CategoryCreateOptions) => {
 
     if (confirmInputs(param)) {
         Swal.fire({
-            text: '카테고리를 생성하시겠습니까?',
+            title: '카테고리를 생성하시겠습니까?',
             showCancelButton: true,
             confirmButtonColor: '#d9d9d9',
             cancelButtonColor: '#383838',
@@ -88,7 +88,7 @@ export const createCategory = (option: CategoryCreateOptions) => {
 
 export const closeCategory = (categoryId: number) => {
     Swal.fire({
-        text: '카테고리를 바로 종료하시겠습니까?',
+        title: '카테고리를 바로 종료하시겠습니까?',
         showCancelButton: true,
         confirmButtonColor: '#d9d9d9',
         cancelButtonColor: '#383838',
@@ -106,7 +106,7 @@ export const closeCategory = (categoryId: number) => {
 
 export const deleteCategory = (categoryId: number) => {
     Swal.fire({
-        text: '카테고리를 완전히 삭제하시겠습니까?',
+        title: '카테고리를 완전히 삭제하시겠습니까?',
         showCancelButton: true,
         confirmButtonColor: '#d9d9d9',
         cancelButtonColor: '#383838',
@@ -132,7 +132,7 @@ export const editCategory = (option: CategoryEditOptions, categoryId: number, se
     
     if (confirmInputs(param)) {
         Swal.fire({
-            text: '카테고리를 수정하시겠습니까?',
+            title: '카테고리를 수정하시겠습니까?',
             showCancelButton: true,
             confirmButtonColor: '#d9d9d9',
             cancelButtonColor: '#383838',
