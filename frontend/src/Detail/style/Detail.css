@@ -1,5 +1,5 @@
 #desktop #detail {
-    padding-top: calc(clamp(30px, 3%, 50px) + 20px);
+    padding-top: calc(clamp(30px, 3%, 50px) + 10px);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -9,9 +9,11 @@
 }
 
 #desktop #detail #title {
+    width: 80%;
     font-family: 'Lora-Bold', 'kbiz-Bold';
-    font-size: max(30px, 3vw);
+    font-size: max(30px, 2vw);
     margin: 30px 0 30px 0;
+    text-align: center;
 }
 
 #desktop #detail #content-wrapper {
@@ -83,6 +85,7 @@
     left: 0;
     text-align: center;
     width: 100%;
+    z-index: 3;
 }
 
 #desktop #detail #content-wrapper #img-section #img-nav div {
@@ -210,8 +213,9 @@
 }
 
 #mobile #detail #title {
+    width: 80%;
     font-family: 'Lora-Bold', 'kbiz-Bold';
-    font-size: max(23px, 4.5vw);
+    font-size: max(23px, 4vw);
     margin: 30px 0 20px 0;
     text-align: center;
 }
