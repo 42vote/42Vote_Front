@@ -25,6 +25,10 @@
     margin-bottom: 30px;
 }
 
+#posting #post-form #title::placeholder {
+    color: #D9D9D9;
+}
+
 #posting #post-form #title:focus {
     outline: none;
 }
