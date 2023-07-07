@@ -1,6 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import './FixedTop.css';
+import Cookies from 'js-cookie';
 
 interface FixedTopProps {
     isAdmin: boolean
@@ -20,6 +21,13 @@ function FixedTop(props: FixedTopProps) {
                     </button>
                     <button id="my-profile-button" className="img-button" onClick={()=>navi("/mypage")}/>
                     {props.isAdmin && <button id="admin-button" className="img-button" onClick={()=>navi("/admin")}/>}
+                    <button id="logout-button" className="img-button" onClick={()=>{
+                        Cookies.remove("token");
+                        Cookies.remove("rtoken");
+                        Cookies.remove("access_token");
+                        Cookies.remove("refresh_token");
+                        navi("/");
+                    }}/>
                 </div>
             </div>
         </div>
