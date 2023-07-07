@@ -15,7 +15,9 @@ const SelectedCategoryInfo = (props: selectTagProps) => {
 
   return (
     <SelectedCategoryInfoContainer>
-      {selectedComponent !== "create" && selectedComponent !== "reorder" && <ToggleSwitch />}
+      {selectedComponent !== "create" && selectedComponent !== "reorder" && (
+        <ToggleSwitch off="detail" on="statistics" />
+      )}
       {selectedComponent === "statistics" ? (
         <CategoryStatistics
           isMain={true}

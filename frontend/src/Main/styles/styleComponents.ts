@@ -121,12 +121,14 @@ margin-top: 0.3125rem;
 `;
 
 //Category
+export const MarginTopDiv = styled.div`
+  margin-top: calc(clamp(30px, 3%, 50px) + 20px);
+`
 
 export const TagContainer = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
   position: relative;
   z-index: 99;
-  margin-top: calc(clamp(30px, 3%, 50px) + 20px);
   grid-template-columns: 1fr ${(props) =>
       props.responsiveVar.isFiveCards
         ? "59.375rem"

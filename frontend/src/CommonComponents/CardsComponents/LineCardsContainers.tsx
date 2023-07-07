@@ -3,7 +3,7 @@ import { useResponsive } from "../../Main/customHooks/useResponsive";
 import { CardsArea, CardsContainersDiv } from "../../Main/styles/styleComponents";
 import CardsContainer from "./CardsContainer";
 
-const CardsContainers = (props: selectTagProps) => {
+const LineCardsContainers = (props: selectTagProps) => {
   const selectedTag = props.selectedTag;
   const responsiveVar = useResponsive();
 
@@ -20,4 +20,4 @@ const CardsContainers = (props: selectTagProps) => {
   );
 };
 
-export default CardsContainers;
+export default LineCardsContainers;

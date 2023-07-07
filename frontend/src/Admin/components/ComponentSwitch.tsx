@@ -9,14 +9,19 @@ import {
 } from "../styles/styledComponents";
 import { toggleOnContext } from "../contexts/setToggle";
 
-const ToggleSwitch = () => {
+interface toggleOption {
+  on: string;
+  off: string;
+}
+
+const ToggleSwitch = (prop: toggleOption) => {
   const { setSelectedComponent } = useContext(selectedComponentContext);
-  const {toggleOn, setToggleOn } = useContext(toggleOnContext);
+  const { toggleOn, setToggleOn } = useContext(toggleOnContext);
   const responsiveVar = useResponsive();
 
   const handleToggle = () => {
-    if (toggleOn) setSelectedComponent("detail");
-    else setSelectedComponent("statistics");
+    if (toggleOn) setSelectedComponent(prop.off);
+    else setSelectedComponent(prop.on);
     setToggleOn(!toggleOn);
   };
 
