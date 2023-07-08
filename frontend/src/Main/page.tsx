@@ -7,9 +7,9 @@ import { responsiveVariable } from "./types";
 import { useResponsive } from "./customHooks/useResponsive";
 import { setRootFontSize } from "../Lib/setRootFontSize";
 import { MarginTopDiv } from "./styles/styleComponents";
-import { selectedComponentContext } from "../Admin/contexts/setDetailComponents";
+import { selectedComponentContext } from "../CommonContext/selectedComponentContext";
 import RectangleCardsContainer from "../CommonComponents/CardsComponents/rectangleCardsContainer";
-import { toggleOnContext } from "../Admin/contexts/setToggle";
+import { toggleOnContext } from "../CommonContext/toggleOnContext";
 
 const MainPage: React.FC = () => {
   const { data, isLoading } = useTags("false");

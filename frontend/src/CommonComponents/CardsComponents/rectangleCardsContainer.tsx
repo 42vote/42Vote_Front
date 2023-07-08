@@ -1,19 +1,18 @@
+import Card from "./Card";
+import NoCards from "./NoCards";
+import { getShownCardsNum } from "./utils";
+import SkeletonCards from "./SkeletonCards";
+import { useTags } from "../../Main/customHooks/useTags";
 import { useCards } from "../../Main/customHooks/useCards";
 import { useDocSize } from "../../Main/customHooks/useDocSize";
-import { useResponsive } from "../../Main/customHooks/useResponsive";
-import { useTags } from "../../Main/customHooks/useTags";
 import { documentListQuery, selectTagProps } from "../../Main/types";
+import { useResponsive } from "../../Main/customHooks/useResponsive";
 import {
   StatisticsCardsArea,
   StatisticsCardsContainer,
   StatisticsDocListContainer,
   StatisticsTagHeader,
 } from "../../Admin/styles/styledComponents";
-import { TagHeader } from "../../Main/styles/styleComponents";
-import NoCards from "./NoCards";
-import Card from "./Card";
-import { getShownCardsNum } from "./utils";
-import SkeletonCards from "./SkeletonCards";
 
 const RectangleCardsContainer = (props: selectTagProps) => {
   const tagId = props.selectedTag[0];

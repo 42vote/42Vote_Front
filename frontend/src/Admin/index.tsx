@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { selectedComponentContext } from "./contexts/setDetailComponents";
+import { selectedComponentContext } from "../CommonContext/selectedComponentContext";
 import { categoryDocumentsContext } from "./contexts/setDocuments";
-import { toggleOnContext } from "./contexts/setToggle";
+import { toggleOnContext } from "../CommonContext/toggleOnContext";
 import { documentListRes } from "../Types/common";
 import Admin from "./pages";
 

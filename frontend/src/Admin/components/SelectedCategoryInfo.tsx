@@ -1,6 +1,6 @@
 import { SelectedCategoryInfoContainer } from "../styles/styledComponents";
 import { useContext } from "react";
-import { selectedComponentContext } from "../contexts/setDetailComponents";
+import { selectedComponentContext } from "../../CommonContext/selectedComponentContext";
 import { selectTagProps } from "../../Main/types";
 import CategoryDetail from "./CategoryDetail";
 import CategoryCreate from "./CategoryCreate";

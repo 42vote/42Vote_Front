@@ -1,16 +1,6 @@
 import styled from "styled-components";
 import { responsiveVariable } from "../types";
 
-//common
-
-export const AbsolutedDiv = styled.div`
-  position: absolute;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
 //Cards
 
 export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
