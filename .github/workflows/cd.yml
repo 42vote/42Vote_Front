@@ -33,4 +33,4 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-          frontend/build s3://vote42-front
+          frontend/build ${{ secrets.AWS_S3 }}
