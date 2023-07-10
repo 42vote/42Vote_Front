@@ -4,8 +4,8 @@ import { useResponsive } from "../../Main/customHooks/useResponsive";
 import Categorys from "./Categorys";
 import { TagContainer } from "../../Main/styles/styleComponents";
 import ToggleSwitch from "../../Admin/components/ComponentSwitch";
-import { toggleOnContext } from "../../Admin/contexts/setToggle";
-import { selectedComponentContext } from "../../Admin/contexts/setDetailComponents";
+import { toggleOnContext } from "../../CommonContext/toggleOnContext";
+import { selectedComponentContext } from "../../CommonContext/selectedComponentContext";
 
 const CategoryContainer = (props: selectTagProps) => {
   const responsiveVar = useResponsive();

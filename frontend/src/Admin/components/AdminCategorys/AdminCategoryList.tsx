@@ -7,7 +7,7 @@ import {
   ListHeader,
 } from "../../styles/styledComponents";
 import { useContext } from "react";
-import { selectedComponentContext } from "../../contexts/setDetailComponents";
+import { selectedComponentContext } from "../../../CommonContext/selectedComponentContext";
 import { selectTagProps } from "../../../Main/types";
 import {
   CreateButton,
@@ -15,7 +15,7 @@ import {
 } from "../../../Main/styles/styleComponents";
 import Categorys from "../../../CommonComponents/CategoryComponents/Categorys";
 import { categoryDocumentsContext } from "../../contexts/setDocuments";
-import { toggleOnContext } from "../../contexts/setToggle";
+import { toggleOnContext } from "../../../CommonContext/toggleOnContext";
 
 const AdminCategoryList = (props: selectTagProps) => {
   const { selectedComponent, setSelectedComponent } = useContext(

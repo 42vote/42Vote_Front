@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { selectedComponentContext } from "../contexts/setDetailComponents";
+import { selectedComponentContext } from "../../CommonContext/selectedComponentContext";
 import { useResponsive } from "../../Main/customHooks/useResponsive";
 import {
   SwitchLayOut,
@@ -7,7 +7,7 @@ import {
   Slider,
   SliderRound,
 } from "../styles/styledComponents";
-import { toggleOnContext } from "../contexts/setToggle";
+import { toggleOnContext } from "../../CommonContext/toggleOnContext";
 
 interface toggleOption {
   on: string;

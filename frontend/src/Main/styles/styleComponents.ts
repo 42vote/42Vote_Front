@@ -1,16 +1,6 @@
 import styled from "styled-components";
 import { responsiveVariable } from "../types";
 
-//common
-
-export const AbsolutedDiv = styled.div`
-  position: absolute;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
 //Cards
 
 export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
@@ -38,7 +28,7 @@ export const CardsContainersDiv = styled.div`
 export const CardsArea = styled.div<{responsiveVar: responsiveVariable }>`
   display: grid;
   grid-template-rows: 0.5fr ${(props) =>
-      props.responsiveVar.isDesktop ? "auto" : "80vh"};
+      props.responsiveVar.isDesktop ? "auto" : "auto"};
   grid-template-columns: 1fr ${(props) =>
       props.responsiveVar.isFiveCards
         ? "59.375rem"
