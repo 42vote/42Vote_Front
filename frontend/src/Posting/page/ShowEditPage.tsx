@@ -1,7 +1,7 @@
 import { Document } from '../../Detail/interface/DetailInterface';
 import { categoryRes } from '../../Types/common';
 
-const showEditPage = (data: Document, setTitle: React.Dispatch<React.SetStateAction<string>>, setGoal: React.Dispatch<React.SetStateAction<string>>, category: categoryRes | undefined) => {
+const showEditPage = (data: Document, setTitle: React.Dispatch<React.SetStateAction<string>>, setGoal: React.Dispatch<React.SetStateAction<string>>, setDescriptLength: React.Dispatch<React.SetStateAction<number>>, category: categoryRes | undefined) => {
     const descript = document.getElementById("text-area") as HTMLTextAreaElement;
     const categoryList = document.getElementById("radio-list") as HTMLDivElement;
     const labels = document.querySelectorAll(".file-field label") as NodeListOf<HTMLLabelElement>;
@@ -19,10 +19,11 @@ const showEditPage = (data: Document, setTitle: React.Dispatch<React.SetStateAct
         labels[idx].style.backgroundImage = `url(${v})`;
         nameDiv.classList.add('active');
         nameDiv.children[0].textContent = data.imageName[idx];
-    })
+    });
 
     setTitle(data.title);
     setGoal(String(data.goal));
+    setDescriptLength(data.content.length);
 }
 
 export default showEditPage;
