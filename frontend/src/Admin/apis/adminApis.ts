@@ -33,8 +33,8 @@ export const deleteCategoryReq = (categoryId: number) => {
 export const patchCategory = (option: CategoryEditOptions, categoryId: number) => {
   return customAxios().patch("/category/" + categoryId, {
     title: option.title,
-    voteExpire: option.voteEnd!.format("YYYY-MM-DDT23:59:59"),
-    docExpire: option.tagEnd!.format("YYYY-MM-DDT23:59:59"),
+    voteExpire: option.voteEnd?.locale() === "en" ? option.voteExpire : option.voteEnd!.format("YYYY-MM-DDT23:59:59"),
+    docExpire: option.tagEnd?.locale() === "en" ? option.docExpire : option.tagEnd!.format("YYYY-MM-DDT23:59:59"),
     goal: Number(option.goal),
     whitelistOnly: option.allow,
     whitelist: option.whiteList

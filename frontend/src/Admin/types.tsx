@@ -38,6 +38,8 @@ export interface CategoryEditOptions {
     goal: string,
     allow: boolean,
     whiteList: Array<string>
+    voteExpire: Dayjs | null,
+    docExpire: Dayjs | null
 } //edit용 object
 
 export interface ConfirmOptions {

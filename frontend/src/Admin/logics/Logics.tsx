@@ -129,7 +129,9 @@ export const editCategory = (option: CategoryEditOptions, categoryId: number, se
         tagEnd: option.tagEnd,
         goal: option.goal
     }
-    
+
+    console.log(option.voteExpire);
+        
     if (confirmInputs(param)) {
         Swal.fire({
             title: '카테고리를 수정하시겠습니까?',

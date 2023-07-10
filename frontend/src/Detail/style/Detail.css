@@ -375,7 +375,7 @@
 }
 
 .swal2-popup, .swal2-styled {
-    font-family: 'Roboto-Mono-B', 'Lora-Regular';
+    font-family: 'Roboto-Mono-B', 'Lora-Regular' !important;
     word-break: keep-all;
 }
 

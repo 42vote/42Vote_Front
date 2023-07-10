@@ -29,7 +29,9 @@ const CategoryDetail = (props: CategoryDetailProps) => {
         tagEnd: tagEnd,
         goal: goal,
         allow: allow,
-        whiteList: whiteList
+        whiteList: whiteList,
+        voteExpire: dayjs(categoryInfo?.voteExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'),
+        docExpire: dayjs(categoryInfo?.docExpire, 'YYYY-MM-DDTHH:mm:ss.SSS')
     }
 
     useEffect(() => {
