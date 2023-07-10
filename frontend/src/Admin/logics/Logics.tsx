@@ -66,7 +66,7 @@ export const createCategory = (option: CategoryCreateOptions) => {
         tagEnd: option.tagEnd,
         goal: option.goal
     }
-
+    
     if (confirmInputs(param)) {
         Swal.fire({
             title: '카테고리를 생성하시겠습니까?',
@@ -130,8 +130,6 @@ export const editCategory = (option: CategoryEditOptions, categoryId: number, se
         goal: option.goal
     }
 
-    console.log(option.voteExpire);
-        
     if (confirmInputs(param)) {
         Swal.fire({
             title: '카테고리를 수정하시겠습니까?',

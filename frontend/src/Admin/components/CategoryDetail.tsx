@@ -29,16 +29,14 @@ const CategoryDetail = (props: CategoryDetailProps) => {
         tagEnd: tagEnd,
         goal: goal,
         allow: allow,
-        whiteList: whiteList,
-        voteExpire: dayjs(categoryInfo?.voteExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'),
-        docExpire: dayjs(categoryInfo?.docExpire, 'YYYY-MM-DDTHH:mm:ss.SSS')
+        whiteList: whiteList
     }
 
     useEffect(() => {
         if (categoryInfo) {
             setTitle(categoryInfo.title);
-            setVoteEnd(dayjs(categoryInfo.voteExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
-            setTagEnd(dayjs(categoryInfo.docExpire, 'YYYY-MM-DDTHH:mm:ss.SSS'));
+            setVoteEnd(dayjs(categoryInfo.voteExpire));
+            setTagEnd(dayjs(categoryInfo.docExpire));
             setAllow(categoryInfo.whitelistOnly);
             setGoal(categoryInfo.goal);
             setAnony(categoryInfo.anonymousVote);

@@ -9,15 +9,14 @@ export const getCategoryInfo = async (categoryId: number) => {
 };
 
 export const postCreateCategory = (option: CategoryCreateOptions) => {
-  console.log(option);
   return customAxios().post("/category", {
     title: option.title,
     multipleVote: option.multiple,
     anonymousVote: option.anony,
     whitelistOnly: option.allow,
     whitelist: option.allow === true ? option.whiteList : [],
-    voteExpire: option.voteEnd!.format("YYYY-MM-DDT23:59:59"),
-    docExpire: option.tagEnd!.format("YYYY-MM-DDT23:59:59"),
+    voteExpire: option.voteEnd!.format("YYYY-MM-DDT23:59:59Z"),
+    docExpire: option.tagEnd!.format("YYYY-MM-DDT23:59:59Z"),
     goal: Number(option.goal),
   });
 };
@@ -33,8 +32,8 @@ export const deleteCategoryReq = (categoryId: number) => {
 export const patchCategory = (option: CategoryEditOptions, categoryId: number) => {
   return customAxios().patch("/category/" + categoryId, {
     title: option.title,
-    voteExpire: option.voteEnd?.locale() === "en" ? option.voteExpire : option.voteEnd!.format("YYYY-MM-DDT23:59:59"),
-    docExpire: option.tagEnd?.locale() === "en" ? option.docExpire : option.tagEnd!.format("YYYY-MM-DDT23:59:59"),
+    voteExpire: option.voteEnd!.format("YYYY-MM-DDT23:59:59Z"),
+    docExpire: option.tagEnd!.format("YYYY-MM-DDT23:59:59Z"),
     goal: Number(option.goal),
     whitelistOnly: option.allow,
     whitelist: option.whiteList

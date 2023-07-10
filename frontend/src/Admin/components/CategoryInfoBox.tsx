@@ -30,8 +30,7 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
                         <DatePicker label="시작" value={props.createAt} format={"YYYY/MM/DD"} disabled/>
                         <DatePicker 
                             label="종료" value={props.voteEnd} format={"YYYY/MM/DD"}
-                            onChange={(v)=>props.setVoteEnd(v)}
-                            disablePast disabled={dateDisable}
+                            onChange={(v)=>props.setVoteEnd(v)} disabled={dateDisable}
                         />
                     </div>
                 </div>
@@ -46,8 +45,7 @@ const CategoryInfoBox = (props: CategoryInfoBoxProps) => {
                         <DatePicker label="시작" value={props.createAt} format={"YYYY/MM/DD"} disabled/>
                         <DatePicker
                             label="종료" value={props.tagEnd} format={"YYYY/MM/DD"}
-                            onChange={(v)=>props.setTagEnd(v)}
-                            disablePast minDate={props.voteEnd} disabled={dateDisable}
+                            onChange={(v)=>props.setTagEnd(v)} minDate={props.voteEnd} disabled={dateDisable}
                         />
                     </div>
                 </div>
