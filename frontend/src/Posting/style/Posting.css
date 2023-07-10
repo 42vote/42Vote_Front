@@ -63,6 +63,7 @@
     border-radius: 20px;
     text-align: center;
     padding: 5px 10px;
+    word-break: keep-all;
 }
 
 #posting #post-form #category-wrapper #radio-list label.checked {

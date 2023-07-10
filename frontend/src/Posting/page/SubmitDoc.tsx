@@ -74,7 +74,7 @@ const submitDoc = async (event: React.MouseEvent<HTMLButtonElement>, docId: stri
         Swal.fire('사진을 최소 1장 등록해주세요.');
     else {
         Swal.fire({
-            text: '글을 등록하시겠습니까?',
+            title: '글을 등록하시겠습니까?',
             showCancelButton: true,
             confirmButtonColor: '#d9d9d9',
             cancelButtonColor: '#383838',
