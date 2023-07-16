@@ -1,8 +1,8 @@
-name: cd
+name: cd_to_dev
 on:
   push: # master Branch에서 push 이벤트가 일어났을 때만 실행
     branches:
-      - main
+      - develop
 
 jobs:
   build:
@@ -17,20 +17,20 @@ jobs:
       - name: Setting .env
         run: |
           cd frontend
-          echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env
-          echo "REACT_APP_LOGIN_URL=${{ secrets.REACT_APP_LOGIN_URL }}" >> .env
-          echo "REACT_APP_TOKEN_GEN=${{ secrets.REACT_APP_TOKEN_GEN }}" >> .env
-          echo "REACT_APP_HOME=${{ secrets.REACT_APP_HOME }}" >> .env
+          echo "REACT_APP_API_URL=${{ secrets.DEV_REACT_APP_API_URL }}" >> .env
+          echo "REACT_APP_LOGIN_URL=${{ secrets.DEV_REACT_APP_LOGIN_URL }}" >> .env
+          echo "REACT_APP_TOKEN_GEN=${{ secrets.DEV_REACT_APP_TOKEN_GEN }}" >> .env
+          echo "REACT_APP_HOME=${{ secrets.DEV_REACT_APP_HOME }}" >> .env
 
       - name: Build # React Build
         run: cd frontend && CI=false npm run build
 
       - name: Deploy # S3에 배포하기
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
         run: |
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-          frontend/build ${{ secrets.AWS_S3 }}
+          frontend/build ${{ secrets.DEV_AWS_S3 }}
