@@ -1,6 +1,6 @@
 name: cd_to_dev
 on:
-  push: # master Branch에서 push 이벤트가 일어났을 때만 실행
+  push: # master Branch에서 push 이벤트가 일어났을 때만 실행 
     branches:
       - develop
 
