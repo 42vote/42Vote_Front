@@ -4,7 +4,7 @@ import { responsiveVariable } from "../types";
 //Cards
 
 export const TagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
-  font-family: 'NanumGothic-Bold';
+  font-family: "Lora-Bold";
   grid-row: 1;
   grid-column: 2;
   justify-self: ${(prop) =>
@@ -25,7 +25,7 @@ export const CardsContainersDiv = styled.div`
   user-select: none;
 `;
 
-export const CardsArea = styled.div<{responsiveVar: responsiveVariable }>`
+export const CardsArea = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
   grid-template-rows: 0.5fr ${(props) =>
       props.responsiveVar.isDesktop ? "auto" : "auto"};
@@ -97,8 +97,8 @@ export const ProductCard = styled.div<{ mainColor: string }>`
 `;
 
 export const ProductCardTitle = styled.h2<{ textColor: string }>`
-font-family: 'NanumGothic';  
-margin-top: 0.3125rem;
+  font-family: "Lora-Regular";
+  margin-top: 0.3125rem;
   font-size: 1.2rem;
   font-weight: bold;
   color: ${(prop) => prop.textColor};
@@ -113,7 +113,7 @@ margin-top: 0.3125rem;
 //Category
 export const MarginTopDiv = styled.div`
   margin-top: calc(clamp(30px, 3%, 50px) + 20px);
-`
+`;
 
 export const TagContainer = styled.div<{ responsiveVar: responsiveVariable }>`
   display: grid;
@@ -226,7 +226,7 @@ export const TagsDrop = styled.div<{ isOpen: boolean; size: number }>`
 `;
 
 export const Tag = styled.div<{ isSelected: boolean }>`
-  font-family: 'NanumGothic';
+  font-family: "Lora-Regular";
   display: inline-block;
   padding: 0.3125rem 1rem;
   margin: 0.25rem;
