@@ -51,7 +51,7 @@ export const confirmInputs = (option: ConfirmOptions) => {
         Swal.fire('카테고리 이름을 입력해주세요.');
     else if (option.tagStart === null || option.tagEnd === null || option.voteStart === null || option.voteEnd === null)
         Swal.fire('기간을 정확하게 입력해주세요.');
-    else if (option.tagEnd.isBefore(option.voteEnd) || option.tagStart.isBefore(option.voteStart))
+    else if (option.tagEnd.isBefore(option.voteEnd) || option.voteStart.isBefore(option.tagStart))
         Swal.fire('카테고리 유효 기간은 투표 기간보다 길거나 같아야 합니다.');
     else if (option.voteEnd.isBefore(option.voteStart))
         Swal.fire('투표 종료 날짜는 투표 시작 날짜 이전일 수 없습니다.')
