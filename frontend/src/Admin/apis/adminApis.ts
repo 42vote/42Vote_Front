@@ -1,5 +1,5 @@
 import { customAxios, downloadAxios } from "../../Lib/customAxios";
-import { CategoryCreateOptions, CategoryEditOptions } from "../types";
+import { CategoryOptions } from "../types";
 
 export const getCategoryInfo = async (categoryId: number) => {
   if (categoryId) {
@@ -8,16 +8,18 @@ export const getCategoryInfo = async (categoryId: number) => {
   } else return null;
 };
 
-export const postCreateCategory = (option: CategoryCreateOptions) => {
+export const postCreateCategory = (option: CategoryOptions) => {
   return customAxios().post("/category", {
     title: option.title,
-    multipleVote: option.multiple,
-    anonymousVote: option.anony,
+    voteStart: option.voteStart!.format("YYYY-MM-DDT23:59:59Z"),
+    voteExpire: option.voteEnd!.format("YYYY-MM-DDT23:59:59Z"),
+    docStart: option.tagStart!.format("YYYY-MM-DDT23:59:59Z"),
+    docExpire: option.tagEnd!.format("YYYY-MM-DDT23:59:59Z"),
     whitelistOnly: option.allow,
     whitelist: option.allow === true ? option.whiteList : [],
-    voteExpire: option.voteEnd!.format("YYYY-MM-DDT23:59:59Z"),
-    docExpire: option.tagEnd!.format("YYYY-MM-DDT23:59:59Z"),
     goal: Number(option.goal),
+    anonymousVote: option.anony,
+    multipleVote: option.multiple
   });
 };
 
@@ -29,14 +31,16 @@ export const deleteCategoryReq = (categoryId: number) => {
   return customAxios().delete("/category/" + categoryId);
 };
 
-export const patchCategory = (option: CategoryEditOptions, categoryId: number) => {
+export const patchCategory = (option: CategoryOptions, categoryId: number) => {
   return customAxios().patch("/category/" + categoryId, {
     title: option.title,
+    voteStart: option.voteStart!.format("YYYY-MM-DDT23:59:59Z"),
     voteExpire: option.voteEnd!.format("YYYY-MM-DDT23:59:59Z"),
+    docStart: option.tagStart!.format("YYYY-MM-DDT23:59:59Z"),
     docExpire: option.tagEnd!.format("YYYY-MM-DDT23:59:59Z"),
-    goal: Number(option.goal),
     whitelistOnly: option.allow,
-    whitelist: option.whiteList
+    whitelist: option.whiteList,
+    goal: Number(option.goal)
   });
 };
 

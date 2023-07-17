@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import { closeCategoryReq, deleteCategoryReq, getExistUser, patchCategory, postCreateCategory } from "../apis/adminApis";
 import { QueryClient } from "@tanstack/react-query";
-import { CategoryCreateOptions, CategoryEditOptions, ConfirmOptions } from "../types";
+import { CategoryOptions, ConfirmOptions } from "../types";
 
 // CategoryInfoBox.tsx
 export const handleGoalInput = (e: React.ChangeEvent<HTMLInputElement>, setGoal: React.Dispatch<React.SetStateAction<string>>) => {
@@ -45,24 +45,28 @@ export const deleteList = (user: string, whiteList: Array<string>, setWhiteList:
 }
 
 
-//CategoryCreate, CategoryDetail
+//CategoryDetail
 export const confirmInputs = (option: ConfirmOptions) => {
     if (option.title === '')
         Swal.fire('카테고리 이름을 입력해주세요.');
-    else if (option.tagEnd === null || option.voteEnd === null)
-        Swal.fire('기간을 정확하게 입력해주세요.')
-    else if (option.tagEnd.isBefore(option.voteEnd))
-        Swal.fire('카테고리 유효 기간은 투표 종료 이후여야 합니다.');
+    else if (option.tagStart === null || option.tagEnd === null || option.voteStart === null || option.voteEnd === null)
+        Swal.fire('기간을 정확하게 입력해주세요.');
+    else if (option.tagEnd.isBefore(option.voteEnd) || option.tagStart.isBefore(option.voteStart))
+        Swal.fire('카테고리 유효 기간은 투표 기간보다 길거나 같아야 합니다.');
+    else if (option.voteEnd.isBefore(option.voteStart))
+        Swal.fire('투표 종료 날짜는 투표 시작 날짜 이전일 수 없습니다.')
     else if (option.goal === '' || Number(option.goal) === 0)
         Swal.fire('목표치를 입력해주세요.');
     else
         return (true);
 }
 
-export const createCategory = (option: CategoryCreateOptions) => {
+export const createCategory = (option: CategoryOptions) => {
     const param = {
         title: option.title,
+        voteStart: option.voteStart,
         voteEnd: option.voteEnd,
+        tagStart: option.tagStart,
         tagEnd: option.tagEnd,
         goal: option.goal
     }
@@ -83,6 +87,39 @@ export const createCategory = (option: CategoryCreateOptions) => {
                     })
                 });
         });
+    }
+}
+
+export const editCategory = (option: CategoryOptions, categoryId: number, setState: React.Dispatch<React.SetStateAction<number>>, queryClient: QueryClient) => {
+    const param = {
+        title: option.title,
+        voteStart: option.voteStart,
+        voteEnd: option.voteEnd,
+        tagStart: option.tagStart,
+        tagEnd: option.tagEnd,
+        goal: option.goal
+    }
+
+    if (confirmInputs(param)) {
+        Swal.fire({
+            title: '카테고리를 수정하시겠습니까?',
+            showCancelButton: true,
+            confirmButtonColor: '#d9d9d9',
+            cancelButtonColor: '#383838',
+            confirmButtonText: 'OK'
+        }).then((res) => {
+            if (res.isConfirmed) {
+                patchCategory(option, categoryId).then(() => {
+                    queryClient.invalidateQueries({queryKey: ['categoryInfo-' + categoryId]})
+                    queryClient.invalidateQueries(["tags", "false"]);
+                    queryClient.invalidateQueries(["tags", "true"]);
+                    Swal.fire('수정되었습니다.').then((res) => {
+                        if (res.isConfirmed)
+                            setState(1);
+                    });
+                })
+            }
+        })
     }
 }
 
@@ -120,37 +157,6 @@ export const deleteCategory = (categoryId: number) => {
                 })
             });
     })
-}
-
-export const editCategory = (option: CategoryEditOptions, categoryId: number, setState: React.Dispatch<React.SetStateAction<number>>, queryClient: QueryClient) => {
-    const param = {
-        title: option.title,
-        voteEnd: option.voteEnd,
-        tagEnd: option.tagEnd,
-        goal: option.goal
-    }
-
-    if (confirmInputs(param)) {
-        Swal.fire({
-            title: '카테고리를 수정하시겠습니까?',
-            showCancelButton: true,
-            confirmButtonColor: '#d9d9d9',
-            cancelButtonColor: '#383838',
-            confirmButtonText: 'OK'
-        }).then((res) => {
-            if (res.isConfirmed) {
-                patchCategory(option, categoryId).then(() => {
-                    queryClient.invalidateQueries({queryKey: ['categoryInfo-' + categoryId]})
-                    queryClient.invalidateQueries(["tags", "false"]);
-                    queryClient.invalidateQueries(["tags", "true"]);
-                    Swal.fire('수정되었습니다.').then((res) => {
-                        if (res.isConfirmed)
-                            setState(1);
-                    });
-                })
-            }
-        })
-    }
 }
 
 // 함수별로 파일 분리
