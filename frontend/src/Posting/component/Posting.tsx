@@ -35,7 +35,7 @@ function Posting() {
 
     useEffect(() => {
         if (!isError && data && data.isAuthor === true)
-            showEditPage(data, setTitle, setGoal, categoryList.find((category) => Number(category.id) === data.categoryId));
+            showEditPage(data, setTitle, setGoal, setDescriptLength, categoryList.find((category) => Number(category.id) === data.categoryId));
         else
             setDefaultGoal(categoryList, setGoal);
     }, [data, categoryList, isError]);

@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { selectedComponentContext } from "../../CommonContext/selectedComponentContext";
 import { selectTagProps } from "../../Main/types";
 import CategoryDetail from "./CategoryDetail";
-import CategoryCreate from "./CategoryCreate";
 import CategoryStatistics from "./Statistics/CategoryStatistics";
 import ToggleSwitch from "./ComponentSwitch";
 import ReorderCategory from "./AdminCategorys/ReorderCategory/ReorderCategory";
@@ -24,12 +23,10 @@ const SelectedCategoryInfo = (props: selectTagProps) => {
           setSelectedTag={setSelectedTag}
           selectedTag={selectedTag}
         />
-      ) : selectedComponent === "detail" ? (
-        <CategoryDetail categoryId={Number(selectedTag[0])} />
       ) : selectedComponent === "reorder" ? (
         <ReorderCategory />
       ) : (
-        <CategoryCreate />
+        <CategoryDetail categoryId={selectedComponent === "detail" ? Number(selectedTag[0]) : 0} />
       )}
     </SelectedCategoryInfoContainer>
   );
