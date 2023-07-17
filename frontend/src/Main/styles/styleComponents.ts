@@ -180,6 +180,7 @@ export const SelectedCategory = styled.div`
   align-items: center;
 `;
 export const DropDownToggle = styled.span<{ selected: boolean }>`
+  user-select: none;
   grid-row: 1;
   width: 0.5em;
   height: 0.5em;
