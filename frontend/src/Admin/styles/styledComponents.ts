@@ -162,8 +162,10 @@ export const StatisticsCardsArea = styled.div<{
   scrollbar-width: none;
 `;
 
-export const StatisticsTagHeader = styled.h1<{ responsiveVar: responsiveVariable }>`
-  font-family: 'NanumGothic-Bold';
+export const StatisticsTagHeader = styled.h1<{
+  responsiveVar: responsiveVariable;
+}>`
+  font-family: "Lora-Bold";
   grid-row: 1;
   grid-column: 2;
   justify-self: ${(prop) =>
