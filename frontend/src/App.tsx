@@ -24,6 +24,8 @@ function App() {
   const location = useLocation();
   const locationPathName = location.pathname;
   const locationSearch = location.search;
+  const { innerHeight } = window;
+  document.documentElement.style.setProperty("--browser-height", `${innerHeight * 0.01}px`);
 
   return (
     <QueryClientProvider client={queryClient}>

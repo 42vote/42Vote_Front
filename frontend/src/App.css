@@ -24,3 +24,7 @@
   transform: scale(0.98);
   transition: opacity 600ms, transform 600ms;
 }
+
+html, body {
+  height: calc(var(--browser-height, 1vh) * 100);;
+}
