@@ -1,7 +1,7 @@
 import React from "react";
 import MyPage from "./page";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { AbsolutedDiv } from "../Main/styles/styleComponents";
+import { AbsolutedDiv } from "../CommonComponents/StyledComponents/AbsolutedDiv";
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -35,7 +35,7 @@ function Posting() {
 
     useEffect(() => {
         if (!isError && data && data.isAuthor === true)
-            showEditPage(data, setTitle, setGoal, categoryList.find((category) => Number(category.id) === data.categoryId));
+            showEditPage(data, setTitle, setGoal, setDescriptLength, categoryList.find((category) => Number(category.id) === data.categoryId));
         else
             setDefaultGoal(categoryList, setGoal);
     }, [data, categoryList, isError]);
@@ -54,7 +54,7 @@ function Posting() {
         <div id={isDesktop ? "desktop" : "mobile"}>
             <div id="posting">
                 <form id="post-form">
-                    <input id="title" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}} placeholder='New Post Title' maxLength={42} spellCheck='false'/>
+                    <input id="title" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}} placeholder='제목을 입력해주세요' maxLength={42} spellCheck='false'/>
                     <div id="category-wrapper">
                         <p>Category</p>
                         <div id="radio-list">

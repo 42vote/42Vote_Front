@@ -37,6 +37,7 @@ const DropDownCategorys = (props: DropDownCategoryProps) => {
   const selectedTag = props.selectedTag;
   const [selectedData, setSelectedData] = useState<categoryRes>(data[0]);
   const handleTagSelect = (tagId: string) => {
+    toggleDropdown();
     props.handleSelect(tagId);
   };
 

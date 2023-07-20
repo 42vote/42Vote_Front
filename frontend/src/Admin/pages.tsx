@@ -5,7 +5,7 @@ import { useTags } from "../Main/customHooks/useTags";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useResponsive } from "../Main/customHooks/useResponsive";
 import { setRootFontSize } from "../Lib/setRootFontSize";
-import { selectedComponentContext } from "./contexts/setDetailComponents";
+import { selectedComponentContext } from "../CommonContext/selectedComponentContext";
 
 const Admin = () => {
   const { isLoading, data } = useTags("false");

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Tag } from "../../../Main/styles/styleComponents";
 import { categoryDocumentsContext } from "../../contexts/setDocuments";
 import { useResponsive } from "../../../Main/customHooks/useResponsive";
@@ -56,6 +56,9 @@ const StatisticsOption = (prop: TagId) => {
     documentQuery,
     docSize.data ? docSize.data.categorySize : -1
   );
+  useEffect(()=>{
+    setIsSelected("id");
+  },[prop.tagId])
 
   const selectedClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>

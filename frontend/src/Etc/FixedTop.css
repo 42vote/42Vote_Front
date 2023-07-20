@@ -38,6 +38,10 @@
     background-image: url(../../public/img/admin-button.svg);
 }
 
+#fixed-top #button-wrap #logout-button {
+    background-image: url(../../public/img/logout-button.svg);
+}
+
 
 /* Mobile */
 

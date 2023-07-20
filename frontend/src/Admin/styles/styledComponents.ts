@@ -103,6 +103,9 @@ export const StatisticsDocListContainer = styled.div`
 `;
 
 export const StatisticsCardsContainer = styled.div`
+  margin-top: 0.75rem;
+  margin-left: 1rem;
+  padding-bottom: 1rem;
   grid-row: 2;
   grid-column: 2;
   display: flex;
@@ -157,6 +160,19 @@ export const StatisticsCardsArea = styled.div<{
         : "65%"} 1fr;
   overflow-y: auto;
   scrollbar-width: none;
+`;
+
+export const StatisticsTagHeader = styled.h1<{
+  responsiveVar: responsiveVariable;
+}>`
+  font-family: "Lora-Bold";
+  grid-row: 1;
+  grid-column: 2;
+  justify-self: ${(prop) =>
+    prop.responsiveVar.isDesktop ? "start" : "center"};
+  margin-left: 2.27rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.625rem;
 `;
 
 //toggle

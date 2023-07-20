@@ -1,11 +1,10 @@
+import "./login.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokenExist } from "../Auth/util/tokenExist";
-import { AbsolutedDiv } from "../Main/styles/styleComponents";
-import "./login.css";
-// import ScramblerComponent from "../Mypage/effects/Scrambler";
 import { setRootFontSize } from "../Lib/setRootFontSize";
 import { useResponsive } from "../Main/customHooks/useResponsive";
+import { AbsolutedDiv } from "../CommonComponents/StyledComponents/AbsolutedDiv";
 
 interface loginProps {
   LoginText: string;
@@ -34,9 +33,7 @@ const Login = (prop: loginProps) => {
     <AbsolutedDiv>
       <div className="login-container">
         <div className="logo">
-          <h2>
-            42Vote
-          </h2>
+          <h2>42Vote</h2>
         </div>
         <div className="oauth-container">
           <button
