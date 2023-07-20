@@ -13,7 +13,7 @@ const LoadingContainer = styled.div`
 `;
 
 const LoadingMsg = styled.h2`
-  font-family: "NanumGothic";
+  font-family: 'Lora-Regular';
 `;
 
 const LoadingModal = () => {
