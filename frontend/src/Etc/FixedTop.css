@@ -87,7 +87,7 @@
 
 #desktop-top #fixed-top #button-wrap #new-post-button {
     width: 40%;
-    height: 1.7vw;
+    height: min(50px, 2vw);
     padding: 0;
     padding-bottom: clamp(25px, 10%, 35px);
     background-color: #383838;
@@ -108,10 +108,10 @@
 }
 
 #desktop-top #fixed-top #button-wrap .img-button {
-    width: clamp(25px, 10%, 35px);
+    width: clamp(25px, 8%, 40px);
     height: 0;
     padding: 0;
-    padding-bottom: clamp(25px, 10%, 35px);
+    padding-bottom: clamp(25px, 8%, 40px);
     margin-left: 10px;
     box-sizing: border-box;
     background-position: center;

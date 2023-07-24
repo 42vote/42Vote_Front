@@ -1,7 +1,14 @@
+#desktop, #mobile {
+    height: 100%;
+}
+
 #posting {
     padding-top: calc(clamp(30px, 3%, 50px) + 20px);
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    box-sizing: border-box;
 }
 
 #posting p, #posting label {
@@ -13,7 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30px;
+    margin-top: max(30px, 3%);
 }
 
 #posting #post-form > * {
@@ -23,7 +30,7 @@
 #posting #post-form #title {
     border: none;
     font-family: 'Lora-Bold', 'kbiz-Bold';
-    font-size: clamp(35px, 4vw, 50px);
+    font-size: max(35px, 3vw);
     text-align: center;
     cursor: text;
     margin-bottom: 30px;
@@ -39,13 +46,13 @@
 
 #posting #post-form #category-wrapper {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 2%;
 }
 
 #posting #post-form p {
     font-family: 'Lora-SemiBold';
     font-size: max(20px, 2vw);
-    margin: 0 20px 0 0;
+    margin: 0 2% 0 0;
 }
 
 #posting #post-form #category-wrapper #radio-list {
@@ -176,16 +183,16 @@
 
 #posting #post-form > button {
     font-family: 'Lora-Medium', 'kbiz-Medium';
-    font-size: clamp(15px, 2vw, 20px);
+    font-size: 1.5vw;
     cursor: pointer;
     border: none;
-    border-radius: 20px;
+    border-radius: 2vw;
     background-color: #383838;
     color: white;
     width: max(100px, 12vw);
-    height: min(4vw, 40px);
+    height: 3vw;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 10%;
 }
 
 #posting #post-form #loading {
@@ -204,6 +211,10 @@
 
 #mobile #posting #post-form #title {
     font-size: clamp(30px, 7vw, 40px);
+}
+
+#mobile #posting #post-form #category-wrapper p {
+    margin-right: 15px;
 }
 
 #mobile #posting #post-form > button {

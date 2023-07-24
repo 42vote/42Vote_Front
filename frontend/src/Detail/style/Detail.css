@@ -1,3 +1,5 @@
+/* desktop */
+
 #desktop #detail {
     padding-top: calc(clamp(30px, 3%, 50px) + 10px);
     box-sizing: border-box;
@@ -5,22 +7,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 #desktop #detail #title {
     width: 80%;
     font-family: 'Lora-Bold', 'kbiz-Bold';
-    font-size: max(30px, 2vw);
-    margin: 30px 0 30px 0;
+    font-size: max(25px, 2.3vw);
+    margin: 3% 0;
     text-align: center;
 }
 
 #desktop #detail #content-wrapper {
     width: 80%;
+    height: fit-content;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    align-items: center;
+    margin-bottom: 3%;
 }
 
 #desktop #detail #content-wrapper #img-section {
@@ -53,8 +57,8 @@
 }
 
 #desktop #detail #content-wrapper #img-section #img-file {
-    width: clamp(270px, 30vw, 400px);
-    height: clamp(270px, 30vw, 400px);
+    width: max(270px, 25vw);
+    height: max(270px, 25vw);
     position: relative;
     background-size: cover;
 }
@@ -80,6 +84,7 @@
 }
 
 #desktop #detail #content-wrapper #img-section #img-nav {
+    z-index: 3;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -89,8 +94,8 @@
 }
 
 #desktop #detail #content-wrapper #img-section #img-nav div {
-    width: min(12px, 1vw);
-    height: min(12px, 1vw);
+    width: 1vw;
+    height: 1vw;
     background-color: rgba(255, 255, 255, 0.5);
     display: inline-block;
     cursor: pointer;
@@ -104,7 +109,7 @@
 
 #desktop #detail #content-wrapper #txt-section {
     width: 43%;
-    height: clamp(270px, 30vw, 400px);
+    height: 25vw;
     overflow-y: auto;
     /*overflow를 여기다 할까 descript에다 할까?*/
 }
@@ -139,9 +144,9 @@
     align-items: center;
     justify-content: center;
     width: 60%;
-    height: 20px;
+    height: min(3%, 2vw);
     font-size: max(13px, 1vw);
-    margin-bottom: 15px;
+    margin-bottom: 1%;
 }
 
 #desktop #detail #progress-bar #progress-bar-out {
@@ -202,20 +207,26 @@
 }
 
 
+/* mobile */
+
+#mobile {
+    height: 100%;
+}
+
 #mobile #detail {
+    height: 100%;
     padding-top: 35.5px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
 }
 
 #mobile #detail #title {
     width: 80%;
     font-family: 'Lora-Bold', 'kbiz-Bold';
-    font-size: max(23px, 4vw);
+    font-size: max(18px, 4vw);
     margin: 30px 0 20px 0;
     text-align: center;
 }
@@ -263,6 +274,7 @@
     top: 0;
     left: 0;
     opacity: 0;
+    z-index: 1;
     transition: opacity 0.5s;
     -webkit-user-drag: none;
     backdrop-filter: blur(30px);
@@ -270,10 +282,12 @@
 }
 
 #mobile #detail #content-wrapper #img-section #img-file .active {
+    z-index: 2;
     opacity: 1;
 }
 
 #mobile #detail #content-wrapper #img-section #img-nav {
+    z-index: 3;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -299,7 +313,7 @@
     width: 80%;
     max-width: 390px;
     height: auto;
-    max-height: min(25vh, 180px);
+    max-height: calc(var(--browser-height) * 20);
     overflow-y: auto;
     margin-bottom: 20px;
 }
