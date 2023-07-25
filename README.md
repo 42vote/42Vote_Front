@@ -86,187 +86,51 @@
 # Directory
 ```
 frontend
-├── package-lock.json
-├── package.json
 ├── public
-│   ├── 42Seoul.ico
 │   ├── Fonts
-│   │   ├── KBIZ-Han B.ttf
-│   │   ├── KBIZ-Han L.ttf
-│   │   ├── KBIZ-Han M.ttf
-│   │   ├── KBIZ-Han R.ttf
-│   │   ├── Lora-Bold.ttf
-│   │   ├── Lora-BoldItalic.ttf
-│   │   ├── Lora-Italic.ttf
-│   │   ├── Lora-Medium.ttf
-│   │   ├── Lora-MediumItalic.ttf
-│   │   ├── Lora-Regular.ttf
-│   │   ├── Lora-SemiBold.ttf
-│   │   ├── Lora-SemiBoldItalic.ttf
-│   │   ├── RobotoMono-Bold.ttf
-│   │   └── RobotoMono-Medium.ttf
-│   ├── img
-│   │   ├── admin-button.svg
-│   │   ├── delete-button.svg
-│   │   ├── file-add-button.svg
-│   │   ├── left-button.svg
-│   │   ├── loading-spinner.gif
-│   │   ├── logout-button.svg
-│   │   ├── my-profile-button.svg
-│   │   ├── new-post-button.svg
-│   │   ├── nextButton.svg
-│   │   ├── prevButton.svg
-│   │   └── right-button.svg
-│   └── index.html
-├── src
-│   ├── Admin
-│   │   ├── apis
-│   │   │   └── adminApis.ts
-│   │   ├── components
-│   │   │   ├── AdminCategorys
-│   │   │   │   ├── AdminCategoryList.tsx
-│   │   │   │   └── ReorderCategory
-│   │   │   │       ├── CategoryColumn.tsx
-│   │   │   │       ├── ReorderCategory.tsx
-│   │   │   │       ├── Task.tsx
-│   │   │   │       └── initialData.ts
-│   │   │   ├── CategoryDetail.tsx
-│   │   │   ├── ComponentSwitch.tsx
-│   │   │   ├── SelectedCategoryInfo.tsx
-│   │   │   ├── Statistics
-│   │   │   │   ├── CategoryStatistics.tsx
-│   │   │   │   ├── SelectStatisticsOption.tsx
-│   │   │   │   ├── StatisticsCards.tsx
-│   │   │   │   └── StatisticsExport.tsx
-│   │   │   └── WhiteListDialog.tsx
-│   │   ├── contexts
-│   │   │   └── setDocuments.ts
-│   │   ├── index.tsx
-│   │   ├── logics
-│   │   │   └── Logics.tsx
-│   │   ├── pages.tsx
-│   │   ├── styles
-│   │   │   ├── CategoryDetail.css
-│   │   │   ├── CategoryInfoBox.css
-│   │   │   ├── WhiteListDialog.css
-│   │   │   └── styledComponents.ts
-│   │   └── types.tsx
-│   ├── App.css
-│   ├── App.test.tsx
-│   ├── App.tsx
-│   ├── Auth
-│   │   ├── apis
-│   │   │   └── authApi.ts
-│   │   ├── components
-│   │   │   ├── AuthProvider.tsx
-│   │   │   └── LoadingModal.tsx
-│   │   ├── page.tsx
-│   │   ├── types.ts
-│   │   └── util
-│   │       ├── genToken.ts
-│   │       └── tokenExist.ts
-│   ├── CommonComponents
-│   │   ├── CardsComponents
-│   │   │   ├── Card.tsx
-│   │   │   ├── CardsContainer.tsx
-│   │   │   ├── LineCardsContainers.tsx
-│   │   │   ├── NoCards.tsx
-│   │   │   ├── SkeletonCards.tsx
-│   │   │   ├── rectangleCardsContainer.tsx
-│   │   │   ├── types.ts
-│   │   │   └── utils.ts
-│   │   ├── CategoryComponents
-│   │   │   ├── Category.tsx
-│   │   │   ├── CategoryContainer.tsx
-│   │   │   ├── Categorys.tsx
-│   │   │   └── DropDownCategorys.tsx
-│   │   └── StyledComponents
-│   │       └── AbsolutedDiv.ts
-│   ├── CommonContext
-│   │   ├── selectedComponentContext.ts
-│   │   └── toggleOnContext.ts
-│   ├── Detail
-│   │   ├── component
-│   │   │   ├── Detail.tsx
-│   │   │   ├── DetailLoading.tsx
-│   │   │   └── StatDialog.tsx
-│   │   ├── interface
-│   │   │   └── DetailInterface.tsx
-│   │   ├── page
-│   │   │   ├── DocDelete.tsx
-│   │   │   ├── SlideImage.tsx
-│   │   │   ├── TimeLine.tsx
-│   │   │   └── Voting.tsx
-│   │   ├── service
-│   │   │   ├── GetData.tsx
-│   │   │   └── Update.tsx
-│   │   └── style
-│   │       ├── Detail.css
-│   │       ├── DetailLoading.css
-│   │       └── StatDialog.css
-│   ├── Etc
-│   │   ├── FixedTop.css
-│   │   ├── FixedTop.tsx
-│   │   ├── NotFound.css
-│   │   └── NotFound.tsx
-│   ├── Lib
-│   │   ├── customAxios.ts
-│   │   ├── getColors.ts
-│   │   └── setRootFontSize.ts
-│   ├── Login
-│   │   ├── login.css
-│   │   └── login.tsx
-│   ├── Main
-│   │   ├── apis
-│   │   │   └── mainAPI.ts
-│   │   ├── customHooks
-│   │   │   ├── useCards.ts
-│   │   │   ├── useDocSize.ts
-│   │   │   ├── useResponsive.ts
-│   │   │   ├── useScroll.ts
-│   │   │   └── useTags.ts
-│   │   ├── index.tsx
-│   │   ├── page.tsx
-│   │   ├── styles
-│   │   │   ├── style.css
-│   │   │   └── styleComponents.ts
-│   │   └── types.ts
-│   ├── Mypage
-│   │   ├── apis
-│   │   │   └── authAPI.ts
-│   │   ├── components
-│   │   │   └── UserInfoContainer.tsx
-│   │   ├── customHooks
-│   │   │   └── useUser.ts
-│   │   ├── effects
-│   │   │   ├── Scrambler.tsx
-│   │   │   └── textScreamble.tsx
-│   │   ├── index.tsx
-│   │   ├── page.tsx
-│   │   ├── styles
-│   │   │   └── styledComponents.ts
-│   │   └── types.ts
-│   ├── Posting
-│   │   ├── component
-│   │   │   └── Posting.tsx
-│   │   ├── page
-│   │   │   ├── HandleFile.tsx
-│   │   │   ├── RadioClick.tsx
-│   │   │   ├── SetDefaultGoal.tsx
-│   │   │   ├── ShowEditPage.tsx
-│   │   │   └── SubmitDoc.tsx
-│   │   ├── service
-│   │   │   ├── GetCategory.tsx
-│   │   │   ├── PatchDoc.tsx
-│   │   │   └── PostDoc.tsx
-│   │   └── style
-│   │       └── Posting.css
-│   ├── Types
-│   │   └── common.ts
-│   ├── index.css
-│   ├── index.tsx
-│   ├── react-app-env.d.ts
-│   └── setupTests.ts
-├── tsconfig.json
-└── webpackDevServer.config.js
+│   └── img
+└── src
+    ├── Admin
+    │   ├── apis
+    │   ├── components
+    │   │   ├── AdminCategorys
+    │   │   │   └── ReorderCategory
+    │   │   └── Statistics
+    │   ├── contexts
+    │   ├── logics
+    │   └── styles
+    ├── Auth
+    │   ├── apis
+    │   ├── components
+    │   └── util
+    ├── CommonComponents
+    │   ├── CardsComponents
+    │   ├── CategoryComponents
+    │   └── StyledComponents
+    ├── CommonContext
+    ├── Detail
+    │   ├── component
+    │   ├── interface
+    │   ├── page
+    │   ├── service
+    │   └── style
+    ├── Etc
+    ├── Lib
+    ├── Login
+    ├── Main
+    │   ├── apis
+    │   ├── customHooks
+    │   └── styles
+    ├── Mypage
+    │   ├── apis
+    │   ├── components
+    │   ├── customHooks
+    │   ├── effects
+    │   └── styles
+    ├── Posting
+    │   ├── component
+    │   ├── page
+    │   ├── service
+    │   └── style
+    └── Types
 ```
