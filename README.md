@@ -41,7 +41,7 @@
 |:--:|
 |Main Page|
 
-|<img src="https://github.com/42vote/42Vote/assets/84768491/ead7f10c-c2ab-471d-ac0e-cb63588b98a6" alt="mainpage-mobile" width="470"/>|
+|<img src="https://github.com/42vote/42Vote_Front/assets/84768491/1d54e90b-6d13-4f57-99c8-d4f8c879fda1" alt="mainpage-mobile" width="470"/>|
 |:--:|
 |Main Page (mobile)|
 
@@ -53,11 +53,11 @@
 |:--:|
 |My Page (mobile)|
 
-|![문서 페이지](https://github.com/42vote/42Vote_Front/assets/48785968/151f2a3b-d3f3-489c-bb4a-68a9dd4ce06f)|
+|![상세 페이지](https://github.com/42vote/42Vote_Front/assets/84768491/ea57d5c6-d6e8-446c-b5b6-49adea5d32d5)|
 |:--:|
 |Detail Page|
 
-|<img src="https://github.com/42vote/42Vote/assets/84768491/3aa43068-a04e-41af-b26e-be2d4fa6a2fa" alt="detailpage-mobile" width="470"/>|
+|<img src="https://github.com/42vote/42Vote_Front/assets/84768491/589e0c10-030f-4a81-9469-2618c88f6bd9" alt="detailpage-mobile" width="470"/>|
 |:--:|
 |Detail Page (mobile)|
 
@@ -65,7 +65,7 @@
 |:--:|
 |Posting Page|
 
-|<img src="https://github.com/42vote/42Vote/assets/84768491/ea21f222-401a-4df1-9174-225e56b4c6cd" alt="postingpage-mobile" width="470"/>|
+|<img src="https://github.com/42vote/42Vote_Front/assets/84768491/4a7d3a01-e2a7-4270-80fb-97fbc992d028" alt="detailpage-mobile" width="470"/>|
 |:--:|
 |Posting Page (mobile)|
 
@@ -73,7 +73,7 @@
 |:--:|
 |Category Manage Page|
 
-|![우선순위 변경](https://github.com/42vote/42Vote_Front/assets/48785968/3f05ff22-ee63-4926-8692-36aaab326441)|
+|![우선순위 변경](https://github.com/42vote/42Vote_Front/assets/84768491/39931c9a-0bf9-4452-a99c-d3b41a11a1f4)|
 |:--:|
 |Category Reorder Page|
 
