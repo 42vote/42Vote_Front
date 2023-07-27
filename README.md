@@ -33,11 +33,11 @@
 # Page Layout
 <div align="center">
   
-|![로그인화면](https://github.com/42vote/42Vote/assets/48785968/9f4059cc-6897-48f1-b0a4-103f3a57afff)|
+|![로그인화면](https://github.com/42vote/42Vote_Front/assets/48785968/7ddebc13-1b95-44b5-98f2-d060632ab9d3)|
 |:--:|
 |Login Page|
 
-|![메인페이지](https://github.com/42vote/42Vote/assets/48785968/130a620e-f336-457c-9677-51c6e6ba22b7)|
+|![메인페이지](https://github.com/42vote/42Vote_Front/assets/48785968/71790f3c-4222-400f-90a1-c3051a9dc91f)|
 |:--:|
 |Main Page|
 
@@ -45,15 +45,15 @@
 |:--:|
 |Main Page (mobile)|
 
-|![마이 페이지](https://github.com/42vote/42Vote/assets/48785968/9db5b21d-0f4e-4fb1-b37d-3c2438d75716)|
+|![마이 페이지](https://github.com/42vote/42Vote_Front/assets/48785968/166b37fb-a551-4c81-9ab7-e57276bb1fab)|
 |:--:|
 |My Page|
 
-|![마이 페이지-모바일](https://github.com/42vote/42Vote/assets/48785968/f14ed308-56f9-4fa7-9ffe-c589503f4aec)|
+|![마이 페이지-모바일](https://github.com/42vote/42Vote_Front/assets/48785968/de61bef9-59c9-46e8-90f4-2152f48c7c6e)|
 |:--:|
 |My Page (mobile)|
 
-|![상세 페이지](https://github.com/42vote/42Vote/assets/84768491/74665d1e-dbd1-43d6-b521-45c3adc33278)|
+|![문서 페이지](https://github.com/42vote/42Vote_Front/assets/48785968/151f2a3b-d3f3-489c-bb4a-68a9dd4ce06f)|
 |:--:|
 |Detail Page|
 
@@ -61,7 +61,7 @@
 |:--:|
 |Detail Page (mobile)|
 
-|![문서 생성](https://github.com/42vote/42Vote/assets/48785968/bd5e4595-b244-4564-a7ec-1c39a6276d96)|
+|![문서 생성](https://github.com/42vote/42Vote_Front/assets/48785968/c5515103-060e-431a-af43-9fcc50bd808e)|
 |:--:|
 |Posting Page|
 
@@ -69,15 +69,15 @@
 |:--:|
 |Posting Page (mobile)|
 
-|![카데고리 관리](https://github.com/42vote/42Vote/assets/48785968/0fbd64a2-52e7-43d8-88c6-9eaae09595e9)|
+|![카데고리 관리](https://github.com/42vote/42Vote_Front/assets/48785968/e55998f8-4d95-467f-ae01-f066f1593288)|
 |:--:|
 |Category Manage Page|
 
-|![우선순위 변경](https://github.com/42vote/42Vote/assets/84768491/c76414ee-9a69-4b78-ab4e-0e991bd6e959)|
+|![우선순위 변경](https://github.com/42vote/42Vote_Front/assets/48785968/3f05ff22-ee63-4926-8692-36aaab326441)|
 |:--:|
 |Category Reorder Page|
 
-|![통계 페이지](https://github.com/42vote/42Vote/assets/48785968/c7686880-3336-4819-99f3-0c71aa844ca2)|
+|![통계 페이지](https://github.com/42vote/42Vote_Front/assets/48785968/e5916364-0f79-4e55-a71d-5a9d1358bf72)|
 |:--:|
 |Statistics Page|
 
